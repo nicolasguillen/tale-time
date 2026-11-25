@@ -211,6 +211,27 @@
         "images/cover.png"
       ],
       "notes": "Generated against the book-specific art direction and cast references. The image tool did not expose a model version. The earlier images listed as delivered were absent from this checkout and were recreated from the briefs at the user's request."
+    },
+    {
+      "step": "narration",
+      "language": "en",
+      "via": "gemini-api",
+      "model": "gemini-3.8-flash-tts",
+      "voice": "Sulafat (Gemini prebuilt voice)",
+      "date": "2026-11-25",
+      "clips": [
+        "title",
+        "p01-gate",
+        "p02-pipa",
+        "p03-clues",
+        "p03-clues-q",
+        "p03-clues-a",
+        "p03-clues-b",
+        "p04a-oak",
+        "p05a-tock-home",
+        "p04b-nutshells"
+      ],
+      "notes": "The user picked the Sulafat voice after a trial and asked for the first 10 English clips through the Gemini API (Interactions endpoint, v1beta), with the user's own free-tier key from the macOS Keychain. Each script sent exactly as in REQUESTED_AUDIO.md (story/en.json), with no style and no tags. One take per clip. Checked before delivery: speech rate 118-145 wpm on pages (the question p03-clues-q is quick, about 190 wpm, and the title short at 1.8 s: redo them with a style if the user wants), no cut-off endings, no long gaps, noise floor about -60 dBFS or lower. Delivered as WAV mono 24-bit 48 kHz from the model's 24 kHz 16-bit WAV (upsampled, so no content above 12 kHz): silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter (true peak <= -1.2 dBTP). Recorded on a proposed narrator. Free-tier content may be used by Google to improve its products; Gemini API terms for commercial use of the output still to be filed with the clips."
     }
   ]
 }

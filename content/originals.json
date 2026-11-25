@@ -345,6 +345,46 @@
       "bytes": 2820402,
       "sha256": "53e7955728541e1e1f4e555dd38f8f2d689c88838fec66f9b22e8c46e125eb92"
     },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p01-gate.wav": {
+      "bytes": 4118502,
+      "sha256": "d6b5d9e0e75d686885a000a4ff9fc48dc6215d64f9265d8a181467ee597e0f6d"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p02-pipa.wav": {
+      "bytes": 4988262,
+      "sha256": "01ab7862ac70208ab996d9f345849b408b1a6d182222e1429e29c0986bde791e"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-a.wav": {
+      "bytes": 296742,
+      "sha256": "3a9d6009853c901943c9a9e81d05e09ead0fd89d34369c96329272cfdad3f8f7"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-b.wav": {
+      "bytes": 293718,
+      "sha256": "d1988f9c3a2ead370e2c89092b569e2981ba65bd2d5f571db74c22aa69388a2a"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-q.wav": {
+      "bytes": 967782,
+      "sha256": "fc338b57bc56b67bc36c0c6f7e99531bdab165a38eb356bc8efe5d56a076bef3"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p03-clues.wav": {
+      "bytes": 4190502,
+      "sha256": "3924e0780055c9b9d6679648b5b9b8112615e67714dd86ee455bcd6fe06968ed"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p04a-oak.wav": {
+      "bytes": 4530198,
+      "sha256": "4c1f81217d121394c19c33fd685df4bd495b70ba17dfbbf8a064e41e1b2b4556"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p04b-nutshells.wav": {
+      "bytes": 4418022,
+      "sha256": "a6076d2610c983e60bdea4cba4b52c426177411f8c27a9ce3a5487c346df2cb6"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p05a-tock-home.wav": {
+      "bytes": 4668582,
+      "sha256": "806453b0da9aa1bf8b2a357272a57759d59b168f12b6b1ec4d119dfc69bc051a"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/title.wav": {
+      "bytes": 380262,
+      "sha256": "a83d3ec70f1c2188e4b8cb7def76c7fff02f221072bd689572ac3ad45fefeca1"
+    },
     "stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up-end.wav": {
       "bytes": 430474,
       "sha256": "672e66ca887178c99beb99b9a9a13d82b405c502e727223384fd787340ef61e0"

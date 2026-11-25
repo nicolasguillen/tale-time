@@ -8,7 +8,7 @@ This file is generated. To change a request, edit this story's `story/en.json` (
 
 | Title | Pages | Questions | Choice labels | Ending titles | Total |
 |---|---|---|---|---|---|
-| 0/1 | 0/20 | 0/5 | 0/10 | 0/4 | **0/40** |
+| 1/1 | 6/20 | 1/5 | 2/10 | 0/4 | **10/40** |
 
 Noelia does everything fast. On a walk in Pinecone Wood with her slow, smiling Abuelo, she finds Pipa, a baby squirrel who climbed down to chase an acorn and now only knows that home is "up, up, up!" Noelia zooms from tree to tree to find it, but every time she rushes, the wood goes quiet, until she sits still long enough to hear Pipa's mama calling.
 
@@ -70,90 +70,90 @@ Names first, then how each one's lines should color the narrator's voice.
 
 In reading order. A fork's question and its two choice labels follow its page.
 
-### ⬜ `title`: Title
+### ✅ `title`: Title
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/title.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/title.wav`
 - **Direction:** The story's title, as you would read it from a book cover: slowly, with a little wonder. Only the title.
 - **Length:** 5 words, about 3 s.
 - **Script:**
 
 > Noelia and the Baby Squirrel
 
-### ⬜ `p01-gate`: Page
+### ✅ `p01-gate`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p01-gate.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p01-gate.wav`
 - **Direction:** The page text, exactly as written. Mood: bouncy, playful.
 - **Length:** 66 words, about 29 s.
 - **Script:**
 
 > Noelia did everything fast. She ate her toast fast. She brushed her teeth fast. She even sneezed fast! One sunny afternoon, she stood at the little green gate at the bottom of Abuelo's garden. "Ready, set, ZOOM!" Off she zoomed, down the path into Pinecone Wood. Behind her, Abuelo stopped. He bent down, very slowly. "Mira, mira! Look at that!" It was a shiny green beetle.
 
-### ⬜ `p02-pipa`: Page
+### ✅ `p02-pipa`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p02-pipa.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p02-pipa.wav`
 - **Direction:** The page text, exactly as written. Mood: surprise, gentle.
 - **Length:** 78 words, about 34 s.
 - **Script:**
 
 > Squeak! Noelia skidded to a stop by a mossy log. On top sat a baby squirrel, as small as Noelia's hand. Noelia reached out. The squirrel jumped back, tail fluffed up. "Oops, sorry!" said Noelia, and she tucked her hands behind her back. "Abuelo! Come and see!" "I'm Pipa," squeaked the squirrel. "Mama?" Pipa had chased an acorn down her tree. Now every tree looked the same from the bottom. "Home is up!" said Pipa. "Up, up, up!"
 
-### ⬜ `p03-clues`: Page (before a choice)
+### ✅ `p03-clues`: Page (before a choice)
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues.wav`
 - **Direction:** The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop. Mood: curious, lots to choose from.
 - **Length:** 60 words, about 27 s.
 - **Script:**
 
 > Noelia looked up. Pinecone Wood was full of trees. Tall trees, thin trees, old trees, young trees. Which one was Pipa's? "Don't worry, Pipa," said Noelia. "I'll find your home. Fast!" Abuelo came slowly along the path, smiling. Tap-tap-tap! Up the hill, a woodpecker was busy on the old oak. And at Noelia's feet lay a trail of little nutshells.
 
-### ⬜ `p03-clues-q`: Question
+### ✅ `p03-clues-q`: Question
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-q.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-q.wav`
 - **Direction:** A real, open question to the child, warm and curious. Don't lean toward either choice. The two choices: "Ask the woodpecker" or "Follow the nutshells".
 - **Length:** 19 words, about 9 s.
 - **Script:**
 
 > Should Noelia ask the woodpecker who's tapping up the hill, or follow the trail of nutshells on the ground?
 
-### ⬜ `p03-clues-a`: Choice label
+### ✅ `p03-clues-a`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-a.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-a.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice A for *Should Noelia ask the woodpecker who's tapping up the hill, or follow the trail of nutshells on the ground?* The other label: "Follow the nutshells".
 - **Length:** 3 words, about 2 s.
 - **Script:**
 
 > Ask the woodpecker
 
-### ⬜ `p03-clues-b`: Choice label
+### ✅ `p03-clues-b`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-b.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p03-clues-b.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice B for *Should Noelia ask the woodpecker who's tapping up the hill, or follow the trail of nutshells on the ground?* The other label: "Ask the woodpecker".
 - **Length:** 3 words, about 2 s.
 - **Script:**
 
 > Follow the nutshells
 
-### ⬜ `p04a-oak`: Page
+### ✅ `p04a-oak`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p04a-oak.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p04a-oak.wav`
 - **Direction:** The page text, exactly as written. Mood: breathless, funny.
 - **Length:** 61 words, about 27 s.
 - **Script:**
 
 > "Ready, set, ZOOM!" Noelia zoomed up the path to the old oak, with Pipa scampering behind. "Hello-I'm-Noelia-this-is-Pipa-where-do-squirrels-live?" she asked, all in one breath. The woodpecker stopped tapping. "Tap-tap! I'm Tock. Squirrels? Well, they live up high, in a round..." "ROUND! UP HIGH!" cried Noelia. Up the trunk was a little round hole. Pipa scampered up to peek inside. And inside was...
 
-### ⬜ `p05a-tock-home`: Page
+### ✅ `p05a-tock-home`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p05a-tock-home.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p05a-tock-home.wav`
 - **Direction:** The page text, exactly as written. Mood: funny, a little deflated.
 - **Length:** 68 words, about 30 s.
 - **Script:**
 
 > ...wood chips. Just a heap of wood chips! "Tap-tap! That's MY house!" squawked Tock. "I made it myself." Pipa scampered back down. "Not home," she squeaked. "Next tree!" cried Noelia, and off she zoomed. "Wait!" called Tock. "Squirrels live in a round..." But Noelia was already halfway down the hill, with Pipa hopping behind. Tock shook his head and laughed. Then he went back to his tapping. Tap-tap-tap!
 
-### ⬜ `p04b-nutshells`: Page
+### ✅ `p04b-nutshells`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p04b-nutshells.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p04b-nutshells.wav`
 - **Direction:** The page text, exactly as written. Mood: busy, curious.
 - **Length:** 73 words, about 32 s.
 - **Script:**
