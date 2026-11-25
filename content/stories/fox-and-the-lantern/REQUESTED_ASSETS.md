@@ -10,7 +10,7 @@ This file is generated. To change a request, edit this story's `bible.json`, `sh
 
 | Style anchor | Sheets | Cover | Pages | Endings | Cards | Total |
 |---|---|---|---|---|---|---|
-| 0/1 | 0/5 | 0/1 | 0/15 | 0/5 | 0/12 | **0/39** |
+| 1/1 | 5/5 | 1/1 | 15/15 | 5/5 | 12/12 | **39/39** |
 
 On a summer evening in Grandma's big garden, Mia finds a baby star asleep in an old lantern. With her fox friend Tuck, she carries it down to Willow Pond, where the fireflies fly up to the sky at moonrise: the star's ride home.
 
@@ -65,9 +65,9 @@ A hand-painted look: simple, rounded shapes in flat areas of color, with visible
 - `#E8893A` pumpkin orange
 - `#F7F4EC` goose white
 
-### ⬜ `style-anchor`: Style anchor
+### ✅ `style-anchor`: Style anchor
 
-- **File:** `content/stories/fox-and-the-lantern/style/style-anchor.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/style/style-anchor.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach:** nothing. Make this first: every other prompt of this story attaches it as the style reference. Make it again until the medium, the textures and the light are exactly right, and approve it before going on.
 
@@ -91,7 +91,7 @@ Avoid here: people, animals or characters of any kind.
 
 Pasted word for word into every prompt the character, prop or place is in. To change one, edit `bible.json` and run `story assets`, never the prompt.
 
-- **Mia** (`mia`): A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots. Reference sheet: `mia`.
+- **Mia** (`mia`): A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots. Reference sheet: `mia`.
 - **Tuck** (`tuck`): A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping. Reference sheet: `tuck`.
 - **Glim** (`glim`): A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles. Reference sheet: `glim`.
 - **Grandma** (`grandma`): Mia's grandmother: tall and slim, warm brown skin, short silver-gray curly hair, round red glasses, a long purple knitted cardigan over a green dress, soft slippers. Reference sheet: `grandma`.
@@ -112,9 +112,9 @@ Pasted word for word into every prompt the character, prop or place is in. To ch
 
 This story's own characters and props: their sheets go in this story's `content/stories/fox-and-the-lantern/characters/` folder.
 
-### ⬜ `mia`: Reference sheet, Mia
+### ✅ `mia`: Reference sheet, Mia
 
-- **File:** `content/stories/fox-and-the-lantern/characters/mia.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/characters/mia.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p01-meadow`, `p02-glim`, `p03-tuck`, `p04a-hedge`, `p05a-moths`, `p04b-garden`, `p05b-bramble`, `p06-brook`, `p07a-stones`, `p07a-stones-a`, `p08a-across`, `p07b-bridge`, `p08b-goose`, `p09-willow`, `p10a-friends`, `p10a-friends-a`, `p10a-friends-b`, `p10b-song`, `e1-big-splash`, `e2-sky-parade`, `e3-goodnight-glim`, `e4-frog-chorus`, `e5-windowsill`
 - **Attach, in this order:**
@@ -126,7 +126,7 @@ Image 1 is the art style reference: match its medium, brush texture, paper grain
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 
 Keep the brush texture, paper grain, edges and palette of the style reference.
 Never: any text: letters, numbers, signs, labels, logos, watermarks, signatures, musical notes; photorealism, 3D renders, glossy plastic or clay looks; black outlines, comic halftones, anime styling; pure black shadows, horror lighting, menacing silhouettes; sharp teeth, claws on display, angry or scary faces; extra or missing fingers, limbs, ears or tails; melted or merged shapes; real brands, real people, existing characters; copying the look of a named illustrator, an existing book or a studio.
@@ -136,9 +136,9 @@ Reference sheet of Mia, showing: full body front, side and back; head and should
 Personality to show: Curious, cheerful, a little impatient, and kind. Loves to sing. Brave in small, real ways.
 ```
 
-### ⬜ `tuck`: Reference sheet, Tuck
+### ✅ `tuck`: Reference sheet, Tuck
 
-- **File:** `content/stories/fox-and-the-lantern/characters/tuck.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/characters/tuck.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p03-tuck`, `p03-tuck-a`, `p04a-hedge`, `p05a-moths`, `p04b-garden`, `p05b-bramble`, `p06-brook`, `p07a-stones`, `p07a-stones-b`, `p08a-across`, `p07b-bridge`, `p08b-goose`, `p09-willow`, `p10a-friends`, `p10a-friends-b`, `p10b-song`, `e1-big-splash`, `e2-sky-parade`, `e3-goodnight-glim`, `e4-frog-chorus`
 - **Attach, in this order:**
@@ -160,9 +160,9 @@ Reference sheet of Tuck, showing: full body front, side and back; head and shoul
 Personality to show: A cheerful show-off with a big heart. Always sure he knows a shortcut; his shortcuts are never short (the running joke).
 ```
 
-### ⬜ `glim`: Reference sheet, Glim
+### ✅ `glim`: Reference sheet, Glim
 
-- **File:** `content/stories/fox-and-the-lantern/characters/glim.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/characters/glim.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p02-glim`, `p03-tuck`, `p04a-hedge`, `p05a-moths`, `p04b-garden`, `p05b-bramble`, `p06-brook`, `p07a-stones`, `p08a-across`, `p07b-bridge`, `p08b-goose`, `p09-willow`, `p09-willow-b`, `p10a-friends`, `p10b-song`, `p10b-song-b`, `e1-big-splash`, `e2-sky-parade`, `e3-goodnight-glim`, `e4-frog-chorus`, `e5-windowsill`
 - **Attach, in this order:**
@@ -184,9 +184,9 @@ Reference sheet of Glim, showing: full body front, side and back; head and shoul
 Personality to show: A baby star who can't talk: it hums (hmm-mmm) and twinkles. Its glow shows how it feels.
 ```
 
-### ⬜ `grandma`: Reference sheet, Grandma
+### ✅ `grandma`: Reference sheet, Grandma
 
-- **File:** `content/stories/fox-and-the-lantern/characters/grandma.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/characters/grandma.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `p01-meadow`, `e2-sky-parade`, `e5-windowsill`
 - **Attach, in this order:**
@@ -208,9 +208,9 @@ Reference sheet of Grandma, showing: full body front, side and back; head and sh
 Personality to show: Calm, warm, playful. Never worried, never cross.
 ```
 
-### ⬜ `lantern`: Reference sheet, The lantern
+### ✅ `lantern`: Reference sheet, The lantern
 
-- **File:** `content/stories/fox-and-the-lantern/characters/lantern.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/characters/lantern.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p01-meadow`, `p02-glim`, `p03-tuck`, `p04a-hedge`, `p05a-moths`, `p04b-garden`, `p05b-bramble`, `p06-brook`, `p07a-stones`, `p08a-across`, `p07b-bridge`, `p08b-goose`, `p09-willow`, `p09-willow-b`, `p10a-friends`, `p10a-friends-a`, `p10b-song`, `p10b-song-b`, `e1-big-splash`, `e2-sky-parade`, `e3-goodnight-glim`, `e4-frog-chorus`, `e5-windowsill`
 - **Attach, in this order:**
@@ -235,9 +235,9 @@ Reference sheet of the lantern, showing: front, side and back, door closed, with
 
 In the order to make them: reading order, a fork's two choice cards right after its page, and the cover last (it reuses the characters and places of the pages).
 
-### ⬜ `p01-meadow`: Page illustration
+### ✅ `p01-meadow`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p01-meadow.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p01-meadow.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -254,7 +254,7 @@ Image 4 is the character reference for Grandma: keep their face, proportions, co
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Grandma: Mia's grandmother: tall and slim, warm brown skin, short silver-gray curly hair, round red glasses, a long purple knitted cardigan over a green dress, soft slippers.
 
@@ -277,9 +277,9 @@ Avoid here: Glim's face (it's revealed on the next page).
 
 > In the wild part of Grandma's garden, the grass grew tall and whispery. Mia was looking for her lost red ball when she found something else: a little old lantern, glowing in the grass. She picked it up. It was warm, like a sleepy cat. Up on the porch, Grandma was knitting under the yellow light. She waved, and Mia waved back.
 
-### ⬜ `p02-glim`: Page illustration
+### ✅ `p02-glim`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p02-glim.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p02-glim.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -296,7 +296,7 @@ Image 4 is the character reference for Glim: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
 
@@ -316,9 +316,9 @@ Must show: Glim's face clearly, big enough to read on a phone; Mia's face lit by
 
 > Mia peeked through the round glass. Inside, curled up like a kitten, was a tiny star! It had soft golden points and two sleepy dot eyes. It yawned a tiny yawn. Then it hummed a sad little hum, hmm-mmm, and looked up at the sky. "Did you fall down from up there?" Mia whispered. The star blinked yes. "Then I'll call you Glim," said Mia.
 
-### ⬜ `p03-tuck`: Page illustration
+### ✅ `p03-tuck`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p03-tuck.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p03-tuck.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -338,7 +338,7 @@ Style: Children's picture-book illustration hand-painted in opaque, matte gouach
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
 
@@ -363,9 +363,9 @@ Must show: Tuck clearly bursting out of the hedge; both ways ahead visible: the 
 >
 > *Should Mia follow Tuck's shortcut through the hedge, or take Grandma's garden path?*
 
-### ⬜ `p03-tuck-a`: Choice card
+### ✅ `p03-tuck-a`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p03-tuck-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p03-tuck-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -393,9 +393,9 @@ Must show: the round tunnel mouth as the one clear shape.
 - **Story moment:** option A, "Tuck's shortcut", for the question *Should Mia follow Tuck's shortcut through the hedge, or take Grandma's garden path?*
 - **The other card** (`p03-tuck-b`, "The garden path"): A pale flagstone garden path winding away between fat orange pumpkins and bean poles. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p03-tuck-b`: Choice card
+### ✅ `p03-tuck-b`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p03-tuck-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p03-tuck-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -418,9 +418,9 @@ Must show: the winding path and the bright orange pumpkins.
 - **Story moment:** option B, "The garden path", for the question *Should Mia follow Tuck's shortcut through the hedge, or take Grandma's garden path?*
 - **The other card** (`p03-tuck-a`, "Tuck's shortcut"): A round, dark-green leafy tunnel opening low in a hedge, with the white tip of Tuck's bushy tail just disappearing inside. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p04a-hedge`: Page illustration
+### ✅ `p04a-hedge`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p04a-hedge.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p04a-hedge.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -442,7 +442,7 @@ Style: Children's picture-book illustration hand-painted in opaque, matte gouach
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
 
@@ -466,9 +466,9 @@ Avoid here: anything that makes the tunnel feel tight, dark or scary.
 
 > Tuck wriggled into a leafy tunnel in the hedge, and Mia crawled after him, pushing the lantern ahead. The tunnel went left. It went right. It went round and round. "Almost there!" said Tuck. Left, right, round and round. "Almost there!" said Tuck again. Glim's light made every leaf glow green. "Tuck," Mia giggled, "is this really a shortcut?"
 
-### ⬜ `p05a-moths`: Page illustration
+### ✅ `p05a-moths`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p05a-moths.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p05a-moths.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -489,7 +489,7 @@ Image 6 is the location reference for the hedge: use it only for the place itsel
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The moths: Soft, fuzzy, pale cream moths with rounded wings and feathery antennae, like little snowflakes. Cute and simple, not insect-detailed.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
@@ -515,9 +515,9 @@ Must show: the swirl of moths as the main shape; the sunflowers.
 
 > At last they tumbled out by Grandma's sunflowers. Whoosh! A cloud of soft white moths came swirling around the lantern, like snowflakes in summer. They tickled Mia's nose. Glim flickered with giggles. "Little light, little light, show me the way tonight!" sang Mia. The moths danced ahead of her, all the way down to the brook. Then they fluttered off to bed.
 
-### ⬜ `p04b-garden`: Page illustration
+### ✅ `p04b-garden`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p04b-garden.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p04b-garden.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -536,7 +536,7 @@ Image 5 is the character reference for Glim: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
@@ -560,9 +560,9 @@ Must show: the pumpkins glowing like little suns; the path winding down the gard
 
 > Mia took the garden path, the one Grandma swept every morning. It wound past the bean poles and the fat orange pumpkins. Glim's light made the pumpkins shine like little suns. Tuck trotted beside her. "My shortcut is faster," he said. "Grandma's path is prettier," said Mia. Glim hummed, hmm-mmm, as if it agreed with both of them.
 
-### ⬜ `p05b-bramble`: Page illustration
+### ✅ `p05b-bramble`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p05b-bramble.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p05b-bramble.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -583,7 +583,7 @@ Image 6 is the location reference for the garden path: use it only for the place
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Bramble: A small round hedgehog: brown spines with cream tips, a pale cream face, a black button nose, tiny pink feet.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
@@ -630,7 +630,7 @@ Framing: medium-close. Light: twilight; the lantern set on the ground lights the
 
 ```text
 Add only Mia to this picture, matching the attached reference image exactly.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Mia in this picture: kneeling, careful and kind, rolling the apple off with a cabbage leaf.
 The finished scene: By the strawberry bed, Mia kneels and holds a big cabbage leaf against a shiny red apple stuck on Bramble's back spines, gently rolling it off. Bramble, flustered, looks back at the apple. Tuck watches, head tilted. The lantern sits on the ground beside them.
 Keep everything else exactly the same.
@@ -680,9 +680,9 @@ Keep everything else exactly the same.
 
 > By the strawberry bed, something round was wobbling in circles. It was Bramble the hedgehog, with a big red apple stuck on her prickles! "Hold still," said Mia. She picked a wide cabbage leaf and gently, gently rolled the apple off. "Thank you!" puffed Bramble. "The brook is just down there." And she trotted off to bed, munching her apple.
 
-### ⬜ `p06-brook`: Page illustration
+### ✅ `p06-brook`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p06-brook.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p06-brook.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -701,7 +701,7 @@ Image 5 is the character reference for Glim: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
@@ -728,9 +728,9 @@ Avoid here: moths or Bramble (this page follows both paths); the moon itself (it
 >
 > *Should Mia hop across the stepping stones, or walk to the little bridge?*
 
-### ⬜ `p06-brook-a`: Choice card
+### ✅ `p06-brook-a`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p06-brook-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p06-brook-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -753,9 +753,9 @@ Must show: three stones in a row.
 - **Story moment:** option A, "Hop the stones", for the question *Should Mia hop across the stepping stones, or walk to the little bridge?*
 - **The other card** (`p06-brook-b`, "Walk to the bridge"): A small arched wooden footbridge with a rope rail over the brook. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p06-brook-b`: Choice card
+### ✅ `p06-brook-b`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p06-brook-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p06-brook-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -778,9 +778,9 @@ Must show: the warm brown arch of the bridge.
 - **Story moment:** option B, "Walk to the bridge", for the question *Should Mia hop across the stepping stones, or walk to the little bridge?*
 - **The other card** (`p06-brook-a`, "Hop the stones"): Three round, flat gray stepping stones crossing a shallow, sparkling blue brook. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p07a-stones`: Page illustration
+### ✅ `p07a-stones`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p07a-stones.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p07a-stones.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -801,7 +801,7 @@ Image 6 is the location reference for the brook: use it only for the place itsel
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
@@ -828,9 +828,9 @@ Avoid here: any sense of danger: the water is clearly ankle-deep.
 >
 > *Should Mia take a big jump, or wait for Tuck to hold the stone?*
 
-### ⬜ `p07a-stones-a`: Choice card
+### ✅ `p07a-stones-a`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p07a-stones-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p07a-stones-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -843,7 +843,7 @@ Image 2 is the character reference for Mia: keep their face, proportions, colors
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 
 Keep every character and prop exactly as its reference image and description show it: the same face, proportions, age, clothes, colors and markings; and the brush texture, paper grain, edges and palette of the style reference.
 Never: any text: letters, numbers, signs, labels, logos, watermarks, signatures, musical notes; photorealism, 3D renders, glossy plastic or clay looks; black outlines, comic halftones, anime styling; pure black shadows, horror lighting, menacing silhouettes; sharp teeth, claws on display, angry or scary faces; extra or missing fingers, limbs, ears or tails; melted or merged shapes; real brands, real people, existing characters; copying the look of a named illustrator, an existing book or a studio.
@@ -858,9 +858,9 @@ Must show: the red boots as the main shape.
 - **Story moment:** option A, "Big jump!", for the question *Should Mia take a big jump, or wait for Tuck to hold the stone?*
 - **The other card** (`p07a-stones-b`, "Wait for Tuck"): Tuck's orange front paws pressing down on a round wet stone, his face concentrating, scarf dangling. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p07a-stones-b`: Choice card
+### ✅ `p07a-stones-b`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p07a-stones-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p07a-stones-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -888,9 +888,9 @@ Must show: Tuck's orange paws and face.
 - **Story moment:** option B, "Wait for Tuck", for the question *Should Mia take a big jump, or wait for Tuck to hold the stone?*
 - **The other card** (`p07a-stones-a`, "Big jump!"): Two red rubber boots in mid-air, jumping over a stone, a few droplets flying. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p08a-across`: Page illustration
+### ✅ `p08a-across`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p08a-across.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p08a-across.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -911,7 +911,7 @@ Image 6 is the location reference for the brook: use it only for the place itsel
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
@@ -935,9 +935,9 @@ Must show: Mia dry and happy; teamwork: Tuck holding the stone.
 
 > Mia waited. Tuck pressed his paws on the wobbly stone and held it very still. "Now!" Hop! Mia landed on the other side, safe and dry. "We did it together!" she cheered. Tuck puffed out his chest. "See? My shortcuts always work... sometimes." Mia laughed so hard that Glim bounced inside the lantern. Then off they ran, toward the willow.
 
-### ⬜ `p07b-bridge`: Page illustration
+### ✅ `p07b-bridge`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p07b-bridge.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p07b-bridge.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -960,7 +960,7 @@ Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D
 
 Gertie: A big, fluffy, round white goose with an orange beak and orange feet, droopy sleepy eyelids and two grumpy feather-tuft eyebrows that soften when she smiles.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
 
@@ -1025,7 +1025,7 @@ Keep everything else exactly the same.
 
 ```text
 Add only Mia and the lantern to this picture, matching the attached reference images exactly.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Mia in this picture: holding the lantern up, hopeful.
 The lantern in this picture: door closed, held up.
@@ -1047,9 +1047,9 @@ Keep everything else exactly the same.
 
 > The little bridge creaked, crick-crack, under Mia's boots. Right in the middle sat a big white goose, fast asleep, with her head tucked under her wing. "That's Gertie," whispered Tuck. "She's very grumpy when you wake her." Mia held up the lantern, and Glim's light fell softly on Gertie's feathers. Gertie opened one eye.
 
-### ⬜ `p08b-goose`: Page illustration
+### ✅ `p08b-goose`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p08b-goose.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p08b-goose.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p07b-bridge`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
@@ -1070,7 +1070,7 @@ Style: Children's picture-book illustration hand-painted in opaque, matte gouach
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
 Gertie: A big, fluffy, round white goose with an orange beak and orange feet, droopy sleepy eyelids and two grumpy feather-tuft eyebrows that soften when she smiles.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
@@ -1095,9 +1095,9 @@ Must show: Gertie's bow; the willow ahead.
 
 > Mia gave her very best smile. "Excuse me, Gertie. We're taking Glim home to the sky." Gertie looked at the tiny star, and her grumpy face went soft. "Hooonk," she said, which means "Hurry along, dears." She waddled aside and gave a little bow. Mia skipped across the bridge, and Tuck trotted after her, toward the willow.
 
-### ⬜ `p09-willow`: Page illustration
+### ✅ `p09-willow`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p09-willow.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p09-willow.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1116,7 +1116,7 @@ Image 5 is the character reference for Glim: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The frogs: A chorus of small, round green frogs with pale yellow bellies, sitting on lily pads. The biggest one, the leader, has a puffy throat that balloons when he sings.
 The fireflies: Mostly seen as warm golden-green dots of light with soft glows. Up close: tiny round bodies with little wings, cute, not buggy.
@@ -1147,9 +1147,9 @@ Avoid here: Gertie, Bramble or the moths (this page follows every path); wet clo
 >
 > *Should Mia ask all the pond friends for help, or sing Glim the star song?*
 
-### ⬜ `p09-willow-a`: Choice card
+### ✅ `p09-willow-a`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p09-willow-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p09-willow-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1177,9 +1177,9 @@ Must show: the green frogs as the main shape.
 - **Story moment:** option A, "Ask for help", for the question *Should Mia ask all the pond friends for help, or sing Glim the star song?*
 - **The other card** (`p09-willow-b`, "Sing the star song"): The brass lantern glowing warmly, with soft golden swirls of light curling around it like a song. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p09-willow-b`: Choice card
+### ✅ `p09-willow-b`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p09-willow-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p09-willow-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1212,9 +1212,9 @@ Avoid here: musical notes or any symbols.
 - **Story moment:** option B, "Sing the star song", for the question *Should Mia ask all the pond friends for help, or sing Glim the star song?*
 - **The other card** (`p09-willow-a`, "Ask for help"): A row of small round green frogs on lily pads, all looking up eagerly, with a few fireflies glowing above them. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p10a-friends`: Page illustration
+### ✅ `p10a-friends`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p10a-friends.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p10a-friends.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1235,7 +1235,7 @@ Image 6 is the location reference for the willow pond: use it only for the place
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The frogs: A chorus of small, round green frogs with pale yellow bellies, sitting on lily pads. The biggest one, the leader, has a puffy throat that balloons when he sings.
 The fireflies: Mostly seen as warm golden-green dots of light with soft glows. Up close: tiny round bodies with little wings, cute, not buggy.
@@ -1265,9 +1265,9 @@ Must show: Glim's light as the brightest thing in the story so far; everyone joi
 >
 > *Should Mia lead the parade with the lantern, or wave goodbye from the shore?*
 
-### ⬜ `p10a-friends-a`: Choice card
+### ✅ `p10a-friends-a`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p10a-friends-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p10a-friends-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1282,7 +1282,7 @@ Image 3 is the reference for the lantern: keep its shape, colors and details exa
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 The fireflies: Mostly seen as warm golden-green dots of light with soft glows. Up close: tiny round bodies with little wings, cute, not buggy.
 
@@ -1301,9 +1301,9 @@ Must show: the lantern up high and the long golden trail.
 - **Story moment:** option A, "Lead the parade", for the question *Should Mia lead the parade with the lantern, or wave goodbye from the shore?*
 - **The other card** (`p10a-friends-b`, "Wave from the shore"): Mia and Tuck, small and seen from behind, sitting on the grassy shore of the pond, looking up at fireflies rising over the water. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p10a-friends-b`: Choice card
+### ✅ `p10a-friends-b`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p10a-friends-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p10a-friends-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1318,7 +1318,7 @@ Image 3 is the character reference for Tuck: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 
 Keep every character and prop exactly as its reference image and description show it: the same face, proportions, age, clothes, colors and markings; and the brush texture, paper grain, edges and palette of the style reference.
@@ -1335,9 +1335,9 @@ Must show: the two small figures on the shore.
 - **Story moment:** option B, "Wave from the shore", for the question *Should Mia lead the parade with the lantern, or wave goodbye from the shore?*
 - **The other card** (`p10a-friends-a`, "Lead the parade"): The lantern held high in a hand with a yellow sleeve, leading a long, winding ribbon of fireflies behind it. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p10b-song`: Page illustration
+### ✅ `p10b-song`: Page illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/p10b-song.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p10b-song.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1358,7 +1358,7 @@ Image 6 is the location reference for the willow pond: use it only for the place
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The frogs: A chorus of small, round green frogs with pale yellow bellies, sitting on lily pads. The biggest one, the leader, has a puffy throat that balloons when he sings.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
@@ -1387,9 +1387,9 @@ Avoid here: musical notes or any symbols.
 >
 > *Should Mia sing it loud with the frogs, or hum it soft and slow?*
 
-### ⬜ `p10b-song-a`: Choice card
+### ✅ `p10b-song-a`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p10b-song-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p10b-song-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1415,9 +1415,9 @@ Must show: the green frog's ballooned throat.
 - **Story moment:** option A, "Loud with the frogs", for the question *Should Mia sing it loud with the frogs, or hum it soft and slow?*
 - **The other card** (`p10b-song-b`, "Soft and slow"): The lantern resting on soft moss, Glim inside with its eyes nearly closed, glowing gently. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p10b-song-b`: Choice card
+### ✅ `p10b-song-b`: Choice card
 
-- **File:** `content/stories/fox-and-the-lantern/images/p10b-song-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/p10b-song-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1449,9 +1449,9 @@ Must show: calm and stillness.
 - **Story moment:** option B, "Soft and slow", for the question *Should Mia sing it loud with the frogs, or hum it soft and slow?*
 - **The other card** (`p10b-song-a`, "Loud with the frogs"): The biggest frog, throat ballooned, mouth wide open, singing his loudest, with two smaller frogs joining in beside him. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `e1-big-splash`: Ending illustration
+### ✅ `e1-big-splash`: Ending illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/e1-big-splash.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/e1-big-splash.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1472,7 +1472,7 @@ Image 6 is the location reference for the brook: use it only for the place itsel
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The fireflies: Mostly seen as warm golden-green dots of light with soft glows. Up close: tiny round bodies with little wings, cute, not buggy.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
@@ -1500,9 +1500,9 @@ Avoid here: anything that reads as Mia being hurt or upset.
 
 > Mia took a great big jump and... SPLASH! Her boots, her socks and her bottom landed right in the brook. Up flew the splash, full of golden sparkles. The fireflies thought the parade had begun! They zoomed down, popped open the little lantern door, and carried Glim all the way to the sky. Mia laughed and laughed. Squelch, squelch went her boots, all the way home to Grandma's warm towel.
 
-### ⬜ `e2-sky-parade`: Ending illustration
+### ✅ `e2-sky-parade`: Ending illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/e2-sky-parade.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/e2-sky-parade.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1523,7 +1523,7 @@ Image 6 is the character reference for Glim: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Grandma: Mia's grandmother: tall and slim, warm brown skin, short silver-gray curly hair, round red glasses, a long purple knitted cardigan over a green dress, soft slippers.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The frogs: A chorus of small, round green frogs with pale yellow bellies, sitting on lily pads. The biggest one, the leader, has a puffy throat that balloons when he sings.
@@ -1576,7 +1576,7 @@ Framing: wide. Light: night, starry sky; a winding ribbon of firefly light from 
 
 ```text
 Add only Mia and the lantern to this picture, matching the attached reference images exactly.
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Mia in this picture: lantern held up, door open, overjoyed.
 The lantern in this picture: door open.
@@ -1619,9 +1619,9 @@ Keep everything else exactly the same.
 
 > Mia held the lantern high and led the parade, all around Willow Pond and up through the garden. The frogs hopped, Tuck pranced, and a thousand fireflies followed. Grandma was waiting on the porch with a blanket. Mia opened the little glass door. Glim floated up, up, up, and twinkled into its place in the sky. And every night after that, one little star winked at Mia's window.
 
-### ⬜ `e3-goodnight-glim`: Ending illustration
+### ✅ `e3-goodnight-glim`: Ending illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/e3-goodnight-glim.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/e3-goodnight-glim.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1642,7 +1642,7 @@ Image 6 is the location reference for the willow pond: use it only for the place
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The fireflies: Mostly seen as warm golden-green dots of light with soft glows. Up close: tiny round bodies with little wings, cute, not buggy.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
@@ -1669,9 +1669,9 @@ Must show: Glim high among the fireflies; the porch light far away.
 
 > Mia sat down by the water and opened the little glass door. "Goodnight, Glim," she whispered. Glim floated out, gave her nose a warm, twinkly kiss, and flew up with the fireflies, higher and higher, until it was a star again. Mia and Tuck waved and waved. Then, far up the garden, Grandma's porch light blinked. Time for bed.
 
-### ⬜ `e4-frog-chorus`: Ending illustration
+### ✅ `e4-frog-chorus`: Ending illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/e4-frog-chorus.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/e4-frog-chorus.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1692,7 +1692,7 @@ Image 6 is the location reference for the willow pond: use it only for the place
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 The frogs: A chorus of small, round green frogs with pale yellow bellies, sitting on lily pads. The biggest one, the leader, has a puffy throat that balloons when he sings.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
@@ -1720,9 +1720,9 @@ Avoid here: musical notes or any symbols.
 
 > Mia and the frogs sang as loud as they could: "LITTLE LIGHT, LITTLE LIGHT, RIBBIT-RIBBIT, CROAK TONIGHT!" It was so loud and so silly that Glim giggled, and giggled, and... POP! The little door flew open, and Glim shot up to the sky like popcorn. Tuck laughed so hard he rolled in the reeds. All the way home, Mia croaked. And Grandma croaked back.
 
-### ⬜ `e5-windowsill`: Ending illustration
+### ✅ `e5-windowsill`: Ending illustration
 
-- **File:** `content/stories/fox-and-the-lantern/images/e5-windowsill.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/e5-windowsill.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1741,7 +1741,7 @@ Image 5 is the character reference for Glim: keep their face, proportions, color
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Grandma: Mia's grandmother: tall and slim, warm brown skin, short silver-gray curly hair, round red glasses, a long purple knitted cardigan over a green dress, soft slippers.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.
@@ -1765,9 +1765,9 @@ Must show: the lantern glowing on the windowsill; the moon outside.
 
 > Mia hummed the star song, soft and slow, and Glim's eyes closed. The fireflies drifted up without it, but the moon smiled down. "Tomorrow night, little one," it seemed to say. So Mia carried the lantern home. Grandma tucked her into bed, and Glim glowed on the windowsill all night long: the coziest night-light in the whole wide world.
 
-### ⬜ `cover`: Cover
+### ✅ `cover`: Cover
 
-- **File:** `content/stories/fox-and-the-lantern/images/cover.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/fox-and-the-lantern/images/cover.png`
 - **Size:** 3:4 portrait, at least 1200×1600 px, ideally 1500×2000 px
 - **Attach, in this order:**
   1. `content/stories/fox-and-the-lantern/style/style-anchor.png` (style anchor)
@@ -1788,7 +1788,7 @@ Image 6 is the location reference for the meadow: use it only for the place itse
 Style: Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.
 Palette: paper #F3EAD8, cream #FFF6E3, night blue #2E3F66, twilight lilac #B9A3D0, meadow green #7FA65A, hedge green #3F6B4A, earth brown #8A5A3C, lantern gold #F6C453; story accents: sunset peach #F2B880, dusk teal #1F4E5A, raincoat yellow #F2C230, boot red #D9493B, fox orange #E07A3A, scarf green #4F8A5B, pumpkin orange #E8893A, goose white #F7F4EC.
 
-Mia: A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
+Mia: A 6-year-old girl with fair skin with warm peach undertones, a round face, big dark eyes and wavy chestnut hair in two short ponytails tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.
 Tuck: A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.
 The lantern: A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.
 Glim: A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.

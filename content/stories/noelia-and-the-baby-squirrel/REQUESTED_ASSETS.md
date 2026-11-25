@@ -10,7 +10,7 @@ This file is generated. To change a request, edit this story's `bible.json`, `sh
 
 | Style anchor | Sheets | Cover | Pages | Endings | Cards | Total |
 |---|---|---|---|---|---|---|
-| 1/1 | 4/4 | 0/1 | 4/16 | 0/4 | 2/10 | **11/36** |
+| 1/1 | 4/4 | 1/1 | 16/16 | 4/4 | 10/10 | **36/36** |
 
 Noelia does everything fast. On a walk in Pinecone Wood with her slow, smiling Abuelo, she finds Pipa, a baby squirrel who climbed down to chase an acorn and now only knows that home is "up, up, up!" Noelia zooms from tree to tree to find it, but every time she rushes, the wood goes quiet, until she sits still long enough to hear Pipa's mama calling.
 
@@ -67,7 +67,7 @@ Pictures built from hand-painted papers, cut and torn into simple shapes and lay
 
 ### ✅ `style-anchor`: Style anchor
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach:** nothing. Make this first: every other prompt of this story attaches it as the style reference. Make it again until the medium, the textures and the light are exactly right, and approve it before going on.
 
@@ -114,11 +114,11 @@ This story's own characters and props: their sheets go in this story's `content/
 
 ### ✅ `noelia`: Reference sheet, Noelia
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p01-gate`, `p02-pipa`, `p03-clues`, `p04a-oak`, `p05a-tock-home`, `p04b-nutshells`, `p05b-nibs`, `p06-path`, `p06-path-b`, `p07a-birches`, `p08a-fluffballs`, `p07b-call`, `p08b-not-us`, `p09-clearing`, `p10-chitter`, `p10-chitter-a`, `p11a-tiptoe`, `p11a-tiptoe-a`, `p11b-still`, `p11b-still-a`, `e1-up-up-up`, `e2-chitter-chatter`, `e3-whole-wood`, `e4-window`
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -138,11 +138,11 @@ Personality to show: Bright, bouncy and kind, with a laugh you can hear across t
 
 ### ✅ `pipa`: Reference sheet, Pipa
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p02-pipa`, `p03-clues`, `p04a-oak`, `p05a-tock-home`, `p04b-nutshells`, `p05b-nibs`, `p06-path`, `p07a-birches`, `p08a-fluffballs`, `p07b-call`, `p08b-not-us`, `p09-clearing`, `p10-chitter`, `p11a-tiptoe`, `p11b-still`, `p11b-still-b`, `e1-up-up-up`, `e2-chitter-chatter`, `e3-whole-wood`
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -162,11 +162,11 @@ Personality to show: A baby squirrel, curious and wriggly. She climbed down her 
 
 ### ✅ `abuelo`: Reference sheet, Abuelo
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `cover`, `p01-gate`, `p02-pipa`, `p03-clues`, `p06-path`, `p08a-fluffballs`, `p07b-call`, `p08b-not-us`, `p09-clearing`, `p10-chitter`, `p11a-tiptoe`, `p11b-still`, `e1-up-up-up`, `e2-chitter-chatter`, `e3-whole-wood`, `e4-window`
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -186,11 +186,11 @@ Personality to show: Noelia's grandfather. Slow, calm and smiling, never in a hu
 
 ### ✅ `mama-squirrel`: Reference sheet, Mama Squirrel
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png`
 - **Size:** 3:2 landscape, at least 2400×1600 px, ideally 3000×2000 px
 - **Appears in:** `p11a-tiptoe`, `p11a-tiptoe-b`, `p11b-still`, `e1-up-up-up`, `e2-chitter-chatter`, `e3-whole-wood`
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -214,12 +214,12 @@ In the order to make them: reading order, a fork's two choice cards right after 
 
 ### ✅ `p01-gate`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p01-gate.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p01-gate.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -251,13 +251,13 @@ Must show: Noelia clearly zooming; Abuelo bent over the tiny shiny green beetle;
 
 ### ✅ `p02-pipa`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -293,14 +293,14 @@ Avoid here: Noelia's hand on or near Pipa.
 
 ### ✅ `p03-clues`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p03-clues.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p03-clues.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
-  5. `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.jpeg` (location: big log)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
+  5. `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.png` (location: big log)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -335,7 +335,7 @@ Avoid here: Noelia touching Pipa.
 
 **Crowded scene (4 named characters): build it in layers** rather than in one go, so their looks don't blend. Each step edits the picture from the step before.
 
-1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`, `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.jpeg`:
+1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`, `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.png`:
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -354,7 +354,7 @@ Paint only the place and its light for now, with no characters: they are added o
 Framing: wide. Light: early afternoon, sun high, dappled light. Mood: curious, lots to choose from.
 ```
 
-2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`:
+2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`:
 
 ```text
 Add only Noelia to this picture, matching the attached reference image exactly.
@@ -364,7 +364,7 @@ The finished scene: Noelia stands on the path by the mossy log, head tipped back
 Keep everything else exactly the same.
 ```
 
-3. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`:
+3. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`:
 
 ```text
 Add only Pipa to this picture, matching the attached reference image exactly.
@@ -384,7 +384,7 @@ The finished scene: Noelia stands on the path by the mossy log, head tipped back
 Keep everything else exactly the same.
 ```
 
-5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`:
+5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`:
 
 ```text
 Add only Abuelo to this picture, matching the attached reference image exactly.
@@ -402,10 +402,10 @@ Keep everything else exactly the same.
 
 ### ✅ `p03-clues-a`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p03-clues-a.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p03-clues-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -430,10 +430,10 @@ Must show: the woodpecker as the one clear shape, its red cap bright.
 
 ### ✅ `p03-clues-b`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p03-clues-b.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p03-clues-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -455,12 +455,12 @@ Must show: the curving line of nutshells as the one clear shape.
 
 ### ✅ `p04a-oak`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p04a-oak.jpeg`
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p04a-oak.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -493,15 +493,15 @@ Avoid here: Noelia climbing the tree.
 
 > "Ready, set, ZOOM!" Noelia zoomed up the path to the old oak, with Pipa scampering behind. "Hello-I'm-Noelia-this-is-Pipa-where-do-squirrels-live?" she asked, all in one breath. The woodpecker stopped tapping. "Tap-tap! I'm Tock. Squirrels? Well, they live up high, in a round..." "ROUND! UP HIGH!" cried Noelia. Up the trunk was a little round hole. Pipa scampered up to peek inside. And inside was...
 
-### ⬜ `p05a-tock-home`: Page illustration
+### ✅ `p05a-tock-home`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p05a-tock-home.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p05a-tock-home.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p04a-oak`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/images/p04a-oak.jpeg` (the picture to edit)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
+  1. `content/stories/noelia-and-the-baby-squirrel/images/p04a-oak.png` (the picture to edit)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
 
 ```text
 Image 1 is the picture to edit (`p04a-oak`), and the style reference: keep its style, and everything the description below doesn't change, exactly as it is.
@@ -533,14 +533,14 @@ Must show: pale wood chips at the edge of the round hole; Tock laughing; Noelia 
 
 > ...wood chips. Just a heap of wood chips! "Tap-tap! That's MY house!" squawked Tock. "I made it myself." Pipa scampered back down. "Not home," she squeaked. "Next tree!" cried Noelia, and off she zoomed. "Wait!" called Tock. "Squirrels live in a round..." But Noelia was already halfway down the hill, with Pipa hopping behind. Tock shook his head and laughed. Then he went back to his tapping. Tap-tap-tap!
 
-### ⬜ `p04b-nutshells`: Page illustration
+### ✅ `p04b-nutshells`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p04b-nutshells.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p04b-nutshells.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -570,15 +570,15 @@ Must show: the trail of nutshells ending at the round hole under the root; Pipa 
 
 > "Clues!" said Noelia. "Ready, set, ZOOM!" She zoomed along the path after the nutshells, nose to the ground. She went so fast, she never looked up. The trail went past the ferns and stopped at a big twisty tree root. Under the root was a little round hole. "Round!" said Noelia. "Is this it, Pipa?" Pipa shook her head. "Home is UP!" Then, from inside the hole, came a sound. Crunch. Crunch, crunch...
 
-### ⬜ `p05b-nibs`: Page illustration
+### ✅ `p05b-nibs`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p05b-nibs.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p05b-nibs.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p04b-nutshells`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
   1. `content/stories/noelia-and-the-baby-squirrel/images/p04b-nutshells.png` (the picture to edit)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
 
 ```text
 Image 1 is the picture to edit (`p04b-nutshells`), and the style reference: keep its style, and everything the description below doesn't change, exactly as it is.
@@ -610,15 +610,15 @@ Must show: Nibs's full cheeks; the tidy pile of nutshells.
 
 > Out popped a little mouse with very big ears and very full cheeks. "Mmf! I'm Nibs," he said, and gulped. "These are MY crumbs. Oh dear, what a mess!" He swept the nutshells into a tidy pile with his tail. "Squirrels? They live up there somewhere. I'm a down-low mouse. I never look up!" Noelia giggled. Then Nibs popped back into his hole to finish his lunch.
 
-### ⬜ `p06-path`: Page illustration
+### ✅ `p06-path`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p06-path.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p06-path.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -654,12 +654,12 @@ Avoid here: Tock or Nibs; the oak or the root hollow.
 >
 > *Should Noelia look up high for a round home, or call out for Pipa's mama?*
 
-### ⬜ `p06-path-a`: Choice card
+### ✅ `p06-path-a`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p06-path-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p06-path-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -679,13 +679,13 @@ Must show: tall white trunks leading the eye up to the round nest.
 - **Story moment:** option A, "Look up high", for the question *Should Noelia look up high for a round home, or call out for Pipa's mama?*
 - **The other card** (`p06-path-b`, "Call for Mama"): Two small hands cupped together and raised to call, in raspberry-pink sleeves. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p06-path-b`: Choice card
+### ✅ `p06-path-b`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p06-path-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p06-path-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -709,14 +709,14 @@ Must show: the cupped hands as the one clear shape.
 - **Story moment:** option B, "Call for Mama", for the question *Should Noelia look up high for a round home, or call out for Pipa's mama?*
 - **The other card** (`p06-path-a`, "Look up high"): Looking straight up between slim white birch trunks to a small round ball of a nest, high among yellow leaves. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p07a-birches`: Page illustration
+### ✅ `p07a-birches`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p07a-birches.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p07a-birches.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
   4. `content/stories/noelia-and-the-baby-squirrel/images/p06-path.png` (location: birch grove)
 
 ```text
@@ -748,16 +748,16 @@ Must show: the round ball nest high in the birch, with its little round door; No
 
 > "Ready, set, ZOOM!" Noelia zoomed along the path into the birch trees, white and thin, with twinkly yellow leaves. Head back, she looked up, up, up. And then she saw it: high in a birch, a round ball of a nest! "THERE!" she shouted, hopping up and down. "Round! Up high! Pipa, it's your home!" Pipa squinted up. The nest wibble-wobbled. And out of its little round door came...
 
-### ⬜ `p08a-fluffballs`: Page illustration
+### ✅ `p08a-fluffballs`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p08a-fluffballs.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p08a-fluffballs.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p07a-birches`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
   1. `content/stories/noelia-and-the-baby-squirrel/images/p07a-birches.png` (the picture to edit)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the picture to edit (`p07a-birches`), and the style reference: keep its style, and everything the description below doesn't change, exactly as it is.
@@ -792,16 +792,16 @@ Must show: exactly five fluffball birds, easy to count; Noelia's round O mouth.
 
 > ...one, two, three, four, five fluffball birds! They looked like cotton balls with long, thin tails. "Tsee-tsee-tsee!" They did not like the shouting one bit. Whirr! Off they flew to a quieter tree. Noelia's mouth made a big round O. "Not home," said Pipa in a very small voice. Down the path, Abuelo waved.
 
-### ⬜ `p07b-call`: Page illustration
+### ✅ `p07b-call`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p07b-call.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p07b-call.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p06-path`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
   1. `content/stories/noelia-and-the-baby-squirrel/images/p06-path.png` (the picture to edit)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the picture to edit (`p06-path`), and the style reference: keep its style, and everything the description below doesn't change, exactly as it is.
@@ -835,16 +835,16 @@ Avoid here: the ladybug moment; sound lines or symbols.
 
 > Noelia cupped her hands around her mouth. She took the biggest breath in the whole world. "MAMA SQUIRREL!" she called. "WHERE ARE YOU?" Her voice bounced through the trees: you... you... you... It was so loud that Pipa covered her ears with her paws. It was so loud that Abuelo's yellow cap nearly hopped off his head. Then, from every bush and every branch...
 
-### ⬜ `p08b-not-us`: Page illustration
+### ✅ `p08b-not-us`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p08b-not-us.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p08b-not-us.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p07b-call`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
   1. `content/stories/noelia-and-the-baby-squirrel/images/p07b-call.png` (the picture to edit)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the picture to edit (`p07b-call`), and the style reference: keep its style, and everything the description below doesn't change, exactly as it is.
@@ -879,15 +879,15 @@ Must show: the flurry of birds flying away; no squirrel anywhere.
 
 > ...up popped the wood birds! "Not us!" chirped the brown ones. "Not us!" chirped the red ones. "Not us, not us!" chirped the blue-gray ones. Flutter, flutter, whirr! Away they flew. And then a hush fell over the wood. Not a rustle. Not a tail. Not a whisker. Not one squirrel answered. Pipa's ears went flat. "Mama?" she whispered.
 
-### ⬜ `p09-clearing`: Page illustration
+### ✅ `p09-clearing`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -921,16 +921,16 @@ Avoid here: Mama Squirrel; Tock, Nibs, the fluffball birds or the wood birds; an
 
 > That didn't work either. In a sunny clearing, Noelia flopped down in the grass. She had zoomed and zoomed and zoomed. "I can't find it," she sighed. Pipa curled up beside her, tired. Abuelo came along at last. He sat on a big flat stump and gave Noelia an orange slice. Nobody said anything. For the first time all day, Noelia was still. And in the hush, she heard...
 
-### ⬜ `p10-chitter`: Page illustration
+### ✅ `p10-chitter`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p10-chitter.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p10-chitter.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Edit from:** `p09-clearing`. Same place, light and framing, so edit that picture rather than starting a new one.
 - **Attach, in this order:**
   1. `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png` (the picture to edit)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the picture to edit (`p09-clearing`), and the style reference: keep its style, and everything the description below doesn't change, exactly as it is.
@@ -966,13 +966,13 @@ Avoid here: Mama Squirrel: she's only heard, not seen.
 >
 > *Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?*
 
-### ⬜ `p10-chitter-a`: Choice card
+### ✅ `p10-chitter-a`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p10-chitter-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p10-chitter-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -996,12 +996,12 @@ Must show: the tiptoeing sneaker as the one clear shape.
 - **Story moment:** option A, "Tiptoe to the sound", for the question *Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?*
 - **The other card** (`p10-chitter-b`, "Still as a stone"): A smooth, round gray stone sitting perfectly still in the grass, with one buttercup beside it. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p10-chitter-b`: Choice card
+### ✅ `p10-chitter-b`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p10-chitter-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p10-chitter-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1021,16 +1021,16 @@ Must show: the round gray stone as the one clear shape.
 - **Story moment:** option B, "Still as a stone", for the question *Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?*
 - **The other card** (`p10-chitter-a`, "Tiptoe to the sound"): One white sneaker with a yellow lightning bolt, up on tiptoe in soft green grass. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p11a-tiptoe`: Page illustration
+### ✅ `p11a-tiptoe`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg` (Mama Squirrel)
-  5. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png` (Mama Squirrel)
+  5. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1064,7 +1064,7 @@ Must show: the nibbled pinecone bits around the roots; the drey high on the trun
 
 **Crowded scene (4 named characters): build it in layers** rather than in one go, so their looks don't blend. Each step edits the picture from the step before.
 
-1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`:
+1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`:
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1082,7 +1082,7 @@ Paint only the place and its light for now, with no characters: they are added o
 Framing: medium-wide, low angle looking up. Light: late afternoon, warm golden light on the orange-brown trunk. Mood: hushed wonder.
 ```
 
-2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`:
+2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`:
 
 ```text
 Add only Noelia to this picture, matching the attached reference image exactly.
@@ -1092,7 +1092,7 @@ The finished scene: At the foot of the tallest pine, Noelia stands on tiptoe amo
 Keep everything else exactly the same.
 ```
 
-3. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`:
+3. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`:
 
 ```text
 Add only Pipa to this picture, matching the attached reference image exactly.
@@ -1102,7 +1102,7 @@ The finished scene: At the foot of the tallest pine, Noelia stands on tiptoe amo
 Keep everything else exactly the same.
 ```
 
-4. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg`:
+4. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png`:
 
 ```text
 Add only Mama Squirrel to this picture, matching the attached reference image exactly.
@@ -1112,7 +1112,7 @@ The finished scene: At the foot of the tallest pine, Noelia stands on tiptoe amo
 Keep everything else exactly the same.
 ```
 
-5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`:
+5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`:
 
 ```text
 Add only Abuelo to this picture, matching the attached reference image exactly.
@@ -1128,13 +1128,13 @@ Keep everything else exactly the same.
 >
 > *Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?*
 
-### ⬜ `p11a-tiptoe-a`: Choice card
+### ✅ `p11a-tiptoe-a`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1158,13 +1158,13 @@ Must show: the small waving hand as the one clear shape.
 - **Story moment:** option A, "Whisper hello", for the question *Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?*
 - **The other card** (`p11a-tiptoe-b`, "Chitter hello"): Mama Squirrel peeking over the edge of her round twig-and-leaf drey, mouth open in a cheerful chitter. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p11a-tiptoe-b`: Choice card
+### ✅ `p11a-tiptoe-b`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg` (Mama Squirrel)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png` (Mama Squirrel)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1188,16 +1188,16 @@ Must show: the round drey and Mama's chittering face.
 - **Story moment:** option B, "Chitter hello", for the question *Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?*
 - **The other card** (`p11a-tiptoe-a`, "Whisper hello"): A small hand raised in a tiny, gentle wave, in a raspberry-pink sleeve. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p11b-still`: Page illustration
+### ✅ `p11b-still`: Page illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11b-still.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11b-still.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg` (Mama Squirrel)
-  5. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png` (Mama Squirrel)
+  5. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
   6. `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png` (location: clearing)
 
 ```text
@@ -1233,7 +1233,7 @@ Must show: Pipa and Mama nose to nose, tails wrapped; a clear space between the 
 
 **Crowded scene (4 named characters): build it in layers** rather than in one go, so their looks don't blend. Each step edits the picture from the step before.
 
-1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`, `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png`:
+1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`, `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png`:
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1252,7 +1252,7 @@ Paint only the place and its light for now, with no characters: they are added o
 Framing: medium. Light: late afternoon, warm golden light, long soft shadows. Mood: hushed, joyful.
 ```
 
-2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`:
+2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`:
 
 ```text
 Add only Noelia to this picture, matching the attached reference image exactly.
@@ -1262,7 +1262,7 @@ The finished scene: Noelia sits cross-legged in the clearing's grass, still as a
 Keep everything else exactly the same.
 ```
 
-3. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`:
+3. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`:
 
 ```text
 Add only Pipa to this picture, matching the attached reference image exactly.
@@ -1272,7 +1272,7 @@ The finished scene: Noelia sits cross-legged in the clearing's grass, still as a
 Keep everything else exactly the same.
 ```
 
-4. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg`:
+4. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png`:
 
 ```text
 Add only Mama Squirrel to this picture, matching the attached reference image exactly.
@@ -1282,7 +1282,7 @@ The finished scene: Noelia sits cross-legged in the clearing's grass, still as a
 Keep everything else exactly the same.
 ```
 
-5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`:
+5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`:
 
 ```text
 Add only Abuelo to this picture, matching the attached reference image exactly.
@@ -1298,13 +1298,13 @@ Keep everything else exactly the same.
 >
 > *Should Noelia keep as still as a stone and watch, or whisper goodbye to Pipa?*
 
-### ⬜ `p11b-still-a`: Choice card
+### ✅ `p11b-still-a`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11b-still-a.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11b-still-a.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1330,13 +1330,13 @@ Must show: the still hands and the little bird close by.
 - **Story moment:** option A, "Keep watching", for the question *Should Noelia keep as still as a stone and watch, or whisper goodbye to Pipa?*
 - **The other card** (`p11b-still-b`, "Whisper goodbye"): Pipa sitting up on a pine root, waving her fluffy tail goodbye. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `p11b-still-b`: Choice card
+### ✅ `p11b-still-b`: Choice card
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11b-still-b.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/p11b-still-b.png`
 - **Size:** 1:1 square, at least 768×768 px, ideally 1024×1024 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1360,16 +1360,16 @@ Must show: Pipa's waving tail as the one clear shape.
 - **Story moment:** option B, "Whisper goodbye", for the question *Should Noelia keep as still as a stone and watch, or whisper goodbye to Pipa?*
 - **The other card** (`p11b-still-a`, "Keep watching"): Two small hands resting quietly on navy knees with small white dots, and one little wood bird hopping close beside them in the grass. The two must look clearly different in shape and main color, so a child who can't read tells them apart.
 
-### ⬜ `e1-up-up-up`: Ending illustration
+### ✅ `e1-up-up-up`: Ending illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e1-up-up-up.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e1-up-up-up.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg` (Mama Squirrel)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  5. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png` (Mama Squirrel)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  5. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
   6. `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png` (location: tall pine)
 
 ```text
@@ -1405,7 +1405,7 @@ Must show: Pipa home in the drey, wrapped in Mama's tail, in the center; Noelia 
 
 **Crowded scene (4 named characters): build it in layers** rather than in one go, so their looks don't blend. Each step edits the picture from the step before.
 
-1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`, `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png`:
+1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`, `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png`:
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1424,7 +1424,7 @@ Paint only the place and its light for now, with no characters: they are added o
 Framing: medium-wide, looking up the trunk. Light: late afternoon, warm golden light. Mood: happy, tender, goodbye.
 ```
 
-2. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`:
+2. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`:
 
 ```text
 Add only Pipa to this picture, matching the attached reference image exactly.
@@ -1434,7 +1434,7 @@ The finished scene: High on the tallest pine, Pipa sits at the edge of the drey,
 Keep everything else exactly the same.
 ```
 
-3. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg`:
+3. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png`:
 
 ```text
 Add only Mama Squirrel to this picture, matching the attached reference image exactly.
@@ -1444,7 +1444,7 @@ The finished scene: High on the tallest pine, Pipa sits at the edge of the drey,
 Keep everything else exactly the same.
 ```
 
-4. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`:
+4. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`:
 
 ```text
 Add only Noelia to this picture, matching the attached reference image exactly.
@@ -1454,7 +1454,7 @@ The finished scene: High on the tallest pine, Pipa sits at the edge of the drey,
 Keep everything else exactly the same.
 ```
 
-5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`:
+5. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`:
 
 ```text
 Add only Abuelo to this picture, matching the attached reference image exactly.
@@ -1469,16 +1469,16 @@ Keep everything else exactly the same.
 
 > "Hello, Mama Squirrel," whispered Noelia. "We found Pipa." Mama Squirrel chittered softly and came halfway down the trunk. "Home is up!" squeaked Pipa. Up, up, up she went, all the way to the drey. Mama wrapped Pipa in her big, fluffy tail. Then Pipa waved her little tail, just for Noelia. "Bye, Pipa," Noelia whispered. She walked home with Abuelo, hand in hand, slowly. And tomorrow? Tomorrow she would come back. On tiptoe.
 
-### ⬜ `e2-chitter-chatter`: Ending illustration
+### ✅ `e2-chitter-chatter`: Ending illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e2-chitter-chatter.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e2-chitter-chatter.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg` (Mama Squirrel)
-  5. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png` (Mama Squirrel)
+  5. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
   6. `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png` (location: tall pine)
 
 ```text
@@ -1517,7 +1517,7 @@ Avoid here: sound lines or symbols.
 
 **Crowded scene (4 named characters): build it in layers** rather than in one go, so their looks don't blend. Each step edits the picture from the step before.
 
-1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`, `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png`:
+1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`, `content/stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png`:
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1538,7 +1538,7 @@ Paint only the place, its light and Pipa's brother and sister for now, with no o
 Framing: medium. Light: late afternoon, warm golden light. Mood: silly, joyful.
 ```
 
-2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`:
+2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`:
 
 ```text
 Add only Noelia to this picture, matching the attached reference image exactly.
@@ -1548,7 +1548,7 @@ The finished scene: At the foot of the tallest pine, Noelia and Abuelo chitter u
 Keep everything else exactly the same.
 ```
 
-3. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`:
+3. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`:
 
 ```text
 Add only Abuelo to this picture, matching the attached reference image exactly.
@@ -1558,7 +1558,7 @@ The finished scene: At the foot of the tallest pine, Noelia and Abuelo chitter u
 Keep everything else exactly the same.
 ```
 
-4. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg`:
+4. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png`:
 
 ```text
 Add only Mama Squirrel to this picture, matching the attached reference image exactly.
@@ -1568,7 +1568,7 @@ The finished scene: At the foot of the tallest pine, Noelia and Abuelo chitter u
 Keep everything else exactly the same.
 ```
 
-5. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`:
+5. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`:
 
 ```text
 Add only Pipa to this picture, matching the attached reference image exactly.
@@ -1583,16 +1583,16 @@ Keep everything else exactly the same.
 
 > "Chitter-chitter?" said Noelia. Mama Squirrel tilted her head. "Chitter-chitter!" she said back. Out of the drey popped Pipa's brother and sister. "Chitter-chitter-chitter!" Pipa scampered up, up, up to join them. Soon everyone was chittering, even Abuelo, his white mustache wiggling. All the way home, Noelia and Abuelo chittered. And at supper, when Noelia asked for more soup, it came out... "Chitter-chitter!"
 
-### ⬜ `e3-whole-wood`: Ending illustration
+### ✅ `e3-whole-wood`: Ending illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e3-whole-wood.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e3-whole-wood.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  5. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg` (Mama Squirrel)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  5. `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png` (Mama Squirrel)
   6. `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png` (location: clearing)
 
 ```text
@@ -1632,7 +1632,7 @@ Must show: Noelia and Abuelo together in the center; the squirrel family in the 
 
 **Crowded scene (4 named characters): build it in layers** rather than in one go, so their looks don't blend. Each step edits the picture from the step before.
 
-1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg`, `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png`:
+1. **The place.** A new picture, attaching `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png`, `content/stories/noelia-and-the-baby-squirrel/images/p09-clearing.png`:
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1654,7 +1654,7 @@ Paint only the place, its light and Pipa's brother and sister and the wood birds
 Framing: wide. Light: late afternoon, warm golden light, long soft shadows. Mood: wonder, peace, the best day.
 ```
 
-2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg`:
+2. **Add Noelia.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png`:
 
 ```text
 Add only Noelia to this picture, matching the attached reference image exactly.
@@ -1664,7 +1664,7 @@ The finished scene: Noelia sits very still in the golden grass of the clearing b
 Keep everything else exactly the same.
 ```
 
-3. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg`:
+3. **Add Abuelo.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png`:
 
 ```text
 Add only Abuelo to this picture, matching the attached reference image exactly.
@@ -1674,7 +1674,7 @@ The finished scene: Noelia sits very still in the golden grass of the clearing b
 Keep everything else exactly the same.
 ```
 
-4. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg`:
+4. **Add Pipa.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png`:
 
 ```text
 Add only Pipa to this picture, matching the attached reference image exactly.
@@ -1684,7 +1684,7 @@ The finished scene: Noelia sits very still in the golden grass of the clearing b
 Keep everything else exactly the same.
 ```
 
-5. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.jpeg`:
+5. **Add Mama Squirrel.** Edit the last picture, attaching `content/stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png`:
 
 ```text
 Add only Mama Squirrel to this picture, matching the attached reference image exactly.
@@ -1699,14 +1699,14 @@ Keep everything else exactly the same.
 
 > Noelia kept as still as a stone. Mama and Pipa scampered up, up, up the tallest pine. Little by little, the whole wood came close. Pipa's brother and sister peeked out of their drey, a round, leafy nest high in the pine. The wood birds hopped closer. "Mira, Abuelo," Noelia whispered. "Look at that!" After that, whenever she and Abuelo tiptoed into Pinecone Wood, Pipa came scampering down to say hello. Noelia did everything fast. Well... almost everything.
 
-### ⬜ `e4-window`: Ending illustration
+### ✅ `e4-window`: Ending illustration
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e4-window.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/e4-window.png`
 - **Size:** 4:3 landscape, at least 1600×1200 px, ideally 2400×1800 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.
@@ -1737,16 +1737,16 @@ Avoid here: night or darkness; Pipa indoors.
 
 > "Goodbye, Pipa," Noelia whispered. "Home is up!" squeaked Pipa, and up, up, up she went with Mama. Noelia and Abuelo walked back through the golden wood, slowly. That evening, Noelia knelt on a chair at Abuelo's window. Abuelo brought two cups of warm milk. She kept very still. And far and soft, from Pinecone Wood, came a sound. Chitter-chitter. Noelia smiled, all the way down to her lightning-bolt sneakers.
 
-### ⬜ `cover`: Cover
+### ✅ `cover`: Cover
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/images/cover.png` (or `.webp` / `.jpg`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/images/cover.png`
 - **Size:** 3:4 portrait, at least 1200×1600 px, ideally 1500×2000 px
 - **Attach, in this order:**
-  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.jpeg` (style anchor)
-  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.jpeg` (Noelia)
-  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.jpeg` (Pipa)
-  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.jpeg` (Abuelo)
-  5. `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.jpeg` (location: big log)
+  1. `content/stories/noelia-and-the-baby-squirrel/style/style-anchor.png` (style anchor)
+  2. `content/stories/noelia-and-the-baby-squirrel/characters/noelia.png` (Noelia)
+  3. `content/stories/noelia-and-the-baby-squirrel/characters/pipa.png` (Pipa)
+  4. `content/stories/noelia-and-the-baby-squirrel/characters/abuelo.png` (Abuelo)
+  5. `content/stories/noelia-and-the-baby-squirrel/images/p02-pipa.png` (location: big log)
 
 ```text
 Image 1 is the art style reference: match its medium, brush texture, paper grain, palette and edges, not its subject.

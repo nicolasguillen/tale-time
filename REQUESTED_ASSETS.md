@@ -12,10 +12,10 @@ This file is generated. To change a request, edit the story's `bible.json`, `sho
 
 | Story | Art style | Style anchor | Sheets | Cover | Pages | Endings | Cards | Total |
 |---|---|---|---|---|---|---|---|---|
-| [The Fox and the Lantern](content/stories/fox-and-the-lantern/REQUESTED_ASSETS.md) | Gouache picture book (proposed, not yet approved) | 0/1 | 0/5 | 0/1 | 0/15 | 0/5 | 0/12 | **0/39** |
-| [Noelia and the Baby Squirrel](content/stories/noelia-and-the-baby-squirrel/REQUESTED_ASSETS.md) | Cut-paper collage (proposed, not yet approved) | 1/1 | 4/4 | 0/1 | 4/16 | 0/4 | 2/10 | **11/36** |
+| [The Fox and the Lantern](content/stories/fox-and-the-lantern/REQUESTED_ASSETS.md) | Gouache picture book (proposed, not yet approved) | 1/1 | 5/5 | 1/1 | 15/15 | 5/5 | 12/12 | **39/39** |
+| [Noelia and the Baby Squirrel](content/stories/noelia-and-the-baby-squirrel/REQUESTED_ASSETS.md) | Cut-paper collage (proposed, not yet approved) | 1/1 | 4/4 | 1/1 | 16/16 | 4/4 | 10/10 | **36/36** |
 
-App images (icon): **0/3**
+App images (icon): **3/3**
 
 ## How to make them
 
@@ -50,9 +50,9 @@ Image models make every picture from scratch and drift from page to page; there'
 
 The app's own pictures, outside any story, in the app's own style (Gouache app icon, proposed, not yet approved, from `content/app/style.json`). Deliver them into `content/app/`. The Android launcher icon is built from the two layers, iOS and the stores use `app-icon`.
 
-#### ⬜ `app-icon`: App icon
+#### ✅ `app-icon`: App icon
 
-- **File:** `content/app/app-icon.png` (or `.webp` / `.jpg`)
+- **File:** `content/app/app-icon.png`
 - **Size:** 1:1 square, exactly 1024×1024 px
 - **Attach:** nothing. Make this one first: the others are edits of it.
 
@@ -69,9 +69,9 @@ Must show: the open book, big and centered; the glowing star, the warmest and br
 Avoid here: characters from any story (the icon is the app, not one story); letters, words or numbers; rounded corners or a border: the stores round the corners themselves; transparency.
 ```
 
-#### ⬜ `app-icon-foreground`: Android icon foreground
+#### ✅ `app-icon-foreground`: Android icon foreground
 
-- **File:** `content/app/app-icon-foreground.png` (or `.webp` / `.jpg`)
+- **File:** `content/app/app-icon-foreground.png`
 - **Size:** 1:1 square, exactly 1024×1024 px
 - **Edit from:** `app-icon`, so the two line up exactly.
 - **Attach, in this order:**
@@ -92,9 +92,9 @@ Must show: everything inside the central safe circle.
 Avoid here: any background color: it comes from app-icon-background.
 ```
 
-#### ⬜ `app-icon-background`: Android icon background
+#### ✅ `app-icon-background`: Android icon background
 
-- **File:** `content/app/app-icon-background.png` (or `.webp` / `.jpg`)
+- **File:** `content/app/app-icon-background.png`
 - **Size:** 1:1 square, exactly 1024×1024 px
 - **Edit from:** `app-icon`, so the two line up exactly.
 - **Attach, in this order:**
