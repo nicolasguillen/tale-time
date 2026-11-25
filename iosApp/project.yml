@@ -39,7 +39,8 @@ targets:
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
         TARGETED_DEVICE_FAMILY: "1,2"
-        # The icon is requested in REQUESTED_ASSETS.md (content/app/); until it's delivered the set stays empty.
+        # The icon is delivered into content/app/ (requested in REQUESTED_ASSETS.md); `story icons` copies it into the
+        # AppIcon set (iosApp/Assets.xcassets/AppIcon.appiconset/app-icon.png).
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES

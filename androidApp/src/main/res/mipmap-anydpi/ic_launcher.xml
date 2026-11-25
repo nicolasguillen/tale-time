@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The launcher icon: the two layers delivered as content/app/app-icon-{foreground,background}.png, put into
+     mipmap-<density>/ by `story icons` (tools/storytool/icons.py). Don't edit those files: deliver a new layer and run it. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@mipmap/ic_launcher_background" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+</adaptive-icon>
