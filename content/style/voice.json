@@ -1,0 +1,75 @@
+{
+  "pace": {
+    "3-5": 115,
+    "4-7": 140,
+    "7-10": 155
+  },
+  "narrators": {
+    "en": {
+      "status": "proposed",
+      "name": "Warm storyteller",
+      "summary": "One narrator for every English story in the app: a warm, unhurried grown-up reading a picture book aloud to a child at bedtime. Friendly, smiling and clear, never sing-song, babyish or theatrical. The same voice in every clip, so Tale Time sounds like one person reading.",
+      "voice": "An adult voice with a soft, mid-range pitch and a smile in it. Clear consonants, so early readers can follow each word while it lights up on screen.",
+      "delivery": "Read to one child, close by, not to a room. Keep the energy gentle and even from clip to clip: no clip should sound louder, faster or more excited than its neighbors, because the app plays them one after another.",
+      "characters": "One narrator voice for everyone. Color each character's lines lightly with the personality given for them (a little quicker and prouder for a show-off, softer for a shy one), but no funny voices: they are hard to keep the same across 50 clips. A character's refrain sounds the same every time it comes back.",
+      "soundWords": "Read the sound words in the text (rustle, splash, hmm-mmm) playfully, as part of the reading. No sound effects, music or background: the app adds those.",
+      "pauses": "A short breath of silence at each full stop and before each new speaker. In a question with two choices, a small pause before the \"or\", so both choices sound equally fun.",
+      "clips": {
+        "title": "The story's title, as you would read it from a book cover: slowly, with a little wonder. Only the title.",
+        "page": "The page text, exactly as written.",
+        "fork-page": "The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop.",
+        "question": "A real, open question to the child, warm and curious. Don't lean toward either choice.",
+        "option": "A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way.",
+        "ending": "The ending's title on the \"The End\" screen, like a little prize: slowly and warmly."
+      },
+      "endingKinds": {
+        "best": "proud and glowing",
+        "happy": "bright and cheerful",
+        "cozy": "soft and sleepy",
+        "silly": "with a laugh in the voice"
+      },
+      "avoid": [
+        "Music, sound effects, ambience, reverb or room echo",
+        "Breaths, mouth clicks, page noise or plosive pops left in the file",
+        "A different narrator, or a noticeably different take or microphone, between clips of the same story",
+        "Anything that isn't in the script: no clip names, page numbers, count-ins or retakes in the file",
+        "Cloning or imitating a real person's voice (an actor, a known narrator, a celebrity) without their written permission",
+        "Baby talk, sing-song, shouting, or scary voices for any character"
+      ]
+    },
+    "es": {
+      "status": "proposed",
+      "name": "Voz cálida de cuentacuentos",
+      "summary": "Una sola voz para todos los cuentos en español de la app: una persona adulta, cálida y sin prisa, que le lee un libro ilustrado en voz alta a un niño o una niña a la hora de dormir. Amable, sonriente y clara; nunca cantarina, aniñada ni teatral. La misma voz en cada clip, para que Tale Time suene como una sola persona leyendo.",
+      "voice": "Una voz adulta, de tono medio y suave, con una sonrisa adentro. Consonantes claras, para que quien empieza a leer pueda seguir cada palabra mientras se ilumina en la pantalla.",
+      "accent": "Español latinoamericano neutro, el que se entiende igual en México, Colombia, Perú, Chile o Argentina: seseo (la c y la z suenan como s), tuteo (tú, nunca vos ni vosotros), sin muletillas ni giros de un solo país, y todas las consonantes claras, también la s final y la d entre vocales.",
+      "delivery": "Lee para un solo niño, de cerca, no para una sala. Mantén la energía suave y pareja de un clip a otro: ningún clip debe sonar más fuerte, más rápido ni más emocionado que los de al lado, porque la app los reproduce uno tras otro.",
+      "characters": "Una sola voz de narrador para todos. Dale un toque ligero a las frases de cada personaje según la personalidad que se indica (un poco más rápida y orgullosa para un presumido, más suave para alguien tímido), pero sin voces chistosas: es difícil mantenerlas iguales en 50 clips. El estribillo de un personaje suena igual cada vez que vuelve.",
+      "soundWords": "Lee las onomatopeyas del texto (cris, cras, splash, mmm-mmm) con juego, como parte de la lectura. Sin efectos de sonido, música ni fondo: eso lo agrega la app.",
+      "pauses": "Una pausa breve en cada punto y antes de cada personaje que habla. En una pregunta con dos opciones, una pequeña pausa antes de la \"o\", para que las dos opciones suenen igual de divertidas.",
+      "clips": {
+        "title": "El título del cuento, como lo leerías en la portada de un libro: despacio, con un poco de asombro. Solo el título.",
+        "page": "El texto de la página, tal como está escrito.",
+        "fork-page": "El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente.",
+        "question": "Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones.",
+        "option": "La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera.",
+        "ending": "El título del final en la pantalla de \"Fin\", como un pequeño premio: despacio y con calidez."
+      },
+      "endingKinds": {
+        "best": "con orgullo y un brillo especial",
+        "happy": "alegre y luminoso",
+        "cozy": "suave y con sueño",
+        "silly": "con una risa en la voz"
+      },
+      "avoid": [
+        "Música, efectos de sonido, ambiente, reverberación o eco de sala",
+        "Respiraciones, chasquidos de boca, ruido de páginas o golpes de aire en las p y las b",
+        "Otro narrador, o una toma o un micrófono que suene distinto, entre clips del mismo cuento",
+        "Nada que no esté en el guion: ni nombres de clips, ni números de página, ni cuentas regresivas, ni repeticiones en el archivo",
+        "El acento de España (la z como \"th\", vosotros) o rasgos muy marcados de un solo país",
+        "Clonar o imitar la voz de una persona real (un actor, un narrador conocido, una celebridad) sin su permiso por escrito",
+        "Hablar como bebé, cantadito, gritos, o voces que den miedo para cualquier personaje"
+      ]
+    }
+  }
+}

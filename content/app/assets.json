@@ -1,0 +1,28 @@
+{
+  "status": "proposed, not yet approved",
+  "images": [
+    {
+      "id": "app-icon",
+      "kind": "icon",
+      "subject": "An open picture book seen from slightly above, its pages fanning up like wings, with a small round star glowing lantern gold rising out of the pages and lighting them warmly. Simple and bold enough to read at the size of a fingertip.",
+      "background": "Flat warm night blue with a faint dry-brush texture, a few tiny cream dots of stars far apart.",
+      "mustShow": ["the open book, big and centered", "the glowing star, the warmest and brightest spot"],
+      "avoid": ["characters from any story (the icon is the app, not one story)", "letters, words or numbers", "rounded corners or a border: the stores round the corners themselves", "transparency"]
+    },
+    {
+      "id": "app-icon-foreground",
+      "kind": "icon-foreground",
+      "editFrom": "app-icon",
+      "subject": "The same open book and glowing star as app-icon, alone on a transparent background, the same size and position.",
+      "mustShow": ["everything inside the central safe circle"],
+      "avoid": ["any background color: it comes from app-icon-background"]
+    },
+    {
+      "id": "app-icon-background",
+      "kind": "icon-background",
+      "editFrom": "app-icon",
+      "subject": "The background of app-icon alone, edge to edge: flat warm night blue, faint dry-brush texture, a few tiny cream stars.",
+      "avoid": ["the book or the star"]
+    }
+  ]
+}

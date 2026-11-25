@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Warm paper window with dark system bar icons, so launching never flashes white or black before Compose draws. -->
+    <style name="Theme.TaleTime.Base" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/tale_paper</item>
+        <item name="android:colorBackground">@color/tale_paper</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="Theme.TaleTime" parent="Theme.TaleTime.Base" />
+</resources>

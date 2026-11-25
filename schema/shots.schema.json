@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shot list",
+  "description": "Pipeline step 5 (content/stories/<id>/shots.json): what every image shows. The source of the story's REQUESTED_ASSETS.md. Pages, endings and the cover need `scene`; choice cards need `subject` and `background` (checked by `story check`). See tools/prompts/shots.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["story", "images"],
+  "properties": {
+    "story": { "$ref": "#/$defs/slug" },
+    "lightArc": { "type": "string" },
+    "firstBatch": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "description": "Sheets and images to make first; they set the look." },
+    "images": { "type": "array", "items": { "$ref": "#/$defs/shot" }, "minItems": 1 }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "shot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "place": { "$ref": "#/$defs/slug", "description": "The bible place it's set in. Its look is pasted word for word into the prompt, and the first picture of the place becomes the location reference for the later ones." },
+        "editFrom": { "$ref": "#/$defs/slug", "description": "An earlier image of the same kind with the same place, light and framing. This picture is made by editing that one, keeping its background and light." },
+        "framing": { "type": "string" },
+        "light": { "type": "string" },
+        "mood": { "type": "string" },
+        "scene": { "type": "string" },
+        "setting": { "type": "string" },
+        "subject": { "type": "string" },
+        "background": { "type": "string" },
+        "cast": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "state"],
+            "properties": { "id": { "$ref": "#/$defs/slug" }, "state": { "type": "string" } }
+          }
+        },
+        "mustShow": { "$ref": "#/$defs/strings" },
+        "avoid": { "$ref": "#/$defs/strings" }
+      }
+    }
+  }
+}

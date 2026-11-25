@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Narrators",
+  "description": "content/style/voice.json: one narrator per language, the same for every story in that language, written in that language (each language's REQUESTED_AUDIO.md quotes it to its narrator). The pace is shared: the app paces text without narration at the same speed. See docs/story-format.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["pace", "narrators"],
+  "properties": {
+    "pace": {
+      "type": "object",
+      "description": "Words per minute per age band, in every language. The app's Pacing.wordsPerMinute() uses the same numbers.",
+      "additionalProperties": false,
+      "required": ["3-5", "4-7", "7-10"],
+      "properties": {
+        "3-5": { "type": "integer", "minimum": 60, "maximum": 220 },
+        "4-7": { "type": "integer", "minimum": 60, "maximum": 220 },
+        "7-10": { "type": "integer", "minimum": 60, "maximum": 220 }
+      }
+    },
+    "narrators": {
+      "type": "object",
+      "description": "Language code -> its narrator. Every language a story is written in needs one.",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$" },
+      "additionalProperties": { "$ref": "#/$defs/narrator" }
+    }
+  },
+  "$defs": {
+    "narrator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "name", "summary", "voice", "delivery", "clips", "endingKinds", "avoid"],
+      "properties": {
+        "status": { "enum": ["proposed", "approved"], "description": "Proposed until the user approves it." },
+        "name": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 20 },
+        "voice": { "type": "string", "minLength": 10 },
+        "accent": { "type": "string", "description": "Which variety of the language, and how it sounds." },
+        "delivery": { "type": "string", "minLength": 10 },
+        "characters": { "type": "string" },
+        "soundWords": { "type": "string" },
+        "pauses": { "type": "string" },
+        "clips": {
+          "type": "object",
+          "description": "The direction for each kind of clip.",
+          "additionalProperties": false,
+          "required": ["title", "page", "fork-page", "question", "option", "ending"],
+          "properties": {
+            "title": { "type": "string", "minLength": 1 },
+            "page": { "type": "string", "minLength": 1 },
+            "fork-page": { "type": "string", "minLength": 1 },
+            "question": { "type": "string", "minLength": 1 },
+            "option": { "type": "string", "minLength": 1 },
+            "ending": { "type": "string", "minLength": 1 }
+          }
+        },
+        "endingKinds": {
+          "type": "object",
+          "description": "How each kind of ending's title sounds.",
+          "additionalProperties": false,
+          "required": ["best", "happy", "cozy", "silly"],
+          "properties": {
+            "best": { "type": "string", "minLength": 1 },
+            "happy": { "type": "string", "minLength": 1 },
+            "cozy": { "type": "string", "minLength": 1 },
+            "silly": { "type": "string", "minLength": 1 }
+          }
+        },
+        "avoid": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }
+      }
+    }
+  }
+}

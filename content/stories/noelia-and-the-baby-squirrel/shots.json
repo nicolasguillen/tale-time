@@ -1,0 +1,426 @@
+{
+  "story": "noelia-and-the-baby-squirrel",
+  "lightArc": "Bright early-afternoon sun, crisp dappled light, fresh greens with the first yellow leaves (p01–p05) → mid-afternoon, sunlight twinkling through yellow birch leaves (p06–p08) → late afternoon, warmer and more golden, long soft shadows (p09–p11, e1–e3) → early evening indoors, warm lamp light with a pink-gold sky outside, never dark (e4). The warm accents are the sunbeams, Abuelo's yellow cap and the squirrels' orange-red fur.",
+  "firstBatch": ["noelia", "pipa", "abuelo", "p01-gate", "p02-pipa", "p09-clearing", "p03-clues-a", "p03-clues-b"],
+  "images": [
+    {
+      "id": "cover",
+      "place": "big-log",
+      "framing": "medium-wide, portrait",
+      "light": "sunny afternoon, warm dappled light through the leaves, a sunbeam falling on Pipa",
+      "mood": "curious, warm, an adventure about to begin",
+      "scene": "Noelia crouches on the sandy path beside the mossy log, hands tucked behind her back, smiling at Pipa, who sits up on top of the log. Both look up together at the tall trees of Pinecone Wood rising above them. Far back along the path, Abuelo waves.",
+      "setting": "the sandy loop path beside the big mossy log, tall trees rising all around",
+      "cast": [
+        { "id": "noelia", "state": "crouching on the path, hands tucked behind her back, smiling, looking up" },
+        { "id": "pipa", "state": "sitting up on top of the log, tail curled high, looking up, curious" },
+        { "id": "abuelo", "state": "small and far back along the path, waving" }
+      ],
+      "mustShow": ["Noelia and Pipa large and clear in the upper two thirds", "the tall trees rising above them", "calm sandy path and moss in the bottom quarter for the title"],
+      "avoid": ["any title or lettering", "Noelia touching Pipa"]
+    },
+    {
+      "id": "p01-gate",
+      "place": "wood-gate",
+      "framing": "wide",
+      "light": "bright early-afternoon sun, crisp shadows, sunlight dappling the path under the trees",
+      "mood": "bouncy, playful",
+      "scene": "Noelia zooms through the open green gate onto the sandy path into Pinecone Wood, mid-run, arms out, one foot off the ground. Just inside the gate, Abuelo bends down slowly to look at a shiny green beetle on the path, smiling. Abuelo's yellow house sits up the garden behind them.",
+      "setting": "the open gate, the bench, and the sandy path going in under the trees",
+      "cast": [
+        { "id": "noelia", "state": "mid-run through the open gate, arms out, one foot off the ground, hair flying, big excited grin" },
+        { "id": "abuelo", "state": "just inside the gate, bending down slowly with his hands on his knees, peering at a beetle on the path, smiling" }
+      ],
+      "mustShow": ["Noelia clearly zooming", "Abuelo bent over the tiny shiny green beetle", "the gate open behind them and the house up the garden"]
+    },
+    {
+      "id": "p02-pipa",
+      "place": "big-log",
+      "framing": "medium",
+      "light": "early afternoon, a sunbeam falling on the log",
+      "mood": "surprise, gentle",
+      "scene": "Noelia has skidded to a stop by the mossy log and crouches with her hands tucked behind her back, a little sheepish. On top of the log, Pipa sits up with her tail fluffed up big, ears pricked, looking back at her with big eyes. Down the path behind them, Abuelo is coming along, waving.",
+      "setting": "the sandy path beside the big mossy log",
+      "cast": [
+        { "id": "noelia", "state": "crouching by the log, hands tucked behind her back, a sheepish oops smile" },
+        { "id": "pipa", "state": "sitting up on top of the log, tail fluffed up big, a little worried, looking at Noelia" },
+        { "id": "abuelo", "state": "further back on the path, walking toward them, waving" }
+      ],
+      "mustShow": ["a clear gap between Noelia and Pipa: nobody touches", "Noelia's hands behind her back", "Pipa's fluffed-up tail"],
+      "avoid": ["Noelia's hand on or near Pipa"]
+    },
+    {
+      "id": "p03-clues",
+      "place": "big-log",
+      "framing": "wide",
+      "light": "early afternoon, sun high, dappled light",
+      "mood": "curious, lots to choose from",
+      "scene": "Noelia stands on the path by the mossy log, head tipped back, looking up at all the trees: tall ones, thin ones, old ones, young ones. Pipa sits by her sneakers, looking up too. Up the hill along the path, a woodpecker clings to the trunk of a big old oak. At Noelia's feet, a trail of little nutshells leads off along the path. Abuelo comes slowly along the path behind them.",
+      "setting": "the path beside the mossy log, the old oak up the hill ahead",
+      "cast": [
+        { "id": "noelia", "state": "standing on the path, head tipped back, looking up at the trees, wondering" },
+        { "id": "pipa", "state": "sitting up by Noelia's sneakers, looking up too" },
+        { "id": "tock", "state": "tiny and far up the hill, clinging to the oak's trunk, tapping" },
+        { "id": "abuelo", "state": "a little way back along the path, walking slowly, smiling" }
+      ],
+      "mustShow": ["the big old oak up the hill with the tiny woodpecker on it", "the trail of little nutshells along the path at Noelia's feet", "lots of different trees around them"],
+      "avoid": ["Noelia touching Pipa"]
+    },
+    {
+      "id": "p03-clues-a",
+      "subject": "A black-and-white woodpecker with a bright red cap, clinging to a deeply grooved oak trunk, beak tapping.",
+      "background": "warm brown oak bark filling the frame, a little sunlit green at the edges",
+      "cast": [
+        { "id": "tock", "state": "clinging to the trunk in side view, tapping" }
+      ],
+      "mustShow": ["the woodpecker as the one clear shape, its red cap bright"]
+    },
+    {
+      "id": "p03-clues-b",
+      "subject": "A winding trail of little cracked nutshells across a pale sandy path.",
+      "background": "pale sand, one fern frond at the edge, soft sunlight",
+      "mustShow": ["the curving line of nutshells as the one clear shape"]
+    },
+    {
+      "id": "p04a-oak",
+      "place": "woodpecker-oak",
+      "framing": "medium",
+      "light": "early-afternoon sun, dappled on the oak's bark",
+      "mood": "breathless, funny",
+      "scene": "At the foot of the old oak, Noelia points up excitedly at the lowest round hole in the trunk. Pipa scampers up the bark toward it. Tock clings to the trunk beside the hole, beak open mid-sentence, a bit startled.",
+      "setting": "the path's edge at the foot of the old oak",
+      "cast": [
+        { "id": "noelia", "state": "at the foot of the oak, pointing up, mouth wide open in an excited shout" },
+        { "id": "pipa", "state": "scampering up the trunk toward the round hole" },
+        { "id": "tock", "state": "clinging to the trunk beside the hole, beak open mid-sentence, feathers a bit ruffled" }
+      ],
+      "mustShow": ["the round hole Pipa is climbing to", "Noelia pointing, all excitement", "Tock interrupted mid-sentence"],
+      "avoid": ["Noelia climbing the tree"]
+    },
+    {
+      "id": "p05a-tock-home",
+      "place": "woodpecker-oak",
+      "editFrom": "p04a-oak",
+      "framing": "medium",
+      "light": "early-afternoon sun, dappled on the oak's bark",
+      "mood": "funny, a little deflated",
+      "scene": "Same oak. Tock laughs on the trunk beside his round hole, one wing pointing at it: it's his house, with pale wood chips spilling at its edge. Pipa scampers back down the trunk, tail drooping a little. Noelia is already turning away down the path, one foot lifted to zoom off.",
+      "setting": "the path's edge at the foot of the old oak",
+      "cast": [
+        { "id": "tock", "state": "on the trunk beside his round hole, laughing, one wing pointing at the hole" },
+        { "id": "pipa", "state": "scampering back down the trunk, tail drooping a little" },
+        { "id": "noelia", "state": "already turning away down the path, one foot lifted, about to zoom off" }
+      ],
+      "mustShow": ["pale wood chips at the edge of the round hole", "Tock laughing", "Noelia already on her way"]
+    },
+    {
+      "id": "p04b-nutshells",
+      "place": "root-hollow",
+      "framing": "medium",
+      "light": "early afternoon, dappled light under the beech",
+      "mood": "busy, curious",
+      "scene": "Bent over, nose almost to the ground, Noelia follows the trail of little nutshells along the edge of the path to a big twisty beech root. Under the root is a small round hole. Pipa, beside her, shakes her head and points a paw up at the treetops.",
+      "setting": "the edge of the path, at the big twisty roots of the old beech",
+      "cast": [
+        { "id": "noelia", "state": "bent over at the path's edge, nose near the ground, pointing at the round hole, excited" },
+        { "id": "pipa", "state": "sitting up beside her, shaking her head, one paw pointing up" }
+      ],
+      "mustShow": ["the trail of nutshells ending at the round hole under the root", "Pipa pointing up while Noelia looks down"]
+    },
+    {
+      "id": "p05b-nibs",
+      "place": "root-hollow",
+      "editFrom": "p04b-nutshells",
+      "framing": "medium",
+      "light": "early afternoon, dappled light under the beech",
+      "mood": "surprised, giggly",
+      "scene": "Same root. Nibs pops half out of the round hole with very full cheeks, sweeping the nutshells into a tidy pile with his tail. Noelia giggles, crouching with her hands on her knees. Pipa sits beside her.",
+      "setting": "the edge of the path, at the big twisty roots of the old beech",
+      "cast": [
+        { "id": "nibs", "state": "half out of the round hole, cheeks puffed full, sweeping nutshells into a pile with his tail, fussy" },
+        { "id": "noelia", "state": "crouching, hands on her knees, giggling" },
+        { "id": "pipa", "state": "sitting beside her, looking at Nibs" }
+      ],
+      "mustShow": ["Nibs's full cheeks", "the tidy pile of nutshells"]
+    },
+    {
+      "id": "p06-path",
+      "place": "birch-grove",
+      "framing": "medium-wide",
+      "light": "mid-afternoon, sunny, light through yellow birch leaves",
+      "mood": "bouncy, impatient, sweet",
+      "scene": "On the sandy path at the edge of the birch grove, Noelia bounces on her toes, impatient. Pipa sits on the path, tail drooping. Abuelo has caught up and bends down slowly to look at a tiny ladybug on a leaf, smiling. The slim white birches rise just ahead.",
+      "setting": "the sandy path at the edge of the birch grove",
+      "cast": [
+        { "id": "noelia", "state": "bouncing on her toes, impatient, waving Abuelo on" },
+        { "id": "pipa", "state": "sitting on the path, tail drooping" },
+        { "id": "abuelo", "state": "bending down slowly over a leaf, peering at a tiny ladybug, smiling" }
+      ],
+      "mustShow": ["the tiny ladybug on Abuelo's leaf", "the white birches just ahead"],
+      "avoid": ["Tock or Nibs", "the oak or the root hollow"]
+    },
+    {
+      "id": "p06-path-a",
+      "subject": "Looking straight up between slim white birch trunks to a small round ball of a nest, high among yellow leaves.",
+      "background": "bright blue sky between the treetops",
+      "mustShow": ["tall white trunks leading the eye up to the round nest"]
+    },
+    {
+      "id": "p06-path-b",
+      "subject": "Two small hands cupped together and raised to call, in raspberry-pink sleeves.",
+      "background": "soft, plain green leaves",
+      "cast": [
+        { "id": "noelia", "state": "only her two cupped hands and sleeves" }
+      ],
+      "mustShow": ["the cupped hands as the one clear shape"]
+    },
+    {
+      "id": "p07a-birches",
+      "place": "birch-grove",
+      "framing": "medium, low angle looking up",
+      "light": "mid-afternoon, sunlight twinkling through yellow birch leaves",
+      "mood": "excited, loud",
+      "scene": "Among the white birches beside the path, Noelia hops up and down, head back, pointing and shouting at a small round ball of a nest high in one birch. Pipa squints up beside her. The nest wobbles.",
+      "setting": "among the birches, right beside the path",
+      "cast": [
+        { "id": "noelia", "state": "hopping, head back, pointing up, shouting" },
+        { "id": "pipa", "state": "sitting up, squinting up at the nest" }
+      ],
+      "mustShow": ["the round ball nest high in the birch, with its little round door", "Noelia's big hop"]
+    },
+    {
+      "id": "p08a-fluffballs",
+      "place": "birch-grove",
+      "editFrom": "p07a-birches",
+      "framing": "medium, low angle looking up",
+      "light": "mid-afternoon, sunlight twinkling through yellow birch leaves",
+      "mood": "surprised, funny",
+      "scene": "Five tiny fluffball birds burst out of the round nest's little door and whir away to another tree, long tails streaming. Noelia stands still, her mouth a big round O. Pipa looks small and a little sad. Abuelo has just come along the path into view, at the grove's edge, and waves.",
+      "setting": "among the birches, right beside the path",
+      "cast": [
+        { "id": "fluffballs", "state": "five of them, whirring out of the round nest and away, long tails streaming" },
+        { "id": "noelia", "state": "standing still, mouth a big round O" },
+        { "id": "pipa", "state": "small, looking up, a little sad" },
+        { "id": "abuelo", "state": "newly arrived at the edge of the grove, on the path, small, waving" }
+      ],
+      "mustShow": ["exactly five fluffball birds, easy to count", "Noelia's round O mouth"]
+    },
+    {
+      "id": "p07b-call",
+      "place": "birch-grove",
+      "editFrom": "p06-path",
+      "framing": "medium-wide",
+      "light": "mid-afternoon, sunny, light through yellow birch leaves",
+      "mood": "loud, funny",
+      "scene": "Same spot on the path. Noelia leans forward with her hands cupped around her mouth, calling as loud as she can. Pipa covers her ears with her paws, tail fluffed. Abuelo, a few steps back, holds his cap on with one hand, eyebrows up, smiling.",
+      "setting": "the sandy path at the edge of the birch grove",
+      "cast": [
+        { "id": "noelia", "state": "hands cupped around her mouth, leaning forward, calling at the top of her voice" },
+        { "id": "pipa", "state": "both paws over her ears, tail fluffed up" },
+        { "id": "abuelo", "state": "a few steps back, holding his cap on his head with one hand, eyebrows up, smiling" }
+      ],
+      "mustShow": ["Noelia's big call", "Pipa covering her ears"],
+      "avoid": ["the ladybug moment", "sound lines or symbols"]
+    },
+    {
+      "id": "p08b-not-us",
+      "place": "birch-grove",
+      "editFrom": "p07b-call",
+      "framing": "medium-wide",
+      "light": "mid-afternoon, sunny, light through yellow birch leaves",
+      "mood": "flustered, then hushed",
+      "scene": "From every bush and branch around the path, the little wood birds flutter up and away in a flurry. Noelia turns, looking around, puzzled. Pipa's ears are flat. Abuelo stands quietly back on the path.",
+      "setting": "the sandy path at the edge of the birch grove",
+      "cast": [
+        { "id": "wood-birds", "state": "a flurry of them fluttering up out of the bushes and away" },
+        { "id": "noelia", "state": "turning, looking around, puzzled" },
+        { "id": "pipa", "state": "ears flat, small, a little worried" },
+        { "id": "abuelo", "state": "back on the path, standing quietly" }
+      ],
+      "mustShow": ["the flurry of birds flying away", "no squirrel anywhere"]
+    },
+    {
+      "id": "p09-clearing",
+      "place": "clearing",
+      "framing": "medium-wide",
+      "light": "late afternoon, sunlight turning warmer and more golden, long soft shadows",
+      "mood": "tired, quiet, still",
+      "scene": "In the sunny clearing, Noelia lies flopped on her back in the grass, arms out, out of ideas. Pipa is curled up beside her, tired. Abuelo sits on the big flat stump, holding out an orange slice to Noelia and looking up at the leaves. At the clearing's edge stands the tall pine.",
+      "setting": "the middle of the sunny clearing, the tall pine at its edge",
+      "cast": [
+        { "id": "noelia", "state": "flopped on her back in the grass, arms out, still, a droopy sigh" },
+        { "id": "pipa", "state": "curled up in the grass beside her, tired, tail drooping" },
+        { "id": "abuelo", "state": "sitting on the big flat stump, holding out an orange slice, looking up at the leaves" }
+      ],
+      "mustShow": ["Noelia flat on her back, still", "Abuelo's orange slice", "the tall pine at the clearing's edge, its drey small and high, easy to miss"],
+      "avoid": ["Mama Squirrel", "Tock, Nibs, the fluffball birds or the wood birds", "anyone touching or feeding Pipa"]
+    },
+    {
+      "id": "p10-chitter",
+      "place": "clearing",
+      "editFrom": "p09-clearing",
+      "framing": "medium-wide",
+      "light": "late afternoon, sunlight turning warmer and more golden, long soft shadows",
+      "mood": "hushed, alert",
+      "scene": "Same clearing. Noelia sits up in the grass, wide-eyed, a finger on her lips. Pipa sits up with her ears pointing straight up, listening. Abuelo, on the stump, listens too, one hand cupped behind his ear.",
+      "setting": "the middle of the sunny clearing, the tall pine at its edge",
+      "cast": [
+        { "id": "noelia", "state": "sitting up in the grass, finger to her lips, wide-eyed, whispering shh" },
+        { "id": "pipa", "state": "sitting up, ears straight up, listening hard" },
+        { "id": "abuelo", "state": "on the stump, a hand cupped behind his ear, listening" }
+      ],
+      "mustShow": ["Noelia's finger on her lips", "everyone listening"],
+      "avoid": ["Mama Squirrel: she's only heard, not seen"]
+    },
+    {
+      "id": "p10-chitter-a",
+      "subject": "One white sneaker with a yellow lightning bolt, up on tiptoe in soft green grass.",
+      "background": "soft green grass in warm golden light",
+      "cast": [
+        { "id": "noelia", "state": "only one sneaker, on tiptoe" }
+      ],
+      "mustShow": ["the tiptoeing sneaker as the one clear shape"]
+    },
+    {
+      "id": "p10-chitter-b",
+      "subject": "A smooth, round gray stone sitting perfectly still in the grass, with one buttercup beside it.",
+      "background": "soft green grass in warm golden light",
+      "mustShow": ["the round gray stone as the one clear shape"]
+    },
+    {
+      "id": "p11a-tiptoe",
+      "place": "tall-pine",
+      "framing": "medium-wide, low angle looking up",
+      "light": "late afternoon, warm golden light on the orange-brown trunk",
+      "mood": "hushed wonder",
+      "scene": "At the foot of the tallest pine, Noelia stands on tiptoe among nibbled pinecone bits, looking slowly up the straight trunk. Pipa sits up beside her, looking up too. High above, Mama Squirrel peeks over the edge of the round drey. Behind them in the clearing, Abuelo watches from the stump.",
+      "setting": "the foot of the tallest pine, at the edge of the clearing",
+      "cast": [
+        { "id": "noelia", "state": "on tiptoe at the foot of the pine, looking up slowly, hushed" },
+        { "id": "pipa", "state": "sitting up beside her, looking up, tail starting to curl" },
+        { "id": "mama-squirrel", "state": "small and high, peeking over the edge of the drey" },
+        { "id": "abuelo", "state": "back on the stump in the clearing, watching, smiling" }
+      ],
+      "mustShow": ["the nibbled pinecone bits around the roots", "the drey high on the trunk with Mama's face peeking over its edge", "Noelia on tiptoe"]
+    },
+    {
+      "id": "p11a-tiptoe-a",
+      "subject": "A small hand raised in a tiny, gentle wave, in a raspberry-pink sleeve.",
+      "background": "soft, plain sky blue",
+      "cast": [
+        { "id": "noelia", "state": "only one hand and sleeve, waving gently" }
+      ],
+      "mustShow": ["the small waving hand as the one clear shape"]
+    },
+    {
+      "id": "p11a-tiptoe-b",
+      "subject": "Mama Squirrel peeking over the edge of her round twig-and-leaf drey, mouth open in a cheerful chitter.",
+      "background": "dark green pine needles",
+      "cast": [
+        { "id": "mama-squirrel", "state": "peeking over the edge of the drey, chittering cheerfully" }
+      ],
+      "mustShow": ["the round drey and Mama's chittering face"]
+    },
+    {
+      "id": "p11b-still",
+      "place": "clearing",
+      "framing": "medium",
+      "light": "late afternoon, warm golden light, long soft shadows",
+      "mood": "hushed, joyful",
+      "scene": "Noelia sits cross-legged in the clearing's grass, still as a stone, smiling. A few steps in front of her, Pipa and Mama Squirrel meet nose to nose, their tails wrapped together. Abuelo sits perfectly still on the stump. The tallest pine rises behind them.",
+      "setting": "the grass of the clearing, the tall pine behind",
+      "cast": [
+        { "id": "noelia", "state": "sitting cross-legged in the grass, still as a stone, smiling, hands in her lap" },
+        { "id": "pipa", "state": "nose to nose with Mama, tail curled high and wrapped with hers" },
+        { "id": "mama-squirrel", "state": "nose to nose with Pipa, tail wrapped around hers, a few steps from Noelia" },
+        { "id": "abuelo", "state": "on the stump, perfectly still, smiling" }
+      ],
+      "mustShow": ["Pipa and Mama nose to nose, tails wrapped", "a clear space between the squirrels and Noelia: nobody touches"]
+    },
+    {
+      "id": "p11b-still-a",
+      "subject": "Two small hands resting quietly on navy knees with small white dots, and one little wood bird hopping close beside them in the grass.",
+      "background": "golden grass",
+      "cast": [
+        { "id": "noelia", "state": "only her hands resting on her crossed knees" },
+        { "id": "wood-birds", "state": "one small bird hopping close in the grass" }
+      ],
+      "mustShow": ["the still hands and the little bird close by"]
+    },
+    {
+      "id": "p11b-still-b",
+      "subject": "Pipa sitting up on a pine root, waving her fluffy tail goodbye.",
+      "background": "warm golden light on the orange-brown pine trunk",
+      "cast": [
+        { "id": "pipa", "state": "sitting up on a root, waving her tail" }
+      ],
+      "mustShow": ["Pipa's waving tail as the one clear shape"]
+    },
+    {
+      "id": "e1-up-up-up",
+      "place": "tall-pine",
+      "framing": "medium-wide, looking up the trunk",
+      "light": "late afternoon, warm golden light",
+      "mood": "happy, tender, goodbye",
+      "scene": "High on the tallest pine, Pipa sits at the edge of the drey, wrapped in Mama Squirrel's big tail, waving her little tail down. At the foot of the pine, Noelia and Abuelo stand hand in hand, seen from behind, waving up at her.",
+      "setting": "the tallest pine at the edge of the clearing",
+      "cast": [
+        { "id": "pipa", "state": "at the edge of the drey, waving her tail, overjoyed" },
+        { "id": "mama-squirrel", "state": "at the drey, her big tail wrapped around Pipa" },
+        { "id": "noelia", "state": "at the foot of the pine, seen from behind, holding Abuelo's hand, waving up" },
+        { "id": "abuelo", "state": "beside Noelia, holding her hand, waving up" }
+      ],
+      "mustShow": ["Pipa home in the drey, wrapped in Mama's tail, in the center", "Noelia and Abuelo hand in hand, waving"]
+    },
+    {
+      "id": "e2-chitter-chatter",
+      "place": "tall-pine",
+      "framing": "medium",
+      "light": "late afternoon, warm golden light",
+      "mood": "silly, joyful",
+      "scene": "At the foot of the tallest pine, Noelia and Abuelo chitter up at the squirrels, giggling, Abuelo's mustache wiggling. On the trunk just above them, Mama Squirrel chitters back, head tilted. Pipa scampers up toward the drey, where her brother and sister peek out, chittering too.",
+      "setting": "the foot of the tallest pine",
+      "cast": [
+        { "id": "noelia", "state": "looking up, hands by her mouth, chittering and giggling" },
+        { "id": "abuelo", "state": "beside her, chittering, mustache wiggling, eyes crinkled with laughter" },
+        { "id": "mama-squirrel", "state": "on the trunk just above them, head tilted, chittering back" },
+        { "id": "pipa", "state": "scampering up the trunk toward the drey" },
+        { "id": "squirrel-kits", "state": "peeking out of the drey, chittering" }
+      ],
+      "mustShow": ["everyone chittering together, Mama in the center", "Abuelo's wiggling mustache"],
+      "avoid": ["sound lines or symbols"]
+    },
+    {
+      "id": "e3-whole-wood",
+      "place": "clearing",
+      "framing": "wide",
+      "light": "late afternoon, warm golden light, long soft shadows",
+      "mood": "wonder, peace, the best day",
+      "scene": "Noelia sits very still in the golden grass of the clearing beside Abuelo, whispering to him, wide-eyed and happy. All around them the wood has come close: little wood birds hop in the grass nearby, and on a low branch of the tallest pine Pipa and Mama Squirrel sit together, while Pipa's brother and sister peek out of the drey above.",
+      "setting": "the grass of the clearing, the tall pine behind",
+      "cast": [
+        { "id": "noelia", "state": "sitting still in the grass, whispering to Abuelo, wide-eyed and happy" },
+        { "id": "abuelo", "state": "sitting in the grass beside her, leaning in to listen, smiling" },
+        { "id": "pipa", "state": "on a low branch of the pine, tail curled high" },
+        { "id": "mama-squirrel", "state": "beside Pipa on the branch" },
+        { "id": "squirrel-kits", "state": "peeking out of the drey" },
+        { "id": "wood-birds", "state": "three or four hopping in the grass close to Noelia" }
+      ],
+      "mustShow": ["Noelia and Abuelo together in the center", "the squirrel family in the pine", "birds hopping close, nobody touching them"]
+    },
+    {
+      "id": "e4-window",
+      "framing": "medium",
+      "light": "early evening: warm lamp light inside, the sky outside pink and gold, not dark",
+      "mood": "cozy, calm, content",
+      "scene": "Noelia kneels on a chair at Abuelo's window, very still, smiling, looking out at the trees of Pinecone Wood at the bottom of the garden. Abuelo stands beside her holding two cups of warm milk.",
+      "setting": "inside Abuelo's small yellow house: a window looking down the garden to the green gate and the trees of Pinecone Wood",
+      "cast": [
+        { "id": "noelia", "state": "kneeling on a chair at the window, very still, chin on her hands, smiling" },
+        { "id": "abuelo", "state": "beside her, holding two cups of warm milk, smiling" }
+      ],
+      "mustShow": ["the wood through the window under a pink and gold sky", "warm lamp light inside"],
+      "avoid": ["night or darkness", "Pipa indoors"]
+    }
+  ]
+}

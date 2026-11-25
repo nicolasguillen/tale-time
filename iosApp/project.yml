@@ -1,0 +1,85 @@
+name: iosApp
+options:
+  bundleIdPrefix: com.nicolasguillen
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+targets:
+  iosApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: iosApp
+    info:
+      path: iosApp/Info.plist
+      properties:
+        # Compose Multiplatform requires it (its PlistSanityCheck throws without it on 120 Hz ProMotion screens, such
+        # as the iPad Pro and iPhone Pro): it lets Compose draw at the screen's full frame rate.
+        CADisableMinimumFrameDurationOnPhone: true
+        # The languages Tale Time speaks (domain/Language.kt): the App Store lists them, and system sheets (the store,
+        # alerts) follow the device in them. The app's own words and the stories switch in the parents area.
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, es]
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        ITSAppUsesNonExemptEncryption: false
+        # Debug builds download from `story serve` on the Mac over plain HTTP (http://localhost:8765). This allows
+        # plain HTTP to local addresses only; the published stories come over HTTPS from Firebase Storage.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nicolasguillen.taletime
+        DEVELOPMENT_TEAM: T9TJS97YP6
+        CODE_SIGN_STYLE: Automatic
+        PRODUCT_NAME: TaleTime
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        # The icon is requested in REQUESTED_ASSETS.md (content/app/); until it's delivered the set stays empty.
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Tale Time
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        # iPad must allow every orientation for multitasking / resizable windows (App Store requirement); most kids
+        # read on a tablet, in landscape.
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+        "EXCLUDED_ARCHS[sdk=iphonesimulator*]": x86_64
+        OTHER_LDFLAGS: ["$(inherited)", "-framework", "Shared"]
+        FRAMEWORK_SEARCH_PATHS: ["$(inherited)", "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)"]
+    scheme:
+      testTargets:
+        - iosAppUITests
+    preBuildScripts:
+      - name: Compile Kotlin Framework
+        basedOnDependencyAnalysis: false
+        script: |
+          if [ "YES" = "$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED" ]; then
+            echo "Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \"YES\""
+            exit 0
+          fi
+          cd "$SRCROOT/.."
+          ./gradlew :shared:embedAndSignAppleFrameworkForXcode
+
+  # Walks the app end to end on a simulator (`xcodebuild test`). Not part of the release archive.
+  iosAppUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: iosAppUITests
+    dependencies:
+      - target: iosApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nicolasguillen.taletime.uitests
+        DEVELOPMENT_TEAM: T9TJS97YP6
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
+        TEST_TARGET_NAME: iosApp

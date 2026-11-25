@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalog",
+  "description": "The bookshelf (content/catalog.json): which stories the app offers, in shelf order, and which are free or paid. Hand-edited. `story package` turns it into the catalog the app downloads (schema/published-catalog.schema.json). See docs/story-format.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["stories"],
+  "properties": {
+    "stories": { "type": "array", "items": { "$ref": "#/$defs/entry" }, "minItems": 1 }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "access"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug", "description": "A story folder in content/stories/." },
+        "access": { "enum": ["free", "paid"], "description": "Free stories are open to everyone. A paid one opens once its product is bought (behind the parental gate)." },
+        "product": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_.]{0,99}$",
+          "description": "Store product id of the one-time purchase that unlocks a paid story, the same id on the App Store and Google Play (lowercase letters, digits, '_' and '.'; Google Play allows no '-')."
+        }
+      },
+      "if": { "properties": { "access": { "const": "paid" } } },
+      "then": { "required": ["product"] },
+      "else": { "not": { "required": ["product"] } }
+    }
+  }
+}

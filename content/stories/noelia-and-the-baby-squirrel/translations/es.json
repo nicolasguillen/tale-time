@@ -1,0 +1,89 @@
+{
+  "language": "es",
+  "from": "en",
+  "status": "draft",
+  "pitch": "Noelia lo hace todo rápido. En un paseo por el Bosque de los Pinos con su abuelo, lento y sonriente, encuentra a Pipa, una ardillita bebé que bajó de su árbol persiguiendo una bellota y ahora solo sabe que su casa está \"¡arriba, arriba, arriba!\". Noelia corre zumbando de árbol en árbol para encontrarla, pero cada vez que se apura, el bosque se queda callado, hasta que se sienta quieta el tiempo suficiente para oír a la mamá de Pipa llamándola.",
+  "tone": [
+    "juguetón",
+    "acogedor"
+  ],
+  "cast": {
+    "noelia": {
+      "name": "Noelia",
+      "personality": "Alegre, saltarina y buena, con una risa que se oye en todo el bosque. Lo hace todo rápido: corre rápido, habla rápido, hasta come su pan tostado rápido. Su defecto divertido: se apura, y por eso no ve las cosas pequeñas y calladas. Cuando aprende a ir despacio, su estribillo se vuelve \"En sus marcas, listos... de puntitas\".",
+      "refrain": "¡En sus marcas, listos, ZUUM!"
+    },
+    "pipa": {
+      "name": "Pipa",
+      "personality": "Una ardillita bebé, curiosa e inquieta. Bajó de su árbol persiguiendo una bellota que rodaba, y ahora, desde abajo, todos los árboles se ven iguales. Habla como una niña muy chiquita, una o dos palabras a la vez. Su cola muestra cómo se siente: esponjada cuando se asusta, caída cuando está cansada, enroscada bien arriba cuando está feliz.",
+      "refrain": "¡Mi casa está arriba! ¡Arriba, arriba, arriba!"
+    },
+    "abuelo": {
+      "name": "el abuelo (\"Abuelo\" cuando Noelia le habla)",
+      "personality": "El abuelo de Noelia. Lento, tranquilo y sonriente; nunca tiene prisa, nunca se preocupa, nunca se enoja. Se detiene ante cada cosa pequeña del camino: un escarabajo, una pluma, una hoja muy interesante (la broma que se repite). Nunca le resuelve el problema a Noelia. Simplemente está ahí, siempre a la vista.",
+      "refrain": "¡Mira, mira! ¡Mira nada más!"
+    },
+    "mama-squirrel": {
+      "name": "Mamá Ardilla",
+      "personality": "Dulce y paciente. Lleva toda la tarde llamando a Pipa con un chiqui-chiqui suave desde lo alto del pino más alto, demasiado suave para oírse entre el ruido y los pies que corren. Como todas las ardillas, se asusta con lo ruidoso y lo rápido. Nunca desesperada, nunca enojada."
+    },
+    "tock": {
+      "name": "Toc",
+      "pronounce": "TOC, como el toc-toc de una puerta",
+      "personality": "Un pájaro carpintero ocupado y mandón que refunfuña por el ruido y luego se ríe. Picotea mientras habla: \"¡Toc-toc! ¡Qué ocupado, qué ocupado!\""
+    },
+    "nibs": {
+      "name": "Nibs",
+      "pronounce": "NIBS, como se escribe",
+      "personality": "Un ratoncito de campo pequeño y educado con mucho apetito, siempre a la mitad de un mordisco. Amable, y un poco quisquilloso con las migajas."
+    },
+    "squirrel-kits": {
+      "name": "el hermanito y la hermanita de Pipa"
+    },
+    "fluffballs": {
+      "name": "los pajaritos pompón"
+    },
+    "wood-birds": {
+      "name": "los pájaros del bosque"
+    }
+  },
+  "glossary": {
+    "Pinecone Wood": "el Bosque de los Pinos",
+    "Abuelo (in the narration)": "el abuelo",
+    "Ready, set, ZOOM!": "¡En sus marcas, listos, ZUUM!",
+    "Ready, set... tiptoe": "En sus marcas, listos... de puntitas",
+    "zoom (Noelia running)": "salir zumbando",
+    "tiptoe": "de puntitas",
+    "chitter-chitter": "chiqui-chiqui",
+    "Tap-tap!": "¡Toc-toc!",
+    "drey": "nido de ardilla",
+    "nutshells": "cascaritas de nuez",
+    "the old oak": "el roble viejo",
+    "the birches": "los abedules",
+    "the clearing": "el claro",
+    "the tallest pine": "el pino más alto",
+    "still as a stone": "quieta como una piedra"
+  },
+  "moods": {
+    "p01-gate": "saltarín, juguetón",
+    "p02-pipa": "sorpresa, suave",
+    "p03-clues": "curioso, con mucho para elegir",
+    "p04a-oak": "sin aliento, divertido",
+    "p05a-tock-home": "divertido, un poco desinflado",
+    "p04b-nutshells": "atareado, curioso",
+    "p05b-nibs": "sorprendido, con risitas",
+    "p06-path": "saltarín, impaciente, dulce",
+    "p07a-birches": "emocionado, fuerte",
+    "p08a-fluffballs": "sorprendido, divertido",
+    "p07b-call": "fuerte, divertido",
+    "p08b-not-us": "alborotado, y luego en silencio",
+    "p09-clearing": "cansado, callado, quieto",
+    "p10-chitter": "en voz baja, atento",
+    "p11a-tiptoe": "asombro en voz baja",
+    "p11b-still": "en voz baja, alegre",
+    "e1-up-up-up": "feliz, tierno, de despedida",
+    "e2-chitter-chatter": "chistoso, alegre",
+    "e3-whole-wood": "asombro, paz, el mejor día",
+    "e4-window": "acogedor, tranquilo, contento"
+  }
+}

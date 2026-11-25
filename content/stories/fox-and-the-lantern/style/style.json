@@ -1,0 +1,39 @@
+{
+  "name": "Gouache picture book",
+  "status": "proposed, not yet approved",
+  "summary": "A hand-painted look: simple, rounded shapes in flat areas of color, with visible dry-brush texture and paper grain. Warm, cozy and calm, never busy. Chosen over watercolor or soft 3D because flat, simple shapes stay the most consistent from picture to picture (image models drift less on them) and still read clearly at phone size.",
+  "medium": "Opaque gouache on warm off-white watercolor paper, with a little colored-pencil texture for fur, grass and wood. Matte. No glossy highlights, no airbrushed gradients, no digital lens effects.",
+  "shapes": "Chunky, rounded shapes with clear silhouettes and few small details. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes) but not chibi. Backgrounds simplified into big shapes: a hedge is one green mass with a few leaf marks, not a thousand leaves.",
+  "line": "No black outlines. Edges come from color and value. Where a line helps, a thin colored-pencil line in a darker shade of the fill.",
+  "color": "A limited palette per picture: 5 to 7 colors from the base palette plus the story's accents. Dusk and night are cool blues and lilacs, never black. Warm accents (the characters, the lights) pop against them.",
+  "light": "One clear light idea per picture. Magical or warm lights (a glowing star, a porch lamp, fireflies) glow gold with a soft halo and light up the faces and things right next to them.",
+  "composition": "One focal point per picture, at a child's eye level. Main action inside the middle 80%. Generous calm areas (sky, grass, water) so the picture breathes and survives cropping.",
+  "characters": "Always match the character sheet: same colors, proportions, clothes and distinctive item in every picture. Faces readable, expressions clear and friendly.",
+  "prompt": "Children's picture-book illustration hand-painted in opaque, matte gouache on warm off-white watercolor paper, with visible dry-brush texture, paper grain and a little colored-pencil texture on fur, grass and wood. Chunky, rounded, simplified shapes in flat areas of color with clear silhouettes and few small details; no outlines, edges made by color and value, with a thin colored-pencil line in a darker shade of the fill only where one helps. Characters slightly stylized (large heads, short limbs, simple dot or small oval eyes, clear friendly expressions), backgrounds in big calm shapes, one clear light idea per picture, warm or magical lights glowing gold with a soft halo, and dusk and night painted in cool blues and lilacs, never black.",
+  "anchor": {
+    "id": "style-anchor",
+    "subject": "A quiet garden at dusk with no one in it: tall, whispery grass with clover and dandelion clocks in the foreground, one round tree and a low hedge in the middle distance, a gentle hill behind, and a sky going from peach at the horizon to lilac and night blue at the top, with the first two or three stars. Far away, one small cottage window glows lantern gold with a soft halo.",
+    "mustShow": ["the dry-brush texture and the paper grain, visible up close", "big, simple shapes: the grass, the tree and the hedge as calm masses with a few marks", "one warm gold light against the cool dusk"],
+    "avoid": ["people, animals or characters of any kind"]
+  },
+  "palette": {
+    "paper": "#F3EAD8",
+    "cream": "#FFF6E3",
+    "night blue": "#2E3F66",
+    "twilight lilac": "#B9A3D0",
+    "meadow green": "#7FA65A",
+    "hedge green": "#3F6B4A",
+    "earth brown": "#8A5A3C",
+    "lantern gold": "#F6C453"
+  },
+  "avoid": [
+    "Any text: letters, numbers, signs, labels, logos, watermarks, signatures, musical notes",
+    "Photorealism, 3D renders, glossy plastic or clay looks",
+    "Black outlines, comic halftones, anime styling",
+    "Pure black shadows, horror lighting, menacing silhouettes",
+    "Sharp teeth, claws on display, angry or scary faces",
+    "Extra or missing fingers, limbs, ears or tails; melted or merged shapes",
+    "Real brands, real people, existing characters",
+    "Copying the look of a named illustrator, an existing book or a studio"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Translation sheet",
+  "description": "Pipeline step 6 (content/stories/<id>/translations/<lang>.json): one per language after the story's first. It keeps a translation consistent (every name, refrain and recurring word said one way) and gives that language's narrator what the bible and shots.json give the first one: the pitch, the tone, names with pronunciations, personalities, refrains and each page's mood, in that language. The translated text itself is the story's own story/<lang>.json. See tools/prompts/translate.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["language", "from", "status", "pitch", "tone", "cast", "moods"],
+  "properties": {
+    "language": { "$ref": "#/$defs/lang", "description": "The language of this sheet, the same as its file name." },
+    "from": { "$ref": "#/$defs/lang", "description": "The language it's translated from: the story's first language." },
+    "status": {
+      "enum": ["draft", "approved"],
+      "description": "Draft until a native speaker has read every path in this language. Its narration waits for approval."
+    },
+    "pitch": { "type": "string", "minLength": 20, "description": "The bible's pitch, in this language." },
+    "tone": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+    "cast": {
+      "type": "object",
+      "description": "Every id in the bible's cast, extras and props -> how this language calls it, and what its narrator needs.",
+      "propertyNames": { "$ref": "#/$defs/slug" },
+      "additionalProperties": { "$ref": "#/$defs/name" }
+    },
+    "glossary": {
+      "type": "object",
+      "description": "Places and recurring words, as the first language says them -> as this language says them on every page.",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "moods": {
+      "type": "object",
+      "description": "Image id of every page and ending -> its mood from shots.json, in this language.",
+      "propertyNames": { "$ref": "#/$defs/slug" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "lang": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$" },
+    "name": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "description": "As the text says it, the same on every page." },
+        "pronounce": { "type": "string", "description": "How to say it, for this language's narrator: a respelling in this language." },
+        "personality": { "type": "string", "description": "The bible's personality, in this language (required when the bible has one)." },
+        "refrain": { "type": "string", "description": "The bible's refrain, word for word as this language's text says it (required when the bible has one)." }
+      }
+    }
+  }
+}

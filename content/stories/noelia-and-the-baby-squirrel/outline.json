@@ -1,0 +1,350 @@
+{
+  "story": "noelia-and-the-baby-squirrel",
+  "start": "p01-gate",
+  "note": "Branch and bottleneck, rule of three. Try one splits at p03 (ask the woodpecker or follow the nutshells) and merges at p06-path; try two splits there (look up high or call for Mama) and merges at p09-clearing, the low point, where Noelia is still for the first time and hears Mama calling. The patient third try splits for good at p10 and p11. The light goes from bright early afternoon to warm late-afternoon gold; one ending is back at Abuelo's house in the early evening.",
+  "nodes": {
+    "p01-gate": {
+      "beat": "Hook: Noelia does everything fast. 'Ready, set, ZOOM!' She zooms through the gate at the bottom of Abuelo's garden into Pinecone Wood, while Abuelo stops for a beetle: 'Mira, mira! Look at that!'",
+      "next": "p02-pipa",
+      "visual": {
+        "time": "sunny early afternoon, bright dappled light",
+        "present": [
+          "noelia (zooming, mid-run)",
+          "abuelo (just through the gate, bending to look at a beetle on the path)"
+        ]
+      }
+    },
+    "p02-pipa": {
+      "beat": "A tiny squeak by the big log: a baby squirrel, all alone. Noelia reaches out; Pipa jumps back, tail fluffed, and Noelia says sorry, tucks her hands behind her back and calls Abuelo over. Pipa chased an acorn down her tree, and now every tree looks the same from the bottom. 'Home is up! Up, up, up!'",
+      "next": "p03-clues",
+      "visual": {
+        "time": "sunny early afternoon",
+        "present": [
+          "noelia (crouching, hands tucked behind her back)",
+          "pipa (on the log, tail fluffed up, a bit worried)",
+          "abuelo (coming along the path, smiling)"
+        ]
+      }
+    },
+    "p03-clues": {
+      "beat": "Noelia promises to help. But there are so many trees! From up the slope comes tap-tap-tap; on the path, a trail of nutshells.",
+      "question": "Should Noelia ask the woodpecker who's tapping up the hill, or follow the trail of nutshells on the ground?",
+      "options": [
+        {
+          "label": "Ask the woodpecker",
+          "target": "p04a-oak",
+          "why": "Ask someone who knows: friendly and bold."
+        },
+        {
+          "label": "Follow the nutshells",
+          "target": "p04b-nutshells",
+          "why": "Curious: a nature detective follows the tracks."
+        }
+      ],
+      "visual": {
+        "time": "sunny early afternoon",
+        "present": [
+          "noelia (looking up at all the trees)",
+          "pipa (sitting up, looking up too)",
+          "abuelo (a little way back on the path)"
+        ]
+      }
+    },
+    "p04a-oak": {
+      "beat": "'Ready, set, ZOOM!' Up the path to the old oak. Noelia asks Tock everything in one breath. He starts to answer, but she spots a round hole up the trunk: 'Round! Up high!' Pipa scampers up to peek inside, and...",
+      "next": "p05a-tock-home",
+      "visual": {
+        "time": "sunny early afternoon",
+        "present": [
+          "noelia (pointing up, excited)",
+          "pipa (scampering up the oak trunk)",
+          "tock (on the trunk, beak open mid-sentence)",
+          "abuelo (far back on the path)"
+        ]
+      }
+    },
+    "p05a-tock-home": {
+      "beat": "...it's just wood chips. 'Tap-tap! That's MY house!' squawks Tock. Noelia zooms off ('Next tree!') before he can finish telling her where squirrels live. Tock shakes his head, laughing, and goes back to his tapping.",
+      "next": "p06-path",
+      "visual": {
+        "time": "sunny early afternoon",
+        "present": [
+          "noelia (already turning to go)",
+          "pipa (scampering down the trunk)",
+          "tock (laughing, red cap bobbing)",
+          "abuelo (on the path below, waving)"
+        ]
+      }
+    },
+    "p04b-nutshells": {
+      "beat": "'Clues!' 'Ready, set, ZOOM!' Nose to the ground, Noelia follows the nutshells along the path so fast she never looks up, to a round hole under a big twisty root at the path's edge. 'Round! Is this it?' 'Home is UP!' says Pipa. And from inside comes a crunch...",
+      "next": "p05b-nibs",
+      "visual": {
+        "time": "sunny early afternoon",
+        "present": [
+          "noelia (bent over, nose near the ground)",
+          "pipa (shaking her head, pointing a paw up)",
+          "abuelo (further back along the path)"
+        ]
+      }
+    },
+    "p05b-nibs": {
+      "beat": "Out pops Nibs the mouse, cheeks full: the nutshells are his crumbs. 'Squirrels? Up there somewhere. I'm a down-low mouse!' He sweeps up his crumbs, fussy, and pops back inside to finish his lunch.",
+      "next": "p06-path",
+      "visual": {
+        "time": "sunny early afternoon",
+        "present": [
+          "noelia (surprised, laughing)",
+          "pipa (tail drooping a little)",
+          "nibs (at his round hole, cheeks full)",
+          "abuelo (further back along the path)"
+        ]
+      }
+    },
+    "p06-path": {
+      "beat": "MERGE. That wasn't Pipa's home. Back on the path, Pipa's tail droops a little. Abuelo catches up, slow and smiling, and stops for a ladybug: 'Mira, mira! Look at that!' 'No time, Abuelo! We need a new idea!'",
+      "question": "Should Noelia look up high for a round home, or call out for Pipa's mama?",
+      "options": [
+        {
+          "label": "Look up high",
+          "target": "p07a-birches",
+          "why": "Curious: search with sharp eyes."
+        },
+        {
+          "label": "Call for Mama",
+          "target": "p07b-call",
+          "why": "Caring and bold: call her family."
+        }
+      ],
+      "visual": {
+        "time": "mid-afternoon, sunny, dappled light",
+        "present": [
+          "noelia (bouncing on her toes)",
+          "pipa (tail drooping a little)",
+          "abuelo (bending to look at a ladybug on a leaf)"
+        ],
+        "mustNot": [
+          "tock",
+          "nibs",
+          "the oak or the root hollow"
+        ]
+      }
+    },
+    "p07a-birches": {
+      "beat": "'Ready, set, ZOOM!' Into the birch grove, head back, looking up, up, up, until she spots a round ball of a nest high in a birch. 'THERE! Round! Up high!' she shouts, hopping up and down. The nest wobbles, and out of its little round door come...",
+      "next": "p08a-fluffballs",
+      "visual": {
+        "time": "mid-afternoon, sunny",
+        "present": [
+          "noelia (hopping, pointing up, shouting)",
+          "pipa (squinting up)",
+          "abuelo (at the edge of the grove, on the path)"
+        ]
+      }
+    },
+    "p08a-fluffballs": {
+      "beat": "...one, two, three, four, five fluffball birds! 'Tsee-tsee-tsee!' They don't like the shouting, and they whir away like cotton balls on sticks. 'Not home,' says Pipa in a small voice.",
+      "next": "p09-clearing",
+      "visual": {
+        "time": "mid-afternoon, sunny",
+        "present": [
+          "noelia (mouth open in surprise)",
+          "pipa (small, looking up)",
+          "fluffballs (five, whirring away from their round nest)",
+          "abuelo (at the edge of the grove, chuckling)"
+        ]
+      }
+    },
+    "p07b-call": {
+      "beat": "Noelia cups her hands and calls as loud as she can: 'MAMA SQUIRREL! WHERE ARE YOU?' So loud that Pipa covers her ears with her paws. And then, from every bush...",
+      "next": "p08b-not-us",
+      "visual": {
+        "time": "mid-afternoon, sunny",
+        "present": [
+          "noelia (hands cupped, calling loud)",
+          "pipa (paws over her ears, tail fluffed)",
+          "abuelo (back on the path, eyebrows up, smiling)"
+        ]
+      }
+    },
+    "p08b-not-us": {
+      "beat": "...the wood birds pop up: 'Not us! Not us!' and whir away. Then the whole wood goes still. Not a rustle, not a tail, not a whisker. Not one squirrel answers.",
+      "next": "p09-clearing",
+      "visual": {
+        "time": "mid-afternoon, sunny",
+        "present": [
+          "noelia (looking around, puzzled)",
+          "pipa (ears down)",
+          "wood-birds (fluttering up out of the bushes)",
+          "abuelo (back on the path)"
+        ]
+      }
+    },
+    "p09-clearing": {
+      "beat": "MERGE, the low point. That didn't work either. In the sunny clearing, Noelia flops on the grass: 'I can't find it.' Pipa sits by her, tail drooping: 'Mama?' Abuelo arrives at last, sits on the big flat stump, hands her an orange slice from home and looks up at the leaves. Nobody says anything. For the first time all day, Noelia is still. And in the quiet, she hears...",
+      "next": "p10-chitter",
+      "visual": {
+        "time": "late afternoon, the sunlight turning warmer",
+        "present": [
+          "noelia (flopped on her back in the grass, out of ideas)",
+          "pipa (sitting beside her, tail drooping, tired)",
+          "abuelo (on the stump, holding orange slices, looking up)"
+        ],
+        "mustNot": [
+          "tock",
+          "nibs",
+          "fluffballs",
+          "wood-birds",
+          "mama-squirrel (not seen yet)",
+          "anyone touching Pipa or feeding her"
+        ]
+      }
+    },
+    "p10-chitter": {
+      "beat": "...chitter-chitter. Soft and far, from up high. Pipa's ears shoot up: 'Mama!' Noelia starts to jump up, 'Ready, set, ZO...', then stops. If she zooms, she won't hear it. Finger to her lips: 'Shh.'",
+      "question": "Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?",
+      "options": [
+        {
+          "label": "Tiptoe to the sound",
+          "target": "p11a-tiptoe",
+          "why": "Patient and curious: go slowly and look closely."
+        },
+        {
+          "label": "Still as a stone",
+          "target": "p11b-still",
+          "why": "Patient and calm: wait and watch."
+        }
+      ],
+      "visual": {
+        "time": "late afternoon, warm light",
+        "present": [
+          "noelia (sitting up, finger to her lips, wide-eyed)",
+          "pipa (ears up, listening)",
+          "abuelo (on the stump, listening too)"
+        ],
+        "mustNot": [
+          "mama-squirrel (only heard, not seen)"
+        ]
+      }
+    },
+    "p11a-tiptoe": {
+      "beat": "'Ready, set... tiptoe.' Slow feet, soft feet, to the tallest pine. At its roots: nibbled pinecone bits everywhere, squirrel crumbs! Noelia looks up slowly, up, up, up: a round ball of twigs and leaves, a drey. And peeking over its edge, a face with tall ear tufts.",
+      "question": "Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way, chitter-chitter?",
+      "options": [
+        {
+          "label": "Whisper hello",
+          "target": "e1-up-up-up",
+          "why": "Gentle and kind."
+        },
+        {
+          "label": "Chitter hello",
+          "target": "e2-chitter-chatter",
+          "why": "Playful: meet them in their own way."
+        }
+      ],
+      "visual": {
+        "time": "late afternoon, warm golden light",
+        "present": [
+          "noelia (on tiptoe, looking up)",
+          "pipa (beside her, looking up)",
+          "mama-squirrel (small and high, peeking over the edge of the drey)",
+          "abuelo (back on the stump in the clearing, watching)"
+        ]
+      }
+    },
+    "p11b-still": {
+      "beat": "Noelia sits as still as a stone. So does Pipa. So does Abuelo, who's very good at it. Chitter-chitter, closer. Down the tallest pine comes Mama Squirrel, stop and go, then hop by hop across the grass. Pipa bounds to her: nose to nose, tails wrapped together.",
+      "question": "Should Noelia keep as still as a stone and watch, or whisper goodbye to Pipa?",
+      "options": [
+        {
+          "label": "Keep watching",
+          "target": "e3-whole-wood",
+          "why": "Patient: let the wood come close."
+        },
+        {
+          "label": "Whisper goodbye",
+          "target": "e4-window",
+          "why": "Kind and gentle: a soft goodbye."
+        }
+      ],
+      "visual": {
+        "time": "late afternoon, warm golden light",
+        "present": [
+          "noelia (sitting very still, smiling)",
+          "pipa (nose to nose with Mama, tail curled high)",
+          "mama-squirrel (nuzzling Pipa, a few steps from Noelia)",
+          "abuelo (on the stump, still as a stone)"
+        ]
+      }
+    },
+    "e1-up-up-up": {
+      "beat": "'Hello, Mama Squirrel. We found Pipa.' Mama chitters softly. Pipa climbs up, up, up, and Mama wraps her in her big tail. From the drey, Pipa waves her tail. 'Bye, Pipa,' whispers Noelia, and she walks home with Abuelo, slowly, waving all the way. Hope forward: tomorrow she'll come back, on tiptoe.",
+      "ending": {
+        "kind": "happy",
+        "title": "Up, Up, Up!"
+      },
+      "visual": {
+        "time": "late afternoon, warm golden light",
+        "present": [
+          "noelia (waving, whispering)",
+          "abuelo (beside her, holding her hand, waving)",
+          "pipa (high on the pine, at the drey, waving her tail)",
+          "mama-squirrel (at the drey, tail around Pipa)"
+        ]
+      }
+    },
+    "e2-chitter-chatter": {
+      "beat": "'Chitter-chitter?' Mama tilts her head: 'Chitter-chitter!' Out pop Pipa's brother and sister: 'Chitter-chitter-chitter!' Pipa scampers up, up, up to them. Soon everyone is chittering, even Abuelo, mustache wiggling. Celebration: they chitter all the way home, and at supper Noelia's 'more soup, please' comes out as 'Chitter-chitter!'",
+      "ending": {
+        "kind": "silly",
+        "title": "Chitter-Chatter"
+      },
+      "visual": {
+        "time": "late afternoon, warm golden light",
+        "present": [
+          "noelia (chittering, giggling)",
+          "abuelo (chittering, mustache wiggling)",
+          "pipa (scampering up the pine)",
+          "mama-squirrel (on the trunk, chittering)",
+          "squirrel-kits (peeking out of the drey, chittering)"
+        ]
+      }
+    },
+    "e3-whole-wood": {
+      "beat": "Noelia keeps still. Mama and Pipa climb up, up, up, and little by little the whole wood comes close: Pipa's brother and sister peek out of the drey, the wood birds hop closer. 'Mira, Abuelo,' Noelia whispers. 'Look at that!' Lasting gift: whenever she and Abuelo tiptoe into the wood after that, Pipa scampers down to say hello. Full circle: Noelia did everything fast. Well... almost everything.",
+      "ending": {
+        "kind": "best",
+        "title": "The Whole Wood Says Hello"
+      },
+      "visual": {
+        "time": "late afternoon, warm golden light, long soft shadows",
+        "present": [
+          "noelia (sitting very still in the grass, whispering, wide-eyed and happy)",
+          "abuelo (beside her, smiling)",
+          "pipa (on a branch of the tall pine, tail curled high)",
+          "mama-squirrel (beside Pipa)",
+          "squirrel-kits (peeking out of the drey)",
+          "wood-birds (hopping in the grass close by)"
+        ]
+      }
+    },
+    "e4-window": {
+      "beat": "'Goodbye, Pipa,' Noelia whispers. Pipa flicks her tail, and climbs up, up, up with Mama. Noelia and Abuelo walk home slowly through the golden wood. Quiet resolution: that evening, at Abuelo's window, Noelia sits very still, and far and soft from the wood comes chitter-chitter. She smiles all the way down to her lightning-bolt sneakers.",
+      "ending": {
+        "kind": "cozy",
+        "title": "Chitter at the Window"
+      },
+      "visual": {
+        "time": "early evening, indoors at Abuelo's window, warm lamp light, the sky outside pink and gold, not dark",
+        "present": [
+          "noelia (kneeling on a chair at the window, still and smiling)",
+          "abuelo (beside her with two cups of warm milk)"
+        ],
+        "mustNot": [
+          "night or darkness",
+          "Pipa indoors"
+        ]
+      }
+    }
+  }
+}

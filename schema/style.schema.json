@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Art style",
+  "description": "A story's own art style (content/stories/<id>/style/style.json), written at the bible step and proposed until the user approves it. Stories never share a style unless a bible declares `styleFrom`. The app's own look (content/app/style.json) uses the same format without an anchor. Rendered into the story's REQUESTED_ASSETS.md: the prompt block is pasted word for word into every prompt of the story, and the anchor is the first picture to make.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "status", "summary", "prompt", "palette", "avoid"],
+  "properties": {
+    "name": { "type": "string", "minLength": 3 },
+    "status": { "type": "string", "description": "\"proposed, not yet approved\" until the user approves it, then \"approved\"." },
+    "summary": { "type": "string", "minLength": 20, "description": "The look in a few sentences, and why it suits this story." },
+    "medium": { "type": "string" },
+    "shapes": { "type": "string" },
+    "line": { "type": "string" },
+    "color": { "type": "string" },
+    "light": { "type": "string" },
+    "composition": { "type": "string" },
+    "characters": { "type": "string" },
+    "prompt": { "type": "string", "minLength": 40, "description": "The style block pasted word for word into every prompt. Medium and technique only, never an artist's name." },
+    "anchor": {
+      "type": "object",
+      "description": "The style anchor: a picture of the story's world with no one in it, made first and attached to every later prompt as the style reference.",
+      "additionalProperties": false,
+      "required": ["id", "subject"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "subject": { "type": "string", "minLength": 20 },
+        "mustShow": { "type": "array", "items": { "type": "string" } },
+        "avoid": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "minProperties": 4,
+      "additionalProperties": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+    },
+    "avoid": { "type": "array", "items": { "type": "string" }, "minItems": 3 }
+  }
+}

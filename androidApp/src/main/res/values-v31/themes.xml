@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ always shows a system splash screen (the launcher icon on a solid color): make it paper. -->
+    <style name="Theme.TaleTime" parent="Theme.TaleTime.Base">
+        <item name="android:windowSplashScreenBackground">@color/tale_paper</item>
+    </style>
+</resources>

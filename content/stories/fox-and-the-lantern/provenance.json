@@ -1,0 +1,104 @@
+{
+  "steps": [
+    {
+      "step": "bible",
+      "prompt": "spike (before tools/prompts existed)",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "Phase 0 story spike, written by hand in a conversation."
+    },
+    {
+      "step": "outline",
+      "prompt": "spike (before tools/prompts existed)",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "Branch and bottleneck: merges at p06-brook and p09-willow."
+    },
+    {
+      "step": "text",
+      "prompt": "spike (before tools/prompts existed)",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "English, 1,211 words."
+    },
+    {
+      "step": "edit",
+      "prompt": "spike (before tools/prompts existed)",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "Merge checks, safety rubric, three judgment calls for the user in review.md."
+    },
+    {
+      "step": "shots",
+      "prompt": "spike (before tools/prompts existed)",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "33 story images and 5 reference sheets requested; no images generated."
+    },
+    {
+      "step": "bible",
+      "prompt": "bible@2",
+      "craft": [
+        "values@1",
+        "structures@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "Added the craft block (value, shape, arc, payoff) from the new craft guides. Nothing else changed."
+    },
+    {
+      "step": "bible",
+      "prompt": "bible@4",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "Looks made appearance-only (locked descriptions pasted into every image prompt): dropped Mia carrying the lantern, Glim living in it, the lantern holding Glim, Grandma's knitting and Bramble's apple. Those are in the shots' states."
+    },
+    {
+      "step": "shots",
+      "prompt": "shots@2",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "Added place to every page and ending set in a bible place, editFrom p07b-bridge on p08b-goose, and inside the lantern to Glim's state where it is."
+    },
+    {
+      "step": "style",
+      "prompt": "bible@6",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "The user decided every story has its own art style and characters. The gouache house style became this story's own (moved from content/style/style.json to style/style.json, unchanged, still proposed); its sheets now go in characters/."
+    },
+    {
+      "step": "translate",
+      "prompt": "translate@1",
+      "craft": [
+        "values@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "language": "es",
+      "notes": "The user asked for every story in Latin American Spanish too. Translated into es (draft): story.json texts, the bible's title, translations/es.json (names: Glim → Chispita, Bramble → Zarza, Gertie → Gertrudis; refrains, moods). Native read-through pending."
+    },
+    {
+      "step": "narration",
+      "language": "es",
+      "via": "elevenlabs",
+      "model": "eleven_v4",
+      "voice": "zl7szWVBXnpgrJmAalgz (Lily - Spanish Storyteller, ElevenLabs voice library)",
+      "date": "2026-11-24",
+      "clips": ["title", "p01-meadow", "p02-glim", "p03-tuck", "p03-tuck-q", "p03-tuck-a", "p03-tuck-b"],
+      "notes": "The user asked for text-to-speech through the ElevenLabs connector, in Latin American Spanish, up to and including the first choice, with this voice. Each script sent exactly as in story/es.json, with a [warmly] tag (plus [curious] on the question) and Tuck written /tuk/ (IPA) per the pronounce hint in translations/es.json. Two takes per clip; take 1 delivered. Delivered as WAV mono 24-bit 44.1 kHz from the 128 kbps MP3: silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter (true peak <= -1 dBTP). Recorded on a draft translation and a proposed narrator: redo any clip whose text changes in the native read-through. ElevenLabs flow 7K3kLzD5FeKYW7dAuIox. Commercial-use terms of the account's plan still to be filed with the clips."
+    }
+  ]
+}

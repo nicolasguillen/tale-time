@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Story bible",
+  "description": "Pipeline step 1 (content/stories/<id>/bible.json): premise, value, shape and arc, cast with drawable looks, places, world rules, the 'never' list and palette accents. Every later step reads it. The story's own art style is next to it, in style/style.json, unless `styleFrom` declares another story's. See tools/prompts/bible.md and tools/prompts/craft/.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "pitch",
+    "ageBand",
+    "theme",
+    "craft",
+    "tone",
+    "cast",
+    "places",
+    "worldRules",
+    "never",
+    "palette"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/slug"
+    },
+    "title": {
+      "$ref": "#/$defs/text"
+    },
+    "pitch": {
+      "type": "string",
+      "minLength": 20
+    },
+    "ageBand": {
+      "enum": [
+        "3-5",
+        "4-7",
+        "7-10"
+      ]
+    },
+    "theme": {
+      "type": "string",
+      "minLength": 3
+    },
+    "craft": {
+      "type": "object",
+      "description": "What the story is about and its shape (tools/prompts/craft/).",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "structure",
+        "arc",
+        "payoff"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/value",
+          "description": "The one main value (craft/values.md)."
+        },
+        "alsoValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/value"
+          },
+          "maxItems": 2,
+          "uniqueItems": true,
+          "description": "Up to two values that come along."
+        },
+        "structure": {
+          "enum": [
+            "want-try-get",
+            "rule-of-three",
+            "quest",
+            "circle",
+            "cumulative",
+            "day-in-the-life",
+            "problem-solver",
+            "surprise-twist"
+          ],
+          "description": "The shape (craft/structures.md)."
+        },
+        "arc": {
+          "enum": [
+            "growth",
+            "realization",
+            "impact"
+          ],
+          "description": "The hero's arc (craft/structures.md)."
+        },
+        "payoff": {
+          "type": "string",
+          "minLength": 10,
+          "description": "How the child should feel on the last page, in a sentence."
+        }
+      }
+    },
+    "tone": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "styleFrom": {
+      "$ref": "#/$defs/slug",
+      "description": "Share another story's art style (its style/style.json and style anchor), by story id. Without it, the story has its own style in style/style.json. Only set when the user asks for the two books to share a style."
+    },
+    "cast": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/character"
+      },
+      "minItems": 1
+    },
+    "extras": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/extra"
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prop"
+      }
+    },
+    "places": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/place"
+      },
+      "minItems": 1
+    },
+    "worldRules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "never": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 3
+    },
+    "palette": {
+      "type": "object",
+      "description": "Story accents on top of the story's art style palette: name -> hex.",
+      "minProperties": 3,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^#[0-9A-Fa-f]{6}$"
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "value": {
+      "enum": [
+        "kindness",
+        "courage",
+        "honesty",
+        "perseverance",
+        "self-acceptance",
+        "friendship",
+        "sharing",
+        "gratitude",
+        "inclusion",
+        "responsibility",
+        "curiosity",
+        "patience",
+        "asking-for-help",
+        "caring-for-nature"
+      ]
+    },
+    "text": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "role",
+        "personality",
+        "look"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "from": {
+          "$ref": "#/$defs/slug",
+          "description": "Share this character or prop with another story, by story id: the same look word for word, and its reference sheet is the one in that story's characters/ folder (not requested again). Without it, the character is this story's own. Only set when the user asks for a recurring character."
+        },
+        "name": {
+          "type": "string"
+        },
+        "pronounce": {
+          "type": "string",
+          "description": "How to say the name, for the narrator (the story's REQUESTED_AUDIO.md): a respelling like MEE-ah, or a rhyme."
+        },
+        "role": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "personality": {
+          "type": "string"
+        },
+        "refrain": {
+          "type": "string"
+        },
+        "look": {
+          "type": "string",
+          "minLength": 40,
+          "description": "Precise enough to draw from: species, colors, clothes, one distinctive item."
+        },
+        "sheet": {
+          "type": "boolean",
+          "description": "Gets a reference sheet in the story's REQUESTED_ASSETS.md (or reuses the sheet of the story it's shared `from`)."
+        },
+        "expressions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 4
+        },
+        "views": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "extra": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "look"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pronounce": {
+          "type": "string",
+          "description": "How to say the name, for the narrator (the story's REQUESTED_AUDIO.md): a respelling like MEE-ah, or a rhyme."
+        },
+        "look": {
+          "type": "string"
+        }
+      }
+    },
+    "prop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "look"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "from": {
+          "$ref": "#/$defs/slug",
+          "description": "Share this character or prop with another story, by story id: the same look word for word, and its reference sheet is the one in that story's characters/ folder (not requested again). Without it, the character is this story's own. Only set when the user asks for a recurring character."
+        },
+        "name": {
+          "type": "string"
+        },
+        "pronounce": {
+          "type": "string",
+          "description": "How to say the name, for the narrator (the story's REQUESTED_AUDIO.md): a respelling like MEE-ah, or a rhyme."
+        },
+        "look": {
+          "type": "string"
+        },
+        "sheet": {
+          "type": "boolean"
+        },
+        "views": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "place": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "look"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "look": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

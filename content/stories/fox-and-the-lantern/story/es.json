@@ -1,0 +1,199 @@
+{
+  "id": "fox-and-the-lantern",
+  "version": 1,
+  "ageBand": "4-7",
+  "language": "es",
+  "translatedFrom": "en",
+  "title": "El zorro y el farolito",
+  "cover": "cover",
+  "start": "p01-meadow",
+  "nodes": {
+    "p01-meadow": {
+      "text": "En la parte salvaje del jardín de la abuela, el pasto crecía alto y susurrante. Mia buscaba su pelota roja perdida cuando encontró otra cosa: un farolito viejo que brillaba entre el pasto. Lo levantó. Estaba tibio, como un gato dormilón. Arriba, en el porche, la abuela tejía bajo la luz amarilla. La abuela la saludó con la mano, y Mia le devolvió el saludo.",
+      "image": "p01-meadow",
+      "next": "p02-glim"
+    },
+    "p02-glim": {
+      "text": "Mia se asomó por el vidrio redondo. Adentro, hecha bolita como un gatito, ¡había una estrella chiquita! Tenía puntas doradas y suaves, y dos ojitos de puntito, llenos de sueño. Bostezó un bostecito. Luego tarareó bajito, triste, mmm-mmm, y miró hacia el cielo. \"¿Te caíste de allá arriba?\", susurró Mia. La estrella parpadeó para decir que sí. \"Entonces te voy a llamar Chispita\", dijo Mia.",
+      "image": "p02-glim",
+      "next": "p03-tuck"
+    },
+    "p03-tuck": {
+      "text": "¡Cris, cras! Del seto salió Tuck, el zorrito que vivía debajo del cobertizo de la abuela. \"¡Una estrella bebé!\", exclamó. \"Esta noche, cuando salga la luna, las luciérnagas del Estanque del Sauce vuelan hasta el cielo. ¡Chispita puede volver a casa con ellas!\" Tuck sacudió la cola y sonrió. \"¡Y yo conozco un atajo!\"",
+      "image": "p03-tuck",
+      "question": "¿Mia sigue el atajo de Tuck por el seto o toma el camino del jardín de la abuela?",
+      "options": [
+        {
+          "label": "El atajo de Tuck",
+          "image": "p03-tuck-a",
+          "target": "p04a-hedge"
+        },
+        {
+          "label": "El camino del jardín",
+          "image": "p03-tuck-b",
+          "target": "p04b-garden"
+        }
+      ]
+    },
+    "p04a-hedge": {
+      "text": "Tuck se metió en un túnel de hojas del seto, y Mia gateó detrás de él, empujando el farolito. El túnel iba a la izquierda. Iba a la derecha. Daba vueltas y más vueltas. \"¡Ya casi llegamos!\", dijo Tuck. Izquierda, derecha, vueltas y más vueltas. \"¡Ya casi llegamos!\", dijo Tuck otra vez. La luz de Chispita hacía brillar de verde cada hoja. Mia se rio: \"Tuck, ¿de verdad esto es un atajo?\"",
+      "image": "p04a-hedge",
+      "next": "p05a-moths"
+    },
+    "p05a-moths": {
+      "text": "Por fin salieron rodando junto a los girasoles de la abuela. ¡Fiuuu! Una nube de polillas blancas y suaves llegó girando alrededor del farolito, como copos de nieve en verano. Le hacían cosquillas en la nariz a Mia. Chispita titilaba de risa. \"¡Lucecita, lucecita, alumbra mi caminito!\", cantó Mia. Las polillas bailaron delante de ella hasta el arroyo. Luego se fueron volando a dormir.",
+      "image": "p05a-moths",
+      "next": "p06-brook"
+    },
+    "p04b-garden": {
+      "text": "Mia tomó el camino del jardín, el que la abuela barría cada mañana. Pasaba junto a las varas de los frijoles y las calabazas gordas y anaranjadas. La luz de Chispita hacía brillar las calabazas como solecitos. Tuck trotaba a su lado. \"Mi atajo es más rápido\", dijo. \"El camino de la abuela es más bonito\", dijo Mia. Chispita tarareó, mmm-mmm, como si les diera la razón a los dos.",
+      "image": "p04b-garden",
+      "next": "p05b-bramble"
+    },
+    "p05b-bramble": {
+      "text": "Junto a las fresas, algo redondo daba vueltas, tambaleándose. ¡Era Zarza, la vecina erizo, con una manzana roja enorme pegada en las púas! \"No te muevas\", dijo Mia. Tomó una hoja ancha de repollo y, despacito, despacito, le sacó la manzana rodándola. \"¡Gracias!\", resopló Zarza. \"El arroyo está ahí abajo\". Y se fue trotando a dormir, mordisqueando su manzana.",
+      "image": "p05b-bramble",
+      "next": "p06-brook"
+    },
+    "p06-brook": {
+      "text": "Al fondo del jardín, el arroyo pasaba cantando. El agua solo llegaba a los tobillos, pero estaba muy fría. Del otro lado estaba el gran sauce, y detrás de él, el cielo se estaba poniendo plateado. \"¡Ya viene la luna!\", dijo Tuck. La luz de Chispita titiló, un poquito más débil, un poquito más dormida. Tres piedras redondas cruzaban el arroyo. Más allá estaba el puentecito de madera.",
+      "image": "p06-brook",
+      "question": "¿Mia cruza saltando por las piedras o camina hasta el puentecito?",
+      "options": [
+        {
+          "label": "Saltar por las piedras",
+          "image": "p06-brook-a",
+          "target": "p07a-stones"
+        },
+        {
+          "label": "Ir al puentecito",
+          "image": "p06-brook-b",
+          "target": "p07b-bridge"
+        }
+      ]
+    },
+    "p07a-stones": {
+      "text": "¡Hop! Mia cayó en la primera piedra. ¡Hop! Cayó en la segunda. Pero la tercera piedra se tambaleaba. Se movía para acá. Se movía para allá. La luz de Chispita rebotaba por toda el agua. Tuck ya estaba del otro lado. \"¡Salta, Mia!\", gritó. \"¡O espera, y yo la sostengo quieta con las patas!\"",
+      "image": "p07a-stones",
+      "question": "¿Mia da un gran salto o espera a que Tuck sostenga la piedra?",
+      "options": [
+        {
+          "label": "¡Un gran salto!",
+          "image": "p07a-stones-a",
+          "target": "e1-big-splash"
+        },
+        {
+          "label": "Esperar a Tuck",
+          "image": "p07a-stones-b",
+          "target": "p08a-across"
+        }
+      ]
+    },
+    "p08a-across": {
+      "text": "Mia esperó. Tuck apoyó las patas en la piedra que se tambaleaba y la sostuvo bien quieta. \"¡Ahora!\" ¡Hop! Mia cayó del otro lado, sana, salva y seca. \"¡Lo logramos juntos!\", festejó. Tuck infló el pecho. \"¿Ves? Mis atajos siempre funcionan... a veces\". Mia se rio tanto que Chispita rebotó dentro del farolito. Y luego salieron corriendo hacia el sauce.",
+      "image": "p08a-across",
+      "next": "p09-willow"
+    },
+    "p07b-bridge": {
+      "text": "El puentecito crujía, cric-crac, bajo las botas de Mia. Justo en el medio había una gansa blanca y grande, profundamente dormida, con la cabeza metida debajo del ala. \"Es Gertrudis\", susurró Tuck. \"Se pone muy gruñona si la despiertas\". Mia levantó el farolito, y la luz de Chispita cayó suavecita sobre las plumas de Gertrudis. Gertrudis abrió un ojo.",
+      "image": "p07b-bridge",
+      "next": "p08b-goose"
+    },
+    "p08b-goose": {
+      "text": "Mia sonrió con su mejor sonrisa. \"Con permiso, Gertrudis. Estamos llevando a Chispita a su casa en el cielo\". Gertrudis miró a la estrellita, y su cara gruñona se puso tierna. \"¡Cuaaac!\", dijo, que quiere decir: \"Vayan, vayan, pequeños\". Se hizo a un lado, bamboleándose, y les hizo una reverencia. Mia cruzó el puente a saltitos, y Tuck trotó detrás de ella, hacia el sauce.",
+      "image": "p08b-goose",
+      "next": "p09-willow"
+    },
+    "p09-willow": {
+      "text": "Debajo del gran sauce, el Estanque del Sauce se estaba despertando. Las ranas estaban sentadas en sus hojas de nenúfar. Las luciérnagas subían como puntitos de oro. Y detrás de la colina, se asomó la luna redonda. Pero Chispita estaba tan cansada que su luz era apenas un brillito dormilón. \"Brilla muy poquito para volar\", dijo Tuck. Mia abrazó el farolito y se puso a pensar con todas sus fuerzas.",
+      "image": "p09-willow",
+      "question": "¿Mia les pide ayuda a todos los amigos del estanque o le canta a Chispita la canción de la lucecita?",
+      "options": [
+        {
+          "label": "Pedir ayuda",
+          "image": "p09-willow-a",
+          "target": "p10a-friends"
+        },
+        {
+          "label": "Cantar la canción",
+          "image": "p09-willow-b",
+          "target": "p10b-song"
+        }
+      ]
+    },
+    "p10a-friends": {
+      "text": "\"¡Amigos!\", llamó Mia. \"¡Chispita necesita ayuda para volver a casa!\" Las ranas hicieron croac-croac, como un tambor alegre. Las luciérnagas giraron alrededor del farolito. Tuck levantó el hocico y aulló un aullido chiquitito: \"¡Auuu!\". Y Chispita empezó a brillar, más, y más, y MÁS, hasta que todo el estanque resplandeció. Las luciérnagas se pusieron en fila en un desfile largo y titilante.",
+      "image": "p10a-friends",
+      "question": "¿Mia guía el desfile con el farolito o dice adiós desde la orilla?",
+      "options": [
+        {
+          "label": "Guiar el desfile",
+          "image": "p10a-friends-a",
+          "target": "e2-sky-parade"
+        },
+        {
+          "label": "Decir adiós desde la orilla",
+          "image": "p10a-friends-b",
+          "target": "e3-goodnight-glim"
+        }
+      ]
+    },
+    "p10b-song": {
+      "text": "Mia abrazó el farolito y cantó, bajito y dulce: \"¡Lucecita, lucecita, alumbra mi caminito!\" El brillo de Chispita se puso un poquito más tibio. Alrededor del estanque, las ranas se callaron para escuchar. Entonces la rana más grande infló la garganta. \"¿Podemos cantar también?\", preguntó con voz ronca. Todas las ranas de todas las hojas de nenúfar miraron a Mia, esperando.",
+      "image": "p10b-song",
+      "question": "¿Mia la canta fuerte con las ranas o la tararea bajito y despacio?",
+      "options": [
+        {
+          "label": "Fuerte con las ranas",
+          "image": "p10b-song-a",
+          "target": "e4-frog-chorus"
+        },
+        {
+          "label": "Bajito y despacio",
+          "image": "p10b-song-b",
+          "target": "e5-windowsill"
+        }
+      ]
+    },
+    "e1-big-splash": {
+      "text": "Mia dio un salto enorme y... ¡SPLASH! Sus botas, sus calcetines y su colita cayeron justo en el arroyo. El agua saltó por el aire, llena de destellos dorados. ¡Las luciérnagas creyeron que el desfile había empezado! Bajaron zumbando, abrieron la puertita del farolito y llevaron a Chispita hasta el cielo. Mia se rio y se rio. Sus botas hicieron chuic, chuic todo el camino hasta la toalla tibia de la abuela.",
+      "image": "e1-big-splash",
+      "ending": {
+        "kind": "silly",
+        "title": "El gran chapuzón"
+      }
+    },
+    "e2-sky-parade": {
+      "text": "Mia levantó el farolito bien alto y guio el desfile alrededor del Estanque del Sauce y de vuelta por el jardín. Las ranas saltaban, Tuck brincaba, y mil luciérnagas los seguían. La abuela los esperaba en el porche con una manta. Mia abrió la puertita de vidrio. Chispita subió flotando, arriba, arriba, arriba, y titiló en su lugar en el cielo. Y desde esa noche, una estrellita le guiñaba un ojo a la ventana de Mia.",
+      "image": "e2-sky-parade",
+      "ending": {
+        "kind": "best",
+        "title": "El desfile del cielo"
+      }
+    },
+    "e3-goodnight-glim": {
+      "text": "Mia se sentó junto al agua y abrió la puertita de vidrio. \"Buenas noches, Chispita\", susurró. Chispita salió flotando, le dio un besito tibio y brillante en la nariz y voló con las luciérnagas, cada vez más alto, hasta volver a ser una estrella. Mia y Tuck dijeron adiós con la mano una y otra vez. Entonces, allá arriba en el jardín, la luz del porche de la abuela parpadeó. Hora de dormir.",
+      "image": "e3-goodnight-glim",
+      "ending": {
+        "kind": "happy",
+        "title": "Buenas noches, Chispita"
+      }
+    },
+    "e4-frog-chorus": {
+      "text": "Mia y las ranas cantaron lo más fuerte que pudieron: \"¡LUCECITA, LUCECITA, CROAC-CROAC, CROAQUITO!\" Fue tan fuerte y tan chistoso que Chispita se rio, y se rio, y... ¡POP! La puertita se abrió de golpe, y Chispita salió disparada al cielo como una palomita de maíz. Tuck se rio tanto que rodó entre los juncos. Todo el camino a casa, Mia hizo croac. Y la abuela le contestó: croac.",
+      "image": "e4-frog-chorus",
+      "ending": {
+        "kind": "silly",
+        "title": "La canción más croac"
+      }
+    },
+    "e5-windowsill": {
+      "text": "Mia tarareó la canción de la lucecita, bajito y despacio, y Chispita cerró los ojos. Las luciérnagas subieron sin ella, pero la luna sonrió desde arriba. \"Mañana en la noche, pequeñita\", parecía decir. Así que Mia llevó el farolito a casa. La abuela la arropó en la cama, y Chispita brilló junto a la ventana toda la noche: la lucecita de noche más acogedora del mundo entero.",
+      "image": "e5-windowsill",
+      "ending": {
+        "kind": "cozy",
+        "title": "Una noche más"
+      }
+    }
+  }
+}

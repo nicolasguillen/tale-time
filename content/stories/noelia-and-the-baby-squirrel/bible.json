@@ -1,0 +1,123 @@
+{
+  "id": "noelia-and-the-baby-squirrel",
+  "title": { "en": "Noelia and the Baby Squirrel", "es": "Noelia y la ardillita" },
+  "pitch": "Noelia does everything fast. On a walk in Pinecone Wood with her slow, smiling Abuelo, she finds Pipa, a baby squirrel who climbed down to chase an acorn and now only knows that home is \"up, up, up!\" Noelia zooms from tree to tree to find it, but every time she rushes, the wood goes quiet, until she sits still long enough to hear Pipa's mama calling.",
+  "ageBand": "4-7",
+  "theme": "Sometimes the fastest way to help is the slow, quiet way.",
+  "craft": {
+    "value": "patience",
+    "alsoValues": ["caring-for-nature", "curiosity"],
+    "structure": "rule-of-three",
+    "arc": "growth",
+    "payoff": "Calm, warm and proud: when Noelia slowed down, she found Pipa's family, and the whole wood came close to say hello."
+  },
+  "tone": ["playful", "cozy"],
+  "cast": [
+    {
+      "id": "noelia",
+      "name": "Noelia",
+      "pronounce": "noh-eh-LEE-ah",
+      "role": "hero",
+      "age": "6",
+      "personality": "Bright, bouncy and kind, with a laugh you can hear across the wood. She does everything fast: runs fast, talks fast, even eats her toast fast. Her fun flaw: she rushes, so she misses the small, quiet things. Once she slows down, her refrain becomes \"Ready, set... tiptoe.\"",
+      "refrain": "Ready, set, ZOOM!",
+      "look": "A 6-year-old girl with fair skin with a warm peach tone, rosy cheeks, big brown eyes and thick, wavy dark-brown hair to her shoulders, held back by a bright turquoise headband. A raspberry-pink hoodie with the hood down, navy leggings with small white dots, and white sneakers with a yellow lightning bolt on each side.",
+      "sheet": true,
+      "expressions": ["excited, mid-run", "droopy and out of ideas", "whispering, wide-eyed"]
+    },
+    {
+      "id": "pipa",
+      "name": "Pipa",
+      "pronounce": "PEE-pah",
+      "role": "the one who needs help",
+      "personality": "A baby squirrel, curious and wriggly. She climbed down her tree to chase a rolling acorn, and now every tree looks the same from the bottom. She talks like a toddler, one or two words at a time. Her tail shows how she feels: fluffed up when startled, drooping when tired, curled high when happy.",
+      "refrain": "Home is up! Up, up, up!",
+      "look": "A baby red squirrel about as long as Noelia's hand, round and fluffy. Soft orange-red fur, a cream-white tummy and chest, a fluffy tail as big as her body, big shiny black eyes and a tiny pink nose. Small rounded ears with short tufts; her left ear tuft flops over.",
+      "sheet": true,
+      "expressions": ["curious, head tilted", "tired, tail drooping", "overjoyed, tail curled high"]
+    },
+    {
+      "id": "abuelo",
+      "name": "Abuelo",
+      "pronounce": "ah-BWEH-loh (\"Abuelo\" means grandpa; his \"mira\" is MEE-rah, \"look\")",
+      "role": "friend, and the grown-up always in reach",
+      "personality": "Noelia's grandfather. Slow, calm and smiling, never in a hurry, never worried, never cross. He stops for every small thing on the path: a beetle, a feather, a very interesting leaf (the running joke). He never solves the problem for Noelia. He's simply there, always in sight.",
+      "refrain": "Mira, mira! Look at that!",
+      "look": "Noelia's grandfather: short and round, light olive-tan skin, a bushy white mustache, short white hair at the sides, kind crinkly eyes behind round wire glasses. A bright sunflower-yellow flat cap, a navy-blue knitted vest over a white shirt with rolled-up sleeves, brown corduroy trousers and brown walking shoes.",
+      "sheet": true,
+      "expressions": ["warm crinkly smile", "peering closely at something tiny", "chuckling"]
+    },
+    {
+      "id": "mama-squirrel",
+      "name": "Mama Squirrel",
+      "role": "Pipa's family",
+      "personality": "Gentle and patient. She has been calling for Pipa all afternoon with a soft chitter-chitter from high in the tall pine, too soft to hear over noise and running feet. Shy of loud, fast things, like all squirrels. Never frantic, never cross.",
+      "look": "A grown red squirrel, about three times Pipa's size. Orange-red fur, a cream-white tummy and chest, tall pointed ear tufts that both stand straight up, bright dark eyes, and a big plume of a tail with a darker red-brown tip.",
+      "sheet": true,
+      "expressions": ["peeking shyly", "joyful", "nuzzling gently"]
+    },
+    {
+      "id": "tock",
+      "name": "Tock",
+      "pronounce": "TOCK, as in \"tick-tock\"",
+      "role": "met at the old oak",
+      "personality": "A busy, bossy woodpecker who grumbles at the noise, then laughs. Taps while he talks: \"Tap-tap! Busy, busy!\"",
+      "look": "A great spotted woodpecker about the size of Noelia's two hands together: black-and-white back and wings with white shoulder patches, a white face with black stripes, a cream chest, a bright red cap on the back of his head, a red patch under his tail, and a short gray beak.",
+      "sheet": false
+    },
+    {
+      "id": "nibs",
+      "name": "Nibs",
+      "pronounce": "NIBS, rhymes with \"ribs\"",
+      "role": "met at the root hollow",
+      "personality": "A small, polite wood mouse with a big appetite, always in the middle of a nibble. Friendly, and a little fussy about crumbs.",
+      "look": "A small wood mouse, smaller than Pipa: warm sandy-brown fur, a white tummy, very big round ears, big black eyes, long whiskers, pink paws and a long, thin tail.",
+      "sheet": false
+    }
+  ],
+  "extras": [
+    { "id": "squirrel-kits", "name": "Pipa's brother and sister", "look": "Two baby red squirrels just like Pipa, the same size and colors, but with both ear tufts standing straight up." },
+    { "id": "fluffballs", "name": "The fluffball birds", "look": "Long-tailed tits: tiny round birds like cotton balls on a stick. Fluffy white heads with a broad black stripe over each eye, pink-and-black backs, white fronts and very long, thin black-and-white tails. Cute and simple." },
+    { "id": "wood-birds", "name": "The wood birds", "look": "Small round songbirds in soft browns, robin red and blue-gray, simple and cute, mostly seen fluttering up together in a little flock." }
+  ],
+  "places": [
+    { "id": "wood-gate", "look": "The way into Pinecone Wood from the bottom of Abuelo's garden: a low green wooden gate in a hedge, a wooden bench beside it, and a sandy path going in under the trees. Abuelo's small yellow house with a red-tiled roof sits just behind, up the garden." },
+    { "id": "big-log", "look": "A huge fallen tree lying beside the sandy loop path, soft with green moss, with a round hollow at one end. Ferns and small white flowers around it, sunlight falling through the leaves in patches." },
+    { "id": "woodpecker-oak", "look": "A wide, gnarled old oak on a little slope above the path, its bark deeply grooved, with three small round holes one above the other up its trunk. Acorns and brown oak leaves in the grass at its roots." },
+    { "id": "root-hollow", "look": "A low, ferny dip just below the path, where an old beech tree's big twisty roots grip a mossy bank. Between two roots, at ground level, a small round hole. Smooth gray bark, beechnut husks and green-gold leaves on the ground." },
+    { "id": "birch-grove", "look": "A light, airy grove of slim white birch trees with black markings beside the path, their small leaves turning yellow, sunlight dappling the grass between them." },
+    { "id": "clearing", "look": "A round, sunny clearing in the middle of the wood, where the loop path meets itself: soft green grass, buttercups, and a wide, flat old tree stump like a little table. The tall pine stands at its edge." },
+    { "id": "tall-pine", "look": "The tallest tree in Pinecone Wood, at the edge of the sunny clearing: a pine with a straight orange-brown trunk, branches only near the top, and dark green needles. High up against the trunk, a round ball of twigs and leaves: a squirrel's nest, called a drey. Around its roots, a scattering of nibbled pinecone cores and pinecone scales." }
+  ],
+  "worldRules": [
+    "Pinecone Wood is a small, sunny wood at the bottom of Abuelo's garden, with one loop path. Noelia stays on the path, and Abuelo is never far behind her. He's in the pictures of the pages whose text has him (and on a page edited from one of those, so he never vanishes mid-scene). On the side-branch pages whose text doesn't mention him, he's just back down the path, out of the picture.",
+    "The animals of the wood talk with Noelia in short, simple words. Abuelo hears only squeaks and chirps, but he smiles as if he understands.",
+    "Squirrels are shy of loud voices and running feet. When Noelia rushes or shouts, the wood goes still and the squirrels hide. When she's slow and quiet, the wood comes close.",
+    "Mama Squirrel calls for Pipa with a soft chitter-chitter from high in the tall pine. It's too soft to hear over noise and running feet.",
+    "The real clues, shown in the pictures: squirrels live in a drey, a round ball of twigs and leaves high in a tree, and nibbled pinecone bits at a tree's roots mean squirrels eat there.",
+    "Nobody touches Pipa. She hops and scampers along by herself, and climbs home by herself.",
+    "It's one sunny early-autumn afternoon. The light grows warmer and more golden toward the end, and Noelia and Abuelo are home well before dark."
+  ],
+  "never": [
+    "Noelia never touches, picks up, carries, feeds or takes home Pipa or any wild animal, and nobody else does either. Pipa hops along by herself.",
+    "Noelia never leaves the loop path, never loses sight of Abuelo and never searches alone: she calls him over to anything she finds, and every ending comes home with him.",
+    "Nobody climbs a tree except the squirrels and the birds.",
+    "No hunters: no owls, hawks, foxes, cats or dogs. Nothing chases anyone, nobody falls, nobody gets hurt.",
+    "Nobody eats anything found in the wood (nuts, berries, mushrooms). The only snack is the one Abuelo brought from home.",
+    "Nobody scolds Noelia for being fast or loud, and nobody tells her the lesson. She finds the slow, quiet way herself.",
+    "Abuelo is never worried or cross, and his slowness is never a joke about being old: it's how he sees everything.",
+    "Mama Squirrel is never frantic and Pipa never cries hard. Pipa is a little worried, then tired, and brave, and Mama has been calling calmly all along.",
+    "Pipa is home with her mama at the end of every path. She's never kept as a pet, and Noelia says goodbye.",
+    "No dark, no deep water, no bees or wasps, no sharp teeth or claws on show, no scary faces. Tock's tapping is funny, never scary."
+  ],
+  "palette": {
+    "squirrel orange-red": "#C65A2E",
+    "hoodie raspberry": "#D64571",
+    "headband turquoise": "#2EB2A5",
+    "cap sunflower yellow": "#F4C542",
+    "pine needle green": "#2F5D46",
+    "birch white": "#EFEBE2",
+    "afternoon gold": "#F7D88A",
+    "moss green": "#8AA84B"
+  }
+}

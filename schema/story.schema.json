@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Story",
+  "description": "A published choose-your-own-adventure story in one language: content/stories/<id>/story/<lang>.json, with its text, graph, endings and asset references. Every language of a story is its own complete file with the same structure (node ids, kinds, links, images, ending kinds); only the words differ. The single definition of the format, shared by the pipeline (tools/) and the app's tests. See docs/story-format.md. Rules that JSON Schema can't express (reachability, no cycles, budgets, every language matching the first) are checked by `story check`.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "version", "ageBand", "language", "title", "cover", "start", "nodes"],
+  "properties": {
+    "id": { "$ref": "#/$defs/slug", "description": "Stable story id, also the folder name." },
+    "version": { "type": "integer", "minimum": 1, "description": "Bumped on every publish, in every language at once." },
+    "ageBand": { "enum": ["3-5", "4-7", "7-10"] },
+    "language": { "$ref": "#/$defs/lang", "description": "The language of this file, the same as its file name." },
+    "translatedFrom": {
+      "$ref": "#/$defs/lang",
+      "description": "Only in a translation: the story's first language, the one it was written in. The first language's own file has none."
+    },
+    "title": { "$ref": "#/$defs/text" },
+    "cover": { "$ref": "#/$defs/slug", "description": "Image id of the cover (portrait 3:4, no text: the app draws the title)." },
+    "start": { "$ref": "#/$defs/slug", "description": "Id of the first node." },
+    "nodes": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "#/$defs/slug" },
+      "additionalProperties": { "$ref": "#/$defs/node" },
+      "description": "Node id -> node. Ids never change once a version is published: progress is keyed by them."
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "lang": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$" },
+    "text": { "type": "string", "minLength": 1, "description": "A text, in this file's language." },
+    "node": {
+      "oneOf": [{ "$ref": "#/$defs/page" }, { "$ref": "#/$defs/fork" }, { "$ref": "#/$defs/ending" }]
+    },
+    "page": {
+      "type": "object",
+      "description": "A plain page: text, illustration, one next node.",
+      "additionalProperties": false,
+      "required": ["text", "image", "next"],
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "image": { "$ref": "#/$defs/slug" },
+        "next": { "$ref": "#/$defs/slug" }
+      }
+    },
+    "fork": {
+      "type": "object",
+      "description": "A page that ends with a question and exactly two options (A and B).",
+      "additionalProperties": false,
+      "required": ["text", "image", "question", "options"],
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "image": { "$ref": "#/$defs/slug" },
+        "question": { "$ref": "#/$defs/text" },
+        "options": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/option" },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "image", "target"],
+      "properties": {
+        "label": { "$ref": "#/$defs/text" },
+        "image": { "$ref": "#/$defs/slug", "description": "Choice card image id (square 1:1)." },
+        "target": { "$ref": "#/$defs/slug" }
+      }
+    },
+    "ending": {
+      "type": "object",
+      "description": "A final page. Its illustration doubles as the ending's badge (circle crop).",
+      "additionalProperties": false,
+      "required": ["text", "image", "ending"],
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "image": { "$ref": "#/$defs/slug" },
+        "ending": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "title"],
+          "properties": {
+            "kind": { "enum": ["best", "happy", "cozy", "silly"] },
+            "title": { "$ref": "#/$defs/text" }
+          }
+        }
+      }
+    }
+  }
+}

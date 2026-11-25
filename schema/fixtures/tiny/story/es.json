@@ -1,0 +1,25 @@
+{
+  "id": "tiny",
+  "version": 1,
+  "ageBand": "3-5",
+  "language": "es",
+  "translatedFrom": "en",
+  "title": "Chiquito",
+  "cover": "cover",
+  "start": "p1",
+  "nodes": {
+    "p1": { "text": "Pip se despertó.", "image": "p1", "next": "f1" },
+    "f1": {
+      "text": "Pip vio dos puertas.",
+      "image": "f1",
+      "question": "¿La puerta roja o la puerta azul?",
+      "options": [
+        { "label": "Puerta roja", "image": "f1-a", "target": "e1" },
+        { "label": "Puerta azul", "image": "f1-b", "target": "p2" }
+      ]
+    },
+    "p2": { "text": "Detrás de la puerta azul había un jardín.", "image": "p2", "next": "e2" },
+    "e1": { "text": "¡Pastel!", "image": "e1", "ending": { "kind": "silly", "title": "Pastel" } },
+    "e2": { "text": "¡Flores!", "image": "e2", "ending": { "kind": "happy", "title": "Flores" } }
+  }
+}

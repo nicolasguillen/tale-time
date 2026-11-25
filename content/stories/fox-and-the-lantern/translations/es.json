@@ -1,0 +1,90 @@
+{
+  "language": "es",
+  "from": "en",
+  "status": "draft",
+  "pitch": "Una tarde de verano, en el gran jardín de la abuela, Mia encuentra una estrella bebé dormida dentro de un farolito viejo. Con su amigo Tuck, el zorrito, la lleva hasta el Estanque del Sauce, donde las luciérnagas vuelan hasta el cielo cuando sale la luna: el viaje de la estrella de vuelta a casa.",
+  "tone": [
+    "tierno",
+    "divertido"
+  ],
+  "cast": {
+    "mia": {
+      "name": "Mia",
+      "pronounce": "MÍ-a",
+      "personality": "Curiosa, alegre, un poco impaciente y buena. Le encanta cantar. Valiente de maneras pequeñas y reales.",
+      "refrain": "¡Lucecita, lucecita, alumbra mi caminito!"
+    },
+    "tuck": {
+      "name": "Tuck",
+      "pronounce": "TUK, como se lee en español",
+      "personality": "Un presumido alegre con un gran corazón. Siempre está seguro de que conoce un atajo, y sus atajos nunca son cortos (la broma que se repite).",
+      "refrain": "¡Conozco un atajo! ... ¡Ya casi llegamos!"
+    },
+    "glim": {
+      "name": "Chispita",
+      "personality": "Una estrella bebé que no habla: tararea (mmm-mmm) y titila. Su brillo muestra cómo se siente."
+    },
+    "grandma": {
+      "name": "la abuela",
+      "personality": "Tranquila, cálida y juguetona. Nunca se preocupa, nunca se enoja."
+    },
+    "bramble": {
+      "name": "Zarza",
+      "personality": "Nerviosa, educada y muy amiga de las manzanas."
+    },
+    "gertie": {
+      "name": "Gertrudis",
+      "personality": "Gruñona cuando la despiertan, de corazón tierno por dentro."
+    },
+    "moths": {
+      "name": "las polillas"
+    },
+    "frogs": {
+      "name": "las ranas"
+    },
+    "fireflies": {
+      "name": "las luciérnagas"
+    },
+    "lantern": {
+      "name": "el farolito"
+    }
+  },
+  "glossary": {
+    "Grandma": "la abuela",
+    "Grandma's garden": "el jardín de la abuela",
+    "Willow Pond": "el Estanque del Sauce",
+    "the willow": "el gran sauce",
+    "the brook": "el arroyo",
+    "the hedge": "el seto",
+    "the shed": "el cobertizo",
+    "the stepping stones": "las piedras (tres piedras redondas)",
+    "the little bridge": "el puentecito",
+    "lily pads": "hojas de nenúfar",
+    "the star song (\"Little light, little light...\")": "la canción de la lucecita",
+    "Almost there!": "¡Ya casi llegamos!",
+    "I know a shortcut!": "¡Yo conozco un atajo!",
+    "hmm-mmm": "mmm-mmm"
+  },
+  "moods": {
+    "p01-meadow": "sorpresa tranquila",
+    "p02-glim": "tierno, un poco triste, con curiosidad",
+    "p03-tuck": "emocionado, divertido",
+    "p04a-hedge": "juguetón, lleno de vueltas, divertido",
+    "p05a-moths": "alegre, mágico",
+    "p04b-garden": "tranquilo, bonito, con un toque de humor",
+    "p05b-bramble": "amable, suavemente cómico",
+    "p06-brook": "expectativa",
+    "p07a-stones": "tambaleante, emocionante, divertido",
+    "p08a-across": "triunfal, cálido, divertido",
+    "p07b-bridge": "en voz baja, un suspenso divertido",
+    "p08b-goose": "dulce, educado, feliz",
+    "p09-willow": "mágico, y luego preocupado por Chispita",
+    "p10a-friends": "una alegría que va creciendo",
+    "p10b-song": "tierno, y luego esperanzado",
+    "e1-big-splash": "chistoso, alegre",
+    "e2-sky-parade": "triunfal, mágico, cálido",
+    "e3-goodnight-glim": "tierno, una despedida feliz",
+    "e4-frog-chorus": "fuerte, chistoso, alegre",
+    "e5-windowsill": "acogedor, con sueño, seguro"
+  }
+}

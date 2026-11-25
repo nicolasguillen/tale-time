@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Story outline",
+  "description": "Pipeline step 2 (content/stories/<id>/outline.json): the whole graph with a one-line beat per page, each fork's question and options, each ending, and the visual state of every page. The structure of every story/<lang>.json must match it exactly. See tools/prompts/outline.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["story", "start", "nodes"],
+  "properties": {
+    "story": { "$ref": "#/$defs/slug" },
+    "start": { "$ref": "#/$defs/slug" },
+    "note": { "type": "string", "description": "The shape in a sentence or two: where it splits and merges, the light across the story." },
+    "nodes": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "#/$defs/slug" },
+      "additionalProperties": { "oneOf": [{ "$ref": "#/$defs/page" }, { "$ref": "#/$defs/fork" }, { "$ref": "#/$defs/ending" }] }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time", "present"],
+      "properties": {
+        "time": { "type": "string", "description": "Time of day, light, weather." },
+        "present": { "type": "array", "items": { "type": "string" }, "description": "Cast, extras and props in the picture, by bible id, with their state in brackets." },
+        "mustNot": { "type": "array", "items": { "type": "string" }, "description": "What must not be shown. Required thinking on merge pages." }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["beat", "next", "visual"],
+      "properties": {
+        "beat": { "type": "string" },
+        "next": { "$ref": "#/$defs/slug" },
+        "visual": { "$ref": "#/$defs/visual" }
+      }
+    },
+    "fork": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["beat", "question", "options", "visual"],
+      "properties": {
+        "beat": { "type": "string" },
+        "question": { "type": "string" },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "target"],
+            "properties": {
+              "label": { "type": "string" },
+              "target": { "$ref": "#/$defs/slug" },
+              "why": { "type": "string", "description": "The character trait this option stands for." }
+            }
+          }
+        },
+        "visual": { "$ref": "#/$defs/visual" }
+      }
+    },
+    "ending": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["beat", "ending", "visual"],
+      "properties": {
+        "beat": { "type": "string" },
+        "ending": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "title"],
+          "properties": {
+            "kind": { "enum": ["best", "happy", "cozy", "silly"] },
+            "title": { "type": "string" }
+          }
+        },
+        "visual": { "$ref": "#/$defs/visual" }
+      }
+    }
+  }
+}

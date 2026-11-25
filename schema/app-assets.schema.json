@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "App images",
+  "description": "Images the app itself needs, outside any story (content/app/assets.json): the app icon and its Android layers. In the app's own style (content/app/style.json, the art style format without an anchor), not any story's. Rendered into the root REQUESTED_ASSETS.md; delivered files go next to it, in content/app/.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["images"],
+  "properties": {
+    "status": { "type": "string" },
+    "images": { "type": "array", "items": { "$ref": "#/$defs/image" }, "minItems": 1 }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "subject"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "kind": { "enum": ["icon", "icon-foreground", "icon-background"] },
+        "subject": { "type": "string", "minLength": 10 },
+        "editFrom": { "$ref": "#/$defs/slug", "description": "An earlier image in this file. This one is made by editing it." },
+        "background": { "type": "string" },
+        "mustShow": { "type": "array", "items": { "type": "string" } },
+        "avoid": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

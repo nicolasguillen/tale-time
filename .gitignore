@@ -1,0 +1,35 @@
+.DS_Store
+.idea/
+
+# Python (tools/)
+__pycache__/
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Work-in-progress content that never gets committed
+content/.work/
+# What `story package` builds (the dev and release channels) and its cache of converted files
+content/.build/
+
+# App (Gradle, Kotlin, Xcode)
+*.iml
+.kotlin/
+.gradle/
+**/build/
+!src/**/build/
+local.properties
+xcuserdata/
+captures/
+.externalNativeBuild/
+.cxx/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+# Firebase CLI
+.firebase/
+*-debug.log

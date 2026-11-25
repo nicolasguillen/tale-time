@@ -1,0 +1,183 @@
+{
+  "id": "noelia-and-the-baby-squirrel",
+  "version": 1,
+  "ageBand": "4-7",
+  "language": "en",
+  "title": "Noelia and the Baby Squirrel",
+  "cover": "cover",
+  "start": "p01-gate",
+  "nodes": {
+    "p01-gate": {
+      "text": "Noelia did everything fast. She ate her toast fast. She brushed her teeth fast. She even sneezed fast! One sunny afternoon, she stood at the little green gate at the bottom of Abuelo's garden. \"Ready, set, ZOOM!\" Off she zoomed, down the path into Pinecone Wood. Behind her, Abuelo stopped. He bent down, very slowly. \"Mira, mira! Look at that!\" It was a shiny green beetle.",
+      "image": "p01-gate",
+      "next": "p02-pipa"
+    },
+    "p02-pipa": {
+      "text": "Squeak! Noelia skidded to a stop by a mossy log. On top sat a baby squirrel, as small as Noelia's hand. Noelia reached out. The squirrel jumped back, tail fluffed up. \"Oops, sorry!\" said Noelia, and she tucked her hands behind her back. \"Abuelo! Come and see!\" \"I'm Pipa,\" squeaked the squirrel. \"Mama?\" Pipa had chased an acorn down her tree. Now every tree looked the same from the bottom. \"Home is up!\" said Pipa. \"Up, up, up!\"",
+      "image": "p02-pipa",
+      "next": "p03-clues"
+    },
+    "p03-clues": {
+      "text": "Noelia looked up. Pinecone Wood was full of trees. Tall trees, thin trees, old trees, young trees. Which one was Pipa's? \"Don't worry, Pipa,\" said Noelia. \"I'll find your home. Fast!\" Abuelo came slowly along the path, smiling. Tap-tap-tap! Up the hill, a woodpecker was busy on the old oak. And at Noelia's feet lay a trail of little nutshells.",
+      "image": "p03-clues",
+      "question": "Should Noelia ask the woodpecker who's tapping up the hill, or follow the trail of nutshells on the ground?",
+      "options": [
+        {
+          "label": "Ask the woodpecker",
+          "image": "p03-clues-a",
+          "target": "p04a-oak"
+        },
+        {
+          "label": "Follow the nutshells",
+          "image": "p03-clues-b",
+          "target": "p04b-nutshells"
+        }
+      ]
+    },
+    "p04a-oak": {
+      "text": "\"Ready, set, ZOOM!\" Noelia zoomed up the path to the old oak, with Pipa scampering behind. \"Hello-I'm-Noelia-this-is-Pipa-where-do-squirrels-live?\" she asked, all in one breath. The woodpecker stopped tapping. \"Tap-tap! I'm Tock. Squirrels? Well, they live up high, in a round...\" \"ROUND! UP HIGH!\" cried Noelia. Up the trunk was a little round hole. Pipa scampered up to peek inside. And inside was...",
+      "image": "p04a-oak",
+      "next": "p05a-tock-home"
+    },
+    "p05a-tock-home": {
+      "text": "...wood chips. Just a heap of wood chips! \"Tap-tap! That's MY house!\" squawked Tock. \"I made it myself.\" Pipa scampered back down. \"Not home,\" she squeaked. \"Next tree!\" cried Noelia, and off she zoomed. \"Wait!\" called Tock. \"Squirrels live in a round...\" But Noelia was already halfway down the hill, with Pipa hopping behind. Tock shook his head and laughed. Then he went back to his tapping. Tap-tap-tap!",
+      "image": "p05a-tock-home",
+      "next": "p06-path"
+    },
+    "p04b-nutshells": {
+      "text": "\"Clues!\" said Noelia. \"Ready, set, ZOOM!\" She zoomed along the path after the nutshells, nose to the ground. She went so fast, she never looked up. The trail went past the ferns and stopped at a big twisty tree root. Under the root was a little round hole. \"Round!\" said Noelia. \"Is this it, Pipa?\" Pipa shook her head. \"Home is UP!\" Then, from inside the hole, came a sound. Crunch. Crunch, crunch...",
+      "image": "p04b-nutshells",
+      "next": "p05b-nibs"
+    },
+    "p05b-nibs": {
+      "text": "Out popped a little mouse with very big ears and very full cheeks. \"Mmf! I'm Nibs,\" he said, and gulped. \"These are MY crumbs. Oh dear, what a mess!\" He swept the nutshells into a tidy pile with his tail. \"Squirrels? They live up there somewhere. I'm a down-low mouse. I never look up!\" Noelia giggled. Then Nibs popped back into his hole to finish his lunch.",
+      "image": "p05b-nibs",
+      "next": "p06-path"
+    },
+    "p06-path": {
+      "text": "That round hole wasn't Pipa's home. Her tail drooped. Along came Abuelo, smiling. He stopped and bent down, very slowly. \"Mira, mira! Look at that!\" A tiny ladybug was walking up a leaf. \"No time, Abuelo!\" said Noelia, bouncing on her toes. \"We need a new idea!\" Maybe she could look up high for a round home. Or maybe she could call for Pipa's mama!",
+      "image": "p06-path",
+      "question": "Should Noelia look up high for a round home, or call out for Pipa's mama?",
+      "options": [
+        {
+          "label": "Look up high",
+          "image": "p06-path-a",
+          "target": "p07a-birches"
+        },
+        {
+          "label": "Call for Mama",
+          "image": "p06-path-b",
+          "target": "p07b-call"
+        }
+      ]
+    },
+    "p07a-birches": {
+      "text": "\"Ready, set, ZOOM!\" Noelia zoomed along the path into the birch trees, white and thin, with twinkly yellow leaves. Head back, she looked up, up, up. And then she saw it: high in a birch, a round ball of a nest! \"THERE!\" she shouted, hopping up and down. \"Round! Up high! Pipa, it's your home!\" Pipa squinted up. The nest wibble-wobbled. And out of its little round door came...",
+      "image": "p07a-birches",
+      "next": "p08a-fluffballs"
+    },
+    "p08a-fluffballs": {
+      "text": "...one, two, three, four, five fluffball birds! They looked like cotton balls with long, thin tails. \"Tsee-tsee-tsee!\" They did not like the shouting one bit. Whirr! Off they flew to a quieter tree. Noelia's mouth made a big round O. \"Not home,\" said Pipa in a very small voice. Down the path, Abuelo waved.",
+      "image": "p08a-fluffballs",
+      "next": "p09-clearing"
+    },
+    "p07b-call": {
+      "text": "Noelia cupped her hands around her mouth. She took the biggest breath in the whole world. \"MAMA SQUIRREL!\" she called. \"WHERE ARE YOU?\" Her voice bounced through the trees: you... you... you... It was so loud that Pipa covered her ears with her paws. It was so loud that Abuelo's yellow cap nearly hopped off his head. Then, from every bush and every branch...",
+      "image": "p07b-call",
+      "next": "p08b-not-us"
+    },
+    "p08b-not-us": {
+      "text": "...up popped the wood birds! \"Not us!\" chirped the brown ones. \"Not us!\" chirped the red ones. \"Not us, not us!\" chirped the blue-gray ones. Flutter, flutter, whirr! Away they flew. And then a hush fell over the wood. Not a rustle. Not a tail. Not a whisker. Not one squirrel answered. Pipa's ears went flat. \"Mama?\" she whispered.",
+      "image": "p08b-not-us",
+      "next": "p09-clearing"
+    },
+    "p09-clearing": {
+      "text": "That didn't work either. In a sunny clearing, Noelia flopped down in the grass. She had zoomed and zoomed and zoomed. \"I can't find it,\" she sighed. Pipa curled up beside her, tired. Abuelo came along at last. He sat on a big flat stump and gave Noelia an orange slice. Nobody said anything. For the first time all day, Noelia was still. And in the hush, she heard...",
+      "image": "p09-clearing",
+      "next": "p10-chitter"
+    },
+    "p10-chitter": {
+      "text": "...chitter-chitter. Soft and far, from somewhere up high. Chitter-chitter. Pipa's ears shot up. \"Mama!\" she squeaked. Noelia jumped up. \"Ready, set, ZO...\" Then she stopped. Zooming feet were loud, and the chitter was so soft. Slowly, she sat back down. \"Shh,\" she whispered, a finger on her lips. She could tiptoe toward the sound, slow as a snail. Or she could stay as still as a stone, and listen.",
+      "image": "p10-chitter",
+      "question": "Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?",
+      "options": [
+        {
+          "label": "Tiptoe to the sound",
+          "image": "p10-chitter-a",
+          "target": "p11a-tiptoe"
+        },
+        {
+          "label": "Still as a stone",
+          "image": "p10-chitter-b",
+          "target": "p11b-still"
+        }
+      ]
+    },
+    "p11a-tiptoe": {
+      "text": "\"Ready, set... tiptoe,\" whispered Noelia. Slow feet, soft feet, all the way to the tallest pine. Around its roots lay nibbled pinecone bits. Squirrel crumbs! Noelia looked up, up, up. High on the trunk was a round ball of twigs and leaves, a squirrel nest called a drey. Peeking over its edge was a face with two tall ear tufts. \"Mama!\" whispered Pipa. Noelia wanted to say hello. With a whisper? Or the squirrel way?",
+      "image": "p11a-tiptoe",
+      "question": "Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?",
+      "options": [
+        {
+          "label": "Whisper hello",
+          "image": "p11a-tiptoe-a",
+          "target": "e1-up-up-up"
+        },
+        {
+          "label": "Chitter hello",
+          "image": "p11a-tiptoe-b",
+          "target": "e2-chitter-chatter"
+        }
+      ]
+    },
+    "p11b-still": {
+      "text": "Noelia sat as still as a stone. So did Pipa. So did Abuelo, and he was very good at it. Chitter-chitter. Closer now. Down the tallest pine came a squirrel. Stop. Go. Stop. Go. Then hop by hop across the grass. It was Mama Squirrel! Pipa bounded to her. Nose to nose. Tails wrapped together. Noelia's heart felt as big as the sky. She could keep still and watch. Or she could whisper goodbye.",
+      "image": "p11b-still",
+      "question": "Should Noelia keep as still as a stone and watch, or whisper goodbye to Pipa?",
+      "options": [
+        {
+          "label": "Keep watching",
+          "image": "p11b-still-a",
+          "target": "e3-whole-wood"
+        },
+        {
+          "label": "Whisper goodbye",
+          "image": "p11b-still-b",
+          "target": "e4-window"
+        }
+      ]
+    },
+    "e1-up-up-up": {
+      "text": "\"Hello, Mama Squirrel,\" whispered Noelia. \"We found Pipa.\" Mama Squirrel chittered softly and came halfway down the trunk. \"Home is up!\" squeaked Pipa. Up, up, up she went, all the way to the drey. Mama wrapped Pipa in her big, fluffy tail. Then Pipa waved her little tail, just for Noelia. \"Bye, Pipa,\" Noelia whispered. She walked home with Abuelo, hand in hand, slowly. And tomorrow? Tomorrow she would come back. On tiptoe.",
+      "image": "e1-up-up-up",
+      "ending": {
+        "kind": "happy",
+        "title": "Up, Up, Up!"
+      }
+    },
+    "e2-chitter-chatter": {
+      "text": "\"Chitter-chitter?\" said Noelia. Mama Squirrel tilted her head. \"Chitter-chitter!\" she said back. Out of the drey popped Pipa's brother and sister. \"Chitter-chitter-chitter!\" Pipa scampered up, up, up to join them. Soon everyone was chittering, even Abuelo, his white mustache wiggling. All the way home, Noelia and Abuelo chittered. And at supper, when Noelia asked for more soup, it came out... \"Chitter-chitter!\"",
+      "image": "e2-chitter-chatter",
+      "ending": {
+        "kind": "silly",
+        "title": "Chitter-Chatter"
+      }
+    },
+    "e3-whole-wood": {
+      "text": "Noelia kept as still as a stone. Mama and Pipa scampered up, up, up the tallest pine. Little by little, the whole wood came close. Pipa's brother and sister peeked out of their drey, a round, leafy nest high in the pine. The wood birds hopped closer. \"Mira, Abuelo,\" Noelia whispered. \"Look at that!\" After that, whenever she and Abuelo tiptoed into Pinecone Wood, Pipa came scampering down to say hello. Noelia did everything fast. Well... almost everything.",
+      "image": "e3-whole-wood",
+      "ending": {
+        "kind": "best",
+        "title": "The Whole Wood Says Hello"
+      }
+    },
+    "e4-window": {
+      "text": "\"Goodbye, Pipa,\" Noelia whispered. \"Home is up!\" squeaked Pipa, and up, up, up she went with Mama. Noelia and Abuelo walked back through the golden wood, slowly. That evening, Noelia knelt on a chair at Abuelo's window. Abuelo brought two cups of warm milk. She kept very still. And far and soft, from Pinecone Wood, came a sound. Chitter-chitter. Noelia smiled, all the way down to her lightning-bolt sneakers.",
+      "image": "e4-window",
+      "ending": {
+        "kind": "cozy",
+        "title": "Chitter at the Window"
+      }
+    }
+  }
+}

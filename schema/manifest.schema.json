@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Story manifest",
+  "description": "stories/<id>/manifest-<hash>.json on the content host: every file of one version of a story, written by `story package`. The app downloads the pictures and, for each language a reader picked, that language's text and clips, and checks each file's size and SHA-256. See docs/story-format.md, \"Published stories\".",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "id", "images", "languages", "files"],
+  "properties": {
+    "format": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "images": {
+      "type": "object",
+      "description": "Image id → its file. The same in every language. An image that isn't here shows the app's placeholder (dev only).",
+      "additionalProperties": { "$ref": "#/$defs/name" }
+    },
+    "languages": {
+      "type": "object",
+      "description": "Each language: its story/<lang>.json, clip id → file for its narration (empty until it's narrated), and the timings of its narrated pages.",
+      "propertyNames": { "type": "string", "pattern": "^[a-z]{2,3}$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["story", "audio"],
+        "properties": {
+          "story": { "$ref": "#/$defs/name" },
+          "audio": { "type": "object", "additionalProperties": { "$ref": "#/$defs/name" } },
+          "timings": {
+            "$ref": "#/$defs/name",
+            "description": "timings-<lang>-<hash>.json, once a page's clip is here: {\"format\": 1, \"clips\": {<page id>: [[start, end], …]}}, when each word of the page's text (each run of non-space characters, in order) starts and ends in its clip, in milliseconds. Measured by `story package` from the clip (storytool/timings.py)."
+          }
+        }
+      },
+      "minProperties": 1
+    },
+    "files": {
+      "type": "object",
+      "description": "Every file named above: its size and SHA-256.",
+      "propertyNames": { "$ref": "#/$defs/name" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bytes", "sha256"],
+        "properties": {
+          "bytes": { "type": "integer", "minimum": 1 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "name": { "type": "string", "pattern": "^[a-z0-9-]+-[0-9a-f]{10}\\.(json|webp|m4a)$" }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Published catalog",
+  "description": "stories/catalog.json on the content host: the shelf the app downloads at every launch, written by `story package` from content/catalog.json and the stories. The app ignores fields it doesn't know. See docs/story-format.md, \"Published stories\".",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "stories"],
+  "properties": {
+    "format": { "const": 1 },
+    "stories": { "type": "array", "items": { "$ref": "#/$defs/story" } }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "lang": { "type": "string", "pattern": "^[a-z]{2,3}$" },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "bytes", "sha256"],
+      "properties": {
+        "file": { "type": "string", "pattern": "^[a-z0-9-]+-[0-9a-f]{10}\\.(json|webp|m4a)$", "description": "A file in stories/<id>/, named after its contents." },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "story": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "access", "ageBand", "title", "languages", "manifest"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "access": { "enum": ["free", "paid"] },
+        "product": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_.]{0,99}$" },
+        "ageBand": { "enum": ["3-5", "4-7", "7-10"] },
+        "title": {
+          "type": "object",
+          "description": "The title in every language the story is published in.",
+          "propertyNames": { "$ref": "#/$defs/lang" },
+          "additionalProperties": { "type": "string", "minLength": 1 },
+          "minProperties": 1
+        },
+        "languages": {
+          "type": "object",
+          "description": "Every language a reader can download, the story's first language first.",
+          "propertyNames": { "$ref": "#/$defs/lang" },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["bytes", "narration"],
+            "properties": {
+              "bytes": { "type": "integer", "minimum": 1, "description": "The download in this language alone: the pictures, the text and the narration." },
+              "narration": { "type": "boolean" }
+            }
+          },
+          "minProperties": 1
+        },
+        "cover": { "$ref": "#/$defs/file", "description": "The cover picture, shown on the shelf before the story is downloaded. Missing while it isn't delivered (dev only)." },
+        "manifest": { "$ref": "#/$defs/file", "description": "The story's current manifest (schema/manifest.schema.json). A new name means the story changed." }
+      }
+    }
+  }
+}

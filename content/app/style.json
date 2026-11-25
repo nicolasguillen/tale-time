@@ -1,0 +1,33 @@
+{
+  "name": "Gouache app icon",
+  "status": "proposed, not yet approved",
+  "summary": "The app's own look, used only for the app icon: the same hand-painted gouache technique, simplified into big shapes that read at the size of a fingertip. It belongs to the app, not to any story; the app icon is made first from these words, and its two Android layers are edits of it.",
+  "medium": "Opaque gouache on warm off-white watercolor paper, with a little colored-pencil texture for fur, grass and wood. Matte. No glossy highlights, no airbrushed gradients, no digital lens effects.",
+  "shapes": "One chunky, rounded subject with a clear silhouette, big enough to fill most of the square, and almost no small details. Flat areas of color.",
+  "line": "No black outlines. Edges come from color and value. Where a line helps, a thin colored-pencil line in a darker shade of the fill.",
+  "color": "A limited palette per picture: 5 to 7 colors from the base palette plus the story's accents. Dusk and night are cool blues and lilacs, never black. Warm accents (the characters, the lights) pop against them.",
+  "light": "One clear light idea per picture. Magical or warm lights (a glowing star, a porch lamp, fireflies) glow gold with a soft halo and light up the faces and things right next to them.",
+  "composition": "One centered subject, everything that matters well inside the middle of the square, a calm background.",
+  "characters": "No characters from any story: the icon is the app, not one book.",
+  "prompt": "App icon painted in opaque, matte gouache on warm off-white paper, with a visible dry-brush texture and paper grain. One bold, chunky, rounded subject with a clear silhouette and almost no small details, so it reads at the size of a fingertip; flat areas of color, no outlines, edges made by color and value. One clear light idea: a warm gold glow with a soft halo against cool blues, never black.",
+  "palette": {
+    "paper": "#F3EAD8",
+    "cream": "#FFF6E3",
+    "night blue": "#2E3F66",
+    "twilight lilac": "#B9A3D0",
+    "meadow green": "#7FA65A",
+    "hedge green": "#3F6B4A",
+    "earth brown": "#8A5A3C",
+    "lantern gold": "#F6C453"
+  },
+  "avoid": [
+    "Any text: letters, numbers, signs, labels, logos, watermarks, signatures, musical notes",
+    "Photorealism, 3D renders, glossy plastic or clay looks",
+    "Black outlines, comic halftones, anime styling",
+    "Pure black shadows, horror lighting, menacing silhouettes",
+    "Sharp teeth, claws on display, angry or scary faces",
+    "Extra or missing fingers, limbs, ears or tails; melted or merged shapes",
+    "Real brands, real people, existing characters",
+    "Copying the look of a named illustrator, an existing book or a studio"
+  ]
+}

@@ -1,0 +1,445 @@
+{
+  "story": "fox-and-the-lantern",
+  "lightArc": "Sunset, warm peach and gold (p01–p03) → twilight, lilac and teal (p04–p05) → blue twilight with the first stars (p06–p08) → night, the round moon rising over the hill behind the willow (p09 onward). In the cool scenes, the warm lights are Glim, Grandma's porch lamp and the fireflies.",
+  "firstBatch": ["mia", "tuck", "glim", "p01-meadow", "p03-tuck", "p03-tuck-a", "p03-tuck-b"],
+  "images": [
+    {
+      "id": "cover",
+      "place": "meadow",
+      "framing": "medium-wide, portrait",
+      "light": "early night: deep blue sky, the lantern's gold glow lighting Mia's and Tuck's faces from below, a few fireflies",
+      "mood": "wonder, an adventure about to begin",
+      "scene": "Mia stands in the tall grass of Grandma's garden holding the lantern up in front of her with both hands, looking at Glim inside with delight. Tuck sits close beside her, looking up at the lantern, tail curled around his paws. Far behind them, down the slope, the big weeping willow, and the round moon just rising over the low hill. Fireflies drift around.",
+      "setting": "Grandma's garden at night, the willow and the moon in the distance",
+      "cast": [
+        { "id": "mia", "state": "standing, holding the lantern up with both hands, delighted" },
+        { "id": "tuck", "state": "sitting beside Mia, looking up at the lantern, scarf end over his shoulder" },
+        { "id": "lantern", "state": "door closed, glowing gold" },
+        { "id": "glim", "state": "inside the lantern, awake, glowing bright and happy, looking out at Mia" }
+      ],
+      "mustShow": ["Mia, Tuck, the lantern and Glim large and clear in the upper two thirds", "the willow and the rising moon in the distance", "calm grass in the bottom quarter for the title"],
+      "avoid": ["any title or lettering"]
+    },
+    {
+      "id": "p01-meadow",
+      "place": "meadow",
+      "framing": "wide",
+      "light": "sunset: warm peach sky, long soft light from the left; the lantern glowing gold in the grass",
+      "mood": "quiet surprise",
+      "scene": "Mia kneels in tall, whispery grass, parting it with one hand and reaching for a little old lantern glowing in the grass. Her red ball lies a little way off. Far up the gently sloping garden, Grandma's small white cottage with its blue door; Grandma sits on the porch under a yellow lamp, knitting, one hand raised in a wave.",
+      "setting": "the wild middle of Grandma's garden: tall grass, clover, dandelion clocks",
+      "cast": [
+        { "id": "mia", "state": "kneeling in the grass, reaching for the lantern, surprised and delighted" },
+        { "id": "lantern", "state": "lying in the grass, door closed, glowing softly (Glim inside is not visible yet)" },
+        { "id": "grandma", "state": "tiny and far away on the porch, knitting, waving" }
+      ],
+      "mustShow": ["the lantern's glow in the grass", "Mia's delighted face", "the cottage with its lit porch, far away"],
+      "avoid": ["Glim's face (it's revealed on the next page)"]
+    },
+    {
+      "id": "p02-glim",
+      "framing": "close",
+      "light": "sunset glow behind; Glim's soft, dim peach light on Mia's face from below",
+      "mood": "tender, a little sad, curious",
+      "scene": "Close on Mia holding the lantern up to her face and peering through its round glass. Inside, Glim is curled up like a kitten, mid-yawn, eyes half-closed, looking up toward the sky.",
+      "cast": [
+        { "id": "mia", "state": "peering close through the glass, gentle and curious" },
+        { "id": "lantern", "state": "held up at Mia's eye level, door closed" },
+        { "id": "glim", "state": "inside the lantern, curled up, yawning, sleepy and dim peach, looking upward" }
+      ],
+      "mustShow": ["Glim's face clearly, big enough to read on a phone", "Mia's face lit by Glim"]
+    },
+    {
+      "id": "p03-tuck",
+      "place": "hedge",
+      "framing": "medium",
+      "light": "end of sunset: orange and lilac sky; Glim brighter now",
+      "mood": "excited, funny",
+      "scene": "Tuck has just popped out of the green hedge, a few leaves stuck on his head, scarf flying, grinning proudly as if announcing big news. Mia turns to him holding the lantern; Glim peeks out from the glass.",
+      "setting": "beside the tall green hedge; the start of Grandma's flagstone path visible on the other side",
+      "cast": [
+        { "id": "tuck", "state": "half out of the hedge, leaves on his head, proud grin, tail swishing" },
+        { "id": "mia", "state": "turning toward Tuck, smiling, lantern in one hand" },
+        { "id": "lantern", "state": "door closed" },
+        { "id": "glim", "state": "inside the lantern, awake, curious, glowing gold" }
+      ],
+      "mustShow": ["Tuck clearly bursting out of the hedge", "both ways ahead visible: the hedge (shortcut) and a bit of the garden path"]
+    },
+    {
+      "id": "p03-tuck-a",
+      "subject": "A round, dark-green leafy tunnel opening low in a hedge, with the white tip of Tuck's bushy tail just disappearing inside.",
+      "background": "the hedge filling the frame, a soft dusky glow at the tunnel's mouth",
+      "cast": [{ "id": "tuck", "state": "only the tail tip, disappearing into the tunnel" }],
+      "mustShow": ["the round tunnel mouth as the one clear shape"]
+    },
+    {
+      "id": "p03-tuck-b",
+      "subject": "A pale flagstone garden path winding away between fat orange pumpkins and bean poles.",
+      "background": "lilac evening sky, simple garden shapes",
+      "mustShow": ["the winding path and the bright orange pumpkins"]
+    },
+    {
+      "id": "p04a-hedge",
+      "place": "hedge",
+      "framing": "medium",
+      "light": "inside the hedge, lit only by Glim: the leaves glow green-gold around the lantern, dark teal beyond",
+      "mood": "playful, twisty, funny",
+      "scene": "Inside a twisty leafy tunnel. Tuck leads, looking back over his shoulder with a confident 'almost there' grin. Mia crawls after him on hands and knees, pushing the lantern ahead of her on the ground, giggling. The tunnel visibly curls left and right ahead of them.",
+      "setting": "a low tunnel of leaves and branches inside the hedge",
+      "cast": [
+        { "id": "tuck", "state": "trotting ahead, looking back, confident grin" },
+        { "id": "mia", "state": "crawling, giggling, pushing the lantern along" },
+        { "id": "lantern", "state": "on the ground, door closed, the only light" },
+        { "id": "glim", "state": "inside the lantern, glowing gold" }
+      ],
+      "mustShow": ["the tunnel clearly twisting", "the green glow on the leaves"],
+      "avoid": ["anything that makes the tunnel feel tight, dark or scary"]
+    },
+    {
+      "id": "p05a-moths",
+      "place": "hedge",
+      "framing": "medium-wide",
+      "light": "twilight, lilac and teal; the moths lit gold by the lantern",
+      "mood": "joyful, magical",
+      "scene": "Beside Grandma's tall sunflowers, a swirling cloud of soft white moths circles the lantern like summer snow. Mia laughs with her eyes squeezed shut as a moth tickles her nose. Tuck bats playfully at one moth. Inside the lantern, Glim flickers with giggles. In the distance, the brook glints.",
+      "setting": "where the hedge tunnel comes out, by tall sunflowers",
+      "cast": [
+        { "id": "mia", "state": "laughing, eyes squeezed shut, a moth on her nose, lantern held up" },
+        { "id": "tuck", "state": "playfully batting at a moth" },
+        { "id": "moths", "state": "swirling around the lantern like snowflakes" },
+        { "id": "lantern", "state": "door closed" },
+        { "id": "glim", "state": "inside the lantern, giggling, flickering bright" }
+      ],
+      "mustShow": ["the swirl of moths as the main shape", "the sunflowers"]
+    },
+    {
+      "id": "p04b-garden",
+      "place": "garden-path",
+      "framing": "wide",
+      "light": "twilight; Glim's light makes the pumpkins glow like small suns",
+      "mood": "calm, pretty, lightly funny",
+      "scene": "Mia walks down Grandma's winding flagstone path holding the lantern out in front of her. The fat orange pumpkins along the path glow warmly in its light. Tuck trots beside her with his nose in the air, looking a bit grumpy and proud ('my shortcut is faster').",
+      "setting": "Grandma's flagstone path, bean poles, pumpkins",
+      "cast": [
+        { "id": "mia", "state": "walking happily, lantern held out" },
+        { "id": "tuck", "state": "trotting beside her, nose up, mock-grumpy" },
+        { "id": "lantern", "state": "door closed" },
+        { "id": "glim", "state": "inside the lantern, humming, content, glowing gold" }
+      ],
+      "mustShow": ["the pumpkins glowing like little suns", "the path winding down the garden"]
+    },
+    {
+      "id": "p05b-bramble",
+      "place": "garden-path",
+      "framing": "medium-close",
+      "light": "twilight; the lantern set on the ground lights the scene",
+      "mood": "kind, gently comic",
+      "scene": "By the strawberry bed, Mia kneels and holds a big cabbage leaf against a shiny red apple stuck on Bramble's back spines, gently rolling it off. Bramble, flustered, looks back at the apple. Tuck watches, head tilted. The lantern sits on the ground beside them.",
+      "setting": "strawberry bed and big cabbages beside the path",
+      "cast": [
+        { "id": "mia", "state": "kneeling, careful and kind, rolling the apple off with a cabbage leaf" },
+        { "id": "bramble", "state": "a red apple stuck on her back spines, flustered" },
+        { "id": "tuck", "state": "watching, head tilted" },
+        { "id": "lantern", "state": "on the ground, door closed" },
+        { "id": "glim", "state": "inside the lantern, glowing gold, watching" }
+      ],
+      "mustShow": ["the apple on Bramble's spines", "the cabbage leaf between Mia's hands and the apple (she doesn't touch the spines)"]
+    },
+    {
+      "id": "p06-brook",
+      "place": "brook",
+      "framing": "wide",
+      "light": "blue twilight, first stars; a silver glow behind the hill where the moon is about to rise; Glim dimmer, peachy",
+      "mood": "anticipation",
+      "scene": "Mia and Tuck stand on the near bank of the shallow brook, seen from slightly behind. Three round flat stepping stones cross the water in front of them; to the right, further along, the little arched wooden footbridge. Across the brook, the huge weeping willow, and behind it the sky turning silver over a low hill.",
+      "setting": "the brook at the bottom of the garden",
+      "cast": [
+        { "id": "mia", "state": "standing on the bank, lantern held close" },
+        { "id": "tuck", "state": "pointing his nose at the sky behind the willow" },
+        { "id": "lantern", "state": "door closed" },
+        { "id": "glim", "state": "inside the lantern, dimmer and sleepier, peach-colored" }
+      ],
+      "mustShow": ["both ways across clearly: the three stepping stones and the bridge", "the willow and the silver glow behind it", "how shallow the water is (pebbles visible)"],
+      "avoid": ["moths or Bramble (this page follows both paths)", "the moon itself (it isn't up yet)"]
+    },
+    {
+      "id": "p06-brook-a",
+      "subject": "Three round, flat gray stepping stones crossing a shallow, sparkling blue brook.",
+      "background": "the water and pebbles, simple",
+      "mustShow": ["three stones in a row"]
+    },
+    {
+      "id": "p06-brook-b",
+      "subject": "A small arched wooden footbridge with a rope rail over the brook.",
+      "background": "ferns at both ends, blue twilight",
+      "mustShow": ["the warm brown arch of the bridge"]
+    },
+    {
+      "id": "p07a-stones",
+      "place": "brook",
+      "framing": "medium",
+      "light": "blue twilight; Glim's light bouncing in bright reflections on the water",
+      "mood": "wobbly, exciting, funny",
+      "scene": "Mia balances on the second stepping stone, arms out, the lantern swinging from one hand. The third stone ahead of her is tilting (ripples show it wobbling). Tuck stands on the far bank, front paws stretched toward the wobbly stone, calling to her.",
+      "setting": "the stepping stones across the brook",
+      "cast": [
+        { "id": "mia", "state": "balancing on the second stone, arms out, excited" },
+        { "id": "tuck", "state": "on the far bank, paws reaching toward the third stone, calling" },
+        { "id": "lantern", "state": "swinging in Mia's hand, door closed" },
+        { "id": "glim", "state": "inside the lantern, glowing, a little dim" }
+      ],
+      "mustShow": ["the wobbling third stone", "Tuck ready to help on the far bank"],
+      "avoid": ["any sense of danger: the water is clearly ankle-deep"]
+    },
+    {
+      "id": "p07a-stones-a",
+      "subject": "Two red rubber boots in mid-air, jumping over a stone, a few droplets flying.",
+      "background": "blue water, simple",
+      "cast": [{ "id": "mia", "state": "only her red boots and the hem of the yellow raincoat, mid-jump" }],
+      "mustShow": ["the red boots as the main shape"]
+    },
+    {
+      "id": "p07a-stones-b",
+      "subject": "Tuck's orange front paws pressing down on a round wet stone, his face concentrating, scarf dangling.",
+      "background": "blue water, simple",
+      "cast": [{ "id": "tuck", "state": "concentrating, holding the stone still" }],
+      "mustShow": ["Tuck's orange paws and face"]
+    },
+    {
+      "id": "p08a-across",
+      "place": "brook",
+      "framing": "medium",
+      "light": "blue twilight; Glim bouncing bright with laughter",
+      "mood": "triumphant, warm, funny",
+      "scene": "Mia lands on the far bank, both boots dry, arms up in a cheer. Behind her, Tuck still holds the third stone steady with his paws, chest puffed out proudly. Glim bounces inside the lantern.",
+      "setting": "the far bank of the brook",
+      "cast": [
+        { "id": "mia", "state": "just landed, cheering, completely dry" },
+        { "id": "tuck", "state": "paws on the stone, chest puffed out, proud" },
+        { "id": "lantern", "state": "door closed" },
+        { "id": "glim", "state": "inside the lantern, bouncing, bright, laughing" }
+      ],
+      "mustShow": ["Mia dry and happy", "teamwork: Tuck holding the stone"]
+    },
+    {
+      "id": "p07b-bridge",
+      "place": "brook",
+      "framing": "medium",
+      "light": "blue twilight; the lantern's warm light falling on Gertie's white feathers",
+      "mood": "hushed, funny suspense",
+      "scene": "On the little arched wooden bridge, a big white goose, Gertie, sits fast asleep right in the middle, head tucked under her wing. Tuck whispers behind his paw. Mia holds the lantern up so its soft light falls on Gertie, and Gertie has just opened one sleepy eye.",
+      "setting": "the little wooden footbridge over the brook",
+      "cast": [
+        { "id": "gertie", "state": "asleep in the middle of the bridge, head under her wing, one eye just opening" },
+        { "id": "tuck", "state": "whispering behind his paw" },
+        { "id": "mia", "state": "holding the lantern up, hopeful" },
+        { "id": "lantern", "state": "door closed, held up" },
+        { "id": "glim", "state": "inside the lantern, glowing softly" }
+      ],
+      "mustShow": ["Gertie blocking the bridge", "her one opening eye"]
+    },
+    {
+      "id": "p08b-goose",
+      "place": "brook",
+      "editFrom": "p07b-bridge",
+      "framing": "medium",
+      "light": "blue twilight",
+      "mood": "sweet, polite, happy",
+      "scene": "Gertie has waddled to the side of the bridge and gives a little bow, her grumpy eyebrows softened into a smile. Mia skips across the bridge holding the lantern; Tuck trots after her. Ahead, the willow.",
+      "setting": "the little wooden footbridge",
+      "cast": [
+        { "id": "gertie", "state": "bowing at the side of the bridge, soft smile" },
+        { "id": "mia", "state": "skipping across, smiling" },
+        { "id": "tuck", "state": "trotting after Mia" },
+        { "id": "lantern", "state": "door closed" },
+        { "id": "glim", "state": "inside the lantern, glowing gold" }
+      ],
+      "mustShow": ["Gertie's bow", "the willow ahead"]
+    },
+    {
+      "id": "p09-willow",
+      "place": "willow-pond",
+      "framing": "wide",
+      "light": "night: the round moon just peeking over the hill, silver light; golden fireflies rising; Glim very dim",
+      "mood": "magical, then worried for Glim",
+      "scene": "Willow Pond under the huge weeping willow. Frogs sit on lily pads. Fireflies rise from the reeds like tiny golden sparks. The round moon peeks over the low hill. At the water's edge, Mia holds the lantern close to her chest, thinking hard; Glim inside is only a faint, sleepy glow. Tuck looks at Glim with concern.",
+      "setting": "Willow Pond, lily pads, reeds and cattails",
+      "cast": [
+        { "id": "mia", "state": "at the edge of the pond, thinking hard, boots and clothes dry" },
+        { "id": "tuck", "state": "looking at Glim, concerned" },
+        { "id": "frogs", "state": "sitting on lily pads, watching" },
+        { "id": "fireflies", "state": "rising from the reeds" },
+        { "id": "lantern", "state": "held close to Mia's chest, door closed" },
+        { "id": "glim", "state": "inside the lantern, very dim, sleepy, peach" }
+      ],
+      "mustShow": ["the moon peeking over the hill", "the rising fireflies", "how dim Glim is"],
+      "avoid": ["Gertie, Bramble or the moths (this page follows every path)", "wet clothes (Mia arrives dry on every path)"]
+    },
+    {
+      "id": "p09-willow-a",
+      "subject": "A row of small round green frogs on lily pads, all looking up eagerly, with a few fireflies glowing above them.",
+      "background": "dark teal pond, simple",
+      "cast": [{ "id": "frogs", "state": "eager, ready to help" }, { "id": "fireflies", "state": "a few, glowing above" }],
+      "mustShow": ["the green frogs as the main shape"]
+    },
+    {
+      "id": "p09-willow-b",
+      "subject": "The brass lantern glowing warmly, with soft golden swirls of light curling around it like a song.",
+      "background": "night blue, simple",
+      "cast": [{ "id": "lantern", "state": "door closed" }, { "id": "glim", "state": "inside the lantern, eyes closed, listening, glowing a little warmer" }],
+      "mustShow": ["the gold lantern and its swirls"],
+      "avoid": ["musical notes or any symbols"]
+    },
+    {
+      "id": "p10a-friends",
+      "place": "willow-pond",
+      "framing": "wide",
+      "light": "Glim blazing gold at the center, lighting up the whole pond; moonlight around",
+      "mood": "joyful crescendo",
+      "scene": "Mia stands at the center of the picture holding the lantern up high. Around the pond, the frogs croak with puffed throats, fireflies swirl around the lantern, and Tuck lifts his nose and howls a tiny, happy howl. Glim blazes so bright the whole pond shines. Beyond, the fireflies start to form a long, twinkly line.",
+      "setting": "Willow Pond under the willow",
+      "cast": [
+        { "id": "mia", "state": "lantern held high, calling out happily" },
+        { "id": "tuck", "state": "nose up, a tiny happy howl (cute, not wolfish)" },
+        { "id": "frogs", "state": "croaking, throats puffed" },
+        { "id": "fireflies", "state": "swirling around the lantern, starting to line up" },
+        { "id": "lantern", "state": "door closed, held high" },
+        { "id": "glim", "state": "inside the lantern, blazing bright gold, happy" }
+      ],
+      "mustShow": ["Glim's light as the brightest thing in the story so far", "everyone joining in"]
+    },
+    {
+      "id": "p10a-friends-a",
+      "subject": "The lantern held high in a hand with a yellow sleeve, leading a long, winding ribbon of fireflies behind it.",
+      "background": "night blue sky",
+      "cast": [{ "id": "mia", "state": "only her hand and yellow sleeve" }, { "id": "lantern", "state": "held high" }, { "id": "fireflies", "state": "a long winding trail" }],
+      "mustShow": ["the lantern up high and the long golden trail"]
+    },
+    {
+      "id": "p10a-friends-b",
+      "subject": "Mia and Tuck, small and seen from behind, sitting on the grassy shore of the pond, looking up at fireflies rising over the water.",
+      "background": "the pond and the night sky, calm",
+      "cast": [{ "id": "mia", "state": "from behind, sitting" }, { "id": "tuck", "state": "from behind, sitting beside her" }],
+      "mustShow": ["the two small figures on the shore"]
+    },
+    {
+      "id": "p10b-song",
+      "place": "willow-pond",
+      "framing": "medium-close",
+      "light": "night; Glim's glow warmer on Mia's face; moonlight on the water",
+      "mood": "tender, then hopeful",
+      "scene": "Mia sits on a mossy stone at the edge of the pond with the lantern in her lap, singing softly with her eyes closed. Glim glows a little warmer. Around them, the frogs have stopped to listen; the biggest frog, throat puffed out, leans toward Mia, hopeful. Tuck sits listening.",
+      "setting": "a mossy stone at the edge of Willow Pond",
+      "cast": [
+        { "id": "mia", "state": "sitting, singing softly, eyes closed" },
+        { "id": "frogs", "state": "listening; the biggest one leaning in, throat puffed, hopeful" },
+        { "id": "tuck", "state": "sitting, listening" },
+        { "id": "lantern", "state": "in Mia's lap, door closed" },
+        { "id": "glim", "state": "inside the lantern, a little warmer, listening" }
+      ],
+      "mustShow": ["the biggest frog asking to join"],
+      "avoid": ["musical notes or any symbols"]
+    },
+    {
+      "id": "p10b-song-a",
+      "subject": "The biggest frog, throat ballooned, mouth wide open, singing his loudest, with two smaller frogs joining in beside him.",
+      "background": "lily pads, rings of ripples",
+      "cast": [{ "id": "frogs", "state": "singing loud, comic" }],
+      "mustShow": ["the green frog's ballooned throat"]
+    },
+    {
+      "id": "p10b-song-b",
+      "subject": "The lantern resting on soft moss, Glim inside with its eyes nearly closed, glowing gently.",
+      "background": "night blue, the moon's reflection on still water",
+      "cast": [{ "id": "lantern", "state": "on moss, door closed" }, { "id": "glim", "state": "inside the lantern, drowsy, soft glow" }],
+      "mustShow": ["calm and stillness"]
+    },
+    {
+      "id": "e1-big-splash",
+      "place": "brook",
+      "framing": "medium",
+      "light": "night, the moon just rising; the splash full of golden sparkles",
+      "mood": "silly, joyful",
+      "scene": "Mia sits right in the ankle-deep brook, laughing, water to her ankles and her bottom, her boots full. A big splash hangs in the air, sparkling gold. Fireflies have zoomed down, the lantern's little door is open, and they're lifting Glim up into the sky. On the bank, Tuck laughs with a paw over his mouth.",
+      "setting": "the stepping stones in the brook",
+      "cast": [
+        { "id": "mia", "state": "sitting in the shallow brook, soaked, laughing" },
+        { "id": "tuck", "state": "on the bank, laughing, paw over his mouth" },
+        { "id": "fireflies", "state": "carrying Glim upward" },
+        { "id": "lantern", "state": "in Mia's hand or beside her, door open" },
+        { "id": "glim", "state": "rising, glowing bright, happy" }
+      ],
+      "mustShow": ["the sparkling splash", "Glim going up with the fireflies", "that the water is shallow"],
+      "avoid": ["anything that reads as Mia being hurt or upset"]
+    },
+    {
+      "id": "e2-sky-parade",
+      "place": "cottage",
+      "framing": "wide",
+      "light": "night, starry sky; a winding ribbon of firefly light from the pond up the garden to the porch lamp",
+      "mood": "triumphant, magical, warm",
+      "scene": "At the top of the garden by Grandma's lit porch, Mia holds the lantern up with its little door open. Glim floats up out of it toward the starry sky, trailing light. Behind Mia, a long winding ribbon of fireflies stretches back down the garden to the pond, with frogs hopping along it and Tuck prancing. Grandma stands on the porch with a blanket over her arm, smiling.",
+      "setting": "the top of the garden, Grandma's porch and cottage",
+      "cast": [
+        { "id": "mia", "state": "lantern held up, door open, overjoyed" },
+        { "id": "grandma", "state": "on the porch, a blanket over her arm, smiling" },
+        { "id": "tuck", "state": "prancing" },
+        { "id": "frogs", "state": "hopping along the parade" },
+        { "id": "fireflies", "state": "a long winding ribbon up the garden" },
+        { "id": "lantern", "state": "door open" },
+        { "id": "glim", "state": "floating up toward the sky, bright" }
+      ],
+      "mustShow": ["Glim rising out of the lantern", "the parade winding up the garden", "Grandma on the porch"]
+    },
+    {
+      "id": "e3-goodnight-glim",
+      "place": "willow-pond",
+      "framing": "medium-wide",
+      "light": "night; moonlight on the pond; Grandma's porch lamp far up the garden",
+      "mood": "tender, happy goodbye",
+      "scene": "Mia and Tuck sit on the grassy bank of the pond, waving up at Glim, who floats among the fireflies, higher and higher. The lantern sits open beside Mia. Far up the garden, the small lit porch of Grandma's cottage.",
+      "setting": "the shore of Willow Pond",
+      "cast": [
+        { "id": "mia", "state": "sitting, waving up, smiling" },
+        { "id": "tuck", "state": "sitting, waving his tail" },
+        { "id": "fireflies", "state": "rising with Glim" },
+        { "id": "lantern", "state": "beside Mia, door open" },
+        { "id": "glim", "state": "floating up, glowing" }
+      ],
+      "mustShow": ["Glim high among the fireflies", "the porch light far away"]
+    },
+    {
+      "id": "e4-frog-chorus",
+      "place": "willow-pond",
+      "framing": "wide",
+      "light": "night; a burst of gold sparkles where Glim pops out",
+      "mood": "loud, silly, joyful",
+      "scene": "Mia and all the frogs sing at the tops of their voices, mouths wide, throats puffed. Tuck rolls on his back in the reeds, laughing. In the middle, the lantern's little door has flown open and Glim shoots up toward the sky like popcorn, in a burst of sparkles.",
+      "setting": "Willow Pond",
+      "cast": [
+        { "id": "mia", "state": "singing as loud as she can, arms wide" },
+        { "id": "frogs", "state": "singing loud, throats ballooned" },
+        { "id": "tuck", "state": "rolling on his back in the reeds, laughing" },
+        { "id": "lantern", "state": "door flown open" },
+        { "id": "glim", "state": "shooting upward, giggling" }
+      ],
+      "mustShow": ["Glim popping out of the lantern", "how silly and loud it is"],
+      "avoid": ["musical notes or any symbols"]
+    },
+    {
+      "id": "e5-windowsill",
+      "framing": "medium",
+      "light": "night indoors: Glim's soft gold glow as the night-light; moonlight through the window",
+      "mood": "cozy, sleepy, safe",
+      "scene": "Mia's bedroom at Grandma's cottage. Mia is asleep in bed under a patchwork quilt. On the windowsill, the lantern glows softly, Glim asleep inside. Through the window, the moon. Grandma stands at the door, smiling, about to turn off the lamp.",
+      "setting": "a small cozy bedroom in Grandma's cottage",
+      "cast": [
+        { "id": "mia", "state": "asleep in bed, peaceful" },
+        { "id": "grandma", "state": "at the door, smiling" },
+        { "id": "lantern", "state": "on the windowsill, door closed" },
+        { "id": "glim", "state": "inside the lantern, asleep, glowing softly" }
+      ],
+      "mustShow": ["the lantern glowing on the windowsill", "the moon outside"]
+    }
+  ]
+}

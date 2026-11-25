@@ -1,0 +1,198 @@
+{
+  "id": "fox-and-the-lantern",
+  "version": 1,
+  "ageBand": "4-7",
+  "language": "en",
+  "title": "The Fox and the Lantern",
+  "cover": "cover",
+  "start": "p01-meadow",
+  "nodes": {
+    "p01-meadow": {
+      "text": "In the wild part of Grandma's garden, the grass grew tall and whispery. Mia was looking for her lost red ball when she found something else: a little old lantern, glowing in the grass. She picked it up. It was warm, like a sleepy cat. Up on the porch, Grandma was knitting under the yellow light. She waved, and Mia waved back.",
+      "image": "p01-meadow",
+      "next": "p02-glim"
+    },
+    "p02-glim": {
+      "text": "Mia peeked through the round glass. Inside, curled up like a kitten, was a tiny star! It had soft golden points and two sleepy dot eyes. It yawned a tiny yawn. Then it hummed a sad little hum, hmm-mmm, and looked up at the sky. \"Did you fall down from up there?\" Mia whispered. The star blinked yes. \"Then I'll call you Glim,\" said Mia.",
+      "image": "p02-glim",
+      "next": "p03-tuck"
+    },
+    "p03-tuck": {
+      "text": "Rustle, rustle! Out of the hedge popped Tuck, the little fox who lived under Grandma's shed. \"A baby star!\" he gasped. \"Tonight, when the moon comes up, the fireflies of Willow Pond fly all the way up to the sky. Glim can ride home with them!\" Tuck swished his tail and grinned. \"And I know a shortcut!\"",
+      "image": "p03-tuck",
+      "question": "Should Mia follow Tuck's shortcut through the hedge, or take Grandma's garden path?",
+      "options": [
+        {
+          "label": "Tuck's shortcut",
+          "image": "p03-tuck-a",
+          "target": "p04a-hedge"
+        },
+        {
+          "label": "The garden path",
+          "image": "p03-tuck-b",
+          "target": "p04b-garden"
+        }
+      ]
+    },
+    "p04a-hedge": {
+      "text": "Tuck wriggled into a leafy tunnel in the hedge, and Mia crawled after him, pushing the lantern ahead. The tunnel went left. It went right. It went round and round. \"Almost there!\" said Tuck. Left, right, round and round. \"Almost there!\" said Tuck again. Glim's light made every leaf glow green. \"Tuck,\" Mia giggled, \"is this really a shortcut?\"",
+      "image": "p04a-hedge",
+      "next": "p05a-moths"
+    },
+    "p05a-moths": {
+      "text": "At last they tumbled out by Grandma's sunflowers. Whoosh! A cloud of soft white moths came swirling around the lantern, like snowflakes in summer. They tickled Mia's nose. Glim flickered with giggles. \"Little light, little light, show me the way tonight!\" sang Mia. The moths danced ahead of her, all the way down to the brook. Then they fluttered off to bed.",
+      "image": "p05a-moths",
+      "next": "p06-brook"
+    },
+    "p04b-garden": {
+      "text": "Mia took the garden path, the one Grandma swept every morning. It wound past the bean poles and the fat orange pumpkins. Glim's light made the pumpkins shine like little suns. Tuck trotted beside her. \"My shortcut is faster,\" he said. \"Grandma's path is prettier,\" said Mia. Glim hummed, hmm-mmm, as if it agreed with both of them.",
+      "image": "p04b-garden",
+      "next": "p05b-bramble"
+    },
+    "p05b-bramble": {
+      "text": "By the strawberry bed, something round was wobbling in circles. It was Bramble the hedgehog, with a big red apple stuck on her prickles! \"Hold still,\" said Mia. She picked a wide cabbage leaf and gently, gently rolled the apple off. \"Thank you!\" puffed Bramble. \"The brook is just down there.\" And she trotted off to bed, munching her apple.",
+      "image": "p05b-bramble",
+      "next": "p06-brook"
+    },
+    "p06-brook": {
+      "text": "At the bottom of the garden, the brook went babbling by. It was only ankle-deep, but very cold. Across the water stood the big willow tree, and the sky behind it was turning silver. \"The moon is coming!\" said Tuck. Glim's light flickered, a little dimmer, a little sleepier. Three round stepping stones crossed the brook. Further along was the little wooden bridge.",
+      "image": "p06-brook",
+      "question": "Should Mia hop across the stepping stones, or walk to the little bridge?",
+      "options": [
+        {
+          "label": "Hop the stones",
+          "image": "p06-brook-a",
+          "target": "p07a-stones"
+        },
+        {
+          "label": "Walk to the bridge",
+          "image": "p06-brook-b",
+          "target": "p07b-bridge"
+        }
+      ]
+    },
+    "p07a-stones": {
+      "text": "Hop! Mia landed on the first stone. Hop! She landed on the second. But the third stone was a wobbly one. It went wibble. It went wobble. Glim's light bounced all over the water. Tuck was already on the other side. \"Jump, Mia!\" he called. \"Or wait, and I'll hold it still with my paws!\"",
+      "image": "p07a-stones",
+      "question": "Should Mia take a big jump, or wait for Tuck to hold the stone?",
+      "options": [
+        {
+          "label": "Big jump!",
+          "image": "p07a-stones-a",
+          "target": "e1-big-splash"
+        },
+        {
+          "label": "Wait for Tuck",
+          "image": "p07a-stones-b",
+          "target": "p08a-across"
+        }
+      ]
+    },
+    "p08a-across": {
+      "text": "Mia waited. Tuck pressed his paws on the wobbly stone and held it very still. \"Now!\" Hop! Mia landed on the other side, safe and dry. \"We did it together!\" she cheered. Tuck puffed out his chest. \"See? My shortcuts always work... sometimes.\" Mia laughed so hard that Glim bounced inside the lantern. Then off they ran, toward the willow.",
+      "image": "p08a-across",
+      "next": "p09-willow"
+    },
+    "p07b-bridge": {
+      "text": "The little bridge creaked, crick-crack, under Mia's boots. Right in the middle sat a big white goose, fast asleep, with her head tucked under her wing. \"That's Gertie,\" whispered Tuck. \"She's very grumpy when you wake her.\" Mia held up the lantern, and Glim's light fell softly on Gertie's feathers. Gertie opened one eye.",
+      "image": "p07b-bridge",
+      "next": "p08b-goose"
+    },
+    "p08b-goose": {
+      "text": "Mia gave her very best smile. \"Excuse me, Gertie. We're taking Glim home to the sky.\" Gertie looked at the tiny star, and her grumpy face went soft. \"Hooonk,\" she said, which means \"Hurry along, dears.\" She waddled aside and gave a little bow. Mia skipped across the bridge, and Tuck trotted after her, toward the willow.",
+      "image": "p08b-goose",
+      "next": "p09-willow"
+    },
+    "p09-willow": {
+      "text": "Under the big willow tree, Willow Pond was waking up. The frogs sat on their lily pads. The fireflies were rising like tiny golden sparks. And over the hill, the round moon peeked out. But Glim was so tired that its light was only a sleepy little glow. \"It's too dim to fly,\" said Tuck. Mia held the lantern close and thought very hard.",
+      "image": "p09-willow",
+      "question": "Should Mia ask all the pond friends for help, or sing Glim the star song?",
+      "options": [
+        {
+          "label": "Ask for help",
+          "image": "p09-willow-a",
+          "target": "p10a-friends"
+        },
+        {
+          "label": "Sing the star song",
+          "image": "p09-willow-b",
+          "target": "p10b-song"
+        }
+      ]
+    },
+    "p10a-friends": {
+      "text": "\"Everybody!\" called Mia. \"Glim needs help to get home!\" The frogs went ribbit-ribbit, like a happy drum. The fireflies swirled around the lantern. Tuck lifted his nose and howled a tiny howl: \"Aroo!\" And Glim began to glow, brighter, and brighter, and BRIGHTER, until the whole pond shone. The fireflies lined up in a long, twinkly parade.",
+      "image": "p10a-friends",
+      "question": "Should Mia lead the parade with the lantern, or wave goodbye from the shore?",
+      "options": [
+        {
+          "label": "Lead the parade",
+          "image": "p10a-friends-a",
+          "target": "e2-sky-parade"
+        },
+        {
+          "label": "Wave from the shore",
+          "image": "p10a-friends-b",
+          "target": "e3-goodnight-glim"
+        }
+      ]
+    },
+    "p10b-song": {
+      "text": "Mia held the lantern close and sang, soft and sweet: \"Little light, little light, show me the way tonight!\" Glim's glow grew a little warmer. All around the pond, the frogs stopped to listen. Then the biggest frog puffed out his throat. \"Can we sing too?\" he croaked. Every frog on every lily pad looked at Mia, hoping.",
+      "image": "p10b-song",
+      "question": "Should Mia sing it loud with the frogs, or hum it soft and slow?",
+      "options": [
+        {
+          "label": "Loud with the frogs",
+          "image": "p10b-song-a",
+          "target": "e4-frog-chorus"
+        },
+        {
+          "label": "Soft and slow",
+          "image": "p10b-song-b",
+          "target": "e5-windowsill"
+        }
+      ]
+    },
+    "e1-big-splash": {
+      "text": "Mia took a great big jump and... SPLASH! Her boots, her socks and her bottom landed right in the brook. Up flew the splash, full of golden sparkles. The fireflies thought the parade had begun! They zoomed down, popped open the little lantern door, and carried Glim all the way to the sky. Mia laughed and laughed. Squelch, squelch went her boots, all the way home to Grandma's warm towel.",
+      "image": "e1-big-splash",
+      "ending": {
+        "kind": "silly",
+        "title": "The Big Splash"
+      }
+    },
+    "e2-sky-parade": {
+      "text": "Mia held the lantern high and led the parade, all around Willow Pond and up through the garden. The frogs hopped, Tuck pranced, and a thousand fireflies followed. Grandma was waiting on the porch with a blanket. Mia opened the little glass door. Glim floated up, up, up, and twinkled into its place in the sky. And every night after that, one little star winked at Mia's window.",
+      "image": "e2-sky-parade",
+      "ending": {
+        "kind": "best",
+        "title": "The Sky Parade"
+      }
+    },
+    "e3-goodnight-glim": {
+      "text": "Mia sat down by the water and opened the little glass door. \"Goodnight, Glim,\" she whispered. Glim floated out, gave her nose a warm, twinkly kiss, and flew up with the fireflies, higher and higher, until it was a star again. Mia and Tuck waved and waved. Then, far up the garden, Grandma's porch light blinked. Time for bed.",
+      "image": "e3-goodnight-glim",
+      "ending": {
+        "kind": "happy",
+        "title": "Goodnight, Glim"
+      }
+    },
+    "e4-frog-chorus": {
+      "text": "Mia and the frogs sang as loud as they could: \"LITTLE LIGHT, LITTLE LIGHT, RIBBIT-RIBBIT, CROAK TONIGHT!\" It was so loud and so silly that Glim giggled, and giggled, and... POP! The little door flew open, and Glim shot up to the sky like popcorn. Tuck laughed so hard he rolled in the reeds. All the way home, Mia croaked. And Grandma croaked back.",
+      "image": "e4-frog-chorus",
+      "ending": {
+        "kind": "silly",
+        "title": "The Croakiest Song"
+      }
+    },
+    "e5-windowsill": {
+      "text": "Mia hummed the star song, soft and slow, and Glim's eyes closed. The fireflies drifted up without it, but the moon smiled down. \"Tomorrow night, little one,\" it seemed to say. So Mia carried the lantern home. Grandma tucked her into bed, and Glim glowed on the windowsill all night long: the coziest night-light in the whole wide world.",
+      "image": "e5-windowsill",
+      "ending": {
+        "kind": "cozy",
+        "title": "One More Night"
+      }
+    }
+  }
+}

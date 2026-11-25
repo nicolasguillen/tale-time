@@ -1,0 +1,39 @@
+{
+  "name": "Cut-paper collage",
+  "status": "proposed, not yet approved",
+  "summary": "Pictures built from hand-painted papers, cut and torn into simple shapes and layered, with visible paper fibers and painted textures. Sunny, crisp and playful, like a walk in an autumn wood. Chosen for this story because flat cut shapes stay consistent from picture to picture (image models drift less on them), the textured papers make leaves, bark and fur feel touchable, and the bold shapes read clearly at phone size.",
+  "medium": "Collage of hand-painted papers: each shape cut or torn from paper painted with acrylic and printed with simple textures (brushed streaks, sponge dabs, comb lines), layered on a warm white paper ground. Matte. No glossy highlights, no digital gradients, no lens effects.",
+  "shapes": "Bold, simple, slightly irregular cut shapes with crisp cut edges and a few soft torn edges (moss, clouds, fur). Characters slightly stylized (round heads, short limbs, simple dot eyes, small clear mouths) but not chibi. Trees and foliage as big layered paper shapes: a canopy is a few overlapping leaf-shaped pieces, not every leaf.",
+  "line": "No outlines. Shapes are separated by color and by a very thin, soft shadow where one paper layer sits on another.",
+  "color": "Bright, sunny and warm: 5 to 7 colors per picture from the base palette plus the story's accents. Clear soft blue skies, the wood in greens with yellow and orange autumn pieces. Never muddy, never black.",
+  "light": "Daylight shown with paler paper pieces where the sun falls (patches of light on the path, a lighter side on the trunks) and golden pieces for late-afternoon light. One clear light idea per picture.",
+  "composition": "One focal point per picture, at a child's eye level. Main action inside the middle 80%. Generous calm areas (sky, path, grass) so the picture breathes and survives cropping.",
+  "characters": "Always match the character sheet: same colors, paper textures, proportions, clothes and distinctive item in every picture. Faces readable, expressions clear and friendly.",
+  "prompt": "Children's picture-book illustration made as a cut-paper collage of hand-painted papers: each shape cut or torn from paper painted with acrylic and printed with simple textures (brushed streaks, sponge dabs, comb lines), layered on a warm white paper ground, matte, with visible paper fibers. Bold, simple, slightly irregular shapes with crisp cut edges and a few soft torn edges; no outlines, shapes separated by color and a very thin soft shadow where one paper sits on another. Characters slightly stylized (round heads, short limbs, simple dot eyes, clear friendly expressions); trees and foliage as big layered paper shapes, not every leaf. Bright, sunny, warm colors, sunlight shown as paler paper pieces where it falls, one clear light idea per picture.",
+  "anchor": {
+    "id": "style-anchor",
+    "subject": "A sunny clearing in a small autumn wood with no one in it: a sandy path curving through green grass with a few buttercups, a big mossy fallen log in the foreground, slim trees and one tall pine around the edge, green and yellow leaves overhead, patches of sunlight on the path, and clear soft blue sky between the treetops.",
+    "mustShow": ["the cut and torn paper edges and the painted paper textures, visible up close", "big, simple layered shapes: the trees, the log and the grass as calm masses", "sunlight shown as paler paper patches on the path"],
+    "avoid": ["people, animals or characters of any kind"]
+  },
+  "palette": {
+    "paper white": "#FBF6EC",
+    "sky blue": "#9CCBE4",
+    "leaf green": "#6FA34A",
+    "forest green": "#2F6B45",
+    "bark brown": "#8B5A3B",
+    "sand": "#E8D3A6",
+    "autumn yellow": "#F2C94C",
+    "leaf orange": "#E2853A"
+  },
+  "avoid": [
+    "Any text: letters, numbers, signs, labels, logos, watermarks, signatures, musical notes",
+    "Photorealism, 3D renders, glossy plastic or clay looks",
+    "Black outlines, comic halftones, anime styling",
+    "Pure black shadows, horror lighting, menacing silhouettes",
+    "Sharp teeth, claws on display, angry or scary faces",
+    "Extra or missing fingers, limbs, ears or tails; melted or merged shapes",
+    "Real brands, real people, existing characters",
+    "Copying the look of a named illustrator, an existing book or a studio"
+  ]
+}

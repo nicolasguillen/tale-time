@@ -1,0 +1,24 @@
+{
+  "id": "tiny",
+  "version": 1,
+  "ageBand": "3-5",
+  "language": "en",
+  "title": "Tiny",
+  "cover": "cover",
+  "start": "p1",
+  "nodes": {
+    "p1": { "text": "Pip woke up.", "image": "p1", "next": "f1" },
+    "f1": {
+      "text": "Pip saw two doors.",
+      "image": "f1",
+      "question": "The red door or the blue door?",
+      "options": [
+        { "label": "Red door", "image": "f1-a", "target": "e1" },
+        { "label": "Blue door", "image": "f1-b", "target": "p2" }
+      ]
+    },
+    "p2": { "text": "Behind the blue door was a garden.", "image": "p2", "next": "e2" },
+    "e1": { "text": "Cake!", "image": "e1", "ending": { "kind": "silly", "title": "Cake" } },
+    "e2": { "text": "Flowers!", "image": "e2", "ending": { "kind": "happy", "title": "Flowers" } }
+  }
+}

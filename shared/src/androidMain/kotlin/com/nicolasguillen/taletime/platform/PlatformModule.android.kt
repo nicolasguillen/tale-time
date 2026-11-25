@@ -1,0 +1,68 @@
+package com.nicolasguillen.taletime.platform
+
+import android.content.Context
+import android.content.pm.ApplicationInfo
+import android.os.Build
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.room3.Room
+import com.nicolasguillen.taletime.data.local.DATABASE_FILE_NAME
+import com.nicolasguillen.taletime.data.local.SETTINGS_FILE_NAME
+import com.nicolasguillen.taletime.data.local.TaleTimeDatabase
+import com.nicolasguillen.taletime.data.local.buildTaleTimeDatabase
+import com.nicolasguillen.taletime.data.local.createPreferencesDataStore
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.plugins.HttpTimeout
+import okio.Path.Companion.toOkioPath
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
+import java.util.Locale
+
+actual val platformModule =
+    module {
+        single<DataStore<Preferences>> {
+            createPreferencesDataStore(androidContext().filesDir.resolve(SETTINGS_FILE_NAME).absolutePath)
+        }
+        single<TaleTimeDatabase> {
+            val context = androidContext()
+            Room
+                .databaseBuilder<TaleTimeDatabase>(context, context.getDatabasePath(DATABASE_FILE_NAME).absolutePath)
+                .buildTaleTimeDatabase()
+        }
+        // In filesDir, not cacheDir, which the system may empty. androidApp's backup rules leave it out of backups.
+        single { LibraryDirectory(androidContext().filesDir.resolve("library").toOkioPath()) }
+        single {
+            HttpClient(OkHttp) {
+                install(HttpTimeout) {
+                    connectTimeoutMillis = 10_000
+                    socketTimeoutMillis = 20_000
+                }
+            }
+        }
+        // A new one for each screen that reads aloud: it releases its own.
+        factory<NarrationPlayer> { AndroidNarrationPlayer(androidContext()) }
+        single {
+            val context = androidContext()
+            BuildInfo(
+                debug = context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0,
+                version = appVersion(context),
+            )
+        }
+    }
+
+/** The device's language, from Android's system settings. */
+actual fun deviceLanguage(): String = Locale.getDefault().toLanguageTag()
+
+/** "1.0 (6)": versionName and versionCode. */
+private fun appVersion(context: Context): String {
+    val info = context.packageManager.getPackageInfo(context.packageName, 0)
+    val code =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            info.longVersionCode
+        } else {
+            @Suppress("DEPRECATION")
+            info.versionCode.toLong()
+        }
+    return "${info.versionName} ($code)"
+}

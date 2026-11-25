@@ -1,0 +1,75 @@
+{
+  "story": "fox-and-the-lantern",
+  "start": "p01-meadow",
+  "note": "Branch and bottleneck: the paths split at p03, merge at p06-brook, split again, merge at p09-willow, and only split for good at the last two forks. Time moves from sunset to moonrise, so the light gets cooler page by page.",
+  "nodes": {
+    "p01-meadow": { "beat": "In the tall grass of Grandma's garden, Mia finds an old lantern that's warm like a sleepy cat. Grandma waves from the porch.", "next": "p02-glim", "visual": { "time": "sunset", "present": ["mia", "lantern", "grandma (far, on the porch)"] } },
+    "p02-glim": { "beat": "Inside the lantern is a sleepy baby star who fell from the sky. Mia names it Glim.", "next": "p03-tuck", "visual": { "time": "sunset", "present": ["mia", "lantern", "glim (sleepy)"] } },
+    "p03-tuck": {
+      "beat": "Tuck the fox pops out of the hedge: at moonrise the fireflies of Willow Pond fly to the sky, and Glim can ride home with them. He knows a shortcut.",
+      "question": "Tuck's shortcut through the hedge, or Grandma's garden path?",
+      "options": [
+        { "label": "Tuck's shortcut", "target": "p04a-hedge", "why": "Trust a friend's adventurous idea." },
+        { "label": "The garden path", "target": "p04b-garden", "why": "The pretty, known way." }
+      ],
+      "visual": { "time": "end of sunset", "present": ["mia", "tuck", "lantern", "glim"] }
+    },
+    "p04a-hedge": { "beat": "The leafy tunnel goes left, right, round and round. 'Almost there!' says Tuck, again and again.", "next": "p05a-moths", "visual": { "time": "twilight", "present": ["mia (crawling)", "tuck", "lantern", "glim"] } },
+    "p05a-moths": { "beat": "By the sunflowers, moths swirl around Glim's light like summer snow and lead the way to the brook, then fly off to bed.", "next": "p06-brook", "visual": { "time": "twilight", "present": ["mia", "tuck", "lantern", "glim (flickering, giggling)", "moths"] } },
+    "p04b-garden": { "beat": "Grandma's path winds past pumpkins that shine like little suns in Glim's light. Tuck grumbles that his shortcut is faster.", "next": "p05b-bramble", "visual": { "time": "twilight", "present": ["mia", "tuck", "lantern", "glim"] } },
+    "p05b-bramble": { "beat": "Bramble the hedgehog has an apple stuck on her prickles. Mia rolls it off with a cabbage leaf. Bramble points to the brook and trots off.", "next": "p06-brook", "visual": { "time": "twilight", "present": ["mia", "tuck", "lantern", "glim", "bramble"] } },
+    "p06-brook": {
+      "beat": "MERGE. The ankle-deep brook. The sky behind the willow turns silver: the moon is coming. Glim is getting dimmer.",
+      "question": "Hop across the stepping stones, or walk to the little bridge?",
+      "options": [
+        { "label": "Hop the stones", "target": "p07a-stones", "why": "Brave and quick." },
+        { "label": "Walk to the bridge", "target": "p07b-bridge", "why": "Careful." }
+      ],
+      "visual": { "time": "blue twilight, first stars, moon not up yet", "present": ["mia", "tuck", "lantern", "glim (dimmer)"], "mustNot": ["moths", "bramble"] }
+    },
+    "p07a-stones": {
+      "beat": "The third stone wobbles. Tuck, already across, offers to hold it still.",
+      "question": "Take a big jump, or wait for Tuck?",
+      "options": [
+        { "label": "Big jump!", "target": "e1-big-splash", "why": "Bold." },
+        { "label": "Wait for Tuck", "target": "p08a-across", "why": "Trust a friend." }
+      ],
+      "visual": { "time": "blue twilight", "present": ["mia (on the second stone)", "tuck (far bank)", "lantern", "glim"] }
+    },
+    "p08a-across": { "beat": "Tuck holds the stone, Mia lands safe and dry. 'My shortcuts always work... sometimes.'", "next": "p09-willow", "visual": { "time": "blue twilight", "present": ["mia (dry)", "tuck", "lantern", "glim (bouncing)"] } },
+    "p07b-bridge": { "beat": "Gertie the goose is asleep in the middle of the bridge, and she's grumpy when woken. Glim's light wakes her gently.", "next": "p08b-goose", "visual": { "time": "blue twilight", "present": ["mia", "tuck", "lantern", "glim", "gertie (asleep, one eye opening)"] } },
+    "p08b-goose": { "beat": "Mia asks politely. Gertie softens at the sight of the star, bows, and lets them pass.", "next": "p09-willow", "visual": { "time": "blue twilight", "present": ["mia", "tuck", "lantern", "glim", "gertie"] } },
+    "p09-willow": {
+      "beat": "MERGE. Willow Pond wakes up: frogs, rising fireflies, the moon peeking over the hill. But Glim is too dim to fly.",
+      "question": "Ask the pond friends for help, or sing Glim the star song?",
+      "options": [
+        { "label": "Ask for help", "target": "p10a-friends", "why": "Asking for help is a strength." },
+        { "label": "Sing the star song", "target": "p10b-song", "why": "Do it yourself, with your refrain." }
+      ],
+      "visual": { "time": "night, moonrise", "present": ["mia (dry boots)", "tuck", "lantern", "glim (very dim)", "frogs", "fireflies"], "mustNot": ["gertie", "wet clothes"] }
+    },
+    "p10a-friends": {
+      "beat": "Frogs drum, fireflies swirl, Tuck howls a tiny 'Aroo!', and Glim glows brighter and brighter. The fireflies line up in a parade.",
+      "question": "Lead the parade, or wave goodbye from the shore?",
+      "options": [
+        { "label": "Lead the parade", "target": "e2-sky-parade", "why": "Brave and generous: the best ending." },
+        { "label": "Wave from the shore", "target": "e3-goodnight-glim", "why": "A quiet goodbye." }
+      ],
+      "visual": { "time": "night, moon up", "present": ["mia", "tuck (howling)", "lantern", "glim (blazing)", "frogs", "fireflies"] }
+    },
+    "p10b-song": {
+      "beat": "Mia sings the refrain. Glim warms. The biggest frog asks if they can sing too.",
+      "question": "Sing it loud with the frogs, or hum it soft and slow?",
+      "options": [
+        { "label": "Loud with the frogs", "target": "e4-frog-chorus", "why": "Silly and joyful." },
+        { "label": "Soft and slow", "target": "e5-windowsill", "why": "Gentle and sleepy." }
+      ],
+      "visual": { "time": "night, moon up", "present": ["mia (sitting on a mossy stone)", "tuck", "lantern", "glim (warmer)", "frogs"] }
+    },
+    "e1-big-splash": { "beat": "SPLASH! Mia sits in the ankle-deep brook. The sparkly splash makes the fireflies think the parade has begun, and they carry Glim to the sky. Squelchy boots, warm towel.", "ending": { "kind": "silly", "title": "The Big Splash" }, "visual": { "time": "night, moon rising", "present": ["mia (sitting in the brook, laughing)", "tuck", "lantern (door open)", "glim (rising)", "fireflies"] } },
+    "e2-sky-parade": { "beat": "Mia leads the parade around the pond and up the garden. At the porch, with Grandma, she opens the little door and Glim twinkles into its place in the sky. It winks at her window every night.", "ending": { "kind": "best", "title": "The Sky Parade" }, "visual": { "time": "night", "present": ["mia", "grandma (with a blanket)", "tuck", "frogs", "fireflies", "lantern (door open)", "glim (rising)"] } },
+    "e3-goodnight-glim": { "beat": "By the water, Mia opens the door. Glim kisses her nose and flies up with the fireflies. Grandma's porch light blinks: time for bed.", "ending": { "kind": "happy", "title": "Goodnight, Glim" }, "visual": { "time": "night", "present": ["mia", "tuck", "lantern (door open)", "glim (rising)", "fireflies"] } },
+    "e4-frog-chorus": { "beat": "The loudest, silliest frog song. Glim giggles so hard that it pops up to the sky like popcorn. Mia croaks all the way home; Grandma croaks back.", "ending": { "kind": "silly", "title": "The Croakiest Song" }, "visual": { "time": "night", "present": ["mia (singing loud)", "frogs (singing loud)", "tuck (rolling in the reeds)", "lantern (door open)", "glim (shooting up)"] } },
+    "e5-windowsill": { "beat": "Glim falls asleep to the soft song. The fireflies go without it, but the moon seems to say 'tomorrow night'. Glim spends one more night glowing on Mia's windowsill.", "ending": { "kind": "cozy", "title": "One More Night" }, "visual": { "time": "night, indoors", "present": ["mia (asleep in bed)", "grandma (at the door)", "lantern (on the windowsill)", "glim (asleep, glowing softly)"] } }
+  }
+}

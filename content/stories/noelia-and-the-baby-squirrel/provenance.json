@@ -1,0 +1,127 @@
+{
+  "steps": [
+    {
+      "step": "bible",
+      "prompt": "bible@4",
+      "craft": [
+        "values@1",
+        "structures@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-23",
+      "notes": "From the user's idea: Noelia finds a baby squirrel in the forest and helps her get back to her family (read 'unicorn' in the request as the squirrel). Patience, rule-of-three, growth arc; ages 4-7, English."
+    },
+    {
+      "step": "bible",
+      "prompt": "bible@4",
+      "via": "user",
+      "date": "2026-11-24",
+      "notes": "The user respelled Abuelo's pronounce the Spanish way (ah-BWEH-loh), by hand. The rule went into bible.md (bible@5). Bible approved."
+    },
+    {
+      "step": "outline",
+      "prompt": "outline@2",
+      "craft": [
+        "values@1",
+        "structures@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "Branch and bottleneck, rule of three: merges at p06-path and p09-clearing (the low point); 20 nodes, 4 endings, 16 play-throughs of 12 pages."
+    },
+    {
+      "step": "text",
+      "prompt": "text@2",
+      "craft": [
+        "values@1",
+        "structures@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "English, written in one go from the approved outline: 1,346 words, 54-76 per page."
+    },
+    {
+      "step": "edit",
+      "prompt": "edit@2",
+      "craft": [
+        "values@1",
+        "structures@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "Merge checks at p06-path and p09-clearing; hands-behind-the-back on p02, drey explained in e3, repeats trimmed; outline beats synced; five safety judgment calls in review.md; added the new-word rule to text.md (text@3). 1,352 words."
+    },
+    {
+      "step": "shots",
+      "prompt": "shots@2",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "31 story images (cover, 20 pages, 10 cards) and 4 reference sheets requested in the story's own REQUESTED_ASSETS.md; 6 pictures made by editing an earlier one, 7 crowded ones in layers. No images generated."
+    },
+    {
+      "step": "bible",
+      "prompt": "bible@5",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "Revision: the user asked for Noelia to have lighter skin. Her look now says 'fair skin with a warm peach tone' (was 'light olive-tan'). Abuelo unchanged. Before any image was delivered."
+    },
+    {
+      "step": "style",
+      "prompt": "bible@6",
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "The user decided every story has its own art style and characters. Proposed this story's own style: cut-paper collage (style/style.json), with its own style anchor (a sunny clearing in the autumn wood). Sheets go in characters/."
+    },
+    {
+      "step": "translate",
+      "prompt": "translate@1",
+      "craft": [
+        "values@1",
+        "ages@1"
+      ],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "language": "es",
+      "notes": "The user asked for every story in Latin American Spanish too. Translated into es (draft): story.json texts, the bible's title, translations/es.json (Tock → Toc, chitter-chitter → chiqui-chiqui; refrains, moods). Native read-through pending."
+    },
+    {
+      "step": "narration",
+      "language": "es",
+      "via": "elevenlabs",
+      "model": "eleven_v4",
+      "voice": "zl7szWVBXnpgrJmAalgz (Lily - Spanish Storyteller, ElevenLabs voice library)",
+      "date": "2026-11-24",
+      "clips": [
+        "title",
+        "p01-gate",
+        "p02-pipa",
+        "p03-clues",
+        "p03-clues-q",
+        "p03-clues-a",
+        "p03-clues-b"
+      ],
+      "notes": "The user asked for text-to-speech through the ElevenLabs connector, in Latin American Spanish, up to and including the first choice, with this voice. Each script sent exactly as in story/es.json, with a [warmly] tag (plus [curious] on the question). Two takes per clip; take 1 delivered. Delivered as WAV mono 24-bit 44.1 kHz from the 128 kbps MP3: silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter (true peak <= -1 dBTP). Recorded on a draft translation and a proposed narrator: redo any clip whose text changes in the native read-through. ElevenLabs flow s82cJP1vJ5FPA3ziPCBJ. Commercial-use terms of the account's plan still to be filed with the clips."
+    },
+    {
+      "step": "shots",
+      "prompt": "shots@2",
+      "craft": [],
+      "model": "claude-opus-5-5",
+      "via": "claude-code",
+      "date": "2026-11-24",
+      "notes": "Revision: the user asked to drop the rule that Abuelo is in every picture. Removed him from p04a, p05a, p04b, p05b and p07a (side-branch pages whose text doesn't mention him); p08a now has him walk into view; kept in p08b because it's an edit of p07b, where he is. World rule in bible.json reworded to match. Text unchanged."
+    }
+  ]
+}

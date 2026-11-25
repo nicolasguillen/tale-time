@@ -1,0 +1,117 @@
+{
+  "id": "fox-and-the-lantern",
+  "title": { "en": "The Fox and the Lantern", "es": "El zorro y el farolito" },
+  "pitch": "On a summer evening in Grandma's big garden, Mia finds a baby star asleep in an old lantern. With her fox friend Tuck, she carries it down to Willow Pond, where the fireflies fly up to the sky at moonrise: the star's ride home.",
+  "ageBand": "4-7",
+  "theme": "Helping someone find their way home, and that asking friends for help is a strength.",
+  "craft": {
+    "value": "kindness",
+    "alsoValues": ["asking-for-help", "friendship"],
+    "structure": "quest",
+    "arc": "impact",
+    "payoff": "Warm and proud: Mia helped a little star get home, and her friends helped her do it."
+  },
+  "tone": ["gentle", "funny"],
+  "cast": [
+    {
+      "id": "mia",
+      "name": "Mia",
+      "pronounce": "MEE-ah",
+      "role": "hero",
+      "age": "6",
+      "personality": "Curious, cheerful, a little impatient, and kind. Loves to sing. Brave in small, real ways.",
+      "refrain": "Little light, little light, show me the way tonight!",
+      "look": "A 6-year-old girl with warm brown skin, a round face, big dark eyes and curly black hair in two round puffs tied with yellow ribbons. A bright yellow raincoat with big round wooden buttons, worn open over a blue-and-white striped T-shirt and navy shorts. Red rubber boots.",
+      "sheet": true,
+      "expressions": ["delighted", "surprised", "thinking hard"]
+    },
+    {
+      "id": "tuck",
+      "name": "Tuck",
+      "pronounce": "TUCK, as in \"tuck in\"",
+      "role": "friend",
+      "personality": "A cheerful show-off with a big heart. Always sure he knows a shortcut; his shortcuts are never short (the running joke).",
+      "refrain": "I know a shortcut! ... Almost there!",
+      "look": "A small young red fox, as tall as Mia's knee on four legs. Orange-red fur, cream-white chest, cheeks and muzzle, black 'socks' on his legs, a big bushy tail with a white tip, bright amber eyes and a friendly grin (no visible teeth). Always wears a knitted green scarf that's a bit too long, one end flapping.",
+      "sheet": true,
+      "expressions": ["proud grin", "whispering", "laughing"]
+    },
+    {
+      "id": "glim",
+      "name": "Glim",
+      "pronounce": "GLIM, rhymes with \"him\"",
+      "role": "the one who needs help",
+      "personality": "A baby star who can't talk: it hums (hmm-mmm) and twinkles. Its glow shows how it feels.",
+      "look": "A baby star the size of a plum, with five short, soft, rounded points (like a cookie cutter star, not spiky). Pale gold, glowing warmly from inside with a soft halo. Two small dot eyes, a tiny smile, rosy-peach glow on its cheeks. Bright gold when happy, dim and peach-colored when sleepy, flickering when it giggles.",
+      "sheet": true,
+      "expressions": ["sleepy and dim", "giggling and flickering", "glowing bright and happy"]
+    },
+    {
+      "id": "grandma",
+      "name": "Grandma",
+      "role": "the safe home",
+      "personality": "Calm, warm, playful. Never worried, never cross.",
+      "look": "Mia's grandmother: tall and slim, warm brown skin, short silver-gray curly hair, round red glasses, a long purple knitted cardigan over a green dress, soft slippers.",
+      "sheet": true,
+      "expressions": ["warm smile", "laughing", "waving"]
+    },
+    {
+      "id": "bramble",
+      "name": "Bramble",
+      "pronounce": "BRAM-bul",
+      "role": "met on the garden path",
+      "personality": "Flustered, polite, very fond of apples.",
+      "look": "A small round hedgehog: brown spines with cream tips, a pale cream face, a black button nose, tiny pink feet.",
+      "sheet": false
+    },
+    {
+      "id": "gertie",
+      "name": "Gertie",
+      "pronounce": "GUR-tee, with a hard G as in \"girl\"",
+      "role": "met on the bridge",
+      "personality": "Grumpy when woken, soft-hearted underneath.",
+      "look": "A big, fluffy, round white goose with an orange beak and orange feet, droopy sleepy eyelids and two grumpy feather-tuft eyebrows that soften when she smiles.",
+      "sheet": false
+    }
+  ],
+  "extras": [
+    { "id": "moths", "name": "The moths", "look": "Soft, fuzzy, pale cream moths with rounded wings and feathery antennae, like little snowflakes. Cute and simple, not insect-detailed." },
+    { "id": "frogs", "name": "The frogs", "look": "A chorus of small, round green frogs with pale yellow bellies, sitting on lily pads. The biggest one, the leader, has a puffy throat that balloons when he sings." },
+    { "id": "fireflies", "name": "The fireflies", "look": "Mostly seen as warm golden-green dots of light with soft glows. Up close: tiny round bodies with little wings, cute, not buggy." }
+  ],
+  "props": [
+    { "id": "lantern", "name": "The lantern", "look": "A small old brass lantern the size of a teapot: a round glass belly, a domed top with a ring handle, a tiny hinged glass door at the front with a round knob, and a small dent on its left side. A little tarnished, greenish in the corners.", "sheet": true, "views": ["front, side and back, door closed, with a plain warm glow inside (no Glim)", "three-quarter view with the little door open", "held by its ring handle in a child's hand, to show the size"] }
+  ],
+  "places": [
+    { "id": "cottage", "look": "Grandma's small white cottage at the top of the gently sloping garden: a blue door and a porch with a warm yellow lamp. Seen from the garden, it's small and far, always lit." },
+    { "id": "meadow", "look": "The wild middle of the garden: tall, whispery grass with clover and dandelion clocks. Mia's red ball is lost here." },
+    { "id": "hedge", "look": "A tall, thick green hedge along one side of the garden, with a low leafy tunnel through it. Grandma's tall sunflowers grow where the tunnel comes out." },
+    { "id": "garden-path", "look": "Grandma's swept path of pale flagstones, winding down past bean poles, fat orange pumpkins, a strawberry bed and big cabbages." },
+    { "id": "brook", "look": "A clear, shallow, ankle-deep brook across the bottom of the garden, pebbles visible, ferns on the banks. Three round, flat stepping stones cross it. Further along, a small arched wooden footbridge with a rope rail." },
+    { "id": "willow-pond", "look": "A round pond just past the brook, still in Grandma's garden, under a huge weeping willow. Lily pads, reeds and cattails. A low hill behind it, where the moon rises." }
+  ],
+  "worldRules": [
+    "At dusk, the garden animals talk to Mia. Grown-ups don't hear them.",
+    "Glim can't talk. It hums, and its glow shows how it feels.",
+    "A star that falls can ride home with the fireflies of Willow Pond when the moon comes up.",
+    "Everything happens inside Grandma's garden. Grandma's porch light can always be seen.",
+    "The brook is only ankle-deep."
+  ],
+  "never": [
+    "Mia never leaves the garden, gets lost, or is alone without Tuck after page 3.",
+    "Nobody gets hurt. The dark is never scary.",
+    "No sharp teeth, no scary faces, no deep water.",
+    "Grandma is never worried or cross.",
+    "Glim is never trapped: it curled up in the lantern to stay warm, and the little door is never locked."
+  ],
+  "palette": {
+    "sunset peach": "#F2B880",
+    "dusk teal": "#1F4E5A",
+    "raincoat yellow": "#F2C230",
+    "boot red": "#D9493B",
+    "fox orange": "#E07A3A",
+    "scarf green": "#4F8A5B",
+    "pumpkin orange": "#E8893A",
+    "goose white": "#F7F4EC"
+  }
+}
