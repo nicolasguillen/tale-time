@@ -1,5 +1,6 @@
 package com.nicolasguillen.taletime.designsystem
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -19,6 +20,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -177,6 +180,52 @@ fun PillButton(
     ) {
         if (icon != null) Icon(icon, contentDescription = null, tint = content, modifier = Modifier.size(24.dp))
         Text(text, style = Tale.type.label, color = content, textAlign = TextAlign.Center)
+    }
+}
+
+/** One tab of [PillTabs]: a word and a picture, so a child who can't read it yet still knows it. */
+data class PillTab(
+    val label: String,
+    val icon: ImageVector,
+)
+
+/** Big tabs side by side in a pill, the [selected] one filled in (-1: none yet). */
+@Composable
+fun PillTabs(
+    tabs: List<PillTab>,
+    selected: Int,
+    onSelect: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val shape = RoundedCornerShape(50)
+    Row(
+        modifier
+            .clip(shape)
+            .background(TaleColors.Cream)
+            .border(2.dp, TaleColors.Line, shape)
+            .padding(5.dp)
+            .selectableGroup(),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        tabs.forEachIndexed { index, tab ->
+            val picked = index == selected
+            val container by animateColorAsState(if (picked) TaleColors.NightBlue else TaleColors.Cream, label = "tab")
+            val content by animateColorAsState(if (picked) TaleColors.Cream else TaleColors.Ink, label = "tab")
+            Row(
+                Modifier
+                    .weight(1f)
+                    .heightIn(min = 52.dp)
+                    .clip(shape)
+                    .background(container)
+                    .selectable(selected = picked, role = Role.Tab, onClick = { onSelect(index) })
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+            ) {
+                Icon(tab.icon, contentDescription = null, tint = content, modifier = Modifier.size(24.dp))
+                Text(tab.label, style = Tale.type.label, color = content, maxLines = 1)
+            }
+        }
     }
 }
 

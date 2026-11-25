@@ -125,6 +125,36 @@ object TaleIcons {
         }
     }
 
+    /** My Books: an open book. */
+    val Books: ImageVector by lazy {
+        stroke("books") {
+            moveTo(12f, 6.5f)
+            lineTo(12f, 19.5f)
+            moveTo(12f, 6.5f)
+            curveTo(9.5f, 5f, 6.5f, 4.6f, 3.5f, 5f)
+            lineTo(3.5f, 17.5f)
+            curveTo(6.5f, 17.1f, 9.5f, 17.8f, 12f, 19.5f)
+            curveTo(14.5f, 17.8f, 17.5f, 17.1f, 20.5f, 17.5f)
+            lineTo(20.5f, 5f)
+            curveTo(17.5f, 4.6f, 14.5f, 5f, 12f, 6.5f)
+        }
+    }
+
+    /** The Store: a shopping bag. */
+    val Store: ImageVector by lazy {
+        stroke("store") {
+            moveTo(5.5f, 8.5f)
+            lineTo(18.5f, 8.5f)
+            lineTo(19.5f, 20.5f)
+            lineTo(4.5f, 20.5f)
+            close()
+            moveTo(9f, 11f)
+            lineTo(9f, 7f)
+            arcToRelative(3f, 3f, 0f, isMoreThanHalf = false, isPositiveArc = true, 6f, 0f)
+            lineTo(15f, 11f)
+        }
+    }
+
     val Play: ImageVector by lazy {
         fill("play") {
             moveTo(8f, 4.5f)

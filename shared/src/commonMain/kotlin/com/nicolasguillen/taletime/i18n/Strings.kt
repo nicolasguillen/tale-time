@@ -12,6 +12,11 @@ import com.nicolasguillen.taletime.domain.Language
  */
 data class Strings(
     // Shelf and covers
+    val myBooks: String,
+    val store: String,
+    val noBooksYet: String,
+    val everyBookIsYours: String,
+    val free: String,
     val locked: String,
     val ages: (band: String) -> String,
     val read: String,
@@ -89,6 +94,11 @@ private val spanishNumber = numberWords("tres", "cuatro", "cinco", "seis", "siet
 
 val EnglishStrings =
     Strings(
+        myBooks = "My Books",
+        store = "Store",
+        noBooksYet = "No books here yet. Pick one in the Store!",
+        everyBookIsYours = "You have every book!",
+        free = "Free",
         locked = "Locked",
         ages = { band -> "Ages ${band.replace("-", "–")}" },
         read = "Read",
@@ -159,6 +169,11 @@ val EnglishStrings =
 /** Latin American Spanish: tú, and words that read the same from Mexico to Argentina (tools/prompts/translate.md). */
 val SpanishStrings =
     Strings(
+        myBooks = "Mis libros",
+        store = "Tienda",
+        noBooksYet = "Todavía no hay libros aquí. ¡Elige uno en la tienda!",
+        everyBookIsYours = "¡Ya tienes todos los libros!",
+        free = "Gratis",
         locked = "Bloqueado",
         ages = { band -> "De ${band.replace("-", " a ")} años" },
         read = "Leer",

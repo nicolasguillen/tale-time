@@ -23,4 +23,15 @@ object TaleColors {
 
     /** Dims the page behind the parental gate and dialogs. */
     val Scrim = Color(0x99231A14)
+
+    /** The bookshelf's wood: the top of a shelf, its front edge (lit to shaded), and the shadow it casts below. */
+    val ShelfTop = Color(0xFFDDB17F)
+    val ShelfFront = Color(0xFFB98052)
+    val ShelfFrontShade = Color(0xFF9A643E)
+    val ShelfShadow = Color(0x333A2C24)
+
+    /** A book's spine: the shade at its edges, the light on its rounded middle, and the hinge's groove by the cover. */
+    val SpineShade = Color(0x803A2C24)
+    val SpineSheen = Color(0x1AFFFFFF)
+    val SpineGroove = Color(0x993A2C24)
 }
