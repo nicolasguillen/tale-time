@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <!-- Static placeholder for a story cover (3:4). The bottom quarter is where the app draws the title. -->
+  <rect width="1200" height="1600" fill="#F3EAD8"/>
+  <rect x="0" y="1200" width="1200" height="400" fill="#EADFC8"/>
+  <circle cx="680" cy="560" r="70" fill="#E5D4B0"/>
+  <path d="M340 860 L520 640 L640 760 L740 680 L900 860 Z" fill="#D8C7A4"/>
+  <text x="600" y="980" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="52" fill="#B5A27E">cover · 3:4</text>
+  <text x="600" y="1410" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="36" fill="#C4B28E">(title area)</text>
+</svg>

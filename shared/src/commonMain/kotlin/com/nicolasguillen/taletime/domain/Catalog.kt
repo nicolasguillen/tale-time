@@ -25,7 +25,7 @@ data class LanguageOffer(
 )
 
 /**
- * One book on the shelf, from the published catalog (`stories/catalog.json`, schema/published-catalog.schema.json),
+ * One book on the shelf, from the published catalog (`stories/<channel>/catalog.json`, schema/published-catalog.schema.json),
  * in shelf order.
  *
  * @property product the store's one-time purchase that unlocks a [Access.PAID] story, the same id on the App Store

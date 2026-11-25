@@ -2,26 +2,27 @@
 
 The app shows every story on the shelf, and downloads one when a reader opens it, in the language they pick: its
 text, its pictures and that language's narration. It keeps the story on the device to read offline, and at every
-launch it checks whether the story changed. Everything it downloads is built here from content/, in a folder laid out
-like the content host:
+launch it checks whether the story changed. Everything it downloads is built here from content/, one folder per
+channel, laid out like the content host (stories/<channel>/ in the bucket):
 
-    stories/catalog.json                the shelf: each story's title in every language, its cover, its languages (with
-                                        their download size and whether they're narrated) and its current manifest
-    stories/<id>/manifest-<hash>.json   every file of the story: its pictures, and per language its text, its clips and
-                                        when each word of a narrated page is said (its timings)
-    stories/<id>/<name>-<hash>.<ext>    the files themselves, named after their contents
+    catalog.json                the shelf: each story's title in every language, its cover, its languages (with their
+                                download size and whether they're narrated) and its current manifest
+    <id>/manifest-<hash>.json   every file of the story: its pictures, and per language its text, its clips and when
+                                each word of a narrated page is said (its timings)
+    <id>/<name>-<hash>.<ext>    the files themselves, named after their contents
 
 A changed picture, clip or text gets a new name, so the manifest listing it changes too, and so does the manifest's name
 in the catalog. That's how the app sees that a story changed: it compares that name with the one it has, then downloads
 only the files it doesn't have yet. Nothing on the host is ever overwritten, so every file but the catalog can be
 cached forever.
 
-Two channels, each in content/.build/<channel>/:
-- dev: content/ as it is, for debug builds (`story serve`): draft translations, and whatever pictures and clips are
-  delivered so far. A missing picture shows the app's placeholder, and a page without its clip reads without narration.
-- release: what `story publish` uploads. Only the stories that pass `story check --strict` (every picture delivered),
-  in their first language and each translation a native speaker approved. A language's narration ships once every one
-  of its clips is delivered; until then that language reads without narration.
+Two channels, each in content/.build/stories/<channel>/ and uploaded by `story publish <channel>` to
+stories/<channel>/ on the host:
+- draft: content/ as it is, for debug builds: draft translations, and whatever pictures and clips are delivered so far.
+  A missing picture shows the app's placeholder, and a page without its clip reads without narration.
+- production: for release builds. Only the stories that pass `story check --strict` (every picture delivered), in
+  their first language and each translation a native speaker approved. A language's narration ships once every one of
+  its clips is delivered; until then that language reads without narration.
 
 Packaging only converts: pictures to WebP, scaled down to at most the sizes below, and clips to mono AAC with their
 loudness evened out. It never makes or changes a picture or a sound. It also listens to each page's clip for when its
@@ -43,8 +44,8 @@ from .repo import CATALOG, CONTENT, find_audio, find_image, load_json, load_stor
 
 FORMAT = 1  # the catalog's and the manifest's format; the app ignores what it doesn't know
 BUILD = CONTENT / ".build"
-CHANNELS = ("dev", "release")
-CATALOG_PATH = "stories/catalog.json"
+CHANNELS = ("draft", "production")
+CATALOG_FILE = "catalog.json"  # in the channel's folder
 
 # The largest size of each kind of picture, in pixels. A picture is scaled down to fit, never up.
 COVER_BOX = (900, 1200)  # 3:4, sharp on the shelf and on a tablet's cover screen
@@ -144,11 +145,11 @@ class Result:
     channel: str
     root: Path  # the folder laid out like the host
     stories: list[Packaged] = field(default_factory=list)
-    skipped: dict[str, list[str]] = field(default_factory=dict)  # release only: story id -> why it isn't published
+    skipped: dict[str, list[str]] = field(default_factory=dict)  # production only: story id -> why it isn't published
 
     @property
     def catalog(self) -> Path:
-        return self.root / CATALOG_PATH
+        return self.root / CATALOG_FILE
 
 
 class Packager:
@@ -158,18 +159,18 @@ class Packager:
             raise ValueError(f"unknown channel '{channel}'")
         self.channel = channel
         self.content = content
-        self.root = out or BUILD / channel
+        self.root = out or BUILD / host_folder(channel)
         self.cache = cache or BUILD / "cache"
         self.encoder = encoder or Encoder()
         self.check = check
 
-    def build(self, clean: bool = True) -> Result:
+    def build(self) -> Result:
         """Packages every story on the shelf (content/catalog.json) and writes the catalog last, so it never names a
-        file that isn't there yet. `clean` empties the folder first; `story serve` rebuilds without it, so a file being
-        downloaded is never deleted under it."""
-        if clean and self.root.exists():
+        file that isn't there yet. The folder is emptied first, so it holds this package and nothing else (`story
+        publish draft` deletes from the host what isn't in it)."""
+        if self.root.exists():
             shutil.rmtree(self.root)
-        (self.root / "stories").mkdir(parents=True, exist_ok=True)
+        self.root.mkdir(parents=True, exist_ok=True)
         result = Result(self.channel, self.root)
         shelf = load_json(self.content / CATALOG.relative_to(CONTENT))
         entries = []
@@ -189,7 +190,7 @@ class Packager:
         """Why a story can't go out on this channel, or nothing."""
         if load_story(folder) is None:
             return ["it has no text yet (story/<lang>.json)"]
-        if self.channel == "dev":
+        if self.channel == "draft":
             return []
         errors = [str(i) for i in self.check(folder, strict=True) if i.level == ERROR and i.code != "image-missing"]
         first = next(iter(load_story(folder).values()))
@@ -200,11 +201,11 @@ class Packager:
         return errors
 
     def languages(self, folder: Path) -> list[str]:
-        """The story's languages on this channel, its first language first: every one on dev, and on release the
-        first and each translation approved by a native speaker."""
+        """The story's languages on this channel, its first language first: every one on draft, and on production
+        the first and each translation approved by a native speaker."""
         story = load_story(folder)
         langs = list(story)
-        if self.channel == "dev":
+        if self.channel == "draft":
             return langs
         approved = []
         for lang in langs[1:]:
@@ -218,7 +219,7 @@ class Packager:
         story = load_story(folder)
         langs = self.languages(folder)
         first = story[langs[0]]
-        out = self.root / "stories" / sid
+        out = self.root / sid
         out.mkdir(parents=True, exist_ok=True)
         files: dict[str, dict] = {}
 
@@ -245,7 +246,7 @@ class Packager:
             text_name = self._place(out, files, f"story-{lang}", ".json", text)
             delivered = {c: find_audio(folder / "audio" / lang, c) for c in clips}
             delivered = {c: path for c, path in delivered.items() if path is not None}
-            if self.channel == "release" and len(delivered) < len(clips):
+            if self.channel == "production" and len(delivered) < len(clips):
                 delivered = {}  # all of a language's clips, or none: it reads without narration until then
             audio = {clip: self._converted(out, files, f"{lang}-{clip}", ".m4a", path, "audio",
                                            lambda dest, s=path: self.encoder.audio(s, dest))
@@ -316,8 +317,13 @@ def _write(path: Path, data: bytes) -> None:
     os.replace(partial, path)
 
 
-def package(channel: str, clean: bool = True, **kw) -> Result:
-    return Packager(channel, **kw).build(clean=clean)
+def host_folder(channel: str) -> str:
+    """The channel's folder on the content host, and in content/.build/."""
+    return f"stories/{channel}"
+
+
+def package(channel: str, **kw) -> Result:
+    return Packager(channel, **kw).build()
 
 
 def describe(result: Result) -> list[str]:

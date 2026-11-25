@@ -49,33 +49,37 @@ import kotlin.time.Duration.Companion.seconds
 import kotlin.time.TimeMark
 import kotlin.time.TimeSource
 
-/** The catalog's path on the content host. */
-const val CATALOG_PATH = "stories/catalog.json"
+/** The catalog's path in a channel's folder. */
+const val CATALOG_PATH = "catalog.json"
 
 /**
- * Where the stories are downloaded from: a path on the content host (`stories/catalog.json`,
- * `stories/<id>/<file>`) → its URL. The files are written by `story package` (tools/storytool/package.py).
+ * Where the stories are downloaded from: a path in one channel's folder on the content host (`catalog.json`,
+ * `<id>/<file>`) → its URL. The files are written by `story package` and uploaded by `story publish <channel>`
+ * (tools/storytool/package.py, publish.py).
  */
 fun interface ContentSource {
     fun url(path: String): String
 
     companion object {
         const val BUCKET = "tale-time-b537d.firebasestorage.app"
-        const val DEV_PORT = 8765
+
+        /** The finished stories, for release builds: `stories/production/`. */
+        val Production = firebase("production")
 
         /**
-         * Firebase Storage, where `story publish` uploads: plain HTTPS, no Firebase SDK. backend/storage.rules lets
-         * anyone read single files under stories/. Paths are `[a-z0-9-./]`, so only the slashes need escaping.
+         * Every story as it is, for debug builds: `stories/draft/`, with draft translations and whatever pictures and
+         * clips are delivered so far.
          */
-        val Firebase =
-            ContentSource { path -> "https://firebasestorage.googleapis.com/v0/b/$BUCKET/o/${path.replace("/", "%2F")}?alt=media" }
+        val Draft = firebase("draft")
 
         /**
-         * `story serve` on the Mac a debug build comes from: the dev channel, with draft translations and whatever
-         * pictures and clips are delivered so far. Android devices reach it through `adb reverse`, the iOS simulator
-         * directly.
+         * A channel's folder on Firebase Storage: plain HTTPS, no Firebase SDK. backend/storage.rules lets anyone read
+         * single files under stories/. Paths are `[a-z0-9-./]`, so only the slashes need escaping.
          */
-        val Mac = ContentSource { path -> "http://localhost:$DEV_PORT/$path" }
+        private fun firebase(channel: String) =
+            ContentSource { path ->
+                "https://firebasestorage.googleapis.com/v0/b/$BUCKET/o/${"stories/$channel/$path".replace("/", "%2F")}?alt=media"
+            }
     }
 }
 
@@ -385,9 +389,9 @@ class HostedStoryLibrary(
         var attempt = 1
         while (true) {
             try {
-                val data = get("stories/$storyId/$name")
+                val data = get("$storyId/$name")
                 if (data.size.toLong() != bytes || data.toByteString().sha256().hex() != sha256.lowercase()) {
-                    throw IllegalStateException("stories/$storyId/$name doesn't match its checksum")
+                    throw IllegalStateException("$storyId/$name doesn't match its checksum")
                 }
                 withContext(io) { write(storiesDir / storyId / name, data) }
                 return

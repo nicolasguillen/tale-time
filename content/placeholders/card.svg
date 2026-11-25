@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 768 768">
+  <!-- Static placeholder for a choice card (1:1). -->
+  <rect width="768" height="768" fill="#FFF6E3"/>
+  <rect x="48" y="48" width="672" height="672" rx="48" fill="none" stroke="#D8C7A4" stroke-width="5" stroke-dasharray="24 18"/>
+  <circle cx="420" cy="300" r="40" fill="#E5D4B0"/>
+  <path d="M250 470 L360 340 L430 410 L480 370 L560 470 Z" fill="#D8C7A4"/>
+  <text x="384" y="560" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="36" fill="#B5A27E">choice card · 1:1</text>
+</svg>

@@ -36,6 +36,7 @@ Image models make every picture from scratch and drift from page to page; there'
 - **Size**: at least the minimum below, ideally the larger size. Packaging crops, resizes and converts to WebP, and strips metadata.
 - **Order**: a story's style anchor, then its reference sheets. Every other picture of a character or prop must match its sheet.
 - **Provenance**: note the tool and model that made each image in the story's `provenance.json`, and keep its terms (commercial use in an app) on file. The store listing says the pictures are made with AI.
+- **Keep**: delivered files aren't in git. Run `cd tools && uv run story originals push` after a delivery to keep the originals in Firebase Storage.
 
 | Kind | Aspect | Minimum | Ideal | Placeholder | Rules |
 |---|---|---|---|---|---|
@@ -48,7 +49,7 @@ Image models make every picture from scratch and drift from page to page; there'
 
 ## App images (proposed, not yet approved)
 
-The app's own pictures, outside any story, in the app's own style (Gouache app icon, proposed, not yet approved, from `content/app/style.json`). Deliver them into `content/app/`. The Android launcher icon is built from the two layers, iOS and the stores use `app-icon`.
+The app's own pictures, outside any story, in the app's own style (Gouache app icon, proposed, not yet approved, from `content/app/style.json`). Deliver them into `content/app/`. The Android launcher icon is built from the two layers, iOS and the stores use `app-icon`. Once they're delivered, `story icons` puts them into both apps.
 
 #### ✅ `app-icon`: App icon
 

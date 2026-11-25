@@ -577,6 +577,8 @@ def render(stories: list[Story] | None = None) -> str:
         "must match its sheet.",
         "- **Provenance**: note the tool and model that made each image in the story's `provenance.json`, and keep "
         "its terms (commercial use in an app) on file. The store listing says the pictures are made with AI.",
+        "- **Keep**: delivered files aren't in git. Run `cd tools && uv run story originals push` after a delivery to "
+        "keep the originals in Firebase Storage.",
         "",
         "| Kind | Aspect | Minimum | Ideal | Placeholder | Rules |",
         "|---|---|---|---|---|---|",
@@ -678,7 +680,7 @@ def _render_app(app: dict, style: Style) -> list[str]:
            "The app's own pictures, outside any story, in the app's own style "
            f"({style.doc['name']}, {style.doc['status']}, from `{_rel(APP_STYLE)}`). Deliver them into "
            f"`{_rel(APP)}/`. The Android launcher icon is built from the two layers, iOS and the stores use "
-           "`app-icon`.", ""]
+           "`app-icon`. Once they're delivered, `story icons` puts them into both apps.", ""]
     for image in app["images"]:
         spec = APP_SPECS[image["kind"]]
         done = find_image(APP, image["id"]) is not None

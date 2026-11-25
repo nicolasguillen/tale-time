@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Published catalog",
-  "description": "stories/catalog.json on the content host: the shelf the app downloads at every launch, written by `story package` from content/catalog.json and the stories. The app ignores fields it doesn't know. See docs/story-format.md, \"Published stories\".",
+  "description": "stories/<channel>/catalog.json on the content host (draft or production): the shelf the app downloads at every launch, written by `story package` from content/catalog.json and the stories. The app ignores fields it doesn't know. See docs/story-format.md, \"Published stories\".",
   "type": "object",
   "additionalProperties": false,
   "required": ["format", "stories"],

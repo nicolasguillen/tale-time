@@ -15,6 +15,9 @@ uv run story check                         # validate the catalog and every stor
 uv run story status                        # which steps are done, what's next
 uv run story paths fox-and-the-lantern     # read every page and choice (add --lang es for the Spanish)
 uv run story assets                        # regenerate the REQUESTED_ASSETS.md and REQUESTED_AUDIO.md files (root, per story, per language)
+uv run story originals pull                # after cloning: download the delivered pictures and narration (kept in Firebase, not in git);
+                                           # `story package` and `story publish` do it for you
+uv run story originals push                # after a delivery: keep the new originals in Firebase Storage
 uv run pytest -q
 ```
 
@@ -24,6 +27,6 @@ uv run pytest -q
 - **Android:** `./gradlew :androidApp:installDebug`, or run `androidApp` from Android Studio.
 - **iOS:** open `iosApp/iosApp.xcodeproj` in Xcode and run. The project is generated from `iosApp/project.yml` with XcodeGen (`cd iosApp && xcodegen generate`).
 - **Tests:** `./gradlew :shared:allTests` (JVM + iOS simulator), or `./gradlew :shared:testAndroidHostTest` for the JVM only. **Lint:** `./gradlew ktlintCheck`.
-- No story ships inside the app: each is downloaded in the language a reader picks, kept for offline reading and updated when the app opens online. `story package` builds the downloads from `content/`, `story serve` serves them to debug builds, `story publish` uploads them (see AGENTS.md, "Distribution").
+- No story ships inside the app: each is downloaded in the language a reader picks, kept for offline reading and updated when the app opens online. `story package` builds the downloads from `content/`, and `story publish draft` / `story publish production` upload them to Firebase Storage for debug and release builds (see AGENTS.md, "Distribution").
 
 Firebase project: `tale-time-b537d` (Storage for story downloads, rules in `backend/`).

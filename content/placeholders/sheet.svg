@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600">
+  <!-- Static placeholder for a character sheet (3:2): front, side, back, then three expressions. -->
+  <rect width="2400" height="1600" fill="#FFF6E3"/>
+  <g fill="#E5D4B0">
+    <ellipse cx="400" cy="420" rx="110" ry="120"/><rect x="310" y="540" width="180" height="420" rx="70"/>
+    <ellipse cx="1000" cy="420" rx="100" ry="120"/><rect x="920" y="540" width="160" height="420" rx="70"/>
+    <ellipse cx="1600" cy="420" rx="110" ry="120"/><rect x="1510" y="540" width="180" height="420" rx="70"/>
+    <circle cx="600" cy="1300" r="120"/><circle cx="1200" cy="1300" r="120"/><circle cx="1800" cy="1300" r="120"/>
+  </g>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#B5A27E" text-anchor="middle">
+    <text x="400" y="1030">front</text><text x="1000" y="1030">side</text><text x="1600" y="1030">back</text>
+    <text x="2100" y="560" font-size="48">character sheet · 3:2</text>
+  </g>
+</svg>

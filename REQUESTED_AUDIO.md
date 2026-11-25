@@ -6,16 +6,16 @@ Every narration clip the app needs. **No audio in this project is generated: no 
 
 **Each story has one file per language, inside the folder its clips go into** (`content/stories/<id>/audio/<lang>/REQUESTED_AUDIO.md`, linked below). Each is written in its own language, for that language's narrator, and is complete on its own: the narrator's voice, how to deliver, the technical spec, who's in the story, and every clip with its exact script and direction. This file is only the index.
 
-This file is generated. To change a request, edit the narrators in `content/style/voice.json`, the words in the story's `story/<lang>.json`, names and personalities in its `bible.json` (the first language) or its `translations/<lang>.json` (the others), then run `cd tools && uv run story assets`. Run it again after delivering files, and the ⬜ entries turn ✅.
+This file is generated. To change a request, edit the narrators in `content/style/voice.json`, the words in the story's `story/<lang>.json`, names and personalities in its `bible.json` (the first language) or its `translations/<lang>.json` (the others), then run `cd tools && uv run story assets`. Run it again after delivering files, and the ⬜ entries turn ✅. Delivered clips aren't in git: `uv run story originals push` keeps them in Firebase Storage.
 
 ## Status
 
 | Story | Language | Text | Title | Pages | Questions | Choice labels | Ending titles | Total |
 |---|---|---|---|---|---|---|---|---|
 | [The Fox and the Lantern](content/stories/fox-and-the-lantern/audio/en/REQUESTED_AUDIO.md) | en | first | 0/1 | 0/20 | 0/6 | 0/12 | 0/5 | **0/44** |
-| [El zorro y el farolito](content/stories/fox-and-the-lantern/audio/es/REQUESTED_AUDIO.md) | es | draft translation | 1/1 | 3/20 | 1/6 | 2/12 | 0/5 | **7/44** |
+| [El zorro y el farolito](content/stories/fox-and-the-lantern/audio/es/REQUESTED_AUDIO.md) | es | draft translation | 1/1 | 20/20 | 6/6 | 12/12 | 5/5 | **44/44** |
 | [Noelia and the Baby Squirrel](content/stories/noelia-and-the-baby-squirrel/audio/en/REQUESTED_AUDIO.md) | en | first | 0/1 | 0/20 | 0/5 | 0/10 | 0/4 | **0/40** |
-| [Noelia y la ardillita](content/stories/noelia-and-the-baby-squirrel/audio/es/REQUESTED_AUDIO.md) | es | draft translation | 1/1 | 3/20 | 1/5 | 2/10 | 0/4 | **7/40** |
+| [Noelia y la ardillita](content/stories/noelia-and-the-baby-squirrel/audio/es/REQUESTED_AUDIO.md) | es | draft translation | 1/1 | 20/20 | 5/5 | 10/10 | 4/4 | **40/40** |
 
 ## Narrators
 

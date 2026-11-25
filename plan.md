@@ -2,13 +2,16 @@
 
 > Living document. Written 2026-11-22, before any code existed. Expect it to change as decisions get made.
 >
+> **Updated 2026-11-25: no local server; both channels on Firebase.**
+> - **`story serve` is gone.** Debug builds download the `draft` channel from Firebase Storage (`stories/draft/`), release builds the `production` channel (`stories/production/`), through the same download code. `story publish draft` and `story publish production` upload them (only when you ask); draft also deletes the files no story uses any more, production never deletes. A debug build now works on any device, anywhere (a real iPhone, TestFlight, a native speaker's phone), at the cost of a publish before every check. The draft folder is readable by anyone who guesses its paths, which is accepted for drafts. No Firestore: `catalog.json` already says which version of each story is current. Both channels fit easily in Firebase's free tier (a story is about 12 MB with one narrated language).
+>
 > **Updated 2026-11-24 (narration):**
-> - **The app reads aloud** every text whose clip is delivered: a page as its words appear, a fork's question and then each label (its card lifts), an ending's title, the title on the cover. Narration pauses in the background and stops when the page is left. A text without its clip still reads at the narrator's pace, so a language can be narrated a few clips at a time on the dev channel. `platform/NarrationPlayer`: MediaPlayer on Android, AVAudioPlayer on iOS (spoken-audio session, plays with the ring switch on silent).
+> - **The app reads aloud** every text whose clip is delivered: a page as its words appear, a fork's question and then each label (its card lifts), an ending's title, the title on the cover. Narration pauses in the background and stops when the page is left. A text without its clip still reads at the narrator's pace, so a language can be narrated a few clips at a time on the draft channel. `platform/NarrationPlayer`: MediaPlayer on Android, AVAudioPlayer on iOS (spoken-audio session, plays with the ring switch on silent).
 > - **Word timings without forced alignment.** `story package` measures them from each page's clip with ffmpeg alone (`tools/storytool/timings.py`): the pauses in the clip are matched to the text's sentence and clause breaks so each stretch of speech fits its syllables, and the words of each stretch are spread by syllables. Right at every pause, a close guess in between. That's enough for a reveal where each word fades in over 0.3 s, needs no model, no download and no network, and replaces MFA / WhisperX and a separate `story align` step (§5.2 step 8, §5.4, §5.6). The timings ship as `timings-<lang>.json` next to the clips (docs/story-format.md). If the reveal ever drifts noticeably inside long sentences, forced alignment can still replace the measuring behind the same file.
 >
 > **Updated 2026-11-24 (later): distribution.**
 > - **No story ships inside the app.** The shelf shows every story (title and cover, from the catalog); tapping one offers its languages, the app's own first, and downloads that language: text, pictures, narration. It stays on the device for offline reading. Every time the app opens online it fetches the catalog and brings downloaded stories up to date, downloading only the files that changed. This replaces "two stories ship inside the app" and "one zip per story" in §7.3.
-> - **Built:** `story package` (dev and release channels, WebP and AAC, content-named files, manifests, catalog), `story serve` (debug builds download from the Mac), `story publish` (gcloud upload, not run yet), and `HostedStoryLibrary` in the app. Format in docs/story-format.md, "Published stories".
+> - **Built:** `story package` (dev and release channels, WebP and AAC, content-named files, manifests, catalog), `story serve` (debug builds download from the Mac; replaced 2026-11-25 by the draft channel on Firebase, above), `story publish` (gcloud upload, not run yet), and `HostedStoryLibrary` in the app. Format in docs/story-format.md, "Published stories".
 >
 > **Updated 2026-11-24:**
 > - **Two languages: English and Latin American Spanish (`es`).** Stories are written in English first and translated at the `/new-story` skill's step 6 (`tools/prompts/translate.md`), with a translation sheet per language (`translations/<lang>.json`: names, refrains, moods). Both stories have a Spanish draft waiting for a native read-through (their `review.md`). This answers open question 2.
@@ -267,7 +270,7 @@ Automatic checks run too: word counts, a readability score, a blocklist. Then **
 
 **7. Illustrations.** You generate each image with an AI image tool outside the repo (ChatGPT or the GPT Image API), from its prompt and the images it attaches, and drop it into the folder its request names. Run `story assets` again and its entry turns ✅. Until then the app and the previewer show the static placeholder for its kind (`content/placeholders/`). Optionally, later: a vision-capable LLM *checks* a delivered image against its shot and the sheets (the right characters, nothing missing, no text). It only checks, never generates. Packaging crops (4:3, 1:1 or 3:4), resizes, converts to WebP and strips metadata.
 
-**8. Narration.** **No audio is generated in this project** (2026-11-23). `story assets` writes one `REQUESTED_AUDIO.md` per story and language, in `audio/<lang>/`, written in that language (2026-11-24), and an index at the root with every story's status per language and the narrators. Each file holds the narrator, the delivery rules and one technical spec (WAV or FLAC, mono, 48 kHz, about −16 LUFS, 0.3 s / 0.5 s of silence), the names with their `pronounce` hints, and for every clip its exact script and a voice direction (the page's mood, how to ask a question, how to read a choice label, the ending's kind). The first language takes its names and moods from the bible and `shots.json`, a translation from its translation sheet. The narrators are described in `content/style/voice.json`, one per language, each in its own language (proposed until approved). The clips are recorded or produced outside the repo and dropped into `audio/<lang>/`. What follows describes the delivered clips. One warm narrator voice per language, slower for younger bands. Each page, fork question and option label is its own clip. Clips are loudness-normalized (`ffmpeg loudnorm`) and encoded as mono AAC at 64 kbps, which is plenty for speech. Word timings are measured from the clip and its known text at packaging (2026-11-24, `tools/storytool/timings.py`): the clip's pauses are matched to the text's sentence and clause breaks, and the words between two pauses are spread by syllables. Not from whoever made the clip, so any recording works and the timings are always produced the same way, with ffmpeg alone (no model). You listen to each clip in the app (debug build, `story serve`) with the words appearing. That also catches mispronounced names, which you fix with a `pronounce` hint in the bible and a new take.
+**8. Narration.** **No audio is generated in this project** (2026-11-23). `story assets` writes one `REQUESTED_AUDIO.md` per story and language, in `audio/<lang>/`, written in that language (2026-11-24), and an index at the root with every story's status per language and the narrators. Each file holds the narrator, the delivery rules and one technical spec (WAV or FLAC, mono, 48 kHz, about −16 LUFS, 0.3 s / 0.5 s of silence), the names with their `pronounce` hints, and for every clip its exact script and a voice direction (the page's mood, how to ask a question, how to read a choice label, the ending's kind). The first language takes its names and moods from the bible and `shots.json`, a translation from its translation sheet. The narrators are described in `content/style/voice.json`, one per language, each in its own language (proposed until approved). The clips are recorded or produced outside the repo and dropped into `audio/<lang>/`. What follows describes the delivered clips. One warm narrator voice per language, slower for younger bands. Each page, fork question and option label is its own clip. Clips are loudness-normalized (`ffmpeg loudnorm`) and encoded as mono AAC at 64 kbps, which is plenty for speech. Word timings are measured from the clip and its known text at packaging (2026-11-24, `tools/storytool/timings.py`): the clip's pauses are matched to the text's sentence and clause breaks, and the words between two pauses are spread by syllables. Not from whoever made the clip, so any recording works and the timings are always produced the same way, with ffmpeg alone (no model). You listen to each clip in the app (debug build, after `story publish draft`) with the words appearing. That also catches mispronounced names, which you fix with a `pronounce` hint in the bible and a new take.
 
 **9. Translation.** Claude translates in Claude Code with the bible at hand (`/new-story` step 6, `tools/prompts/translate.md`): a retelling for reading aloud, inside the same word budgets, with names adapted when they are words or jokes (Glim becomes *Chispita*), refrains and sound words re-created, and the pictures unchanged. It writes the whole story in the language into its own `story/<lang>.json` (the same structure as the first, with `translatedFrom`), the bible's title, a section of `review.md` and the **translation sheet** `translations/<lang>.json` (names, pronunciations, personalities, refrains, glossary and moods in the language), which `story check` holds to the bible and `shots.json`. **Spanish is Latin American Spanish** (2026-11-24): tú, and words that read the same from Mexico to Argentina. The sheet stays `draft` until a native speaker reads every path in the language (`story paths <id> --lang es`); only then is its narration recorded.
 
@@ -308,9 +311,9 @@ A story isn't published unless:
 - **`tools/`:** a Python project run with `uv`, the same kind of tooling as Nim's `backend/music/*.py` and screenshot scripts. One CLI, `story`:
   ```
   story check <id>       story status <id>   story paths <id>    story assets
-  story package          story serve         story preview <id>  story publish
+  story package          story publish       story preview <id>
   ```
-  Built so far: `check` (every stage: bible, outline, story, shots, whether the story matches its outline, plus the catalog and the app images), `status`, `paths` (in any language, `--lang`) and `assets` (writes each story's `REQUESTED_ASSETS.md` and one `audio/<lang>/REQUESTED_AUDIO.md` per language, plus the indexes at the root). `check` also holds every translation sheet to the bible and every language to a narrator. `package` converts the delivered pictures and clips and measures the word timings of each narrated page (no separate `align` step, 2026-11-24); `serve` hands the dev channel to debug builds.
+  Built so far: `check` (every stage: bible, outline, story, shots, whether the story matches its outline, plus the catalog and the app images), `status`, `paths` (in any language, `--lang`) and `assets` (writes each story's `REQUESTED_ASSETS.md` and one `audio/<lang>/REQUESTED_AUDIO.md` per language, plus the indexes at the root). `check` also holds every translation sheet to the bible and every language to a narrator. `package` converts the delivered pictures and clips and measures the word timings of each narrated page (no separate `align` step, 2026-11-24); `publish` uploads the draft channel for debug builds and the production channel for release builds (2026-11-25).
   **The CLI never calls a model and needs no API key.** The writing steps (seeds, bible, outline, text, editor pass, shots, translation) are done by Claude in Claude Code through the `/new-story` skill, which follows `tools/prompts/<step>.md`. Unattended runs later could use Claude Code's non-interactive mode (`claude -p`) on the same login. Narration is delivered by hand, never synthesized here.
 - **Previewer** (`story preview <id>`): a small local web server and page, with four tabs:
   - **Map:** the graph, colored by node kind. Click a node to open it.
@@ -320,7 +323,7 @@ A story isn't published unless:
 
   Picks and notes are written straight into the story folder.
 - **Claude Code skill `/new-story`** (in `.claude/skills/new-story/`, built): does the writing steps and drives the CLI from a conversation. You say "a story about a shy dragon who wants to learn to swim, for 4–7". It runs each step, opens the previewer, and **stops at every review gate** for your approval or your notes in plain words ("make page 7 funnier", "p12 needs Tuck's scarf, add it to the request"). This is how a non-writer edits a story: by giving notes, like an editor does.
-- **Dev content source:** debug builds of the app can load from the previewer's server on the Mac instead of the real host, so a story can be tried on a phone or tablet before it's published, through the same download code.
+- **Draft channel:** debug builds load every story as it is from `stories/draft/` on Firebase Storage (`story publish draft`), so a story can be tried on a phone or tablet before it's published, through the same download code (2026-11-25; it replaced a server on the Mac).
 
 ### 5.7 Cost and time per story
 
@@ -402,7 +405,7 @@ feature/
 - The catalog is fetched at every launch online and kept for offline use. A story downloads when a reader picks a language on its cover (the app's own first): its text, its pictures and that language's narration, file by file with checksums, a few at a time, with progress on its cover. Another language can be added later; the story is read in the one picked last. The parents area can delete downloads.
 - Files are named after their contents, so a new version of a story changes its manifest's name in the catalog; the app downloads only the files it doesn't have, switches once all are there, and deletes the old ones at the next launch. Progress carries over because node ids are stable (§4.4). See docs/story-format.md, "Published stories".
 - Size: ~45 WebP images ≈ 10 MB, plus ~5 MB of narration per language, so **about 15 MB per story**.
-- Hosting: Firebase Storage in the project `tale-time-b537d`, bucket `tale-time-b537d.firebasestorage.app` (us-east1). Rules (`backend/storage.rules`, deployed 2026-11-23): single files under `stories/` are public-read, nobody can list the bucket or write through the API. No Firebase SDK in the app: downloads are plain HTTPS. At 15 MB per download the egress cost stays small. Cloudflare R2 (no egress fees) is the fallback if it ever doesn't.
+- Hosting: Firebase Storage in the project `tale-time-b537d`, bucket `tale-time-b537d.firebasestorage.app` (us-east1). Rules (`backend/storage.rules`, deployed 2026-11-23): single files under `stories/` are public-read, nobody can list the bucket or write through the API. Two folders: `stories/production/` for release builds and `stories/draft/` for debug builds (2026-11-25). No Firebase SDK in the app: downloads are plain HTTPS. At 15 MB per download the egress cost stays small. Cloudflare R2 (no egress fees) is the fallback if it ever doesn't.
 
 ### 7.4 Narration and highlight
 
@@ -441,7 +444,7 @@ tale-time/
   .claude/skills/new-story/            the authoring skill
 ```
 
-Asset files are big: about 15 MB per story. Commit the text and JSON, keep the delivered images and audio in **Git LFS**, and keep drafts and work in progress in an ignored `content/.work/` folder.
+Asset files are big: about 200 MB per story with its narration. Commit the text and JSON; keep the delivered images and audio **out of git, in Firebase Storage** (`originals/` in the bucket, private, named after their contents so nothing is ever overwritten), listed with their hashes in the committed `content/originals.json` (`story originals push` and `pull`); and keep drafts and work in progress in an ignored `content/.work/` folder.
 
 ---
 
@@ -499,7 +502,7 @@ The risk is the **content**, not the app: can the pipeline make stories that are
 - [x] Translation step (`translate.md`, translation sheets, checks); Latin American Spanish drafts of both stories
 - [x] Word timings from delivered clips, measured by `story package` (pauses matched to the text, no forced alignment), shipped as `timings-<lang>.json`
 - [ ] Previewer: Read tab with audio and the word reveal
-- [x] Packaging: `story package` (WebP, AAC at even loudness, content-named files, manifests, catalog; dev and release channels)
+- [x] Packaging: `story package` (WebP, AAC at even loudness, content-named files, manifests, catalog; draft and production channels)
 - [ ] Two complete stories end to end. Measure the real cost and your time
 
 ### Phase 3: App MVP (offline)
@@ -514,15 +517,15 @@ The risk is the **content**, not the app: can the pipeline make stories that are
 - [x] Free and paid stories in the catalog; locked covers; parental gate; unlock sheet (store not connected yet)
 - [x] Parents area: text size, reset progress, about (AI disclosure, nothing collected)
 - [x] Language: English or Latin American Spanish, picked in the parents area (the device's until then), for the app's own words and the stories; a story not in it yet shows in its first language
-- [ ] App icon (requested in `REQUESTED_ASSETS.md`)
+- [x] App icon: delivered 2026-11-25 into `content/app/`; `story icons` puts it into both apps (Android adaptive launcher icon, iOS AppIcon)
 - [ ] Try it on a phone and a tablet. First playtest with kids
 
 ### Phase 4: Catalog, downloads and purchases
 - [x] Firebase project (`tale-time-b537d`) and Storage rules (deployed)
-- [x] `story publish`, the hosted `catalog.json` (built; nothing passes the release checks yet, so nothing is published)
+- [x] `story publish draft|production`, the hosted `catalog.json` per channel (built, not run yet)
 - [ ] In-app purchases: StoreKit 2 and Google Play Billing behind `domain/Purchases`, products in both stores, restore
 - [x] Downloads per language with progress, checksums, offline cache, updates at launch and delete
-- [x] Dev content source for debug builds (`story serve`)
+- [x] Draft channel for debug builds (`story publish draft`, `stories/draft/` on Firebase; replaced `story serve` 2026-11-25)
 - [ ] Story map
 
 ### Phase 5: Polish and kid-proofing

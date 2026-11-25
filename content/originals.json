@@ -1,0 +1,653 @@
+{
+  "about": "The delivered pictures and narration under content/, which aren't in git. The files are in Firebase Storage, gs://tale-time-b537d.firebasestorage.app/originals/, named after their contents. Written by `story originals push`; `story originals pull` downloads them.",
+  "files": {
+    "app/app-icon-background.png": {
+      "bytes": 1223247,
+      "sha256": "2bee18036a547b88499dbc803496d6b0320e5796649a02e6e52db5c4ae259d60"
+    },
+    "app/app-icon-foreground.png": {
+      "bytes": 163626,
+      "sha256": "25e22a98703e30e3347802edba3afa117c6145cf058a03c5db32c1d45686c2bc"
+    },
+    "app/app-icon.png": {
+      "bytes": 1570877,
+      "sha256": "376d335857d1a5d9cc51ef0e56e825514e43ebacb2ec7917a9e388b673691bf4"
+    },
+    "stories/fox-and-the-lantern/audio/es/e1-big-splash-end.wav": {
+      "bytes": 309286,
+      "sha256": "8cb94f5b31444bd7acd9fe60d5768a70345bf26bf27c07a12e1a8237a9e495a6"
+    },
+    "stories/fox-and-the-lantern/audio/es/e1-big-splash.wav": {
+      "bytes": 4030620,
+      "sha256": "85ff5d1cea6a73f14602e9093d09de517820acc33b4011db352480ace3745a03"
+    },
+    "stories/fox-and-the-lantern/audio/es/e2-sky-parade-end.wav": {
+      "bytes": 321456,
+      "sha256": "680cf6f44ec9807558ad14b5b962a3ee5036cf227e8e362d804293e1d9b1e314"
+    },
+    "stories/fox-and-the-lantern/audio/es/e2-sky-parade.wav": {
+      "bytes": 4166494,
+      "sha256": "933788ffe53a5b48eeabc70cbea87ba64d11dcf6803f2f2ae39095fe492d3461"
+    },
+    "stories/fox-and-the-lantern/audio/es/e3-goodnight-glim-end.wav": {
+      "bytes": 328866,
+      "sha256": "00259ab825911e6bbc39b99cc16c4ad9f5b17642878805204e4c84f9573b5c22"
+    },
+    "stories/fox-and-the-lantern/audio/es/e3-goodnight-glim.wav": {
+      "bytes": 4011172,
+      "sha256": "f4b714da9b7e4c6fd16035511f2875bf152d4dfbab301c3d44415f5116687209"
+    },
+    "stories/fox-and-the-lantern/audio/es/e4-frog-chorus-end.wav": {
+      "bytes": 384964,
+      "sha256": "088b627640eb4dc9db2b5ce45634dfb44b5eeb9e6e512e8c2cdfde57f6c942bd"
+    },
+    "stories/fox-and-the-lantern/audio/es/e4-frog-chorus.wav": {
+      "bytes": 4189384,
+      "sha256": "c722bf9ca0e77a1c48742c555685a26efe8f71ecf39124ca1128ea1b980b80c3"
+    },
+    "stories/fox-and-the-lantern/audio/es/e5-windowsill-end.wav": {
+      "bytes": 244858,
+      "sha256": "0e1b6a5231098de8bb195f224240d8f7ad96b64bb0692b51a1e4e04f78edcaa6"
+    },
+    "stories/fox-and-the-lantern/audio/es/e5-windowsill.wav": {
+      "bytes": 3857440,
+      "sha256": "ff63e7406c1e35e4373cc64f158eb8f2cf1254826b39bca048711b0a31ab1ee9"
+    },
+    "stories/fox-and-the-lantern/audio/es/p01-meadow.wav": {
+      "bytes": 3624328,
+      "sha256": "6b8bf3799e7d585590f0f8805cf7eca49bc93e82e6a4642a8cf64c18a0f86e64"
+    },
+    "stories/fox-and-the-lantern/audio/es/p02-glim.wav": {
+      "bytes": 4298130,
+      "sha256": "d868bc1b3ec343355ba6076a9573cb3200a68f45b4247d6ebc1cfea8decd1f3a"
+    },
+    "stories/fox-and-the-lantern/audio/es/p03-tuck-a.wav": {
+      "bytes": 284412,
+      "sha256": "3b0c48def896836b687895d47b8fabda15b13e2e0e648bde90d9d79c8b1c5142"
+    },
+    "stories/fox-and-the-lantern/audio/es/p03-tuck-b.wav": {
+      "bytes": 315768,
+      "sha256": "f861037efb6fd2d60bc62386b1940b49c8d2abf75d3e761d4e523032da57ee69"
+    },
+    "stories/fox-and-the-lantern/audio/es/p03-tuck-q.wav": {
+      "bytes": 838222,
+      "sha256": "9e7d03547d9b8c16d4743732b1b009086bc4f84b21ba1b6a11108e54b8b6ee05"
+    },
+    "stories/fox-and-the-lantern/audio/es/p03-tuck.wav": {
+      "bytes": 3041016,
+      "sha256": "0b12225680ba70331bc680e0698283a5f115efe6047c1606f362cad2ec6fee31"
+    },
+    "stories/fox-and-the-lantern/audio/es/p04a-hedge.wav": {
+      "bytes": 4149690,
+      "sha256": "520662cabdaaf498fd57299f16fb2513f57604be47bf34b2c53ff6601dac4d5f"
+    },
+    "stories/fox-and-the-lantern/audio/es/p04b-garden.wav": {
+      "bytes": 3679498,
+      "sha256": "2087d463b1b4a071bd0ab6075b35cf9e4f958fc7fff70319f3bff646c4e77513"
+    },
+    "stories/fox-and-the-lantern/audio/es/p05a-moths.wav": {
+      "bytes": 3828864,
+      "sha256": "95dc537850d1ab8813e0d202b852d20ea8dde5e3705cd6de615c80729f28115f"
+    },
+    "stories/fox-and-the-lantern/audio/es/p05b-bramble.wav": {
+      "bytes": 3842094,
+      "sha256": "62bb1bd5bca0e8ac103b2ee6b8be8c790a3da3cba7dc7176dd63077cc5ff6cb5"
+    },
+    "stories/fox-and-the-lantern/audio/es/p06-brook-a.wav": {
+      "bytes": 329926,
+      "sha256": "94f6c7763ddc5e16b5a971f08c99b8dc6cec4974489f1193b0edf4125af352ed"
+    },
+    "stories/fox-and-the-lantern/audio/es/p06-brook-b.wav": {
+      "bytes": 253854,
+      "sha256": "a514dba742328913f57c57595c3ab7150a2c774faa17f766d40ae8a4b72d0e1e"
+    },
+    "stories/fox-and-the-lantern/audio/es/p06-brook-q.wav": {
+      "bytes": 653928,
+      "sha256": "c5b7625ec6415e73c00fd55537d02635dfdcb723f80e7e38e1a46772af41b05f"
+    },
+    "stories/fox-and-the-lantern/audio/es/p06-brook.wav": {
+      "bytes": 3862336,
+      "sha256": "47850752866a3d654ed05dc8cea1310916e824603dce79f38b2925a3fa3b11e7"
+    },
+    "stories/fox-and-the-lantern/audio/es/p07a-stones-a.wav": {
+      "bytes": 320268,
+      "sha256": "50cafe4efc0a0755d01890735698836e944badc6def14d3104d79dec25c59622"
+    },
+    "stories/fox-and-the-lantern/audio/es/p07a-stones-b.wav": {
+      "bytes": 289972,
+      "sha256": "c67bcfbdbd7528b619c69ccf31a592c5e2debba62440a7745f8ce0abd0d1bffa"
+    },
+    "stories/fox-and-the-lantern/audio/es/p07a-stones-q.wav": {
+      "bytes": 615294,
+      "sha256": "a9a5b735db57bef67e01ffdb7b15e492724ba2e3856a571c6dc4b2d3c72b6632"
+    },
+    "stories/fox-and-the-lantern/audio/es/p07a-stones.wav": {
+      "bytes": 2987172,
+      "sha256": "0a609014431b45f3fe478f862b5935183bf963c2e9363dfdebe012bf296caaa4"
+    },
+    "stories/fox-and-the-lantern/audio/es/p07b-bridge.wav": {
+      "bytes": 3632794,
+      "sha256": "84f03edaa6d18b9fc102ac7502a898732a2375e7da26b3b7e1b2852be0ee5586"
+    },
+    "stories/fox-and-the-lantern/audio/es/p08a-across.wav": {
+      "bytes": 3867892,
+      "sha256": "ee5aabf5f951b3bad154a48727f87d1ebfc4093a7c52f31fc90b4521b162cbee"
+    },
+    "stories/fox-and-the-lantern/audio/es/p08b-goose.wav": {
+      "bytes": 3688096,
+      "sha256": "e399a09fe058b334473a83489f0dc97b2695071c6aaec7b86cc70abfe01cae6d"
+    },
+    "stories/fox-and-the-lantern/audio/es/p09-willow-a.wav": {
+      "bytes": 263776,
+      "sha256": "f03e08a5ce30222b8106a67a896454fac78d876762b30e3402c84bc0d1d7862c"
+    },
+    "stories/fox-and-the-lantern/audio/es/p09-willow-b.wav": {
+      "bytes": 295260,
+      "sha256": "e2da01e1c7e32cacafecf96fc6e3e95c31cd13af11201077205c0e273dda061c"
+    },
+    "stories/fox-and-the-lantern/audio/es/p09-willow-q.wav": {
+      "bytes": 931492,
+      "sha256": "f96213043805dbcdad0886fb8ee4f0bab81dc9b0957f1b2ab359500685563e11"
+    },
+    "stories/fox-and-the-lantern/audio/es/p09-willow.wav": {
+      "bytes": 4099812,
+      "sha256": "5b630f336126669236f9bb27371b54008cf0763c40ccc025d897179a42efdfc9"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10a-friends-a.wav": {
+      "bytes": 274626,
+      "sha256": "3b70fe5763637adad298f96b479fe31d1680dd2e57bf6c021e1ffbb9685d2375"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10a-friends-b.wav": {
+      "bytes": 365382,
+      "sha256": "b4346f2473f7efddc71fffc49c804becef4ce4d6e73c3b2a8868381eef2a9102"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10a-friends-q.wav": {
+      "bytes": 654192,
+      "sha256": "3ec9e1d470c6ac3536feb0a1565c1a420362fb899c571f21f691d278e9df8336"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10a-friends.wav": {
+      "bytes": 4174036,
+      "sha256": "8bd77c3064339a5e8c84cfc88af537f0dfa35e58380552bcdd29b7bb39a6edad"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10b-song-a.wav": {
+      "bytes": 329134,
+      "sha256": "9ca88859d93b5c53fa88f3fbb8f4ffd98fd3fe87cfc7777cafb13bd4ad537cc4"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10b-song-b.wav": {
+      "bytes": 376098,
+      "sha256": "97322dbceffde0d466ab7fae8239e68634d87df723325a4bc276f0ec4cd9af51"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10b-song-q.wav": {
+      "bytes": 741642,
+      "sha256": "5fc1489a68caff837eacc9aca64c8bc17e05e8d84a18d53a7071732f63a5a86f"
+    },
+    "stories/fox-and-the-lantern/audio/es/p10b-song.wav": {
+      "bytes": 4057608,
+      "sha256": "a1a6a5375d7f5b5615ee7cd47feb9a468d1cdb68db6ebc4e5f54840aa8d7c4d5"
+    },
+    "stories/fox-and-the-lantern/audio/es/title.wav": {
+      "bytes": 344082,
+      "sha256": "a4799973350edec23cde6aa3ed33d3d12adbbc4d1dba6a0a03409fc3ae180292"
+    },
+    "stories/fox-and-the-lantern/characters/glim.png": {
+      "bytes": 4029602,
+      "sha256": "28d8eb14f88bbef6cf3b20e3535ab70d338fcf73d15161b4372d098e18e350c6"
+    },
+    "stories/fox-and-the-lantern/characters/grandma.png": {
+      "bytes": 4553315,
+      "sha256": "63d87edaf4b3edddb972ae5f8319a651203671b6928263b655a8d743c291f97c"
+    },
+    "stories/fox-and-the-lantern/characters/lantern.png": {
+      "bytes": 4102363,
+      "sha256": "cf91ae55fd47e860303bc1d60a40de21d16c331c7cc083557fd4934ddff83720"
+    },
+    "stories/fox-and-the-lantern/characters/mia.png": {
+      "bytes": 4309919,
+      "sha256": "417dd1a3b9213c53df48230ebec8dc0c3ccba588bc180efb293dbd5ef84ef458"
+    },
+    "stories/fox-and-the-lantern/characters/tuck.png": {
+      "bytes": 4648626,
+      "sha256": "806c43c03dbaa7e940ea260779b95ddb2f699efd61c2b5d0dd133d66c53af85a"
+    },
+    "stories/fox-and-the-lantern/images/cover.png": {
+      "bytes": 2826861,
+      "sha256": "39b03152e161c1e610371c58ec44e2bc3ea7d601a0771477ddc2c7e2f3b39e69"
+    },
+    "stories/fox-and-the-lantern/images/e1-big-splash.png": {
+      "bytes": 3001943,
+      "sha256": "65506fe6e5b3194aa3dc0cc33bcb42d56310859d0fdd365cb20bcc7444ef1620"
+    },
+    "stories/fox-and-the-lantern/images/e2-sky-parade.png": {
+      "bytes": 3093814,
+      "sha256": "ded867e5cbfdd79dcf3cb7f8f0853cd231492292e3d2925501f6214e63dd886c"
+    },
+    "stories/fox-and-the-lantern/images/e3-goodnight-glim.png": {
+      "bytes": 2954681,
+      "sha256": "f8a0755cdd5f966689ebc7f76b7c113b77b7cd8446a2330b95575af2fe005ace"
+    },
+    "stories/fox-and-the-lantern/images/e4-frog-chorus.png": {
+      "bytes": 3071095,
+      "sha256": "13b2ace26cf0b059ee478faa0d241ac2d6eda40877023af22ac5666d3545bc1c"
+    },
+    "stories/fox-and-the-lantern/images/e5-windowsill.png": {
+      "bytes": 2864513,
+      "sha256": "54881d55f155aec5f6d335ef0517afd0dce46b1888ea730dea04a4d7aa741290"
+    },
+    "stories/fox-and-the-lantern/images/p01-meadow.png": {
+      "bytes": 3039914,
+      "sha256": "05d278739392880b37952d92f2effe6a57888b0ba93083b2e4ddfc0b94ab7965"
+    },
+    "stories/fox-and-the-lantern/images/p02-glim.png": {
+      "bytes": 2638717,
+      "sha256": "2eb515917eb1c1508153496ba88a40709322c36a4f23553bdf2ab81c5a789307"
+    },
+    "stories/fox-and-the-lantern/images/p03-tuck-a.png": {
+      "bytes": 1725308,
+      "sha256": "1aa2b345b12f4168719876e3b793c21067721d16e31b967180593ce91dd28e9d"
+    },
+    "stories/fox-and-the-lantern/images/p03-tuck-b.png": {
+      "bytes": 1751477,
+      "sha256": "f4ea4498b1dfba85be0ccb8463654ef4735608e2304a7fd1a836b9752bbaf871"
+    },
+    "stories/fox-and-the-lantern/images/p03-tuck.png": {
+      "bytes": 2728201,
+      "sha256": "99c487a6821e50a1eb77ff682930d2ef8ba32d5c6f001d7f1e3953a7f8b497e5"
+    },
+    "stories/fox-and-the-lantern/images/p04a-hedge.png": {
+      "bytes": 2840873,
+      "sha256": "219122bfeea87dabbd5b43de7b0b50d00dff174766d0cf80b1d042843cc4c916"
+    },
+    "stories/fox-and-the-lantern/images/p04b-garden.png": {
+      "bytes": 2969289,
+      "sha256": "5ddf0d529eeadee464f221026b140795f6aa865efc7c0de0c09df15dd9a6270d"
+    },
+    "stories/fox-and-the-lantern/images/p05a-moths.png": {
+      "bytes": 2840940,
+      "sha256": "09988d4c19819f6b7cec4e40c3724e032b2b217bc9c5afd30472c57ad7b6001e"
+    },
+    "stories/fox-and-the-lantern/images/p05b-bramble.png": {
+      "bytes": 2871545,
+      "sha256": "995a8b3ca6126d43a21c01a97c8411128a6dd9f435bbbbeac1d40a725409d826"
+    },
+    "stories/fox-and-the-lantern/images/p06-brook-a.png": {
+      "bytes": 1688997,
+      "sha256": "482046480162e22faebc899c9509ff4d4329637363c7c5567bf3c7a5a057d39c"
+    },
+    "stories/fox-and-the-lantern/images/p06-brook-b.png": {
+      "bytes": 1707277,
+      "sha256": "baca93c4e70f0f5bd929460eca525d87cbbaf1a60d8a3f4174ba88e8faf81412"
+    },
+    "stories/fox-and-the-lantern/images/p06-brook.png": {
+      "bytes": 2847026,
+      "sha256": "5fd17d808e090a2ff517e3a9639618e7912fb5ea7e9032809ce6d5e5138ba75d"
+    },
+    "stories/fox-and-the-lantern/images/p07a-stones-a.png": {
+      "bytes": 1776540,
+      "sha256": "fbc93678f191cc05482e9f8fc966d498fd00f3140a4ebe0acd385ce60cc94eb3"
+    },
+    "stories/fox-and-the-lantern/images/p07a-stones-b.png": {
+      "bytes": 1700148,
+      "sha256": "8e4244fb5efc8015249f6562a4a3d0b5aa781b9c926308a6f8e406a12ad0f00f"
+    },
+    "stories/fox-and-the-lantern/images/p07a-stones.png": {
+      "bytes": 2678974,
+      "sha256": "79e82428cf10c3d33bb59886da6dc0e3d5b284e2f0d727433e53c90d2f589d12"
+    },
+    "stories/fox-and-the-lantern/images/p07b-bridge.png": {
+      "bytes": 2787048,
+      "sha256": "cf72a89db6d033642c5155ccde4829be11aab863d66bf64bbdc840aa29b3c447"
+    },
+    "stories/fox-and-the-lantern/images/p08a-across.png": {
+      "bytes": 2868322,
+      "sha256": "7e83c43a26eee36d14e948907abaedba548713e5ff9862e05f10eb43369aa4d1"
+    },
+    "stories/fox-and-the-lantern/images/p08b-goose.png": {
+      "bytes": 2807642,
+      "sha256": "11963bb7d99bc8491753d7a4970a75d374e6597640b8abebc180a70e6eee1368"
+    },
+    "stories/fox-and-the-lantern/images/p09-willow-a.png": {
+      "bytes": 1641469,
+      "sha256": "5edf1a63e168072fc1f2693544f90e75d7f36eef559770a524dcee6eb2612e11"
+    },
+    "stories/fox-and-the-lantern/images/p09-willow-b.png": {
+      "bytes": 1708439,
+      "sha256": "118881593583280fe05fa3efb1d6c176a42e8c186fd4d296b50dc584a5e25eab"
+    },
+    "stories/fox-and-the-lantern/images/p09-willow.png": {
+      "bytes": 3045354,
+      "sha256": "0f8ad408d858e7204c178683d6308ca3370ec7093947eb66318b7d93dbc35847"
+    },
+    "stories/fox-and-the-lantern/images/p10a-friends-a.png": {
+      "bytes": 1633204,
+      "sha256": "e5f8ea9fd1e909d886b6a102a1b9da3dd81ccce63edeb495cab8ec8a1a85fadf"
+    },
+    "stories/fox-and-the-lantern/images/p10a-friends-b.png": {
+      "bytes": 1700813,
+      "sha256": "2adb8790cd5308ae98723007e67f74d7fde8e20218d416e6a14575d7754b719e"
+    },
+    "stories/fox-and-the-lantern/images/p10a-friends.png": {
+      "bytes": 3109516,
+      "sha256": "5fc185476a6d37d187323962e3bb595c9f4ac805ba10c33eee14e4b044f17902"
+    },
+    "stories/fox-and-the-lantern/images/p10b-song-a.png": {
+      "bytes": 1688575,
+      "sha256": "d2ade67f22b673a64162805230d682f58f3ee9af9c33d89c28c9d2993ee9e970"
+    },
+    "stories/fox-and-the-lantern/images/p10b-song-b.png": {
+      "bytes": 1698586,
+      "sha256": "c5d30d0d2266a6f176fce334b7de41abea33dc79f918be31a42db7bc030d9074"
+    },
+    "stories/fox-and-the-lantern/images/p10b-song.png": {
+      "bytes": 2979514,
+      "sha256": "5a9bbc75d9cf43bf85673faf19d60625a667c5cfa606c075665b335cb3393196"
+    },
+    "stories/fox-and-the-lantern/style/style-anchor.png": {
+      "bytes": 2820402,
+      "sha256": "53e7955728541e1e1f4e555dd38f8f2d689c88838fec66f9b22e8c46e125eb92"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up-end.wav": {
+      "bytes": 430474,
+      "sha256": "672e66ca887178c99beb99b9a9a13d82b405c502e727223384fd787340ef61e0"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up.wav": {
+      "bytes": 4729828,
+      "sha256": "52d3f2008f8ba002ff53f48829124b464be7efb9a9896d291105d23573c9d276"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter-end.wav": {
+      "bytes": 295396,
+      "sha256": "45ce30265b4cfd2e36e0b2627be33d5df578a59c09ea83a6b66e681d87d0c897"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter.wav": {
+      "bytes": 4398150,
+      "sha256": "9bbab3f0b1b37191fb38c6b2ada1b7fc5b66e3583fbcd7b319c058dde8e1058d"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood-end.wav": {
+      "bytes": 366970,
+      "sha256": "30621552f493144caacc9449811cf6632b446386adbb4b5c28f88b8b501e8bc9"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood.wav": {
+      "bytes": 4833022,
+      "sha256": "a837d0dc3add3c7ed036054f97838d821ab308ee2530f5517860565aad311888"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e4-window-end.wav": {
+      "bytes": 335616,
+      "sha256": "4d44766daba1e1f74aee529e87edd816786fd93f91387e1bce447be64de7ae1d"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/e4-window.wav": {
+      "bytes": 4731150,
+      "sha256": "c0bd442213465803c36a6865aa647a608da91ae56bb2779314a11513bb1509ab"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p01-gate.wav": {
+      "bytes": 4559556,
+      "sha256": "f4f2637f9fa4b107f458a8006a0fec5019a5526388c6152ca48f905ab1876985"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p02-pipa.wav": {
+      "bytes": 4850748,
+      "sha256": "0a1ebee52e3787a860232727c4bf44869d941c02d973d44b3f81a0e459f75508"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p03-clues-a.wav": {
+      "bytes": 299364,
+      "sha256": "e8ca663db653924df68fb1edc044a4317787c19651ab40016bce46ba9282fcf6"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p03-clues-b.wav": {
+      "bytes": 327546,
+      "sha256": "d521f2c572321fb300b40be137cf1fd42005b37ae6be271fd8b4e3c41bd22af7"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p03-clues-q.wav": {
+      "bytes": 1105732,
+      "sha256": "a0a1fd86a704b6a204db593b26ca81c343cc744cde79f58106d1ea208e443511"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p03-clues.wav": {
+      "bytes": 4336498,
+      "sha256": "df89279b68a0ff3f6c312bf2c82346e3384126394f02e791dd2df1e04cc3ee82"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p04a-oak.wav": {
+      "bytes": 4583638,
+      "sha256": "e6140f574bba8f26c0468856755e63f96a8d519c3f02e27723a9b65ec5b10574"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p04b-nutshells.wav": {
+      "bytes": 5083464,
+      "sha256": "ad8663f0c1d77bd9dc8c44f4597c8feb8950c7e0682142ae2090260bb90f1307"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p05a-tock-home.wav": {
+      "bytes": 4479516,
+      "sha256": "6f3853b1bed03e6ab40edc6de649e6623d53c16a5853d79295ad4e79c838b374"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p05b-nibs.wav": {
+      "bytes": 4220076,
+      "sha256": "3431cf28be8166b57d1472653ba44f6db3e661e5521ea247fbef1bb101c63fe2"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p06-path-a.wav": {
+      "bytes": 328338,
+      "sha256": "7201552e60ed2c07a187b550992a08a0b39c23f4677ae7d3e047577a7692956c"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p06-path-b.wav": {
+      "bytes": 285870,
+      "sha256": "e258264f29825c0919147fa6ad55a06ca7e39b2dccd2ff7cff2ec1a5376b1a63"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p06-path-q.wav": {
+      "bytes": 799194,
+      "sha256": "5b6d651e60909ddd2c2be2b7f6919fab19f47c51f4821714f211cd9652b8d8d2"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p06-path.wav": {
+      "bytes": 4407412,
+      "sha256": "470daa47df2e4e02d74ae6dcdf4d768f30aa5e0e4642b7fd730ed6e0619305fd"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p07a-birches.wav": {
+      "bytes": 4808148,
+      "sha256": "19283a318f907e6ef46a9f510ee1cb584e11cbe8ad8c926452141c722d9c6ade"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p07b-call.wav": {
+      "bytes": 4276434,
+      "sha256": "8a5686aeac1e8e91fa05b3a8f2d56ee57ffe87212beac0d5c635236383edd951"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p08a-fluffballs.wav": {
+      "bytes": 3916314,
+      "sha256": "5d2a144138a78f01ec2cef5c1b8a4b10e33e368ac581df0dfadbba49bc1ff44d"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p08b-not-us.wav": {
+      "bytes": 4242568,
+      "sha256": "bcf724468445c6b605f5ae789ad426b324162b7c920907ca1b25fbd204557727"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p09-clearing.wav": {
+      "bytes": 4476076,
+      "sha256": "a393cf6261ace4acd0472d3fb3734c149b8f10da5048fd7c0e182b6bcf99c303"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-a.wav": {
+      "bytes": 395944,
+      "sha256": "9f57937d980ca5e73738de2a1d4902eec0cb1ded5d61ba65095eec0ccc04f099"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-b.wav": {
+      "bytes": 368956,
+      "sha256": "d4340494eb70d21a08767b81cc5569df8d85be726f7b105fb4923df770cc5fa8"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-q.wav": {
+      "bytes": 1056784,
+      "sha256": "25e029ea1d3abda5602f5c0adcd541953269178d9b351f407322269114419a20"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter.wav": {
+      "bytes": 4869666,
+      "sha256": "9af518408383df54398b8a7250a6f0730253fc823ced3e781e885584e30fea33"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-a.wav": {
+      "bytes": 345010,
+      "sha256": "910abe65266f7e1589d03165d342edf18e1daea9240c810e8a9e37c5c87f852d"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-b.wav": {
+      "bytes": 332970,
+      "sha256": "07ae8a8a30e1ea162e1d0fab06baf431489906decd164466e32b4b0c0a43fae7"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-q.wav": {
+      "bytes": 875398,
+      "sha256": "328af5b3dfe94e92340c222ef94b86921f852a0fead6961ecd365e75c67b3227"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe.wav": {
+      "bytes": 5012818,
+      "sha256": "fd592938875eebd7a52740d78ce86500991221a308d52e9c93a3f785de52ad8c"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-a.wav": {
+      "bytes": 270124,
+      "sha256": "00b8e89a1e33fe0c3d9afb2e97ca0186d6716d027119777fe7ad542c56f5abd0"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-b.wav": {
+      "bytes": 276214,
+      "sha256": "f50d3131f668c773078059da51af30d52342d4d02ed368a15c68db78d3bd6586"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-q.wav": {
+      "bytes": 826582,
+      "sha256": "a0a27590ff3f57ab0770644fb764cfd6ac0ff94351cb54745dd139d12418be9e"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/p11b-still.wav": {
+      "bytes": 4967704,
+      "sha256": "181604d31b3333f3918bf7038b99916b81a7484b8ee513c6a1e867a7e748cfda"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/es/title.wav": {
+      "bytes": 353344,
+      "sha256": "be6e3e0e552c4695adc7cc1d3ca78decfa7af19e677427856f8feb9819b99993"
+    },
+    "stories/noelia-and-the-baby-squirrel/characters/abuelo.png": {
+      "bytes": 4385360,
+      "sha256": "63c378a64328f7de43076f3fc194d32ad9189ff2fad8490e4d1fb3daaa6ab121"
+    },
+    "stories/noelia-and-the-baby-squirrel/characters/mama-squirrel.png": {
+      "bytes": 4716048,
+      "sha256": "252063727bc39c8ccbed4079b82422d041e8de24889d3a8c18269e1be2f0abd6"
+    },
+    "stories/noelia-and-the-baby-squirrel/characters/noelia.png": {
+      "bytes": 4726339,
+      "sha256": "810a45de71f2678b626f9199665a62cf8d39c0348bc7200152b82476d1a50d75"
+    },
+    "stories/noelia-and-the-baby-squirrel/characters/pipa.png": {
+      "bytes": 4523196,
+      "sha256": "8daddedb3ed66220447ef5e0ae9db47ebec0351a6522f87b63b62abfed566b69"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/cover.png": {
+      "bytes": 3054904,
+      "sha256": "82c2b449cdf0bd1e349be8c2f7eb439f9e0ec1655892ffc2d46521db54160825"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/e1-up-up-up.png": {
+      "bytes": 3177104,
+      "sha256": "a2c0795e81331c2153fff18f928e9da072608f392180245df0c60ea92343e65f"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/e2-chitter-chatter.png": {
+      "bytes": 3224196,
+      "sha256": "dfb2552254a22c840e311001ea316e37870b82223c6603c739113df3fe7431ea"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/e3-whole-wood.png": {
+      "bytes": 3198441,
+      "sha256": "348008f77760c486a80a41eeaedcd847881ed453623a676a38a005dba11c612f"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/e4-window.png": {
+      "bytes": 3100543,
+      "sha256": "384af226b5c145491d3b80b7186c6433c0bbe79303afdae93420297c6f1c954d"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p01-gate.png": {
+      "bytes": 3147294,
+      "sha256": "64328a402a54667c7fd3fe6c5866e680ba7002e42b1f6debdd6fea83e5846065"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p02-pipa.png": {
+      "bytes": 2920471,
+      "sha256": "893118ca7e40f51b4955eb08a817f064688868fad21821c547f851975abe0c1b"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p03-clues-a.png": {
+      "bytes": 2017481,
+      "sha256": "a80a48b785139e1ad851c39e15c057823c85e551a3f4d0604279528d001f4581"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p03-clues-b.png": {
+      "bytes": 1821020,
+      "sha256": "c638ddfda09012613c17b990065559d9eb931f982992b4f1c56e6f40eeaa4097"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p03-clues.png": {
+      "bytes": 3079512,
+      "sha256": "a9a4023d98ecf00eddd88e2db94a86711b71acf088c0129ad655c1eba0d47da4"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p04a-oak.png": {
+      "bytes": 3342738,
+      "sha256": "aaff48c2e1d558a30d9455a71c97c86393d22fff8b20448825e368708def667b"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p04b-nutshells.png": {
+      "bytes": 3141603,
+      "sha256": "05add2cc0e05f16fc17199d805a20df414824009cbd4ab807e1b24260af5f4fe"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p05a-tock-home.png": {
+      "bytes": 3131289,
+      "sha256": "014895d414d22533c36cb6b8039b65fa39c66209403168963bd83fa9a037d3ee"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p05b-nibs.png": {
+      "bytes": 2995091,
+      "sha256": "08c3117bf49217bba66cecdde9611b54ca5f64e762d196cc1941358b75ebb674"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p06-path-a.png": {
+      "bytes": 1815888,
+      "sha256": "6950cea14e48e1694fb82077521c8ac1471ef4f695ca5ae7ea28e095ee066861"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p06-path-b.png": {
+      "bytes": 1756403,
+      "sha256": "8fc33c835cabaa7c77b1f633cd8a568ece132813da972fa3352a079aa2309efb"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p06-path.png": {
+      "bytes": 3044612,
+      "sha256": "7d55597e1df6827c5ae56cac5cc5474f79b1dbfa792fd615446bcf2dc9c6da3f"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p07a-birches.png": {
+      "bytes": 3147045,
+      "sha256": "52b01222731f4f71712cf7dfc71f32b60e75b20b3dc2c9d364621031c701a436"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p07b-call.png": {
+      "bytes": 2949536,
+      "sha256": "5199c7917163c53f9b0feec6d375bd6c0bbdfd64b9368f0d5e53cb5011453d7e"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p08a-fluffballs.png": {
+      "bytes": 3061923,
+      "sha256": "11e1d182f4913654f2ae490c68889e9a180473f086775afe5e947c4330aad520"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p08b-not-us.png": {
+      "bytes": 2957262,
+      "sha256": "49c7e5a10ac29befeeca7ad4bf9afb76d2aa2b2b31e6cb1b1d2c24d292a07024"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p09-clearing.png": {
+      "bytes": 2961516,
+      "sha256": "0c6b0e352eab62ec6c51192b5186e1784cb1258e17883b33e34e3df1758a6030"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p10-chitter-a.png": {
+      "bytes": 1680155,
+      "sha256": "ba71f6e63c30b5b2bc90fe38ce863616e0527c9279e7160b8a7e7810afe05017"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p10-chitter-b.png": {
+      "bytes": 1785493,
+      "sha256": "e102b28e747fb576a5905d831745d192d59f0e691286a796b1397c9c52519939"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p10-chitter.png": {
+      "bytes": 3020974,
+      "sha256": "de17117b85edeaa5d795c93427490d91c3827e3c6bdf7aafcaf624067958852f"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe-a.png": {
+      "bytes": 1775236,
+      "sha256": "a087f143a3a28a086c0e9e540cc06cbb2526716ac2335e349eb8ac990db12ec2"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe-b.png": {
+      "bytes": 1937129,
+      "sha256": "9492cc4904110a4511ccc26e600dab2c6dd0773f73c8690f58941ef70682b2c5"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p11a-tiptoe.png": {
+      "bytes": 3176230,
+      "sha256": "ebfb0da87a25cdf510fed287d80bb1ef7f00af93f810e964d4ecabc578a5008c"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p11b-still-a.png": {
+      "bytes": 1865256,
+      "sha256": "ff99a7b6fe506112ef3ab99000405f2600a3e38cbdac8e95e872ee3847ef9850"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p11b-still-b.png": {
+      "bytes": 1932567,
+      "sha256": "b6885d376bca7ac2191d63358d6c32663ceeae1d8a9b790ea676f62cd391c5e2"
+    },
+    "stories/noelia-and-the-baby-squirrel/images/p11b-still.png": {
+      "bytes": 3038886,
+      "sha256": "603cd1b9ada9f428654630a29d612110454da22d28503c48bf0107174152e148"
+    },
+    "stories/noelia-and-the-baby-squirrel/style/style-anchor.png": {
+      "bytes": 3033799,
+      "sha256": "4e210235de7c571629d7cd3b1da665784e2a1bc5bd8cb5707250fa80df08785d"
+    }
+  }
+}

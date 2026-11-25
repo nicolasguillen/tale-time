@@ -63,17 +63,17 @@ def deliver_clips(content, lang, clips=None):
         (folder / f"{clip}.wav").write_bytes(f"{lang} {clip}".encode())
 
 
-def build(content, tmp_path, channel="dev", encoder=None, clean=True):
+def build(content, tmp_path, channel="draft", encoder=None):
     packager = Packager(channel, content=content, out=tmp_path / "out" / channel, cache=tmp_path / "cache",
                         encoder=encoder or FakeEncoder(), check=lambda folder, strict: [])
-    result = packager.build(clean=clean)
+    result = packager.build()
     catalog = json.loads(result.catalog.read_text())
-    manifests = {s["id"]: json.loads((result.root / "stories" / s["id"] / s["manifest"]["file"]).read_text())
+    manifests = {s["id"]: json.loads((result.root / s["id"] / s["manifest"]["file"]).read_text())
                  for s in catalog["stories"]}
     return result, catalog, manifests
 
 
-def test_dev_has_every_language_and_whatever_is_delivered(content, tmp_path):
+def test_draft_has_every_language_and_whatever_is_delivered(content, tmp_path):
     deliver_images(content, ["cover", "p1"])
     deliver_clips(content, "es", ["title", "p1"])
     result, catalog, manifests = build(content, tmp_path)
@@ -94,7 +94,7 @@ def test_every_file_is_named_after_its_contents_and_listed_with_its_size_and_has
     deliver_images(content)
     deliver_clips(content, "en")
     result, catalog, manifests = build(content, tmp_path)
-    folder = result.root / "stories" / "tiny"
+    folder = result.root / "tiny"
     manifest = manifests["tiny"]
     for name, meta in manifest["files"].items():
         data = (folder / name).read_bytes()
@@ -117,7 +117,7 @@ def test_a_narrated_page_comes_with_when_its_words_are_said(content, tmp_path):
     assert not list(MANIFEST_SCHEMA.iter_errors(manifest))
     assert "timings" not in manifest["languages"]["en"]  # nothing narrated in English yet
     es = manifest["languages"]["es"]
-    heard = json.loads((result.root / "stories" / "tiny" / es["timings"]).read_text())
+    heard = json.loads((result.root / "tiny" / es["timings"]).read_text())
     # Only the pages' texts are shown word by word: not the title, the question or the labels.
     assert heard["format"] == 1 and list(heard["clips"]) == ["p1"]
     es_text = load_json(TINY / "story" / "es.json")["nodes"]["p1"]["text"]
@@ -148,7 +148,7 @@ def test_timings_are_measured_again_only_when_the_clip_or_the_text_changes(conte
 def test_pictures_are_sized_by_kind(content, tmp_path):
     deliver_images(content)
     result, _, manifests = build(content, tmp_path)
-    folder = result.root / "stories" / "tiny"
+    folder = result.root / "tiny"
     images = manifests["tiny"]["images"]
     assert (folder / images["cover"]).read_bytes().startswith(b"webp 900x1200 ")
     assert (folder / images["p1"]).read_bytes().startswith(b"webp 1600x1200 ")
@@ -180,45 +180,47 @@ def test_converted_files_are_cached_by_their_source(content, tmp_path):
     assert again.calls == 0 and same == catalog  # the same names from the cache
 
 
-def test_a_rebuild_without_cleaning_keeps_files_an_app_may_still_be_downloading(content, tmp_path):
+def test_a_rebuild_holds_the_new_version_only(content, tmp_path):
     deliver_images(content)
     result, before, _ = build(content, tmp_path)
     (content / "stories" / "tiny" / "images" / "p1.png").write_bytes(b"a new picture")
-    build(content, tmp_path, clean=False)
-    assert (result.root / "stories" / "tiny" / before["stories"][0]["manifest"]["file"]).is_file()
+    _, after, manifests = build(content, tmp_path)
+    assert not (result.root / "tiny" / before["stories"][0]["manifest"]["file"]).exists()
+    on_disk = {p.name for p in (result.root / "tiny").iterdir()}
+    assert on_disk == set(manifests["tiny"]["files"]) | {after["stories"][0]["manifest"]["file"]}
 
 
-def test_release_has_the_first_language_and_approved_translations_only(content, tmp_path):
+def test_production_has_the_first_language_and_approved_translations_only(content, tmp_path):
     deliver_images(content)
-    _, catalog, _ = build(content, tmp_path, "release")
+    _, catalog, _ = build(content, tmp_path, "production")
     assert list(catalog["stories"][0]["languages"]) == ["en"]
     (content / "stories" / "tiny" / "translations" / "es.json").write_text(json.dumps({"status": "approved"}))
-    _, catalog, _ = build(content, tmp_path, "release")
+    _, catalog, _ = build(content, tmp_path, "production")
     assert list(catalog["stories"][0]["languages"]) == ["en", "es"]
 
 
-def test_release_narrates_a_language_once_all_its_clips_are_delivered(content, tmp_path):
+def test_production_narrates_a_language_once_all_its_clips_are_delivered(content, tmp_path):
     deliver_images(content)
     deliver_clips(content, "en", audio_clips(EN)[:3])
-    _, catalog, manifests = build(content, tmp_path, "release")
+    _, catalog, manifests = build(content, tmp_path, "production")
     assert manifests["tiny"]["languages"]["en"]["audio"] == {}
     assert catalog["stories"][0]["languages"]["en"]["narration"] is False
     deliver_clips(content, "en")
-    _, catalog, manifests = build(content, tmp_path, "release")
+    _, catalog, manifests = build(content, tmp_path, "production")
     assert set(manifests["tiny"]["languages"]["en"]["audio"]) == set(audio_clips(EN))
     assert catalog["stories"][0]["languages"]["en"]["narration"] is True
 
 
-def test_release_leaves_out_a_story_with_pictures_missing(content, tmp_path):
+def test_production_leaves_out_a_story_with_pictures_missing(content, tmp_path):
     deliver_images(content, ["cover", "p1"])
-    result, catalog, _ = build(content, tmp_path, "release")
+    result, catalog, _ = build(content, tmp_path, "production")
     assert catalog["stories"] == []
     assert result.skipped["tiny"][0] == f"{len(set(image_ids(EN))) - 2} of {len(set(image_ids(EN)))} pictures not delivered yet"
-    dev, catalog, _ = build(content, tmp_path, "dev")
+    _, catalog, _ = build(content, tmp_path, "draft")
     assert [s["id"] for s in catalog["stories"]] == ["tiny"]
 
 
-def test_release_leaves_out_a_story_that_fails_the_check(content, tmp_path):
+def test_production_leaves_out_a_story_that_fails_the_check(content, tmp_path):
     deliver_images(content)
 
     class Broken:
@@ -227,7 +229,7 @@ def test_release_leaves_out_a_story_that_fails_the_check(content, tmp_path):
         def __str__(self):
             return "error   dangling: p2 leads nowhere"
 
-    packager = Packager("release", content=content, out=tmp_path / "out", cache=tmp_path / "cache",
+    packager = Packager("production", content=content, out=tmp_path / "out", cache=tmp_path / "cache",
                         encoder=FakeEncoder(), check=lambda folder, strict: [Broken()])
     result = packager.build()
     assert result.skipped == {"tiny": ["error   dangling: p2 leads nowhere"]}

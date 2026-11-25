@@ -9,7 +9,16 @@ __pycache__/
 
 # Work-in-progress content that never gets committed
 content/.work/
-# What `story package` builds (the dev and release channels) and its cache of converted files
+# Delivered originals (pictures, reference sheets, style anchors, narration clips, the app icon): too heavy for git.
+# They're kept in Firebase Storage (originals/) and listed in content/originals.json: `story originals push` / `pull`.
+content/**/*.webp
+content/**/*.png
+content/**/*.jpg
+content/**/*.jpeg
+content/**/*.wav
+content/**/*.flac
+content/**/*.m4a
+# What `story package` builds (the draft and production channels) and its cache of converted files
 content/.build/
 
 # App (Gradle, Kotlin, Xcode)

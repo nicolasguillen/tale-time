@@ -61,7 +61,8 @@ class HostedStoryLibraryTest {
             http = HttpClient(engine),
             fileSystem = disk,
             directory = dir,
-            source = { path -> "https://host.test/$path" },
+            // The channel's folder is stories/ on the fake host.
+            source = { path -> "https://host.test/stories/$path" },
             readBundledShelf = { shelfInsideTheApp.encodeToByteArray() },
             scope = scope,
             // Everything on the test's thread: the fake disk isn't made for threads.

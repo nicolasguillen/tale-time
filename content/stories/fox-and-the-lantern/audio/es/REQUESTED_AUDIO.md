@@ -10,7 +10,7 @@ Este archivo se genera solo. Para cambiar un pedido, edita el `story/es.json` de
 
 | Título | Páginas | Preguntas | Opciones | Títulos de final | Total |
 |---|---|---|---|---|---|
-| 1/1 | 3/20 | 1/6 | 2/12 | 0/5 | **7/44** |
+| 1/1 | 20/20 | 6/6 | 12/12 | 5/5 | **44/44** |
 
 Una tarde de verano, en el gran jardín de la abuela, Mia encuentra una estrella bebé dormida dentro de un farolito viejo. Con su amigo Tuck, el zorrito, la lleva hasta el Estanque del Sauce, donde las luciérnagas vuelan hasta el cielo cuando sale la luna: el viaje de la estrella de vuelta a casa.
 
@@ -137,333 +137,333 @@ En orden de lectura. La pregunta de una página con opciones y sus dos opciones 
 
 > El camino del jardín
 
-### ⬜ `p04a-hedge`: Página
+### ✅ `p04a-hedge`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p04a-hedge.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p04a-hedge.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: juguetón, lleno de vueltas, divertido.
 - **Duración:** 72 palabras, unos 32 s.
 - **Guion:**
 
 > Tuck se metió en un túnel de hojas del seto, y Mia gateó detrás de él, empujando el farolito. El túnel iba a la izquierda. Iba a la derecha. Daba vueltas y más vueltas. "¡Ya casi llegamos!", dijo Tuck. Izquierda, derecha, vueltas y más vueltas. "¡Ya casi llegamos!", dijo Tuck otra vez. La luz de Chispita hacía brillar de verde cada hoja. Mia se rio: "Tuck, ¿de verdad esto es un atajo?"
 
-### ⬜ `p05a-moths`: Página
+### ✅ `p05a-moths`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p05a-moths.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p05a-moths.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: alegre, mágico.
 - **Duración:** 64 palabras, unos 28 s.
 - **Guion:**
 
 > Por fin salieron rodando junto a los girasoles de la abuela. ¡Fiuuu! Una nube de polillas blancas y suaves llegó girando alrededor del farolito, como copos de nieve en verano. Le hacían cosquillas en la nariz a Mia. Chispita titilaba de risa. "¡Lucecita, lucecita, alumbra mi caminito!", cantó Mia. Las polillas bailaron delante de ella hasta el arroyo. Luego se fueron volando a dormir.
 
-### ⬜ `p04b-garden`: Página
+### ✅ `p04b-garden`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p04b-garden.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p04b-garden.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: tranquilo, bonito, con un toque de humor.
 - **Duración:** 70 palabras, unos 31 s.
 - **Guion:**
 
 > Mia tomó el camino del jardín, el que la abuela barría cada mañana. Pasaba junto a las varas de los frijoles y las calabazas gordas y anaranjadas. La luz de Chispita hacía brillar las calabazas como solecitos. Tuck trotaba a su lado. "Mi atajo es más rápido", dijo. "El camino de la abuela es más bonito", dijo Mia. Chispita tarareó, mmm-mmm, como si les diera la razón a los dos.
 
-### ⬜ `p05b-bramble`: Página
+### ✅ `p05b-bramble`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p05b-bramble.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p05b-bramble.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: amable, suavemente cómico.
 - **Duración:** 59 palabras, unos 26 s.
 - **Guion:**
 
 > Junto a las fresas, algo redondo daba vueltas, tambaleándose. ¡Era Zarza, la vecina erizo, con una manzana roja enorme pegada en las púas! "No te muevas", dijo Mia. Tomó una hoja ancha de repollo y, despacito, despacito, le sacó la manzana rodándola. "¡Gracias!", resopló Zarza. "El arroyo está ahí abajo". Y se fue trotando a dormir, mordisqueando su manzana.
 
-### ⬜ `p06-brook`: Página (antes de elegir)
+### ✅ `p06-brook`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: expectativa.
 - **Duración:** 68 palabras, unos 30 s.
 - **Guion:**
 
 > Al fondo del jardín, el arroyo pasaba cantando. El agua solo llegaba a los tobillos, pero estaba muy fría. Del otro lado estaba el gran sauce, y detrás de él, el cielo se estaba poniendo plateado. "¡Ya viene la luna!", dijo Tuck. La luz de Chispita titiló, un poquito más débil, un poquito más dormida. Tres piedras redondas cruzaban el arroyo. Más allá estaba el puentecito de madera.
 
-### ⬜ `p06-brook-q`: Pregunta
+### ✅ `p06-brook-q`: Pregunta
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Saltar por las piedras" o "Ir al puentecito".
 - **Duración:** 11 palabras, unos 6 s.
 - **Guion:**
 
 > ¿Mia cruza saltando por las piedras o camina hasta el puentecito?
 
-### ⬜ `p06-brook-a`: Opción
+### ✅ `p06-brook-a`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Mia cruza saltando por las piedras o camina hasta el puentecito?* La otra opción: "Ir al puentecito".
 - **Duración:** 4 palabras, unos 3 s.
 - **Guion:**
 
 > Saltar por las piedras
 
-### ⬜ `p06-brook-b`: Opción
+### ✅ `p06-brook-b`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p06-brook-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Mia cruza saltando por las piedras o camina hasta el puentecito?* La otra opción: "Saltar por las piedras".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Ir al puentecito
 
-### ⬜ `p07a-stones`: Página (antes de elegir)
+### ✅ `p07a-stones`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: tambaleante, emocionante, divertido.
 - **Duración:** 54 palabras, unos 24 s.
 - **Guion:**
 
 > ¡Hop! Mia cayó en la primera piedra. ¡Hop! Cayó en la segunda. Pero la tercera piedra se tambaleaba. Se movía para acá. Se movía para allá. La luz de Chispita rebotaba por toda el agua. Tuck ya estaba del otro lado. "¡Salta, Mia!", gritó. "¡O espera, y yo la sostengo quieta con las patas!"
 
-### ⬜ `p07a-stones-q`: Pregunta
+### ✅ `p07a-stones-q`: Pregunta
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "¡Un gran salto!" o "Esperar a Tuck".
 - **Duración:** 13 palabras, unos 6 s.
 - **Guion:**
 
 > ¿Mia da un gran salto o espera a que Tuck sostenga la piedra?
 
-### ⬜ `p07a-stones-a`: Opción
+### ✅ `p07a-stones-a`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Mia da un gran salto o espera a que Tuck sostenga la piedra?* La otra opción: "Esperar a Tuck".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > ¡Un gran salto!
 
-### ⬜ `p07a-stones-b`: Opción
+### ✅ `p07a-stones-b`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07a-stones-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Mia da un gran salto o espera a que Tuck sostenga la piedra?* La otra opción: "¡Un gran salto!".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Esperar a Tuck
 
-### ⬜ `p08a-across`: Página
+### ✅ `p08a-across`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p08a-across.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p08a-across.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: triunfal, cálido, divertido.
 - **Duración:** 60 palabras, unos 27 s.
 - **Guion:**
 
 > Mia esperó. Tuck apoyó las patas en la piedra que se tambaleaba y la sostuvo bien quieta. "¡Ahora!" ¡Hop! Mia cayó del otro lado, sana, salva y seca. "¡Lo logramos juntos!", festejó. Tuck infló el pecho. "¿Ves? Mis atajos siempre funcionan... a veces". Mia se rio tanto que Chispita rebotó dentro del farolito. Y luego salieron corriendo hacia el sauce.
 
-### ⬜ `p07b-bridge`: Página
+### ✅ `p07b-bridge`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07b-bridge.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p07b-bridge.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: en voz baja, un suspenso divertido.
 - **Duración:** 59 palabras, unos 26 s.
 - **Guion:**
 
 > El puentecito crujía, cric-crac, bajo las botas de Mia. Justo en el medio había una gansa blanca y grande, profundamente dormida, con la cabeza metida debajo del ala. "Es Gertrudis", susurró Tuck. "Se pone muy gruñona si la despiertas". Mia levantó el farolito, y la luz de Chispita cayó suavecita sobre las plumas de Gertrudis. Gertrudis abrió un ojo.
 
-### ⬜ `p08b-goose`: Página
+### ✅ `p08b-goose`: Página
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p08b-goose.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p08b-goose.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: dulce, educado, feliz.
 - **Duración:** 65 palabras, unos 29 s.
 - **Guion:**
 
 > Mia sonrió con su mejor sonrisa. "Con permiso, Gertrudis. Estamos llevando a Chispita a su casa en el cielo". Gertrudis miró a la estrellita, y su cara gruñona se puso tierna. "¡Cuaaac!", dijo, que quiere decir: "Vayan, vayan, pequeños". Se hizo a un lado, bamboleándose, y les hizo una reverencia. Mia cruzó el puente a saltitos, y Tuck trotó detrás de ella, hacia el sauce.
 
-### ⬜ `p09-willow`: Página (antes de elegir)
+### ✅ `p09-willow`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: mágico, y luego preocupado por Chispita.
 - **Duración:** 70 palabras, unos 31 s.
 - **Guion:**
 
 > Debajo del gran sauce, el Estanque del Sauce se estaba despertando. Las ranas estaban sentadas en sus hojas de nenúfar. Las luciérnagas subían como puntitos de oro. Y detrás de la colina, se asomó la luna redonda. Pero Chispita estaba tan cansada que su luz era apenas un brillito dormilón. "Brilla muy poquito para volar", dijo Tuck. Mia abrazó el farolito y se puso a pensar con todas sus fuerzas.
 
-### ⬜ `p09-willow-q`: Pregunta
+### ✅ `p09-willow-q`: Pregunta
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Pedir ayuda" o "Cantar la canción".
 - **Duración:** 20 palabras, unos 9 s.
 - **Guion:**
 
 > ¿Mia les pide ayuda a todos los amigos del estanque o le canta a Chispita la canción de la lucecita?
 
-### ⬜ `p09-willow-a`: Opción
+### ✅ `p09-willow-a`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Mia les pide ayuda a todos los amigos del estanque o le canta a Chispita la canción de la lucecita?* La otra opción: "Cantar la canción".
 - **Duración:** 2 palabras, unos 2 s.
 - **Guion:**
 
 > Pedir ayuda
 
-### ⬜ `p09-willow-b`: Opción
+### ✅ `p09-willow-b`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p09-willow-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Mia les pide ayuda a todos los amigos del estanque o le canta a Chispita la canción de la lucecita?* La otra opción: "Pedir ayuda".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Cantar la canción
 
-### ⬜ `p10a-friends`: Página (antes de elegir)
+### ✅ `p10a-friends`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: una alegría que va creciendo.
 - **Duración:** 62 palabras, unos 27 s.
 - **Guion:**
 
 > "¡Amigos!", llamó Mia. "¡Chispita necesita ayuda para volver a casa!" Las ranas hicieron croac-croac, como un tambor alegre. Las luciérnagas giraron alrededor del farolito. Tuck levantó el hocico y aulló un aullido chiquitito: "¡Auuu!". Y Chispita empezó a brillar, más, y más, y MÁS, hasta que todo el estanque resplandeció. Las luciérnagas se pusieron en fila en un desfile largo y titilante.
 
-### ⬜ `p10a-friends-q`: Pregunta
+### ✅ `p10a-friends-q`: Pregunta
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Guiar el desfile" o "Decir adiós desde la orilla".
 - **Duración:** 13 palabras, unos 6 s.
 - **Guion:**
 
 > ¿Mia guía el desfile con el farolito o dice adiós desde la orilla?
 
-### ⬜ `p10a-friends-a`: Opción
+### ✅ `p10a-friends-a`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Mia guía el desfile con el farolito o dice adiós desde la orilla?* La otra opción: "Decir adiós desde la orilla".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Guiar el desfile
 
-### ⬜ `p10a-friends-b`: Opción
+### ✅ `p10a-friends-b`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10a-friends-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Mia guía el desfile con el farolito o dice adiós desde la orilla?* La otra opción: "Guiar el desfile".
 - **Duración:** 5 palabras, unos 3 s.
 - **Guion:**
 
 > Decir adiós desde la orilla
 
-### ⬜ `p10b-song`: Página (antes de elegir)
+### ✅ `p10b-song`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: tierno, y luego esperanzado.
 - **Duración:** 61 palabras, unos 27 s.
 - **Guion:**
 
 > Mia abrazó el farolito y cantó, bajito y dulce: "¡Lucecita, lucecita, alumbra mi caminito!" El brillo de Chispita se puso un poquito más tibio. Alrededor del estanque, las ranas se callaron para escuchar. Entonces la rana más grande infló la garganta. "¿Podemos cantar también?", preguntó con voz ronca. Todas las ranas de todas las hojas de nenúfar miraron a Mia, esperando.
 
-### ⬜ `p10b-song-q`: Pregunta
+### ✅ `p10b-song-q`: Pregunta
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Fuerte con las ranas" o "Bajito y despacio".
 - **Duración:** 13 palabras, unos 6 s.
 - **Guion:**
 
 > ¿Mia la canta fuerte con las ranas o la tararea bajito y despacio?
 
-### ⬜ `p10b-song-a`: Opción
+### ✅ `p10b-song-a`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Mia la canta fuerte con las ranas o la tararea bajito y despacio?* La otra opción: "Bajito y despacio".
 - **Duración:** 4 palabras, unos 3 s.
 - **Guion:**
 
 > Fuerte con las ranas
 
-### ⬜ `p10b-song-b`: Opción
+### ✅ `p10b-song-b`: Opción
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/p10b-song-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Mia la canta fuerte con las ranas o la tararea bajito y despacio?* La otra opción: "Fuerte con las ranas".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Bajito y despacio
 
-### ⬜ `e1-big-splash`: Página (un final)
+### ✅ `e1-big-splash`: Página (un final)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e1-big-splash.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e1-big-splash.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: chistoso, alegre.
 - **Duración:** 72 palabras, unos 32 s.
 - **Guion:**
 
 > Mia dio un salto enorme y... ¡SPLASH! Sus botas, sus calcetines y su colita cayeron justo en el arroyo. El agua saltó por el aire, llena de destellos dorados. ¡Las luciérnagas creyeron que el desfile había empezado! Bajaron zumbando, abrieron la puertita del farolito y llevaron a Chispita hasta el cielo. Mia se rio y se rio. Sus botas hicieron chuic, chuic todo el camino hasta la toalla tibia de la abuela.
 
-### ⬜ `e1-big-splash-end`: Título del final
+### ✅ `e1-big-splash-end`: Título del final
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e1-big-splash-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e1-big-splash-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es chistoso: con una risa en la voz.
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > El gran chapuzón
 
-### ⬜ `e2-sky-parade`: Página (un final)
+### ✅ `e2-sky-parade`: Página (un final)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e2-sky-parade.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e2-sky-parade.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: triunfal, mágico, cálido.
 - **Duración:** 76 palabras, unos 33 s.
 - **Guion:**
 
 > Mia levantó el farolito bien alto y guio el desfile alrededor del Estanque del Sauce y de vuelta por el jardín. Las ranas saltaban, Tuck brincaba, y mil luciérnagas los seguían. La abuela los esperaba en el porche con una manta. Mia abrió la puertita de vidrio. Chispita subió flotando, arriba, arriba, arriba, y titiló en su lugar en el cielo. Y desde esa noche, una estrellita le guiñaba un ojo a la ventana de Mia.
 
-### ⬜ `e2-sky-parade-end`: Título del final
+### ✅ `e2-sky-parade-end`: Título del final
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e2-sky-parade-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e2-sky-parade-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es el mejor: con orgullo y un brillo especial.
 - **Duración:** 4 palabras, unos 3 s.
 - **Guion:**
 
 > El desfile del cielo
 
-### ⬜ `e3-goodnight-glim`: Página (un final)
+### ✅ `e3-goodnight-glim`: Página (un final)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e3-goodnight-glim.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e3-goodnight-glim.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: tierno, una despedida feliz.
 - **Duración:** 73 palabras, unos 32 s.
 - **Guion:**
 
 > Mia se sentó junto al agua y abrió la puertita de vidrio. "Buenas noches, Chispita", susurró. Chispita salió flotando, le dio un besito tibio y brillante en la nariz y voló con las luciérnagas, cada vez más alto, hasta volver a ser una estrella. Mia y Tuck dijeron adiós con la mano una y otra vez. Entonces, allá arriba en el jardín, la luz del porche de la abuela parpadeó. Hora de dormir.
 
-### ⬜ `e3-goodnight-glim-end`: Título del final
+### ✅ `e3-goodnight-glim-end`: Título del final
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e3-goodnight-glim-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e3-goodnight-glim-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es feliz: alegre y luminoso.
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Buenas noches, Chispita
 
-### ⬜ `e4-frog-chorus`: Página (un final)
+### ✅ `e4-frog-chorus`: Página (un final)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e4-frog-chorus.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e4-frog-chorus.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: fuerte, chistoso, alegre.
 - **Duración:** 69 palabras, unos 30 s.
 - **Guion:**
 
 > Mia y las ranas cantaron lo más fuerte que pudieron: "¡LUCECITA, LUCECITA, CROAC-CROAC, CROAQUITO!" Fue tan fuerte y tan chistoso que Chispita se rio, y se rio, y... ¡POP! La puertita se abrió de golpe, y Chispita salió disparada al cielo como una palomita de maíz. Tuck se rio tanto que rodó entre los juncos. Todo el camino a casa, Mia hizo croac. Y la abuela le contestó: croac.
 
-### ⬜ `e4-frog-chorus-end`: Título del final
+### ✅ `e4-frog-chorus-end`: Título del final
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e4-frog-chorus-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e4-frog-chorus-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es chistoso: con una risa en la voz.
 - **Duración:** 4 palabras, unos 3 s.
 - **Guion:**
 
 > La canción más croac
 
-### ⬜ `e5-windowsill`: Página (un final)
+### ✅ `e5-windowsill`: Página (un final)
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e5-windowsill.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e5-windowsill.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: acogedor, con sueño, seguro.
 - **Duración:** 67 palabras, unos 30 s.
 - **Guion:**
 
 > Mia tarareó la canción de la lucecita, bajito y despacio, y Chispita cerró los ojos. Las luciérnagas subieron sin ella, pero la luna sonrió desde arriba. "Mañana en la noche, pequeñita", parecía decir. Así que Mia llevó el farolito a casa. La abuela la arropó en la cama, y Chispita brilló junto a la ventana toda la noche: la lucecita de noche más acogedora del mundo entero.
 
-### ⬜ `e5-windowsill-end`: Título del final
+### ✅ `e5-windowsill-end`: Título del final
 
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e5-windowsill-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e5-windowsill-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es tranquilo: suave y con sueño.
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**

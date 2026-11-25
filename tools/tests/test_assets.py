@@ -5,7 +5,7 @@ import shutil
 
 from storytool.assets import Story, outputs, render, render_story
 from storytool.check import check_folder
-from storytool.repo import REQUESTED_ASSETS, STORIES, load_json
+from storytool.repo import REQUESTED_ASSETS, STORIES, find_image, load_json
 
 FOX = Story("fox-and-the-lantern")
 STYLE_DOC = FOX.style.doc
@@ -85,8 +85,8 @@ def test_the_index_links_each_story_and_holds_no_story_style_or_character():
 
 def test_each_story_has_its_own_style_anchor_and_sheets_in_its_folder():
     doc = render_story(FOX)
-    assert "`content/stories/fox-and-the-lantern/style/style-anchor.png` (or `.webp` / `.jpg`)" in doc
-    assert "`content/stories/fox-and-the-lantern/characters/mia.png` (or `.webp` / `.jpg`)" in doc
+    assert "`content/stories/fox-and-the-lantern/style/style-anchor." in doc  # requested or delivered
+    assert "`content/stories/fox-and-the-lantern/characters/mia." in doc
     assert STYLE_DOC["prompt"] in doc
     noelia = render_story(Story("noelia-and-the-baby-squirrel"))
     assert STYLE_DOC["prompt"] not in noelia  # a different book, a different style
@@ -135,4 +135,5 @@ def test_each_story_has_its_own_file_with_a_prompt_per_image():
     doc = render_story(FOX)
     assert doc.count("```text") >= len(FOX.ordered_images()) + len(FOX.sheets())
     assert "(../../../REQUESTED_ASSETS.md)" in doc  # back to the shared file for the style anchor
-    assert "### ⬜ `p01-meadow`: Page illustration" in doc
+    delivered = find_image(FOX.folder / "images", "p01-meadow") is not None
+    assert f"### {'✅' if delivered else '⬜'} `p01-meadow`: Page illustration" in doc

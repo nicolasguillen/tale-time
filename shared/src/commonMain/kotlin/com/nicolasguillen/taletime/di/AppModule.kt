@@ -35,8 +35,8 @@ val dataModule =
                 http = get(),
                 fileSystem = FileSystem.SYSTEM,
                 directory = get<LibraryDirectory>().path,
-                // Debug builds read the dev channel from `story serve` on the Mac; release builds, the published stories.
-                source = if (get<BuildInfo>().debug) ContentSource.Mac else ContentSource.Firebase,
+                // Debug builds read every story as it is (`story publish draft`); release builds, the finished ones.
+                source = if (get<BuildInfo>().debug) ContentSource.Draft else ContentSource.Production,
                 readBundledShelf = { Res.readBytes("files/shelf.json") },
                 scope = get(),
             )

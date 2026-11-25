@@ -209,7 +209,8 @@ def render(voice: dict | None = None, stories: list[Story] | None = None) -> str
         "This file is generated. To change a request, edit the narrators in `content/style/voice.json`, the words in "
         "the story's `story/<lang>.json`, names and personalities in its `bible.json` (the first language) or its "
         "`translations/<lang>.json` (the others), then run `cd tools && uv run story assets`. Run it again after "
-        "delivering files, and the ⬜ entries turn ✅.",
+        "delivering files, and the ⬜ entries turn ✅. Delivered clips aren't in git: `uv run story originals push` "
+        "keeps them in Firebase Storage.",
         "",
         "## Status",
         "",

@@ -26,10 +26,6 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         ITSAppUsesNonExemptEncryption: false
-        # Debug builds download from `story serve` on the Mac over plain HTTP (http://localhost:8765). This allows
-        # plain HTTP to local addresses only; the published stories come over HTTPS from Firebase Storage.
-        NSAppTransportSecurity:
-          NSAllowsLocalNetworking: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nicolasguillen.taletime

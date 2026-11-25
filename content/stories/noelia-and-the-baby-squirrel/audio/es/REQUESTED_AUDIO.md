@@ -10,7 +10,7 @@ Este archivo se genera solo. Para cambiar un pedido, edita el `story/es.json` de
 
 | Título | Páginas | Preguntas | Opciones | Títulos de final | Total |
 |---|---|---|---|---|---|
-| 1/1 | 3/20 | 1/5 | 2/10 | 0/4 | **7/40** |
+| 1/1 | 20/20 | 5/5 | 10/10 | 4/4 | **40/40** |
 
 Noelia lo hace todo rápido. En un paseo por el Bosque de los Pinos con su abuelo, lento y sonriente, encuentra a Pipa, una ardillita bebé que bajó de su árbol persiguiendo una bellota y ahora solo sabe que su casa está "¡arriba, arriba, arriba!". Noelia corre zumbando de árbol en árbol para encontrarla, pero cada vez que se apura, el bosque se queda callado, hasta que se sienta quieta el tiempo suficiente para oír a la mamá de Pipa llamándola.
 
@@ -137,297 +137,297 @@ En orden de lectura. La pregunta de una página con opciones y sus dos opciones 
 
 > Seguir las cascaritas
 
-### ⬜ `p04a-oak`: Página
+### ✅ `p04a-oak`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p04a-oak.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p04a-oak.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: sin aliento, divertido.
 - **Duración:** 59 palabras, unos 26 s.
 - **Guion:**
 
 > "¡En sus marcas, listos, ZUUM!" Noelia subió zumbando hasta el roble viejo, con Pipa correteando detrás. "Hola-soy-Noelia-ella-es-Pipa-¿dónde-viven-las-ardillas?", preguntó, sin respirar. El pájaro carpintero dejó de picotear. "¡Toc-toc! Soy Toc. ¿Las ardillas? Pues viven allá arriba, en una cosa redonda..." "¡REDONDA! ¡ALLÁ ARRIBA!", gritó Noelia. En el tronco había un agujerito redondo. Pipa trepó para asomarse. Y adentro había...
 
-### ⬜ `p05a-tock-home`: Página
+### ✅ `p05a-tock-home`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p05a-tock-home.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p05a-tock-home.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: divertido, un poco desinflado.
 - **Duración:** 73 palabras, unos 32 s.
 - **Guion:**
 
 > ...astillas. ¡Un montón de astillas y nada más! "¡Toc-toc! ¡Esa es MI casa!", graznó Toc. "La hice yo solito". Pipa bajó correteando. "No es mi casa", chilló. "¡Al siguiente árbol!", gritó Noelia, y salió zumbando. "¡Espera!", la llamó Toc. "Las ardillas viven en una cosa redonda..." Pero Noelia ya iba por la mitad de la colina, con Pipa saltando detrás. Toc sacudió la cabeza y se rio. Luego volvió a su trabajo. ¡Toc-toc-toc!
 
-### ⬜ `p04b-nutshells`: Página
+### ✅ `p04b-nutshells`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p04b-nutshells.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p04b-nutshells.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: atareado, curioso.
 - **Duración:** 77 palabras, unos 34 s.
 - **Guion:**
 
 > "¡Pistas!", dijo Noelia. "¡En sus marcas, listos, ZUUM!" Salió zumbando detrás de las cascaritas, con la nariz casi en el suelo. Iba tan rápido que nunca miró hacia arriba. El caminito pasaba junto a los helechos y terminaba en una raíz grande y torcida. Debajo había un agujerito redondo. "¡Redondo!", dijo Noelia. "¿Es aquí, Pipa?" Pipa dijo que no con la cabeza. "¡Mi casa está ARRIBA!" Entonces, desde el agujero, se oyó un ruido. Cronch. Cronch, cronch...
 
-### ⬜ `p05b-nibs`: Página
+### ✅ `p05b-nibs`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p05b-nibs.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p05b-nibs.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: sorprendido, con risitas.
 - **Duración:** 71 palabras, unos 31 s.
 - **Guion:**
 
 > De ahí salió un ratoncito de orejas muy grandes y cachetes muy llenos. "¡Mmf! Soy Nibs", dijo, y tragó. "Esas son MIS migajas. ¡Ay, qué desorden!" Con la cola, barrió las cascaritas en un montoncito ordenado. "¿Ardillas? Viven por allá arriba, en algún lado. Yo soy un ratón de aquí abajo. ¡Nunca miro para arriba!" Noelia se rio. Luego Nibs se metió otra vez en su agujero, a terminar su almuerzo.
 
-### ⬜ `p06-path`: Página (antes de elegir)
+### ✅ `p06-path`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: saltarín, impaciente, dulce.
 - **Duración:** 79 palabras, unos 35 s.
 - **Guion:**
 
 > Ese agujero redondo no era la casa de Pipa. La ardillita bajó la colita, triste. Entonces llegó el abuelo, sonriendo. Se detuvo y se agachó, muy despacio. "¡Mira, mira! ¡Mira nada más!" Un bichito rojo con puntitos negros subía por una hoja. "¡No hay tiempo, Abuelo!", dijo Noelia, brincando en la punta de los pies. "¡Necesitamos otra idea!" A lo mejor podía buscar allá arriba una casa redonda. ¡O a lo mejor podía llamar a la mamá de Pipa!
 
-### ⬜ `p06-path-q`: Pregunta
+### ✅ `p06-path-q`: Pregunta
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Buscar allá arriba" o "Llamar a Mamá".
 - **Duración:** 17 palabras, unos 8 s.
 - **Guion:**
 
 > ¿Noelia busca allá arriba una casa redonda o llama en voz alta a la mamá de Pipa?
 
-### ⬜ `p06-path-a`: Opción
+### ✅ `p06-path-a`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Noelia busca allá arriba una casa redonda o llama en voz alta a la mamá de Pipa?* La otra opción: "Llamar a Mamá".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Buscar allá arriba
 
-### ⬜ `p06-path-b`: Opción
+### ✅ `p06-path-b`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p06-path-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Noelia busca allá arriba una casa redonda o llama en voz alta a la mamá de Pipa?* La otra opción: "Buscar allá arriba".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Llamar a Mamá
 
-### ⬜ `p07a-birches`: Página
+### ✅ `p07a-birches`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p07a-birches.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p07a-birches.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: emocionado, fuerte.
 - **Duración:** 70 palabras, unos 31 s.
 - **Guion:**
 
 > "¡En sus marcas, listos, ZUUM!" Noelia entró zumbando entre los abedules, blancos y flaquitos, con hojitas amarillas que brillaban. Con la cabeza hacia atrás, miró arriba, arriba, arriba. Y entonces lo vio: muy alto en un abedul, ¡un nido redondo como una pelota! "¡AHÍ!", gritó, brincando. "¡Redondo! ¡Allá arriba! ¡Pipa, es tu casa!" Pipa miró hacia arriba, entrecerrando los ojos. El nido se tambaleó. Y por su puertita redonda salieron...
 
-### ⬜ `p08a-fluffballs`: Página
+### ✅ `p08a-fluffballs`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p08a-fluffballs.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p08a-fluffballs.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: sorprendido, divertido.
 - **Duración:** 64 palabras, unos 28 s.
 - **Guion:**
 
 > ...¡uno, dos, tres, cuatro, cinco pajaritos pompón! Parecían bolitas de algodón con colas largas y delgaditas. "¡Tsi-tsi-tsi!" Los gritos no les gustaron nada. ¡Frrr! Se fueron volando a un árbol más tranquilo. Noelia abrió la boca en una O grande y redonda. "No es mi casa", dijo Pipa con una vocecita muy chiquita. Más abajo en el camino, el abuelo saludó con la mano.
 
-### ⬜ `p07b-call`: Página
+### ✅ `p07b-call`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p07b-call.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p07b-call.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: fuerte, divertido.
 - **Duración:** 67 palabras, unos 30 s.
 - **Guion:**
 
 > Noelia se puso las manos alrededor de la boca. Tomó aire, muchísimo aire, todo el aire del mundo. "¡MAMÁ ARDILLA!", llamó. "¿DÓNDE ESTÁS?" Su voz rebotó entre los árboles: estás... estás... estás... Fue tan fuerte que Pipa se tapó las orejas con las patitas. Fue tan fuerte que la gorra amarilla del abuelo casi le saltó de la cabeza. Entonces, de cada arbusto y de cada rama...
 
-### ⬜ `p08b-not-us`: Página
+### ✅ `p08b-not-us`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p08b-not-us.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p08b-not-us.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: alborotado, y luego en silencio.
 - **Duración:** 56 palabras, unos 25 s.
 - **Guion:**
 
 > ...¡salieron los pájaros del bosque! "¡Nosotros no!", piaron los de color chocolate. "¡Nosotros no!", piaron los rojitos. "¡Nosotros no, nosotros no!", piaron los azulitos. ¡Flap, flap, frrr! Se fueron volando. Y entonces el bosque se quedó en silencio. Ni un susurro. Ni una cola. Ni un bigote. Ninguna ardilla contestó. Pipa bajó las orejitas. "¿Mamá?", susurró.
 
-### ⬜ `p09-clearing`: Página
+### ✅ `p09-clearing`: Página
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p09-clearing.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p09-clearing.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: cansado, callado, quieto.
 - **Duración:** 77 palabras, unos 34 s.
 - **Guion:**
 
 > Eso tampoco funcionó. En un claro lleno de sol, Noelia se dejó caer en el pasto. Había zumbado y zumbado y zumbado. "No la puedo encontrar", suspiró. Pipa se hizo bolita a su lado, cansada. Por fin llegó el abuelo. Se sentó en un tronco cortado, grande y plano, y le dio a Noelia un gajo de naranja. Nadie dijo nada. Por primera vez en todo el día, Noelia se quedó quieta. Y en el silencio, oyó...
 
-### ⬜ `p10-chitter`: Página (antes de elegir)
+### ✅ `p10-chitter`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: en voz baja, atento.
 - **Duración:** 75 palabras, unos 33 s.
 - **Guion:**
 
 > ...chiqui-chiqui. Suave y lejos, desde algún lugar allá arriba. Chiqui-chiqui. Pipa paró las orejas. "¡Mamá!", chilló. Noelia se levantó de un salto. "¡En sus marcas, listos, ZU...!" Y se detuvo. Los pies que corren hacen ruido, y el chiqui-chiqui era tan suave. Despacito, se volvió a sentar. "Shh", susurró, con un dedo en los labios. Podía ir de puntitas hacia el sonido, lenta como un caracol. O podía quedarse quieta como una piedra, y escuchar.
 
-### ⬜ `p10-chitter-q`: Pregunta
+### ✅ `p10-chitter-q`: Pregunta
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "De puntitas hacia el sonido" o "Quieta como una piedra".
 - **Duración:** 17 palabras, unos 8 s.
 - **Guion:**
 
 > ¿Noelia va de puntitas, despacito, hacia el sonido o se queda quieta como una piedra y escucha?
 
-### ⬜ `p10-chitter-a`: Opción
+### ✅ `p10-chitter-a`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Noelia va de puntitas, despacito, hacia el sonido o se queda quieta como una piedra y escucha?* La otra opción: "Quieta como una piedra".
 - **Duración:** 5 palabras, unos 3 s.
 - **Guion:**
 
 > De puntitas hacia el sonido
 
-### ⬜ `p10-chitter-b`: Opción
+### ✅ `p10-chitter-b`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p10-chitter-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Noelia va de puntitas, despacito, hacia el sonido o se queda quieta como una piedra y escucha?* La otra opción: "De puntitas hacia el sonido".
 - **Duración:** 4 palabras, unos 3 s.
 - **Guion:**
 
 > Quieta como una piedra
 
-### ⬜ `p11a-tiptoe`: Página (antes de elegir)
+### ✅ `p11a-tiptoe`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: asombro en voz baja.
 - **Duración:** 77 palabras, unos 34 s.
 - **Guion:**
 
 > "En sus marcas, listos... de puntitas", susurró Noelia. Pies lentos, pies suaves, hasta el pino más alto. Entre sus raíces había piñas de pino mordisqueadas. ¡Migajas de ardilla! Noelia miró arriba, arriba, arriba. Muy alto en el tronco había una bola redonda de ramitas y hojas: un nido de ardilla. Por el borde se asomaba una carita con dos mechoncitos en las orejas. "¡Mamá!", susurró Pipa. Noelia quería saludar. ¿Con un susurro? ¿O como saludan las ardillas?
 
-### ⬜ `p11a-tiptoe-q`: Pregunta
+### ✅ `p11a-tiptoe-q`: Pregunta
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Saludar susurrando" o "Saludar con chiqui-chiqui".
 - **Duración:** 15 palabras, unos 7 s.
 - **Guion:**
 
 > ¿Noelia saluda a Mamá Ardilla con un susurro o la saluda como las ardillas: chiqui-chiqui?
 
-### ⬜ `p11a-tiptoe-a`: Opción
+### ✅ `p11a-tiptoe-a`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Noelia saluda a Mamá Ardilla con un susurro o la saluda como las ardillas: chiqui-chiqui?* La otra opción: "Saludar con chiqui-chiqui".
 - **Duración:** 2 palabras, unos 2 s.
 - **Guion:**
 
 > Saludar susurrando
 
-### ⬜ `p11a-tiptoe-b`: Opción
+### ✅ `p11a-tiptoe-b`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11a-tiptoe-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Noelia saluda a Mamá Ardilla con un susurro o la saluda como las ardillas: chiqui-chiqui?* La otra opción: "Saludar susurrando".
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > Saludar con chiqui-chiqui
 
-### ⬜ `p11b-still`: Página (antes de elegir)
+### ✅ `p11b-still`: Página (antes de elegir)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still.wav`
 - **Indicación:** El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente. Ánimo: en voz baja, alegre.
 - **Duración:** 75 palabras, unos 33 s.
 - **Guion:**
 
 > Noelia se quedó quieta como una piedra. Pipa también. Y el abuelo también, y él era muy bueno para eso. Chiqui-chiqui. Ahora más cerca. Por el pino más alto bajaba una ardilla. Para. Sigue. Para. Sigue. Luego, saltito a saltito, cruzó el pasto. ¡Era Mamá Ardilla! Pipa corrió hacia ella. Nariz con nariz. Las colas enroscadas. El corazón de Noelia se sentía tan grande como el cielo. Podía quedarse quieta, mirando. O podía susurrar adiós.
 
-### ⬜ `p11b-still-q`: Pregunta
+### ✅ `p11b-still-q`: Pregunta
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-q.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-q.wav`
 - **Indicación:** Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones. Las dos opciones: "Quedarse mirando" o "Susurrar adiós".
 - **Duración:** 14 palabras, unos 7 s.
 - **Guion:**
 
 > ¿Noelia se queda quieta como una piedra, mirando, o le susurra adiós a Pipa?
 
-### ⬜ `p11b-still-a`: Opción
+### ✅ `p11b-still-a`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-a.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-a.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción A de *¿Noelia se queda quieta como una piedra, mirando, o le susurra adiós a Pipa?* La otra opción: "Susurrar adiós".
 - **Duración:** 2 palabras, unos 2 s.
 - **Guion:**
 
 > Quedarse mirando
 
-### ⬜ `p11b-still-b`: Opción
+### ✅ `p11b-still-b`: Opción
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-b.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/p11b-still-b.wav`
 - **Indicación:** La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera. Opción B de *¿Noelia se queda quieta como una piedra, mirando, o le susurra adiós a Pipa?* La otra opción: "Quedarse mirando".
 - **Duración:** 2 palabras, unos 2 s.
 - **Guion:**
 
 > Susurrar adiós
 
-### ⬜ `e1-up-up-up`: Página (un final)
+### ✅ `e1-up-up-up`: Página (un final)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: feliz, tierno, de despedida.
 - **Duración:** 73 palabras, unos 32 s.
 - **Guion:**
 
 > "Hola, Mamá Ardilla", susurró Noelia. "Encontramos a Pipa". Mamá Ardilla hizo un chiqui-chiqui suavecito y bajó hasta la mitad del tronco. "¡Mi casa está arriba!", chilló Pipa. Y arriba, arriba, arriba subió, hasta el nido. Mamá envolvió a Pipa en su cola grande y esponjosa. Entonces Pipa movió su colita, solo para Noelia. "Adiós, Pipa", susurró Noelia. Volvió a casa con el abuelo, de la mano, despacito. ¿Y mañana? Mañana volvería. De puntitas.
 
-### ⬜ `e1-up-up-up-end`: Título del final
+### ✅ `e1-up-up-up-end`: Título del final
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es feliz: alegre y luminoso.
 - **Duración:** 3 palabras, unos 2 s.
 - **Guion:**
 
 > ¡Arriba, arriba, arriba!
 
-### ⬜ `e2-chitter-chatter`: Página (un final)
+### ✅ `e2-chitter-chatter`: Página (un final)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: chistoso, alegre.
 - **Duración:** 67 palabras, unos 30 s.
 - **Guion:**
 
 > "¿Chiqui-chiqui?", dijo Noelia. Mamá Ardilla ladeó la cabeza. "¡Chiqui-chiqui!", le contestó. Del nido salieron el hermanito y la hermanita de Pipa. "¡Chiqui-chiqui-chiqui!" Pipa subió, arriba, arriba, arriba, para estar con ellos. Al ratito todos hacían chiqui-chiqui, hasta el abuelo, con su bigote blanco temblando. Todo el camino a casa, Noelia y el abuelo hicieron chiqui-chiqui. Y en la cena, cuando Noelia pidió más sopa, le salió... "¡Chiqui-chiqui!"
 
-### ⬜ `e2-chitter-chatter-end`: Título del final
+### ✅ `e2-chitter-chatter-end`: Título del final
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es chistoso: con una risa en la voz.
 - **Duración:** 1 palabra, unos 1 s.
 - **Guion:**
 
 > Chiqui-chiqui-chá
 
-### ⬜ `e3-whole-wood`: Página (un final)
+### ✅ `e3-whole-wood`: Página (un final)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: asombro, paz, el mejor día.
 - **Duración:** 80 palabras, unos 35 s.
 - **Guion:**
 
 > Noelia se quedó quieta como una piedra. Mamá y Pipa subieron por el pino, arriba, arriba, arriba. Poquito a poquito, todo el bosque se acercó. Los hermanitos de Pipa se asomaron de su nido de hojas, allá en lo alto. Los pájaros se acercaron a saltitos. "Mira, Abuelo", susurró Noelia. "¡Mira nada más!" Desde entonces, cada vez que ella y el abuelo volvían de puntitas al bosque, Pipa bajaba corriendo a saludar. Noelia lo hacía todo rápido. Bueno... casi todo.
 
-### ⬜ `e3-whole-wood-end`: Título del final
+### ✅ `e3-whole-wood-end`: Título del final
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es el mejor: con orgullo y un brillo especial.
 - **Duración:** 5 palabras, unos 3 s.
 - **Guion:**
 
 > Todo el bosque dice hola
 
-### ⬜ `e4-window`: Página (un final)
+### ✅ `e4-window`: Página (un final)
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e4-window.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e4-window.wav`
 - **Indicación:** El texto de la página, tal como está escrito. Ánimo: acogedor, tranquilo, contento.
 - **Duración:** 79 palabras, unos 35 s.
 - **Guion:**
 
 > "Adiós, Pipa", susurró Noelia. "¡Mi casa está arriba!", chilló Pipa, y arriba, arriba, arriba se fue con Mamá. Noelia y el abuelo volvieron por el bosque dorado, despacito. Esa noche, Noelia se arrodilló en una silla junto a la ventana del abuelo. El abuelo trajo dos tazas de leche tibia. Ella se quedó muy quieta. Y lejos y suave, desde el Bosque de los Pinos, llegó un sonido. Chiqui-chiqui. Noelia sonrió hasta la punta de sus zapatos de rayos.
 
-### ⬜ `e4-window-end`: Título del final
+### ✅ `e4-window-end`: Título del final
 
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e4-window-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e4-window-end.wav`
 - **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es tranquilo: suave y con sueño.
 - **Duración:** 4 palabras, unos 3 s.
 - **Guion:**

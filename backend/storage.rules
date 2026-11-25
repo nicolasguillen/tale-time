@@ -1,9 +1,12 @@
 rules_version = '2';
 
 // Tale Time's content host (plan.md §7.3), bucket tale-time-b537d.firebasestorage.app.
-// The app only downloads: the catalog and the story packages under stories/. Single files can be read by anyone,
-// but nobody can list the bucket or write through the API. `story publish` uploads with the owner's own
-// credentials (gcloud or the Admin SDK), which these rules don't apply to.
+// The app only downloads: the catalog and the story packages under stories/ (stories/production/ for release builds,
+// stories/draft/ for debug builds). Single files can be read by anyone, but nobody can list the bucket or write
+// through the API. `story publish` uploads with the owner's own credentials (gcloud or the Admin SDK), which these
+// rules don't apply to.
+// originals/ holds the delivered pictures and narration (`story originals`, not in git): private, the owner's gcloud
+// login only.
 service firebase.storage {
   match /b/{bucket}/o {
     match /stories/{path=**} {

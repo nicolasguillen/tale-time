@@ -6,7 +6,7 @@ in Claude Code by the /new-story skill, following tools/prompts/. This CLI does 
 import argparse
 import sys
 
-from . import assets, audio, graph, package, publish, serve
+from . import assets, audio, graph, icons, originals, package, publish
 from .check import (ERROR, REQUEST, STAGES, WARNING, Issue, check_app_assets, check_catalog, check_folder,
                     check_style, check_voice)
 from .repo import (APP_ASSETS, APP_STYLE, CATALOG, ROOT, STORIES, VOICE, characters_dir, find_image, has_story,
@@ -33,6 +33,14 @@ def _repo_issues():
         else:
             found.append(("app/style.json", Issue(ERROR, "app-style", "content/app/style.json is missing: the app icon "
                                                                       "has its own style")))
+    missing, unpushed = originals.quick_check()
+    if missing:
+        found.append(("originals.json", Issue(WARNING, "originals-missing", f"{len(missing)} delivered originals aren't "
+                                              "here: run `uv run story originals pull`")))
+    if unpushed:
+        found.append(("originals.json", Issue(WARNING, "originals-unpushed", f"{len(unpushed)} delivered files aren't "
+                                              "kept in Firebase Storage yet (they're not in git): run `uv run story "
+                                              "originals push`")))
     return found
 
 
@@ -195,20 +203,42 @@ def cmd_assets(args) -> int:
     return 1 if args.check and stale else 0
 
 
+def cmd_icons(args) -> int:
+    result = icons.sync(check_only=args.check)
+    names = ", ".join(p.relative_to(ROOT).as_posix() for p in result.changed)
+    if result.missing:
+        print(f"Not delivered yet (requested in REQUESTED_ASSETS.md): {', '.join(result.missing)}")
+    if not result.changed:
+        print("App icons (Android and iOS): up to date." if args.check else
+              "App icons (Android and iOS): already up to date.")
+    elif args.check:
+        print(f"App icons (Android and iOS): out of date, run `story icons`: {names}")
+    else:
+        print(f"App icons (Android and iOS): wrote {names}")
+    return 1 if args.check and result.changed else 0
+
+
 def cmd_package(args) -> int:
-    for channel in args.channels or ["dev"]:
+    originals.ensure_here()
+    for channel in args.channels or ["draft"]:
         for line in package.describe(package.package(channel)):
             print(line)
     return 0
 
 
-def cmd_serve(args) -> int:
-    serve.serve(port=args.port, lan=args.lan)
-    return 0
-
-
 def cmd_publish(args) -> int:
-    return publish.publish(dry_run=args.dry_run)
+    originals.ensure_here()
+    if originals.push(dry_run=args.dry_run) != 0:
+        return 1
+    return publish.publish(args.channel, dry_run=args.dry_run)
+
+
+def cmd_originals(args) -> int:
+    if args.action == "push":
+        return originals.push(dry_run=args.dry_run, forget=args.forget)
+    if args.action == "pull":
+        return originals.pull(dry_run=args.dry_run)
+    return originals.status(verbose=args.verbose)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -237,20 +267,36 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--check", action="store_true", help="only report whether the file is up to date")
     p.set_defaults(func=cmd_assets)
 
+    p = sub.add_parser("icons", help="put the delivered app icon (content/app/) into the Android and iOS apps, "
+                       "scaled down and converted only")
+    p.add_argument("--check", action="store_true", help="only report whether the apps' icon files are up to date")
+    p.set_defaults(func=cmd_icons)
+
     p = sub.add_parser("package", help="build what the app downloads (the catalog, and per story its manifest, pictures "
-                       "as WebP, texts and clips as AAC) into content/.build/<channel>/")
+                       "as WebP, texts and clips as AAC) into content/.build/stories/<channel>/")
     p.add_argument("channels", nargs="*", choices=package.CHANNELS,
-                   help="dev (content as it is, for debug builds; the default) or release (what `publish` uploads)")
+                   help="draft (content as it is, for debug builds; the default) or production (finished stories, for "
+                   "release builds)")
     p.set_defaults(func=cmd_package)
 
-    p = sub.add_parser("serve", help="serve the dev channel to debug builds of the app (http://localhost:8765)")
-    p.add_argument("--port", type=int, default=serve.PORT)
-    p.add_argument("--lan", action="store_true", help="also answer other devices on the network, not just this Mac")
-    p.set_defaults(func=cmd_serve)
-
-    p = sub.add_parser("publish", help="upload the release channel to Firebase Storage (only when the user asks)")
+    p = sub.add_parser("publish", help="upload a channel to Firebase Storage, stories/<channel>/ (only when the user "
+                       "asks)")
+    p.add_argument("channel", choices=package.CHANNELS,
+                   help="draft (every story as it is, for debug builds) or production (finished stories, for release "
+                   "builds)")
     p.add_argument("--dry-run", action="store_true", help="package and show what would be uploaded, upload nothing")
     p.set_defaults(func=cmd_publish)
+
+    p = sub.add_parser("originals", help="the delivered pictures and narration, which aren't in git: kept in Firebase "
+                       "Storage (originals/, private) and listed in content/originals.json")
+    p.add_argument("action", nargs="?", choices=("status", "push", "pull"), default="status",
+                   help="status (the default: what isn't pushed or isn't here), push (upload what the bucket doesn't "
+                   "have, after a delivery) or pull (download what's missing here, after a clone)")
+    p.add_argument("--dry-run", action="store_true", help="show what would be uploaded or downloaded, move nothing")
+    p.add_argument("--forget", action="store_true", help="push: drop the listed originals that aren't here any more "
+                   "(they stay in the bucket)")
+    p.add_argument("-v", "--verbose", action="store_true", help="status: list every file, not a count per folder")
+    p.set_defaults(func=cmd_originals)
 
     args = parser.parse_args(argv)
     return args.func(args)

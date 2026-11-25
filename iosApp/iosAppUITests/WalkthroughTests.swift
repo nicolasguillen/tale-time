@@ -21,14 +21,14 @@ final class WalkthroughTests: XCTestCase {
         e.tap()
     }
 
-    /// No story ships inside the app: a debug build downloads them from `story serve` on this Mac, so run it first
-    /// (`cd tools && uv run story serve`).
+    /// No story ships inside the app: a debug build downloads them from the draft channel on Firebase Storage, so
+    /// publish it first (`cd tools && uv run story publish draft`).
     func testReadToAnEndingAndVisitTheParentsArea() {
         tap("The Fox and the Lantern", timeout: 20)
         if !element("Read").waitForExistence(timeout: 3) && !element("Start over").exists {
             // Not downloaded yet: download it in English (its button says "English · 0.1 MB").
             let english = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", "English")).firstMatch
-            XCTAssertTrue(english.waitForExistence(timeout: 10), "No language to download in: is `story serve` running?")
+            XCTAssertTrue(english.waitForExistence(timeout: 10), "No language to download in: is the draft channel published?")
             english.tap()
         }
         if element("Start over").waitForExistence(timeout: 60) { tap("Start over") } else { tap("Read", timeout: 60) }

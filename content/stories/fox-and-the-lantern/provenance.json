@@ -101,6 +101,16 @@
       "notes": "The user asked for text-to-speech through the ElevenLabs connector, in Latin American Spanish, up to and including the first choice, with this voice. Each script sent exactly as in story/es.json, with a [warmly] tag (plus [curious] on the question) and Tuck written /tuk/ (IPA) per the pronounce hint in translations/es.json. Two takes per clip; take 1 delivered. Delivered as WAV mono 24-bit 44.1 kHz from the 128 kbps MP3: silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter (true peak <= -1 dBTP). Recorded on a draft translation and a proposed narrator: redo any clip whose text changes in the native read-through. ElevenLabs flow 7K3kLzD5FeKYW7dAuIox. Commercial-use terms of the account's plan still to be filed with the clips."
     },
     {
+      "step": "narration",
+      "language": "es",
+      "via": "elevenlabs",
+      "model": "eleven_v4",
+      "voice": "zl7szWVBXnpgrJmAalgz (Lily - Spanish Storyteller, ElevenLabs voice library)",
+      "date": "2026-11-25",
+      "clips": ["p04a-hedge", "p05a-moths", "p04b-garden", "p05b-bramble", "p06-brook", "p06-brook-q", "p06-brook-a", "p06-brook-b", "p07a-stones", "p07a-stones-q", "p07a-stones-a", "p07a-stones-b", "p08a-across", "p07b-bridge", "p08b-goose", "p09-willow", "p09-willow-q", "p09-willow-a", "p09-willow-b", "p10a-friends", "p10a-friends-q", "p10a-friends-a", "p10a-friends-b", "p10b-song", "p10b-song-q", "p10b-song-a", "p10b-song-b", "e1-big-splash", "e1-big-splash-end", "e2-sky-parade", "e2-sky-parade-end", "e3-goodnight-glim", "e3-goodnight-glim-end", "e4-frog-chorus", "e4-frog-chorus-end", "e5-windowsill", "e5-windowsill-end"],
+      "notes": "The user asked to finish the Spanish narration with the same voice. Same recipe as the first batch: each script sent exactly as in REQUESTED_AUDIO.md (story/es.json), with a [warmly] tag (plus [curious] on questions) and Tuck written /tuk/ (IPA). One take per clip (the user's decision; no retakes were needed). Checked before delivery: speech rate, no cut-off endings, no long gaps. Delivered as WAV mono 24-bit 44.1 kHz from the 128 kbps MP3: silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter (true peak <= -1 dBTP). Recorded on a draft translation and a proposed narrator: redo any clip whose text changes in the native read-through. ElevenLabs flow 7K3kLzD5FeKYW7dAuIox. Commercial-use terms of the account's plan still to be filed with the clips."
+    },
+    {
       "step": "illustration",
       "via": "Codex built-in image generation",
       "prompt": "REQUESTED_ASSETS.md",

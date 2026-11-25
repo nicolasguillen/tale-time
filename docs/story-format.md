@@ -89,7 +89,7 @@ The same clip ids in every language. Each language is requested in its own file,
 | `<fork>-a`, `<fork>-b` | the option labels |
 | `<ending>-end` | the ending's title, on the ending screen |
 
-The app reads aloud every text whose clip is delivered: a page's text as its words appear, a fork's question and then its two labels as the cards come out (the card being read lifts a little), an ending's title under "The End", and the title on the cover. A text without its clip shows without narration, at the narrator's pace. So a language can be narrated a few clips at a time on the `dev` channel.
+The app reads aloud every text whose clip is delivered: a page's text as its words appear, a fork's question and then its two labels as the cards come out (the card being read lifts a little), an ending's title under "The End", and the title on the cover. A text without its clip shows without narration, at the narrator's pace. So a language can be narrated a few clips at a time on the `draft` channel.
 
 **Word timings.** A narrated page's words appear as the narrator says them. `story package` measures when that is from each page's delivered clip and its text (`tools/storytool/timings.py`), with ffmpeg and no model: it finds the pauses in the clip, matches them in order to the places in the text where a narrator stops (sentence ends first, then commas, colons, dashes and quotes, rarely mid-phrase) so each stretch of speech lasts about as long as its syllables take at the clip's own pace, and spreads the words of each stretch by their syllables. That lands on the voice at every pause and is a close guess in between, which is what the reveal needs. Nothing is written into `audio/<lang>/`: the timings are made at packaging, cached by the clip's and the text's contents, and shipped next to the clips (below). A clip recorded for other words than the text's (the text changed after recording) falls back to the narrator's pace.
 
@@ -139,16 +139,16 @@ The bible's `title` holds every language too. A reader downloads a story in one 
 
 ## Published stories
 
-What the app downloads, built by `uv run story package [dev] [release]` into `content/.build/<channel>/`, laid out like the content host (Firebase Storage, bucket `tale-time-b537d.firebasestorage.app`):
+What the app downloads, built by `uv run story package [draft] [production]` into `content/.build/stories/<channel>/` and uploaded by `uv run story publish <channel>` to the same folder on the content host (Firebase Storage, bucket `tale-time-b537d.firebasestorage.app`). Each channel's folder holds:
 
 ```
-stories/catalog.json                 the shelf (schema/published-catalog.schema.json), fetched at every launch
-stories/<id>/manifest-<hash>.json    every file of the story (schema/manifest.schema.json)
-stories/<id>/<name>-<hash>.<ext>     the files: pictures (.webp), each language's text (story-<lang>.json), clips (<lang>-<clip>.m4a)
-                                     and word timings (timings-<lang>.json)
+stories/<channel>/catalog.json                 the shelf (schema/published-catalog.schema.json), fetched at every launch
+stories/<channel>/<id>/manifest-<hash>.json    every file of the story (schema/manifest.schema.json)
+stories/<channel>/<id>/<name>-<hash>.<ext>     the files: pictures (.webp), each language's text (story-<lang>.json),
+                                               clips (<lang>-<clip>.m4a) and word timings (timings-<lang>.json)
 ```
 
-Every file is named after its contents (the first 10 hex characters of its SHA-256), so a changed picture, clip or text gets a new name, the manifest that lists it changes, and so does the manifest's name in the catalog. The app compares that name with the one it has: a new one means the story changed, and it downloads only the files it doesn't have yet. Nothing on the host is overwritten, so every file but the catalog can be cached forever.
+Every file is named after its contents (the first 10 hex characters of its SHA-256), so a changed picture, clip or text gets a new name, the manifest that lists it changes, and so does the manifest's name in the catalog. The app compares that name with the one it has: a new one means the story changed, and it downloads only the files it doesn't have yet. Nothing on the host is overwritten, so every file but the catalog can be cached forever. Production never deletes a file either; `story publish draft` deletes the draft files no story uses any more.
 
 **Catalog entry:** `id`, `access`, `product`, `ageBand`, `title` (every published language, the first first), `languages` (per language: `bytes`, the download in that language alone, and `narration`), `cover` and `manifest` (each `{ file, bytes, sha256 }`).
 
@@ -160,8 +160,8 @@ Every file is named after its contents (the first 10 hex characters of its SHA-2
 
 | Channel | What's in it | Who reads it |
 |---|---|---|
-| `dev` | Every story on the shelf as it is: every language (drafts too), the pictures and clips delivered so far. A missing picture shows the placeholder; a page without its clip reads without narration. | Debug builds, from `uv run story serve` on the Mac (`http://localhost:8765`). |
-| `release` | Only stories that pass `story check --strict` (every picture delivered), in their first language and each translation whose sheet is `approved`. A language's narration ships once all its clips are delivered; until then that language reads without narration. | Release builds, from Firebase Storage, after `uv run story publish` (only when the user asks). |
+| `draft` | Every story on the shelf as it is: every language (drafts too), the pictures and clips delivered so far. A missing picture shows the placeholder; a page without its clip reads without narration. | Debug builds, from `stories/draft/`, after `uv run story publish draft` (only when the user asks). |
+| `production` | Only stories that pass `story check --strict` (every picture delivered), in their first language and each translation whose sheet is `approved`. A language's narration ships once all its clips are delivered; until then that language reads without narration. | Release builds, from `stories/production/`, after `uv run story publish production` (only when the user asks). |
 
 ## Budgets per age band
 
