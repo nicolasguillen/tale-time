@@ -232,6 +232,27 @@
         "p04b-nutshells"
       ],
       "notes": "The user picked the Sulafat voice after a trial and asked for the first 10 English clips through the Gemini API (Interactions endpoint, v1beta), with the user's own free-tier key from the macOS Keychain. Each script sent exactly as in REQUESTED_AUDIO.md (story/en.json), with no style and no tags. One take per clip. Checked before delivery: speech rate 118-145 wpm on pages (the question p03-clues-q is quick, about 190 wpm, and the title short at 1.8 s: redo them with a style if the user wants), no cut-off endings, no long gaps, noise floor about -60 dBFS or lower. Delivered as WAV mono 24-bit 48 kHz from the model's 24 kHz 16-bit WAV (upsampled, so no content above 12 kHz): silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter (true peak <= -1.2 dBTP). Recorded on a proposed narrator. Free-tier content may be used by Google to improve its products; Gemini API terms for commercial use of the output still to be filed with the clips."
+    },
+    {
+      "step": "narration",
+      "language": "en",
+      "via": "gemini-api",
+      "model": "gemini-3.8-flash-tts",
+      "voice": "Sulafat (Gemini prebuilt voice)",
+      "date": "2026-11-26",
+      "clips": [
+        "p05b-nibs",
+        "p06-path",
+        "p06-path-q",
+        "p06-path-a",
+        "p06-path-b",
+        "p07a-birches",
+        "p08a-fluffballs",
+        "p07b-call",
+        "p08b-not-us",
+        "p09-clearing"
+      ],
+      "notes": "The user asked to keep going with the English narration: the next 10 clips in reading order, at most 10 a day and 1 a minute (requests sent 65-75 s apart). Same recipe as the first batch: Gemini API (Interactions endpoint, v1beta), voice Sulafat, the user's own free-tier key from the macOS Keychain, each script sent exactly as in REQUESTED_AUDIO.md (story/en.json), with no style and no tags. One take per clip. Checked before delivery: speech rate 118-152 wpm on pages except p05b-nibs, which is quick at about 171 wpm (redo it with a slower style if the user wants); the question p06-path-q about 162 wpm; no cut-off endings; no gaps longer than 1.0 s (the two in p08b-not-us are the hushed pauses the page asks for); noise floor about -59 dBFS or lower in the pauses. Delivered as WAV mono 24-bit 48 kHz from the model's 24 kHz 16-bit WAV (upsampled, so no content above 12 kHz): silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter run at 192 kHz (true peak <= -1.5 dBTP). Recorded on a proposed narrator. Free-tier content may be used by Google to improve its products; Gemini API terms for commercial use of the output still to be filed with the clips."
     }
   ]
 }

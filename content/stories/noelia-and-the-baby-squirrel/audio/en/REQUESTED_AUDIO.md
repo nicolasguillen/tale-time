@@ -8,7 +8,7 @@ This file is generated. To change a request, edit this story's `story/en.json` (
 
 | Title | Pages | Questions | Choice labels | Ending titles | Total |
 |---|---|---|---|---|---|
-| 1/1 | 6/20 | 1/5 | 2/10 | 0/4 | **10/40** |
+| 1/1 | 13/20 | 2/5 | 4/10 | 0/4 | **20/40** |
 
 Noelia does everything fast. On a walk in Pinecone Wood with her slow, smiling Abuelo, she finds Pipa, a baby squirrel who climbed down to chase an acorn and now only knows that home is "up, up, up!" Noelia zooms from tree to tree to find it, but every time she rushes, the wood goes quiet, until she sits still long enough to hear Pipa's mama calling.
 
@@ -160,90 +160,90 @@ In reading order. A fork's question and its two choice labels follow its page.
 
 > "Clues!" said Noelia. "Ready, set, ZOOM!" She zoomed along the path after the nutshells, nose to the ground. She went so fast, she never looked up. The trail went past the ferns and stopped at a big twisty tree root. Under the root was a little round hole. "Round!" said Noelia. "Is this it, Pipa?" Pipa shook her head. "Home is UP!" Then, from inside the hole, came a sound. Crunch. Crunch, crunch...
 
-### ⬜ `p05b-nibs`: Page
+### ✅ `p05b-nibs`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p05b-nibs.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p05b-nibs.wav`
 - **Direction:** The page text, exactly as written. Mood: surprised, giggly.
 - **Length:** 67 words, about 30 s.
 - **Script:**
 
 > Out popped a little mouse with very big ears and very full cheeks. "Mmf! I'm Nibs," he said, and gulped. "These are MY crumbs. Oh dear, what a mess!" He swept the nutshells into a tidy pile with his tail. "Squirrels? They live up there somewhere. I'm a down-low mouse. I never look up!" Noelia giggled. Then Nibs popped back into his hole to finish his lunch.
 
-### ⬜ `p06-path`: Page (before a choice)
+### ✅ `p06-path`: Page (before a choice)
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path.wav`
 - **Direction:** The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop. Mood: bouncy, impatient, sweet.
 - **Length:** 65 words, about 29 s.
 - **Script:**
 
 > That round hole wasn't Pipa's home. Her tail drooped. Along came Abuelo, smiling. He stopped and bent down, very slowly. "Mira, mira! Look at that!" A tiny ladybug was walking up a leaf. "No time, Abuelo!" said Noelia, bouncing on her toes. "We need a new idea!" Maybe she could look up high for a round home. Or maybe she could call for Pipa's mama!
 
-### ⬜ `p06-path-q`: Question
+### ✅ `p06-path-q`: Question
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path-q.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path-q.wav`
 - **Direction:** A real, open question to the child, warm and curious. Don't lean toward either choice. The two choices: "Look up high" or "Call for Mama".
 - **Length:** 15 words, about 7 s.
 - **Script:**
 
 > Should Noelia look up high for a round home, or call out for Pipa's mama?
 
-### ⬜ `p06-path-a`: Choice label
+### ✅ `p06-path-a`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path-a.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path-a.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice A for *Should Noelia look up high for a round home, or call out for Pipa's mama?* The other label: "Call for Mama".
 - **Length:** 3 words, about 2 s.
 - **Script:**
 
 > Look up high
 
-### ⬜ `p06-path-b`: Choice label
+### ✅ `p06-path-b`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path-b.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p06-path-b.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice B for *Should Noelia look up high for a round home, or call out for Pipa's mama?* The other label: "Look up high".
 - **Length:** 3 words, about 2 s.
 - **Script:**
 
 > Call for Mama
 
-### ⬜ `p07a-birches`: Page
+### ✅ `p07a-birches`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p07a-birches.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p07a-birches.wav`
 - **Direction:** The page text, exactly as written. Mood: excited, loud.
 - **Length:** 69 words, about 30 s.
 - **Script:**
 
 > "Ready, set, ZOOM!" Noelia zoomed along the path into the birch trees, white and thin, with twinkly yellow leaves. Head back, she looked up, up, up. And then she saw it: high in a birch, a round ball of a nest! "THERE!" she shouted, hopping up and down. "Round! Up high! Pipa, it's your home!" Pipa squinted up. The nest wibble-wobbled. And out of its little round door came...
 
-### ⬜ `p08a-fluffballs`: Page
+### ✅ `p08a-fluffballs`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p08a-fluffballs.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p08a-fluffballs.wav`
 - **Direction:** The page text, exactly as written. Mood: surprised, funny.
 - **Length:** 54 words, about 24 s.
 - **Script:**
 
 > ...one, two, three, four, five fluffball birds! They looked like cotton balls with long, thin tails. "Tsee-tsee-tsee!" They did not like the shouting one bit. Whirr! Off they flew to a quieter tree. Noelia's mouth made a big round O. "Not home," said Pipa in a very small voice. Down the path, Abuelo waved.
 
-### ⬜ `p07b-call`: Page
+### ✅ `p07b-call`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p07b-call.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p07b-call.wav`
 - **Direction:** The page text, exactly as written. Mood: loud, funny.
 - **Length:** 64 words, about 28 s.
 - **Script:**
 
 > Noelia cupped her hands around her mouth. She took the biggest breath in the whole world. "MAMA SQUIRREL!" she called. "WHERE ARE YOU?" Her voice bounced through the trees: you... you... you... It was so loud that Pipa covered her ears with her paws. It was so loud that Abuelo's yellow cap nearly hopped off his head. Then, from every bush and every branch...
 
-### ⬜ `p08b-not-us`: Page
+### ✅ `p08b-not-us`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p08b-not-us.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p08b-not-us.wav`
 - **Direction:** The page text, exactly as written. Mood: flustered, then hushed.
 - **Length:** 59 words, about 26 s.
 - **Script:**
 
 > ...up popped the wood birds! "Not us!" chirped the brown ones. "Not us!" chirped the red ones. "Not us, not us!" chirped the blue-gray ones. Flutter, flutter, whirr! Away they flew. And then a hush fell over the wood. Not a rustle. Not a tail. Not a whisker. Not one squirrel answered. Pipa's ears went flat. "Mama?" she whispered.
 
-### ⬜ `p09-clearing`: Page
+### ✅ `p09-clearing`: Page
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p09-clearing.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p09-clearing.wav`
 - **Direction:** The page text, exactly as written. Mood: tired, quiet, still.
 - **Length:** 69 words, about 30 s.
 - **Script:**

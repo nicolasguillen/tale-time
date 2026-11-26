@@ -381,6 +381,46 @@
       "bytes": 4668582,
       "sha256": "806453b0da9aa1bf8b2a357272a57759d59b168f12b6b1ec4d119dfc69bc051a"
     },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p05b-nibs.wav": {
+      "bytes": 3491886,
+      "sha256": "e33bbcfdd21a0f2850fa37cd9b45b007347f3c55e4ac8eaf2773f2ea61c84dc4"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p06-path-a.wav": {
+      "bytes": 289398,
+      "sha256": "6e42de4b38f01ee98dc2e5bed3618774a0f7334d5da7ce991789cd1fb97587a4"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p06-path-b.wav": {
+      "bytes": 255558,
+      "sha256": "9ded7b2d2fe36d12fc8a5bd8bd0f93ebaae982d9af241cced7847717986a9d12"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p06-path-q.wav": {
+      "bytes": 915612,
+      "sha256": "de76291c2da1c29f53bae93ad246f89911f130f1c5223802d881d9f167839dc0"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p06-path.wav": {
+      "bytes": 3804522,
+      "sha256": "b4e8ceda40c6400456f0db7301b11011660d14bc8a5c85978c8a0b706ef81cf3"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p07a-birches.wav": {
+      "bytes": 4412262,
+      "sha256": "92a259d7eb6c3026110f26f8f0170648a8c69f04609f8704bb4a5681a98beb73"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p07b-call.wav": {
+      "bytes": 4086666,
+      "sha256": "569da481643d55b294f87a1957ff36be33885d00c8c1a738c36506d60f9de7f0"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p08a-fluffballs.wav": {
+      "bytes": 4052580,
+      "sha256": "89db68bf6fc9a98a93c376c2a64a142b0ed68ce54f0903a1b891cbb0bb3701c1"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p08b-not-us.wav": {
+      "bytes": 4326180,
+      "sha256": "fd8f7d2fa34ec6334c00d80ce3ceab1367d8beb8d92ec09db9045fced3a21702"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p09-clearing.wav": {
+      "bytes": 4208082,
+      "sha256": "fce8ca3e5e1d3100a7b43c5a77884d5ff6248aaef93f308cab3e3179e9e51e04"
+    },
     "stories/noelia-and-the-baby-squirrel/audio/en/title.wav": {
       "bytes": 380262,
       "sha256": "a83d3ec70f1c2188e4b8cb7def76c7fff02f221072bd689572ac3ad45fefeca1"
