@@ -6,16 +6,16 @@ Every narration clip *The Fox and the Lantern* needs in English, with its exact 
 
 This file is generated. To change a request, edit this story's `story/en.json` (the words), `bible.json` (names and personalities) or `shots.json` (each page's mood), or `content/style/voice.json` (the narrator), then run `cd tools && uv run story assets`. Run it again after delivering files, and the ⬜ entries turn ✅. The pictures, the same in every language, are requested in [REQUESTED_ASSETS.md](../../REQUESTED_ASSETS.md); every story and language is listed in the [index](../../../../../REQUESTED_AUDIO.md).
 
-| Title | Pages | Questions | Choice labels | Ending titles | Total |
-|---|---|---|---|---|---|
-| 0/1 | 0/20 | 0/6 | 0/12 | 0/5 | **0/44** |
+| Title | Pages | Questions | Choice labels | Total |
+|---|---|---|---|---|
+| 0/1 | 0/20 | 0/6 | 0/12 | **0/39** |
 
 On a summer evening in Grandma's big garden, Mia finds a baby star asleep in an old lantern. With her fox friend Tuck, she carries it down to Willow Pond, where the fireflies fly up to the sky at moonrise: the star's ride home.
 
 - **Folder:** `content/stories/fox-and-the-lantern/audio/en/`
 - **Pace:** about 140 words per minute (ages 4–7).
 - **Tone:** gentle, funny.
-- **Script:** 44 clips, 1,351 words, 7,449 characters, about 10 min in all.
+- **Script:** 39 clips, 1,337 words, 7,374 characters, about 10 min in all.
 
 ## Narrator: Warm storyteller (proposed, not yet approved)
 
@@ -42,7 +42,7 @@ One narrator for every English story in the app: a warm, unhurried grown-up read
 - **Name** each file after its clip id, in this folder: `<clip id>.wav` (or `.flac` / `.m4a`).
 - **One narrator** for a whole story, in one session if possible, so every clip sounds the same.
 - **Word timings aren't needed.** The pipeline will align each clip with its text to light up the words (plan.md §5.2, step 8).
-- **Packaging** turns the delivered files into mono AAC `.m4a` at about 48 kbps and evens out the loudness. Nothing else changes: no edits, no effects.
+- **Packaging** turns the delivered files into mono AAC `.m4a` at about 64 kbps and evens out the loudness. Nothing else changes: no edits, no effects.
 - **Licenses**: keep the release or license for every voice next to the files (a recorded person's written release, or a voice tool's terms that allow commercial distribution in an app), and note the source in the story's `provenance.json`.
 
 | | Every clip |
@@ -379,89 +379,44 @@ In reading order. A fork's question and its two choice labels follow its page.
 ### ⬜ `e1-big-splash`: Page (an ending)
 
 - **File:** `content/stories/fox-and-the-lantern/audio/en/e1-big-splash.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: silly, joyful.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: silly, joyful.
 - **Length:** 70 words, about 31 s.
 - **Script:**
 
 > Mia took a great big jump and... SPLASH! Her boots, her socks and her bottom landed right in the brook. Up flew the splash, full of golden sparkles. The fireflies thought the parade had begun! They zoomed down, popped open the little lantern door, and carried Glim all the way to the sky. Mia laughed and laughed. Squelch, squelch went her boots, all the way home to Grandma's warm towel.
 
-### ⬜ `e1-big-splash-end`: Ending title
-
-- **File:** `content/stories/fox-and-the-lantern/audio/en/e1-big-splash-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is silly: with a laugh in the voice.
-- **Length:** 3 words, about 2 s.
-- **Script:**
-
-> The Big Splash
-
 ### ⬜ `e2-sky-parade`: Page (an ending)
 
 - **File:** `content/stories/fox-and-the-lantern/audio/en/e2-sky-parade.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: triumphant, magical, warm.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: triumphant, magical, warm.
 - **Length:** 68 words, about 30 s.
 - **Script:**
 
 > Mia held the lantern high and led the parade, all around Willow Pond and up through the garden. The frogs hopped, Tuck pranced, and a thousand fireflies followed. Grandma was waiting on the porch with a blanket. Mia opened the little glass door. Glim floated up, up, up, and twinkled into its place in the sky. And every night after that, one little star winked at Mia's window.
 
-### ⬜ `e2-sky-parade-end`: Ending title
-
-- **File:** `content/stories/fox-and-the-lantern/audio/en/e2-sky-parade-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is the best one: proud and glowing.
-- **Length:** 3 words, about 2 s.
-- **Script:**
-
-> The Sky Parade
-
 ### ⬜ `e3-goodnight-glim`: Page (an ending)
 
 - **File:** `content/stories/fox-and-the-lantern/audio/en/e3-goodnight-glim.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: tender, happy goodbye.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: tender, happy goodbye.
 - **Length:** 59 words, about 26 s.
 - **Script:**
 
 > Mia sat down by the water and opened the little glass door. "Goodnight, Glim," she whispered. Glim floated out, gave her nose a warm, twinkly kiss, and flew up with the fireflies, higher and higher, until it was a star again. Mia and Tuck waved and waved. Then, far up the garden, Grandma's porch light blinked. Time for bed.
 
-### ⬜ `e3-goodnight-glim-end`: Ending title
-
-- **File:** `content/stories/fox-and-the-lantern/audio/en/e3-goodnight-glim-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is happy: bright and cheerful.
-- **Length:** 2 words, about 2 s.
-- **Script:**
-
-> Goodnight, Glim
-
 ### ⬜ `e4-frog-chorus`: Page (an ending)
 
 - **File:** `content/stories/fox-and-the-lantern/audio/en/e4-frog-chorus.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: loud, silly, joyful.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: loud, silly, joyful.
 - **Length:** 64 words, about 28 s.
 - **Script:**
 
 > Mia and the frogs sang as loud as they could: "LITTLE LIGHT, LITTLE LIGHT, RIBBIT-RIBBIT, CROAK TONIGHT!" It was so loud and so silly that Glim giggled, and giggled, and... POP! The little door flew open, and Glim shot up to the sky like popcorn. Tuck laughed so hard he rolled in the reeds. All the way home, Mia croaked. And Grandma croaked back.
 
-### ⬜ `e4-frog-chorus-end`: Ending title
-
-- **File:** `content/stories/fox-and-the-lantern/audio/en/e4-frog-chorus-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is silly: with a laugh in the voice.
-- **Length:** 3 words, about 2 s.
-- **Script:**
-
-> The Croakiest Song
-
 ### ⬜ `e5-windowsill`: Page (an ending)
 
 - **File:** `content/stories/fox-and-the-lantern/audio/en/e5-windowsill.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: cozy, sleepy, safe.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: cozy, sleepy, safe.
 - **Length:** 59 words, about 26 s.
 - **Script:**
 
 > Mia hummed the star song, soft and slow, and Glim's eyes closed. The fireflies drifted up without it, but the moon smiled down. "Tomorrow night, little one," it seemed to say. So Mia carried the lantern home. Grandma tucked her into bed, and Glim glowed on the windowsill all night long: the coziest night-light in the whole wide world.
-
-### ⬜ `e5-windowsill-end`: Ending title
-
-- **File:** `content/stories/fox-and-the-lantern/audio/en/e5-windowsill-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is cozy: soft and sleepy.
-- **Length:** 3 words, about 2 s.
-- **Script:**
-
-> One More Night

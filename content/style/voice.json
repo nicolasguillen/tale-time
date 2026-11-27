@@ -18,15 +18,9 @@
         "title": "The story's title, as you would read it from a book cover: slowly, with a little wonder. Only the title.",
         "page": "The page text, exactly as written.",
         "fork-page": "The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop.",
+        "ending-page": "The last page of a path, and the last words of the story: the app plays \"The End.\" right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question.",
         "question": "A real, open question to the child, warm and curious. Don't lean toward either choice.",
-        "option": "A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way.",
-        "ending": "The ending's title on the \"The End\" screen, like a little prize: slowly and warmly."
-      },
-      "endingKinds": {
-        "best": "proud and glowing",
-        "happy": "bright and cheerful",
-        "cozy": "soft and sleepy",
-        "silly": "with a laugh in the voice"
+        "option": "A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way."
       },
       "avoid": [
         "Music, sound effects, ambience, reverb or room echo",
@@ -51,15 +45,9 @@
         "title": "El título del cuento, como lo leerías en la portada de un libro: despacio, con un poco de asombro. Solo el título.",
         "page": "El texto de la página, tal como está escrito.",
         "fork-page": "El texto de la página, tal como está escrito. La pregunta que sigue es un clip aparte, así que termina este como una afirmación y detente.",
+        "ending-page": "La última página de un camino, y las últimas palabras del cuento: justo después la app pone \"Fin.\", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta.",
         "question": "Una pregunta de verdad, abierta, para el niño o la niña: cálida y curiosa. No te inclines por ninguna de las dos opciones.",
-        "option": "La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera.",
-        "ending": "El título del final en la pantalla de \"Fin\", como un pequeño premio: despacio y con calidez."
-      },
-      "endingKinds": {
-        "best": "con orgullo y un brillo especial",
-        "happy": "alegre y luminoso",
-        "cozy": "suave y con sueño",
-        "silly": "con una risa en la voz"
+        "option": "La etiqueta de una tarjeta de opción, como si leyeras un botón en voz alta: corta y luminosa. Lee las dos etiquetas de una misma pregunta de la misma manera."
       },
       "avoid": [
         "Música, efectos de sonido, ambiente, reverberación o eco de sala",

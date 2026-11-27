@@ -211,15 +211,25 @@ class ReaderViewModelTest {
         vm.onEvent(ReaderEvent.TapChoice(0))
         assertEquals("e1", vm.page.nodeId)
         assertEquals(EndingKind.SILLY, vm.page.endingKind)
-        assertEquals("Cake", vm.page.endingTitle)
         assertTrue(vm.state.value.newEnding)
         assertEquals(1 to 2, vm.state.value.endingsFound to vm.state.value.endingsTotal)
         assertEquals(setOf("e1"), progress.state.value["tiny"]?.endingsFound)
 
+        vm.onEvent(ReaderEvent.Next) // nothing closes while the book is still flipping to the ending
+        assertEquals(Phase.TEXT, vm.state.value.phase)
+        vm.onEvent(ReaderEvent.Landed)
         vm.onEvent(ReaderEvent.Next)
         assertEquals(Phase.END, vm.state.value.phase)
         vm.onEvent(ReaderEvent.TryAnotherPath)
+        // The book flips back to the fork, straight before this ending, and reads it again.
         assertEquals("f1", vm.page.nodeId)
+        assertEquals(Phase.TEXT, vm.state.value.phase)
+        assertTrue(vm.state.value.landing)
+        assertEquals(0, vm.state.value.rewinding)
+        assertFalse(vm.page.choices.any { it.toward }, "no way to mark: any other path will do")
+        vm.onEvent(ReaderEvent.Landed)
+        assertNull(vm.state.value.rewinding)
+        vm.onEvent(ReaderEvent.Next)
         assertEquals(Phase.CHOICE, vm.state.value.phase)
 
         // The same ending again isn't new.
@@ -358,7 +368,7 @@ class ReaderViewModelTest {
     }
 
     @Test
-    fun anEndingReadsItsTitleUnderTheEnd() {
+    fun anEndingsNameIsNeverSaidEvenWithItsClip() {
         val vm = narrated()
         vm.onEvent(ReaderEvent.Next)
         vm.onEvent(ReaderEvent.Next)
@@ -368,7 +378,8 @@ class ReaderViewModelTest {
         vm.onEvent(ReaderEvent.Next)
         assertEquals(Phase.END, vm.state.value.phase)
         breathe()
-        assertEquals(clipPath("en", "e1-end"), player.playing)
+        assertEquals(Closing.DONE, vm.state.value.closing)
+        assertFalse(clipPath("en", "e1-end") in player.played)
     }
 
     @Test
@@ -400,5 +411,136 @@ class ReaderViewModelTest {
         breathe()
         assertNull(vm.narrationMillis("p1"))
         assertEquals("p1", vm.page.nodeId)
+    }
+
+    /** The tiny story read to its silly ending, Cake, through the red door: its text read, the closing not yet. */
+    private fun ReaderViewModel.toCake(): ReaderViewModel {
+        onEvent(ReaderEvent.Next)
+        onEvent(ReaderEvent.Next)
+        onEvent(ReaderEvent.TapChoice(0))
+        onEvent(ReaderEvent.Landed)
+        assertEquals("e1", page.nodeId)
+        return this
+    }
+
+    @Test
+    fun anEndingClosesOnePartAfterTheOtherAsTheNarratorSaysThem() {
+        val library = tinyLibrary(clips = mapOf("en" to listOf("e1-end")))
+        library.state.value =
+            library.state.value.copy(
+                narration = mapOf("en" to mapOf("the-end" to "/app/en-the-end.m4a", "more-endings" to "/app/en-more.m4a")),
+            )
+        val vm = ReaderViewModel("tiny", true, library, progress, settings, player).toCake()
+        assertEquals(
+            listOf("e1", "e2"),
+            vm.state.value.endings
+                .map { it.id },
+        )
+        assertEquals(
+            listOf(true, false),
+            vm.state.value.endings
+                .map { it.found },
+        )
+        assertEquals(
+            "Cake",
+            vm.state.value.endings[0]
+                .title,
+        )
+
+        vm.onEvent(ReaderEvent.Next)
+        assertEquals(Closing.THE_END, vm.state.value.closing)
+        breathe()
+        assertEquals("/app/en-the-end.m4a", player.playing, "the narrator says the story is over")
+        player.finish()
+        assertEquals(Closing.BADGES, vm.state.value.closing)
+        assertNull(player.playing, "the badges come in quietly, and the ending's name isn't said")
+        breathe()
+        assertEquals(Closing.OUTRO, vm.state.value.closing)
+        assertEquals("/app/en-more.m4a", player.playing, "one ending is left: tap a question mark; and more stories")
+        player.finish()
+        assertEquals(Closing.DONE, vm.state.value.closing)
+    }
+
+    @Test
+    fun withoutItsClipsAnEndingStillClosesOnePartAfterTheOther() {
+        val vm = reader().toCake()
+        vm.onEvent(ReaderEvent.Next)
+        assertEquals(Closing.THE_END, vm.state.value.closing)
+        main.scheduler.advanceTimeBy(NARRATION_BREATH_MILLIS + THE_END_MILLIS + 1)
+        assertEquals(Closing.BADGES, vm.state.value.closing)
+        breathe()
+        assertEquals(Closing.DONE, vm.state.value.closing)
+    }
+
+    @Test
+    fun onceEveryEndingIsFoundTheNarratorSaysSo() {
+        progress.edit("tiny") { StoryProgress(endingsFound = setOf("e2")) }
+        val library = tinyLibrary()
+        library.state.value =
+            library.state.value.copy(
+                narration = mapOf("en" to mapOf("more-endings" to "/app/en-more.m4a", "all-endings" to "/app/en-all.m4a")),
+            )
+        val vm = ReaderViewModel("tiny", true, library, progress, settings, player).toCake()
+        assertTrue(
+            vm.state.value.endings
+                .all { it.found },
+        )
+        vm.onEvent(ReaderEvent.Next)
+        breathe()
+        assertEquals("/app/en-all.m4a", player.playing)
+    }
+
+    @Test
+    fun aQuestionMarkTakesTheBookBackToTheForkAndMarksTheWay() {
+        val vm = reader().toCake()
+        vm.onEvent(ReaderEvent.FindEnding("e2")) // not before the closing
+        assertEquals("e1", vm.page.nodeId)
+
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.FindEnding("e1")) // this one: nowhere to go
+        assertEquals("e1", vm.page.nodeId)
+        vm.onEvent(ReaderEvent.FindEnding("e2"))
+        assertEquals("f1", vm.page.nodeId)
+        assertEquals(Phase.TEXT, vm.state.value.phase, "its page is read again first")
+        assertTrue(vm.state.value.landing)
+        assertEquals(0, vm.state.value.rewinding)
+        assertEquals(listOf(Step("p1"), Step("f1")), progress.state.value["tiny"]?.path)
+        assertEquals(listOf(false, true), vm.page.choices.map { it.toward }, "the blue door leads to Flowers")
+
+        vm.onEvent(ReaderEvent.FindEnding("e2")) // a second tap on the way back does nothing
+        assertEquals(Phase.TEXT, vm.state.value.phase)
+        vm.onEvent(ReaderEvent.Landed)
+        vm.onEvent(ReaderEvent.Next)
+        assertEquals(Phase.CHOICE, vm.state.value.phase)
+        vm.onEvent(ReaderEvent.TapChoice(1))
+        vm.onEvent(ReaderEvent.Landed)
+        vm.onEvent(ReaderEvent.Next)
+        assertEquals("e2", vm.page.nodeId)
+        assertTrue(vm.state.value.newEnding)
+        assertEquals(2, vm.state.value.endingsFound)
+    }
+
+    @Test
+    fun pickingTheOtherWayDropsTheMarks() {
+        val vm = reader().toCake()
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.FindEnding("e2"))
+        vm.onEvent(ReaderEvent.Landed)
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.TapChoice(0))
+        vm.onEvent(ReaderEvent.Landed)
+        assertEquals("e1", vm.page.nodeId)
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.TryAnotherPath)
+        assertFalse(vm.page.choices.any { it.toward }, "Try another path looks for nothing")
+    }
+
+    @Test
+    fun anAgentCanOpenTheReaderOnAnEnding() {
+        val vm = ReaderViewModel("tiny", true, tinyLibrary(), progress, settings, FakeNarrationPlayer(), at = "e2")
+        assertEquals("e2", vm.page.nodeId)
+        assertTrue(vm.state.value.newEnding)
+        assertEquals(listOf(Step("p1"), Step("f1", 1), Step("p2"), Step("e2")), progress.state.value["tiny"]?.path)
+        assertEquals("p1", ReaderViewModel("tiny", true, tinyLibrary(), progress, settings, FakeNarrationPlayer(), at = "gone").page.nodeId)
     }
 }

@@ -44,6 +44,10 @@ data class Strings(
     val newEnding: String,
     val endingsFound: (found: Int, total: Int) -> String,
     val tryAnotherPath: String,
+    /** A "?" badge on the ending screen, to a screen reader: it takes the book back toward that ending. */
+    val findEnding: String,
+    /** The gold arrow on the card that shows the way to the ending a "?" badge asked for, to a screen reader. */
+    val wayToEnding: String,
     // Unlocking a paid story
     val unlock: (title: String) -> String,
     val unlockExplained: String,
@@ -129,6 +133,8 @@ val EnglishStrings =
         newEnding = "New!",
         endingsFound = { found, total -> "$found of $total endings found" },
         tryAnotherPath = "Try another path",
+        findEnding = "Find another ending",
+        wayToEnding = "This way to a new ending",
         unlock = { title -> "Unlock “$title”" },
         unlockExplained = "A one-time purchase. It stays unlocked on every device signed in to this store account.",
         buy = "Buy",
@@ -208,6 +214,8 @@ val SpanishStrings =
         newEnding = "¡Nuevo!",
         endingsFound = { found, total -> "$found de $total finales encontrados" },
         tryAnotherPath = "Probar otro camino",
+        findEnding = "Buscar otro final",
+        wayToEnding = "Por aquí hay un final nuevo",
         unlock = { title -> "Desbloquear “$title”" },
         unlockExplained =
             "Una sola compra. Queda desbloqueado en todos los dispositivos que usen esta misma cuenta de la tienda.",

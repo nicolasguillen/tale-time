@@ -166,7 +166,7 @@ def test_word_count():
 def test_ids_and_clips():
     s = tiny()
     assert image_ids(s) == ["cover", "p1", "f1", "f1-a", "f1-b", "p2", "e1", "e2"]
-    assert audio_clips(s) == ["title", "p1", "f1", "f1-q", "f1-a", "f1-b", "p2", "e1", "e1-end", "e2", "e2-end"]
+    assert audio_clips(s) == ["title", "p1", "f1", "f1-q", "f1-a", "f1-b", "p2", "e1", "e2"]  # no ending titles
 
 
 def test_missing_pictures_are_requests_in_draft_and_errors_when_strict(tmp_path):
@@ -420,3 +420,66 @@ def test_the_shelf_should_open_with_a_free_story():
     found = {(i.code, i.level) for i in check_catalog(
         {"stories": [{"id": "fox-and-the-lantern", "access": "paid", "product": "story.fox"}]}, STORIES_SEEN)}
     assert found == {("catalog-first-free", "warning")}
+
+
+def test_no_story_can_be_called_app():
+    found = {(i.code, i.level) for i in check_catalog(
+        {"stories": [{"id": "fox-and-the-lantern", "access": "free"}, {"id": "app", "access": "free"}]},
+        {**STORIES_SEEN, "app": {"en": {}}})}
+    assert found == {("catalog-reserved", "error")}
+
+
+# The end of every story (content/app/narration.json) ---------------------------------------------------------------
+
+from storytool.check import REQUEST, check_app_narration  # noqa: E402
+from storytool.repo import APP_CLIPS  # noqa: E402
+
+NARRATION = load_json(ROOT / "content" / "app" / "narration.json")
+NARRATORS = load_json(ROOT / "content" / "style" / "voice.json")["narrators"]
+
+
+def narration_codes(doc, narrators=NARRATORS, **kw):
+    return {(i.code, i.level) for i in check_app_narration(doc, narrators, **kw)}
+
+
+def test_the_real_app_narration_passes():
+    assert check_app_narration(NARRATION, NARRATORS) == []
+    assert list(NARRATION) == list(NARRATORS)
+
+
+def test_the_app_narration_has_exactly_the_three_lines_each_with_words():
+    doc = copy.deepcopy(NARRATION)
+    del doc["en"]["all-endings"]
+    assert narration_codes(doc) == {("schema", ERROR)}
+    doc = copy.deepcopy(NARRATION)
+    doc["es"]["bonus"] = {"script": "¡Hola!", "direction": "Alegre."}
+    assert narration_codes(doc) == {("schema", ERROR)}
+    doc = copy.deepcopy(NARRATION)
+    doc["es"]["the-end"]["script"] = ""
+    assert narration_codes(doc) == {("schema", ERROR)}
+    doc = copy.deepcopy(NARRATION)
+    doc["en-US"] = doc["en"]
+    assert narration_codes(doc) == {("schema", ERROR)}
+
+
+def test_every_narrator_has_its_lines_and_every_line_a_narrator():
+    doc = copy.deepcopy(NARRATION)
+    doc["fr"] = doc.pop("es")
+    found = check_app_narration(doc, NARRATORS)
+    assert {(i.code, i.level) for i in found} == {("app-narration-missing", ERROR), ("narrator-missing", ERROR)}
+    assert any("'es'" in i.message for i in found if i.code == "app-narration-missing")
+    assert any("'fr'" in i.message for i in found if i.code == "narrator-missing")
+
+
+def test_app_clips_not_delivered_are_requests_and_warnings_when_strict(tmp_path):
+    (tmp_path / "audio" / "es").mkdir(parents=True)
+    (tmp_path / "audio" / "es" / "the-end.wav").write_bytes(b"")
+    found = check_app_narration(NARRATION, NARRATORS, tmp_path)
+    assert [(i.code, i.level) for i in found] == [("app-audio-missing", REQUEST)] * 2
+    assert "app narration 'es': 1 of 3 clips delivered" in found[1].message
+    assert {i.level for i in check_app_narration(NARRATION, NARRATORS, tmp_path, strict=True)} == {WARNING}
+    for lang in NARRATION:
+        (tmp_path / "audio" / lang).mkdir(exist_ok=True)
+        for clip in APP_CLIPS:
+            (tmp_path / "audio" / lang / f"{clip}.flac").write_bytes(b"")
+    assert check_app_narration(NARRATION, NARRATORS, tmp_path, strict=True) == []

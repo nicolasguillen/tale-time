@@ -90,7 +90,7 @@ Parents area (behind a parental gate): language (English or Latin American Spani
 - **Bookshelf:** the story covers. Downloaded stories are bright, the others carry a small download badge. A paid story that isn't bought yet carries a lock.
 - **Story cover:** cover art, title read aloud, **Read** (or **Continue**), the endings found so far as small badges, and the **story map** (§3.3). A locked story shows "Ask a grown-up" instead of Read: the parental gate, then the unlock sheet (price, buy, restore).
 - **Reader:** one page at a time (§3.2).
-- **Ending:** the ending's illustration, "The End", its badge flying into the collection, then **Try another path** (back to the last fork) or **Back to the shelf**.
+- **Ending:** the ending's illustration and, one after the other as the narrator says them (2026-11-27): "The End", every ending's badge (this one turning from "?" into its picture if it's new), a closing line shared by every story (endings left to find: tap a question mark; or every one found; and more stories to discover), then **Try another path** (back to the last fork) or **Back to the shelf**. The ending's name isn't shown or said. **Tapping a "?"** flips the book back to the latest fork read on the way whose other card leads there, reads that page again, and a gold arrow points at the card that leads to it. Only pages already read ever show.
 - **Parents area:** behind a parental gate (§9).
 
 ### 3.2 A page
@@ -101,7 +101,7 @@ Parents area (behind a parental gate): language (English or Latin American Spani
 4. On a **fork**, the narrator asks the question ("Should Mia follow the fox… or cross the stepping stones?") and the two **choice cards** slide in. Each card is an illustration plus a short label. **One tap on a card picks it** (decided 2026-11-23: a second tap to confirm wasn't child friendly).
 5. Picking a card is the magic moment: the card glows and sparkles, and the book flips through a few glowing pages by itself to the new page. A fork's cards and an ending's "The End" rise on the same page once its text is read; there's no corner to turn there. A page-turn sound (later) would be a clip the user delivers.
 
-**No going back a page:** forward, and "Try another path" at an ending. A small, see-through **home** button in the top corner goes back to the shelf, even during a turn. No punishment, no timers.
+**No going back a page:** forward, and back to a fork from an ending (a "?" badge, or "Try another path"). A small, see-through **home** button in the top corner goes back to the shelf, even during a turn. No punishment, no timers.
 
 ### 3.3 Replay
 
@@ -471,6 +471,8 @@ Asset files are big: about 200 MB per story with its narration. Commit the text 
 
 ---
 
+**Known flaky test** (2026-11-27): `HostedStoryLibraryTest.aDroppedConnectionIsTriedAgain` failed about once in seven full runs: its fake host's `dropOnce` set is changed from downloads running in parallel. Make it thread-safe before trusting a red run of that test.
+
 ## 11. Roadmap
 
 The risk is the **content**, not the app: can the pipeline make stories that are good to read, with pictures that stay consistent, at a cost and effort you can keep up? So the pipeline comes first, and the app gets built around real stories.
@@ -530,6 +532,8 @@ The risk is the **content**, not the app: can the pipeline make stories that are
 
 ### Phase 5: Polish and kid-proofing
 - [x] Page-turn animations: the folded corner, the turn, a choice's sparkles and riffle (2026-11-26, docs/page-turn.md)
+- [x] The end of a story (2026-11-27, docs/page-turn.md §5): "The End" said, the badges, a closing line shared by every story, then the buttons; a "?" badge flips back to a fork read on the way and a gold arrow points the way. The ending's name is no longer shown or said (the user's call: it took room and read like a label), so no ending-title clips are recorded; the Spanish ones delivered before stay unused in `audio/es/`.
+- [ ] Record the closing lines (`content/app/audio/<lang>/REQUESTED_AUDIO.md`): English with Gemini (they count against the 10 a day), Spanish with ElevenLabs
 - [ ] Page-turn sounds, optional music ducked under the narration
 - [ ] Parents area, the rest: narration on/off, auto-advance, downloads, purchases
 - [ ] Tablet layouts in both orientations, accessibility pass, reduced motion

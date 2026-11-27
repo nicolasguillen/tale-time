@@ -29,7 +29,7 @@
     "narrator": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "name", "summary", "voice", "delivery", "clips", "endingKinds", "avoid"],
+      "required": ["status", "name", "summary", "voice", "delivery", "clips", "avoid"],
       "properties": {
         "status": { "enum": ["proposed", "approved"], "description": "Proposed until the user approves it." },
         "name": { "type": "string", "minLength": 1 },
@@ -42,28 +42,16 @@
         "pauses": { "type": "string" },
         "clips": {
           "type": "object",
-          "description": "The direction for each kind of clip.",
+          "description": "The direction for each kind of clip. An ending's title has none: the ending screen closes with the lines every story shares, directed in content/app/narration.json.",
           "additionalProperties": false,
-          "required": ["title", "page", "fork-page", "question", "option", "ending"],
+          "required": ["title", "page", "fork-page", "ending-page", "question", "option"],
           "properties": {
             "title": { "type": "string", "minLength": 1 },
             "page": { "type": "string", "minLength": 1 },
             "fork-page": { "type": "string", "minLength": 1 },
+            "ending-page": { "type": "string", "minLength": 1, "description": "An ending's page: the last words of the story, right before the shared \"The End\" clip." },
             "question": { "type": "string", "minLength": 1 },
-            "option": { "type": "string", "minLength": 1 },
-            "ending": { "type": "string", "minLength": 1 }
-          }
-        },
-        "endingKinds": {
-          "type": "object",
-          "description": "How each kind of ending's title sounds.",
-          "additionalProperties": false,
-          "required": ["best", "happy", "cozy", "silly"],
-          "properties": {
-            "best": { "type": "string", "minLength": 1 },
-            "happy": { "type": "string", "minLength": 1 },
-            "cozy": { "type": "string", "minLength": 1 },
-            "silly": { "type": "string", "minLength": 1 }
+            "option": { "type": "string", "minLength": 1 }
           }
         },
         "avoid": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }

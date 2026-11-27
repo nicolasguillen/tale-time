@@ -32,15 +32,39 @@ object StoryGraph {
         return problems
     }
 
-    fun reachable(story: Story): Set<String> {
+    /** Every node a reader can get to from [from] (itself included), the start by default. */
+    fun reachable(
+        story: Story,
+        from: String = story.start,
+    ): Set<String> {
         val seen = mutableSetOf<String>()
-        val stack = ArrayDeque(listOf(story.start))
+        val stack = ArrayDeque(listOf(from))
         while (stack.isNotEmpty()) {
             val id = stack.removeLast()
             val node = story.nodes[id] ?: continue
             if (seen.add(id)) stack.addAll(successors(node))
         }
         return seen
+    }
+
+    /** A reader at [from] can still get to [to]: it's [from] itself or lies on one of its ways on. */
+    fun leadsTo(
+        story: Story,
+        from: String,
+        to: String,
+    ): Boolean = to in reachable(story, from)
+
+    /**
+     * At [fork], the option that can still lead to [to] when the other one can't (0 = A, 1 = B), or null when both
+     * can or neither can: the card that shows the way to an ending a reader is looking for.
+     */
+    fun wayTo(
+        story: Story,
+        fork: Fork,
+        to: String,
+    ): Int? {
+        val leads = fork.options.map { leadsTo(story, it.target, to) }
+        return leads.indexOf(true).takeIf { leads.count { it } == 1 }
     }
 
     private fun findCycle(story: Story): List<String>? {

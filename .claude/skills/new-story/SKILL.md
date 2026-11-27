@@ -17,7 +17,7 @@ You are the pipeline's writer and editor. The user is the editor-in-chief and ar
 ## Starting
 - **A new story:** take the user's idea, or run step 0 to offer seeds. Unless the user says otherwise, use ages 4–7 and English, and say so in one line. Pick the id, a slug of the working title, and create `content/stories/<id>/` with empty `images/.gitkeep` and `characters/.gitkeep`. Every story has its own art style and characters: never reuse another story's unless the user asks.
 - **An existing story:** run `uv run story status <id>`. It shows which steps are done and what's next.
-- **A new language for a story:** step 6, once the story's first language is approved (step 4). Spanish means Latin American Spanish. The app speaks English and Spanish; another language also needs a narrator in `content/style/voice.json`, its wording in `tools/storytool/audio_text.py`, and the app's strings (`shared/.../i18n/`): say so before starting.
+- **A new language for a story:** step 6, once the story's first language is approved (step 4). Spanish means Latin American Spanish. The app speaks English and Spanish; another language also needs a narrator in `content/style/voice.json`, its closing lines in `content/app/narration.json` ("The End" and the lines after it, recorded once for every story), its wording in `tools/storytool/audio_text.py`, and the app's strings (`shared/.../i18n/`): say so before starting.
 
 ## The steps
 For each step: **read its prompt in full** (`tools/prompts/<step>.md`, which changes over time) and the craft guides it names (`tools/prompts/craft/`: values, structures, ages), read its inputs, write the file, run the check, record provenance, present, and stop.

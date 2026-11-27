@@ -6,16 +6,16 @@ Cada clip de narración que necesita *El zorro y el farolito* en español latino
 
 Este archivo se genera solo. Para cambiar un pedido, edita el `story/es.json` de este cuento (las palabras), `translations/es.json` (nombres, estribillos, personalidades y ánimo de cada página en español latinoamericano), o `content/style/voice.json` (la voz), y luego ejecuta `cd tools && uv run story assets`. Vuelve a ejecutarlo después de entregar archivos y los ⬜ pasan a ✅. Las ilustraciones, las mismas en todos los idiomas, se piden en [REQUESTED_ASSETS.md](../../REQUESTED_ASSETS.md); todos los cuentos e idiomas están en el [índice](../../../../../REQUESTED_AUDIO.md).
 
-| Título | Páginas | Preguntas | Opciones | Títulos de final | Total |
-|---|---|---|---|---|---|
-| 1/1 | 20/20 | 6/6 | 12/12 | 5/5 | **44/44** |
+| Título | Páginas | Preguntas | Opciones | Total |
+|---|---|---|---|---|
+| 1/1 | 20/20 | 6/6 | 12/12 | **39/39** |
 
 Una tarde de verano, en el gran jardín de la abuela, Mia encuentra una estrella bebé dormida dentro de un farolito viejo. Con su amigo Tuck, el zorrito, la lleva hasta el Estanque del Sauce, donde las luciérnagas vuelan hasta el cielo cuando sale la luna: el viaje de la estrella de vuelta a casa.
 
 - **Carpeta:** `content/stories/fox-and-the-lantern/audio/es/`
 - **Ritmo:** unas 140 palabras por minuto (de 4 a 7 años).
 - **Tono:** tierno, divertido.
-- **Guion:** 44 clips, 1456 palabras, 8242 caracteres, unos 11 min en total.
+- **Guion:** 39 clips, 1439 palabras, 8150 caracteres, unos 11 min en total.
 
 ## Voz: Voz cálida de cuentacuentos (propuesta, aún sin aprobar)
 
@@ -44,7 +44,7 @@ Una sola voz para todos los cuentos en español de la app: una persona adulta, c
 - **Nombra** cada archivo con el id de su clip, en esta carpeta: `<id del clip>.wav` (o `.flac` / `.m4a`).
 - **Una sola voz** para todo el cuento, en una sola sesión si se puede, para que todos los clips suenen igual.
 - **No hacen falta los tiempos de cada palabra.** El proceso alinea cada clip con su texto para iluminar las palabras (plan.md §5.2, paso 8).
-- **Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 48 kbps, y se empareja el volumen. Nada más cambia: ni cortes, ni efectos.
+- **Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 64 kbps, y se empareja el volumen. Nada más cambia: ni cortes, ni efectos.
 - **Licencias**: guarda la autorización o la licencia de cada voz junto a los archivos (la autorización escrita de la persona grabada, o los términos de una herramienta de voz que permitan distribuirla en una app comercial), y anota el origen en el `provenance.json` del cuento.
 
 | | Cada clip |
@@ -381,89 +381,44 @@ En orden de lectura. La pregunta de una página con opciones y sus dos opciones 
 ### ✅ `e1-big-splash`: Página (un final)
 
 - **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e1-big-splash.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: chistoso, alegre.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: chistoso, alegre.
 - **Duración:** 72 palabras, unos 32 s.
 - **Guion:**
 
 > Mia dio un salto enorme y... ¡SPLASH! Sus botas, sus calcetines y su colita cayeron justo en el arroyo. El agua saltó por el aire, llena de destellos dorados. ¡Las luciérnagas creyeron que el desfile había empezado! Bajaron zumbando, abrieron la puertita del farolito y llevaron a Chispita hasta el cielo. Mia se rio y se rio. Sus botas hicieron chuic, chuic todo el camino hasta la toalla tibia de la abuela.
 
-### ✅ `e1-big-splash-end`: Título del final
-
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e1-big-splash-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es chistoso: con una risa en la voz.
-- **Duración:** 3 palabras, unos 2 s.
-- **Guion:**
-
-> El gran chapuzón
-
 ### ✅ `e2-sky-parade`: Página (un final)
 
 - **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e2-sky-parade.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: triunfal, mágico, cálido.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: triunfal, mágico, cálido.
 - **Duración:** 76 palabras, unos 33 s.
 - **Guion:**
 
 > Mia levantó el farolito bien alto y guio el desfile alrededor del Estanque del Sauce y de vuelta por el jardín. Las ranas saltaban, Tuck brincaba, y mil luciérnagas los seguían. La abuela los esperaba en el porche con una manta. Mia abrió la puertita de vidrio. Chispita subió flotando, arriba, arriba, arriba, y titiló en su lugar en el cielo. Y desde esa noche, una estrellita le guiñaba un ojo a la ventana de Mia.
 
-### ✅ `e2-sky-parade-end`: Título del final
-
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e2-sky-parade-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es el mejor: con orgullo y un brillo especial.
-- **Duración:** 4 palabras, unos 3 s.
-- **Guion:**
-
-> El desfile del cielo
-
 ### ✅ `e3-goodnight-glim`: Página (un final)
 
 - **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e3-goodnight-glim.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: tierno, una despedida feliz.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: tierno, una despedida feliz.
 - **Duración:** 73 palabras, unos 32 s.
 - **Guion:**
 
 > Mia se sentó junto al agua y abrió la puertita de vidrio. "Buenas noches, Chispita", susurró. Chispita salió flotando, le dio un besito tibio y brillante en la nariz y voló con las luciérnagas, cada vez más alto, hasta volver a ser una estrella. Mia y Tuck dijeron adiós con la mano una y otra vez. Entonces, allá arriba en el jardín, la luz del porche de la abuela parpadeó. Hora de dormir.
 
-### ✅ `e3-goodnight-glim-end`: Título del final
-
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e3-goodnight-glim-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es feliz: alegre y luminoso.
-- **Duración:** 3 palabras, unos 2 s.
-- **Guion:**
-
-> Buenas noches, Chispita
-
 ### ✅ `e4-frog-chorus`: Página (un final)
 
 - **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e4-frog-chorus.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: fuerte, chistoso, alegre.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: fuerte, chistoso, alegre.
 - **Duración:** 69 palabras, unos 30 s.
 - **Guion:**
 
 > Mia y las ranas cantaron lo más fuerte que pudieron: "¡LUCECITA, LUCECITA, CROAC-CROAC, CROAQUITO!" Fue tan fuerte y tan chistoso que Chispita se rio, y se rio, y... ¡POP! La puertita se abrió de golpe, y Chispita salió disparada al cielo como una palomita de maíz. Tuck se rio tanto que rodó entre los juncos. Todo el camino a casa, Mia hizo croac. Y la abuela le contestó: croac.
 
-### ✅ `e4-frog-chorus-end`: Título del final
-
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e4-frog-chorus-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es chistoso: con una risa en la voz.
-- **Duración:** 4 palabras, unos 3 s.
-- **Guion:**
-
-> La canción más croac
-
 ### ✅ `e5-windowsill`: Página (un final)
 
 - **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e5-windowsill.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: acogedor, con sueño, seguro.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: acogedor, con sueño, seguro.
 - **Duración:** 67 palabras, unos 30 s.
 - **Guion:**
 
 > Mia tarareó la canción de la lucecita, bajito y despacio, y Chispita cerró los ojos. Las luciérnagas subieron sin ella, pero la luna sonrió desde arriba. "Mañana en la noche, pequeñita", parecía decir. Así que Mia llevó el farolito a casa. La abuela la arropó en la cama, y Chispita brilló junto a la ventana toda la noche: la lucecita de noche más acogedora del mundo entero.
-
-### ✅ `e5-windowsill-end`: Título del final
-
-- **Archivo:** `content/stories/fox-and-the-lantern/audio/es/e5-windowsill-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es tranquilo: suave y con sueño.
-- **Duración:** 3 palabras, unos 2 s.
-- **Guion:**
-
-> Una noche más

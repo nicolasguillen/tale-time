@@ -14,8 +14,11 @@ from jsonschema import Draft202012Validator
 
 from . import graph
 from .budgets import BANDS, Budget
-from .repo import (ROOT, VOICE, find_audio, find_image, first_language, load_json, load_story, style_dir, style_home,
-                   translation_file)
+from .repo import (APP_CLIPS, ROOT, VOICE, audio_dir, find_audio, find_image, first_language, load_json, load_story,
+                   style_dir, style_home, translation_file)
+
+# The published app narration's folder on the content host (stories/<channel>/app/): no story can be called that.
+RESERVED_IDS = ("app",)
 
 ERROR, WARNING, REQUEST = "error", "warning", "request"
 WORD = re.compile(r"[^\W_]+(?:['’-][^\W_]+)*")
@@ -64,15 +67,15 @@ def image_ids(story: dict) -> list[str]:
 
 
 def audio_clips(story: dict) -> list[str]:
-    """Narration clip ids, the same for every language (so any language's file will do): audio/<lang>/<clip>.m4a."""
+    """Narration clip ids, the same for every language (so any language's file will do): audio/<lang>/<clip>.m4a. An
+    ending's title has none: the ending screen closes with the lines every story shares (content/app/narration.json),
+    so an `<ending>-end` clip delivered earlier is simply left out (not checked, requested or packaged)."""
     clips = ["title"]
     for nid, node in story["nodes"].items():
         clips.append(nid)
         if graph.kind(node) == graph.FORK:
             clips.append(f"{nid}-q")
             clips.extend(f"{nid}-{'ab'[i]}" for i in range(len(node["options"])))
-        if graph.kind(node) == graph.ENDING:
-            clips.append(f"{nid}-end")
     return clips
 
 
@@ -530,6 +533,10 @@ def check_catalog(catalog: dict, stories: dict[str, dict | None],
         if sid in seen:
             issues.append(Issue(ERROR, "catalog-duplicate", f"'{sid}' is on the shelf twice"))
         seen.add(sid)
+        if sid in RESERVED_IDS:
+            issues.append(Issue(ERROR, "catalog-reserved", f"'{sid}' is reserved: the published narration at the end "
+                                                           f"of every story is in stories/<channel>/{sid}/, so no "
+                                                           "story can be called that"))
         if sid not in stories:
             issues.append(Issue(ERROR, "catalog-unknown", f"'{sid}' has no folder in content/stories/"))
         elif stories[sid] is None:
@@ -571,6 +578,40 @@ def check_app_assets(doc: dict) -> list[Issue]:
         if source and source not in ids[:i]:
             issues.append(Issue(ERROR, "app-edit", f"'{image['id']}' is edited from '{source}', which isn't an "
                                                    "earlier image in this file"))
+    return issues
+
+
+def check_app_narration(doc: dict, narrators: dict, folder: Path | None = None, strict: bool = False) -> list[Issue]:
+    """content/app/narration.json: the lines the narrator says at the end of every story, one entry per language, for
+    every narrator in voice.json (`narrators`) and no other. `folder` (content/app/) enables the delivery checks: clips
+    not delivered yet are requests, and in `strict` mode warnings, like a story's narration."""
+    issues = validate(doc, "app-narration.schema.json")
+    if issues:
+        return issues
+    for lang in narrators:
+        if lang not in doc:
+            issues.append(Issue(ERROR, "app-narration-missing", f"the '{lang}' narrator has no lines in "
+                                                                "content/app/narration.json, the end of every story"))
+    for lang in doc:
+        if lang not in narrators:
+            issues.append(Issue(ERROR, "narrator-missing", f"no '{lang}' narrator in content/style/voice.json, so the "
+                                                           f"'{lang}' lines at the end of every story can't be "
+                                                           "requested"))
+    if folder is None:
+        return issues
+    for lang in doc:
+        missing = [c for c in APP_CLIPS if find_audio(audio_dir(folder, lang), c) is None]
+        if not missing:
+            continue
+        done = len(APP_CLIPS) - len(missing)
+        if strict:
+            issues.append(Issue(WARNING, "app-audio-missing",
+                                f"app narration '{lang}': {done} of {len(APP_CLIPS)} clips delivered, so '{lang}' is "
+                                "published without them until all are"))
+        else:
+            issues.append(Issue(REQUEST, "app-audio-missing",
+                                f"app narration '{lang}': {done} of {len(APP_CLIPS)} clips delivered "
+                                f"(see app/audio/{lang}/REQUESTED_AUDIO.md)"))
     return issues
 
 

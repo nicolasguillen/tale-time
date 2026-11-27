@@ -248,6 +248,17 @@ def test_production_narrates_a_language_once_all_its_clips_are_delivered(content
     assert catalog["stories"][0]["languages"]["en"]["narration"] is True
 
 
+def test_an_ending_title_clip_delivered_earlier_is_neither_needed_nor_shipped(content, tmp_path):
+    deliver_images(content)
+    deliver_clips(content, "en", [*audio_clips(EN), "e1-end"])
+    _, catalog, manifests = build(content, tmp_path, "production")
+    assert catalog["stories"][0]["languages"]["en"]["narration"] is True
+    assert "e1-end" not in manifests["tiny"]["languages"]["en"]["audio"]
+    deliver_clips(content, "es", ["title", "e2-end"])
+    _, _, manifests = build(content, tmp_path, "draft")
+    assert set(manifests["tiny"]["languages"]["es"]["audio"]) == {"title"}
+
+
 def test_production_leaves_out_a_story_with_pictures_missing(content, tmp_path):
     deliver_images(content, ["cover", "p1"])
     result, catalog, _ = build(content, tmp_path, "production")
@@ -278,3 +289,76 @@ def test_a_paid_story_keeps_its_product(content, tmp_path):
     _, catalog, _ = build(content, tmp_path)
     assert catalog["stories"][0]["access"] == "paid" and catalog["stories"][0]["product"] == "story.tiny"
     assert not list(CATALOG_SCHEMA.iter_errors(catalog))
+
+
+# The end of every story: the same lines for every story, once per language, in app/ ------------------------------
+
+from storytool.package import APP_FOLDER, describe  # noqa: E402
+from storytool.repo import APP_CLIPS  # noqa: E402
+
+
+def narrate_app(content):
+    """Puts the app's narration.json (English and Spanish) into the content folder, with no clips delivered."""
+    (content / "app").mkdir(exist_ok=True)
+    shutil.copy(ROOT / "content" / "app" / "narration.json", content / "app" / "narration.json")
+
+
+def deliver_app_clips(content, lang, clips=APP_CLIPS):
+    folder = content / "app" / "audio" / lang
+    folder.mkdir(parents=True, exist_ok=True)
+    for clip in clips:
+        (folder / f"{clip}.wav").write_bytes(f"app {lang} {clip}".encode())
+
+
+def test_draft_publishes_every_delivered_app_clip_next_to_the_catalog(content, tmp_path):
+    narrate_app(content)
+    deliver_app_clips(content, "es")
+    deliver_app_clips(content, "en", ["the-end"])
+    result, catalog, _ = build(content, tmp_path)
+    assert not list(CATALOG_SCHEMA.iter_errors(catalog))
+    assert list(catalog) == ["format", "narration", "stories"] and catalog["format"] == 1
+    narration = catalog["narration"]
+    assert list(narration) == ["en", "es"] and list(narration["en"]) == ["the-end"]
+    assert list(narration["es"]) == list(APP_CLIPS)
+    folder = result.root / APP_FOLDER
+    for lang, clips in narration.items():
+        for clip, meta in clips.items():
+            data = (folder / meta["file"]).read_bytes()
+            assert data == f"aac app {lang} {clip}".encode()  # converted like every clip
+            assert meta == {"file": f"{lang}-{clip}-{hashlib.sha256(data).hexdigest()[:10]}.m4a",
+                            "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+    assert {p.name for p in folder.iterdir()} == {m["file"] for c in narration.values() for m in c.values()}
+    assert "  app narration (the end of every story): en 1/3, es 3/3" in describe(result)
+
+
+def test_production_publishes_a_languages_app_clips_once_all_three_are_there(content, tmp_path):
+    narrate_app(content)
+    deliver_images(content)
+    deliver_app_clips(content, "es")
+    deliver_app_clips(content, "en", ["the-end", "more-endings"])
+    result, catalog, _ = build(content, tmp_path, "production")
+    assert not list(CATALOG_SCHEMA.iter_errors(catalog))
+    assert list(catalog["narration"]) == ["es"] and list(catalog["narration"]["es"]) == list(APP_CLIPS)
+    assert {p.name.split("-")[0] for p in (result.root / APP_FOLDER).iterdir()} == {"es"}
+    assert "app narration (the end of every story): en 0/3, es 3/3" in describe(result)[-1]
+
+
+def test_no_narration_in_the_catalog_until_an_app_clip_is_delivered(content, tmp_path):
+    result, catalog, _ = build(content, tmp_path)  # no narration.json at all
+    assert "narration" not in catalog and not result.app
+    narrate_app(content)
+    result, catalog, _ = build(content, tmp_path)
+    assert "narration" not in catalog and not (result.root / APP_FOLDER).exists()
+    deliver_app_clips(content, "en", ["the-end"])
+    _, catalog, _ = build(content, tmp_path, "production")
+    assert "narration" not in catalog  # one of three isn't enough for production
+
+
+def test_app_clips_are_converted_once(content, tmp_path):
+    narrate_app(content)
+    deliver_app_clips(content, "es")
+    encoder = FakeEncoder()
+    build(content, tmp_path, encoder=encoder)
+    assert encoder.calls == len(APP_CLIPS)
+    _, catalog, _ = build(content, tmp_path, encoder=encoder)
+    assert encoder.calls == len(APP_CLIPS) and len(catalog["narration"]["es"]) == len(APP_CLIPS)

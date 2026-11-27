@@ -1,7 +1,8 @@
 """The wording of each language's REQUESTED_AUDIO.md. A story's narration in one language is requested in that
 language, so its narrator can read every word of the file: the labels and explanations come from here, the narrator
 from content/style/voice.json (`narrators.<lang>`), the names, refrains and moods from the bible and shots.json (the
-first language) or translations/<lang>.json (the others).
+first language) or translations/<lang>.json (the others). The lines at the end of every story (`app-*`) are requested
+the same way, in content/app/audio/<lang>/, from content/app/narration.json.
 
 A language can be requested once it's here and has a narrator in voice.json; `story check` asks for both.
 """
@@ -25,7 +26,7 @@ TEXT: dict[str, dict] = {
                      "in the [index]({index}).",
         "sources-first": "`bible.json` (names and personalities) or `shots.json` (each page's mood)",
         "sources-translation": "`translations/{lang}.json` (names, refrains, personalities and moods in {language})",
-        "columns": ["Title", "Pages", "Questions", "Choice labels", "Ending titles", "Total"],
+        "columns": ["Title", "Pages", "Questions", "Choice labels", "Total"],
         "folder": "Folder",
         "pace": "Pace",
         "pace-value": "about {wpm} words per minute ({band}).",
@@ -44,7 +45,7 @@ TEXT: dict[str, dict] = {
             "**One narrator** for a whole story, in one session if possible, so every clip sounds the same.",
             "**Word timings aren't needed.** The pipeline will align each clip with its text to light up the words "
             "(plan.md §5.2, step 8).",
-            "**Packaging** turns the delivered files into mono AAC `.m4a` at about 48 kbps and evens out the loudness. "
+            "**Packaging** turns the delivered files into mono AAC `.m4a` at about 64 kbps and evens out the loudness. "
             "Nothing else changes: no edits, no effects.",
             "**Licenses**: keep the release or license for every voice next to the files (a recorded person's written "
             "release, or a voice tool's terms that allow commercial distribution in an app), and note the source in "
@@ -67,8 +68,7 @@ TEXT: dict[str, dict] = {
         "refrain": "Refrain, the same way every time: \"{refrain}\"",
         "clips": "Clips",
         "clips-intro": "In reading order. A fork's question and its two choice labels follow its page.",
-        "kinds": {"title": "Title", "page": "Page", "question": "Question", "option": "Choice label",
-                  "ending": "Ending title"},
+        "kinds": {"title": "Title", "page": "Page", "question": "Question", "option": "Choice label"},
         "page-fork": "Page (before a choice)",
         "page-ending": "Page (an ending)",
         "file": "File",
@@ -77,8 +77,6 @@ TEXT: dict[str, dict] = {
         "mood": "Mood: {mood}.",
         "question": "The two choices: \"{a}\" or \"{b}\".",
         "option": "Choice {letter} for *{question}* The other label: \"{other}\".",
-        "ending": "This ending is {kind}: {how}.",
-        "ending-kinds": {"best": "the best one", "happy": "happy", "cozy": "cozy", "silly": "silly"},
         "length": "Length",
         "length-value": "{words} {unit}, {duration}.",
         "word": ("word", "words"),
@@ -86,6 +84,42 @@ TEXT: dict[str, dict] = {
         "minutes": "about {n} min",
         "bands": {"3-5": "ages 3–5", "4-7": "ages 4–7", "7-10": "ages 7–10"},
         "thousands": ",",
+        # The lines at the end of every story (content/app/narration.json), in content/app/audio/<lang>/.
+        "app-title": "Requested audio: the end of every story ({language})",
+        "app-intro": "The lines the narrator says at the end of every story in the app, in {language}, with their "
+                     "exact script and voice direction. They're the same for every story, so they're recorded once, "
+                     "not per story, by the same narrator as the stories: the end of a book should sound like the rest "
+                     "of it. **No audio in this project is generated: no text-to-speech and no voice models run in the "
+                     "repo or the pipeline.** Each clip is recorded or produced outside the repo and dropped into this "
+                     "folder, named exactly as shown.",
+        "app-generated": "This file is generated. To change a request, edit `content/app/narration.json` (the scripts "
+                         "and directions, in every language) or `content/style/voice.json` (the narrator), then run "
+                         "`cd tools && uv run story assets`. Run it again after delivering files, and the ⬜ entries "
+                         "turn ✅. Every story and language is listed in the [index]({index}).",
+        "app-pace": "about {wpm} words per minute, the slowest pace ({band}): these lines close every story, for "
+                    "every age.",
+        "app-delivery-rules": [
+            "**Name** each file after its clip id, in this folder: `<clip id>.wav` (or `.flac` / `.m4a`).",
+            "**The same narrator as the stories** in this language, with the same voice, microphone and level as "
+            "their clips: the app plays these right after a story's last page.",
+            "**Packaging** turns the delivered files into mono AAC `.m4a` at about 64 kbps and evens out the loudness. "
+            "Nothing else changes: no edits, no effects.",
+            "**Licenses**: as for the stories, keep the release or license for every voice next to the files (a "
+            "recorded person's written release, or a voice tool's terms that allow commercial distribution in an "
+            "app).",
+        ],
+        "app-clips-intro": "In the order the app plays them at the end of a story: `the-end` first, then "
+                           "`more-endings` or `all-endings`, never both.",
+        "app-kinds": {"the-end": "\"The End\"", "more-endings": "More endings to find",
+                      "all-endings": "Every ending found"},
+        "when": "When",
+        "app-when": {
+            "the-end": "As \"The End\" rises on the ending screen, right after a story's last page.",
+            "more-endings": "After \"The End\", once the ending badges are out, while the story still has endings the "
+                            "child hasn't found: the \"?\" badges are those endings.",
+            "all-endings": "After \"The End\", instead of `more-endings`, once the child has found every ending of the "
+                           "story.",
+        },
     },
     "es": {
         "languages": {"en": "inglés", "es": "español latinoamericano"},
@@ -105,7 +139,7 @@ TEXT: dict[str, dict] = {
         "sources-first": "`bible.json` (nombres y personalidades) o `shots.json` (el ánimo de cada página)",
         "sources-translation": "`translations/{lang}.json` (nombres, estribillos, personalidades y ánimo de cada "
                                "página en {language})",
-        "columns": ["Título", "Páginas", "Preguntas", "Opciones", "Títulos de final", "Total"],
+        "columns": ["Título", "Páginas", "Preguntas", "Opciones", "Total"],
         "folder": "Carpeta",
         "pace": "Ritmo",
         "pace-value": "unas {wpm} palabras por minuto ({band}).",
@@ -125,7 +159,7 @@ TEXT: dict[str, dict] = {
             "igual.",
             "**No hacen falta los tiempos de cada palabra.** El proceso alinea cada clip con su texto para iluminar "
             "las palabras (plan.md §5.2, paso 8).",
-            "**Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 48 kbps, y se empareja "
+            "**Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 64 kbps, y se empareja "
             "el volumen. Nada más cambia: ni cortes, ni efectos.",
             "**Licencias**: guarda la autorización o la licencia de cada voz junto a los archivos (la autorización "
             "escrita de la persona grabada, o los términos de una herramienta de voz que permitan distribuirla en una "
@@ -151,8 +185,7 @@ TEXT: dict[str, dict] = {
         "clips": "Clips",
         "clips-intro": "En orden de lectura. La pregunta de una página con opciones y sus dos opciones van después de "
                        "la página.",
-        "kinds": {"title": "Título", "page": "Página", "question": "Pregunta", "option": "Opción",
-                  "ending": "Título del final"},
+        "kinds": {"title": "Título", "page": "Página", "question": "Pregunta", "option": "Opción"},
         "page-fork": "Página (antes de elegir)",
         "page-ending": "Página (un final)",
         "file": "Archivo",
@@ -161,8 +194,6 @@ TEXT: dict[str, dict] = {
         "mood": "Ánimo: {mood}.",
         "question": "Las dos opciones: \"{a}\" o \"{b}\".",
         "option": "Opción {letter} de *{question}* La otra opción: \"{other}\".",
-        "ending": "Este final es {kind}: {how}.",
-        "ending-kinds": {"best": "el mejor", "happy": "feliz", "cozy": "tranquilo", "silly": "chistoso"},
         "length": "Duración",
         "length-value": "{words} {unit}, {duration}.",
         "word": ("palabra", "palabras"),
@@ -170,6 +201,43 @@ TEXT: dict[str, dict] = {
         "minutes": "unos {n} min",
         "bands": {"3-5": "de 3 a 5 años", "4-7": "de 4 a 7 años", "7-10": "de 7 a 10 años"},
         "thousands": " ",
+        "app-title": "Narración solicitada: el final de cada cuento ({language})",
+        "app-intro": "Las frases que dice la voz al final de cada cuento de la app, en {language}, con su guion exacto "
+                     "y su indicación de voz. Son las mismas para todos los cuentos, así que se graban una sola vez, no "
+                     "una por cuento, con la misma voz que los cuentos: el final de un libro tiene que sonar como el "
+                     "resto. **En este proyecto no se genera audio: ni texto a voz ni modelos de voz, ni en el "
+                     "repositorio ni en el proceso.** Cada clip se graba o se produce fuera del repositorio y se deja "
+                     "en esta carpeta, con el nombre exacto que aparece aquí.",
+        "app-generated": "Este archivo se genera solo. Para cambiar un pedido, edita `content/app/narration.json` (los "
+                         "guiones y las indicaciones, en todos los idiomas) o `content/style/voice.json` (la voz), y "
+                         "luego ejecuta `cd tools && uv run story assets`. Vuelve a ejecutarlo después de entregar "
+                         "archivos y los ⬜ pasan a ✅. Todos los cuentos e idiomas están en el [índice]({index}).",
+        "app-pace": "unas {wpm} palabras por minuto, el ritmo más lento ({band}): estas frases cierran todos los "
+                    "cuentos, para todas las edades.",
+        "app-delivery-rules": [
+            "**Nombra** cada archivo con el id de su clip, en esta carpeta: `<id del clip>.wav` (o `.flac` / `.m4a`).",
+            "**La misma voz que los cuentos** en este idioma, con el mismo tono, el mismo micrófono y el mismo volumen "
+            "que sus clips: la app los reproduce justo después de la última página de cada cuento.",
+            "**Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 64 kbps, y se empareja "
+            "el volumen. Nada más cambia: ni cortes, ni efectos.",
+            "**Licencias**: como para los cuentos, guarda la autorización o la licencia de cada voz junto a los "
+            "archivos (la autorización escrita de la persona grabada, o los términos de una herramienta de voz que "
+            "permitan distribuirla en una app comercial).",
+        ],
+        "app-clips-intro": "En el orden en que la app los reproduce al final de un cuento: primero `the-end`, luego "
+                           "`more-endings` o `all-endings`, nunca los dos.",
+        "app-kinds": {"the-end": "\"Fin\"", "more-endings": "Más finales por descubrir",
+                      "all-endings": "Todos los finales encontrados"},
+        "when": "Cuándo",
+        "app-when": {
+            "the-end": "Cuando aparece \"Fin\" en la pantalla del final, justo después de la última página de un "
+                       "cuento.",
+            "more-endings": "Después de \"Fin\", cuando ya salieron las insignias de los finales, mientras al cuento le "
+                            "queden finales que el niño o la niña aún no encontró: las insignias con \"?\" son esos "
+                            "finales.",
+            "all-endings": "Después de \"Fin\", en lugar de `more-endings`, cuando el niño o la niña ya encontró todos "
+                           "los finales del cuento.",
+        },
     },
 }
 

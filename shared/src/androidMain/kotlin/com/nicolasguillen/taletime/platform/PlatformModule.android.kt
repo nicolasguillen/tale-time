@@ -59,7 +59,8 @@ private var launchedWith = AgentFlags()
 /**
  * Takes an agent's switches ([AgentFlags]) from the intent that launched the app, before anything reads them. Launch
  * with `-S`, so the app starts afresh with them: `adb shell am start -S -n com.nicolasguillen.taletime/.MainActivity
- * --ez skipReading true --ez autoTurn true --es openStory fox-and-the-lantern`.
+ * --ez skipReading true --ez autoTurn true --es openStory fox-and-the-lantern`, or `--es openStory fox-and-the-lantern
+ * --es openEnding e2-sky-parade` to try an ending.
  */
 fun takeAgentFlags(intent: Intent) {
     launchedWith =
@@ -67,6 +68,7 @@ fun takeAgentFlags(intent: Intent) {
             skipReading = intent.getBooleanExtra("skipReading", false),
             openStory = intent.getStringExtra("openStory"),
             autoTurn = intent.getBooleanExtra("autoTurn", false),
+            openEnding = intent.getStringExtra("openEnding"),
         )
 }
 

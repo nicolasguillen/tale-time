@@ -6,7 +6,9 @@ and at every launch it checks whether the story changed. Everything it downloads
 channel, laid out like the content host (stories/<channel>/ in the bucket):
 
     catalog.json                the shelf: each story's title in every language, how many endings it has, its cover, its
-                                languages (with their download size and whether they're narrated) and its current manifest
+                                languages (with their download size and whether they're narrated) and its current
+                                manifest; and the lines the narrator says at the end of every story (`narration`)
+    app/<lang>-<clip>-<hash>.m4a  those lines, per language (content/app/narration.json, content/app/audio/<lang>/)
     <id>/manifest-<hash>.json   every file of the story: its pictures, and per language its text, its clips and when
                                 each word of a narrated page is said (its timings)
     <id>/<name>-<hash>.<ext>    the files themselves, named after their contents
@@ -23,7 +25,8 @@ stories/<channel>/ on the host:
 - production: for release builds. Only the stories that pass `story check --strict` (every picture delivered), in the
   languages the catalog approves for production (`approved`, the first language only if it's listed) and no other; a
   translation also needs a native speaker's approval. A language's narration ships once every one of its clips is
-  delivered; until then that language reads without narration.
+  delivered; until then that language reads without narration. The same goes for the lines at the end of every story:
+  a language's ship once all three are delivered.
 
 Packaging only converts: pictures to WebP, scaled down to at most the sizes below, and clips to mono AAC with their
 loudness evened out. It never makes or changes a picture or a sound. It also listens to each page's clip for when its
@@ -41,12 +44,14 @@ from pathlib import Path
 
 from .timings import VERSION as TIMINGS_VERSION, listen, timings as word_timings
 from .check import ERROR, audio_clips, check_folder, image_ids
-from .repo import CATALOG, CONTENT, find_audio, find_image, load_json, load_story, translation_file
+from .repo import (APP, APP_CLIPS, APP_NARRATION, CATALOG, CONTENT, audio_dir, find_audio, find_image, load_json,
+                   load_story, translation_file)
 
 FORMAT = 1  # the catalog's and the manifest's format; the app ignores what it doesn't know
 BUILD = CONTENT / ".build"
 CHANNELS = ("draft", "production")
 CATALOG_FILE = "catalog.json"  # in the channel's folder
+APP_FOLDER = "app"  # in the channel's folder: the lines at the end of every story (a story id `story check` reserves)
 
 # The largest size of each kind of picture, in pixels. A picture is scaled down to fit, never up.
 COVER_BOX = (900, 1200)  # 3:4, sharp on the shelf and on a tablet's cover screen
@@ -147,6 +152,7 @@ class Result:
     root: Path  # the folder laid out like the host
     stories: list[Packaged] = field(default_factory=list)
     skipped: dict[str, list[str]] = field(default_factory=dict)  # production only: story id -> why it isn't published
+    app: list[Language] = field(default_factory=list)  # the lines at the end of every story, per language
 
     @property
     def catalog(self) -> Path:
@@ -166,9 +172,9 @@ class Packager:
         self.check = check
 
     def build(self) -> Result:
-        """Packages every story on the shelf (content/catalog.json) and writes the catalog last, so it never names a
-        file that isn't there yet. The folder is emptied first, so it holds this package and nothing else (`story
-        publish draft` deletes from the host what isn't in it)."""
+        """Packages every story on the shelf (content/catalog.json) and the lines at the end of every story, and writes
+        the catalog last, so it never names a file that isn't there yet. The folder is emptied first, so it holds this
+        package and nothing else (`story publish draft` deletes from the host what isn't in it)."""
         if self.root.exists():
             shutil.rmtree(self.root)
         self.root.mkdir(parents=True, exist_ok=True)
@@ -184,8 +190,34 @@ class Packager:
             catalog_entry, packaged = self._story(entry, folder)
             entries.append(catalog_entry)
             result.stories.append(packaged)
-        _write(result.catalog, _json({"format": FORMAT, "stories": entries}))
+        narration, result.app = self._app_narration()
+        catalog = {"format": FORMAT, **({"narration": narration} if narration else {}), "stories": entries}
+        _write(result.catalog, _json(catalog))
         return result
+
+    def _app_narration(self) -> tuple[dict, list[Language]]:
+        """The lines the narrator says at the end of every story, in app/: language -> clip id -> its file, for the
+        catalog's `narration` (a language without a clip is left out), and the summary. Every language of
+        content/app/narration.json: on draft whatever is delivered, on production all three clips or none."""
+        source = self.content / APP_NARRATION.relative_to(CONTENT)
+        if not source.is_file():
+            return {}, []
+        folder = self.content / APP.relative_to(CONTENT)
+        out = self.root / APP_FOLDER
+        narration, summary = {}, []
+        for lang in load_json(source):
+            delivered = {c: find_audio(audio_dir(folder, lang), c) for c in APP_CLIPS}
+            delivered = {c: path for c, path in delivered.items() if path is not None}
+            if self.channel == "production" and len(delivered) < len(APP_CLIPS):
+                delivered = {}  # all three or none, like a story's narration
+            files: dict[str, dict] = {}
+            clips = {clip: self._converted(out, files, f"{lang}-{clip}", ".m4a", path, "audio",
+                                           lambda dest, s=path: self.encoder.audio(s, dest))
+                     for clip, path in delivered.items()}
+            if clips:
+                narration[lang] = {clip: {"file": name, **files[name]} for clip, name in clips.items()}
+            summary.append(Language(lang, len(clips), len(APP_CLIPS), sum(f["bytes"] for f in files.values())))
+        return narration, summary
 
     def _unpublishable(self, entry: dict, folder: Path) -> list[str]:
         """Why a story can't go out on this channel, or nothing."""
@@ -343,6 +375,9 @@ def describe(result: Result) -> list[str]:
         lines.append(f"  {s.id}: {s.images} of {s.of} pictures; {langs}")
     for sid, why in result.skipped.items():
         lines.append(f"  {sid}: not packaged: {why[0]}" + (f" (and {len(why) - 1} more)" if len(why) > 1 else ""))
+    if result.app:
+        lines.append("  app narration (the end of every story): "
+                     + ", ".join(f"{lang.lang} {lang.clips}/{lang.of}" for lang in result.app))
     return lines
 
 

@@ -29,7 +29,8 @@ fun TaleNavHost(modifier: Modifier = Modifier) {
     fun backToShelf() {
         nav.popBackStack(ShelfRoute, inclusive = false)
     }
-    // An agent asked for a story at launch (platform/AgentFlags): its reader, from the first page, once.
+    // An agent asked for a story at launch (platform/AgentFlags): its reader, from the first page or on the ending it
+    // asked for, once.
     val agent = koinInject<AgentFlags>()
     var opened by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(Unit) {
@@ -37,7 +38,7 @@ fun TaleNavHost(modifier: Modifier = Modifier) {
         if (story != null && !opened) {
             opened = true
             nav.navigate(CoverRoute(story))
-            nav.navigate(ReaderRoute(story, restart = true))
+            nav.navigate(ReaderRoute(story, restart = true, at = agent.openEnding))
         }
     }
     NavHost(
@@ -63,7 +64,7 @@ fun TaleNavHost(modifier: Modifier = Modifier) {
         }
         composable<ReaderRoute> { entry ->
             val route = entry.toRoute<ReaderRoute>()
-            ReaderRoute(storyId = route.storyId, restart = route.restart, onHome = ::backToShelf)
+            ReaderRoute(storyId = route.storyId, restart = route.restart, at = route.at, onHome = ::backToShelf)
         }
         composable<ParentsRoute> { ParentsRoute(onBack = ::backToShelf) }
     }

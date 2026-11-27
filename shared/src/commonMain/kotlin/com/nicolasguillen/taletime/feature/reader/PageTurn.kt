@@ -213,6 +213,30 @@ internal class PageTurn(
         }
     }
 
+    /**
+     * Brings [owner] back over the sheet beneath, the way a turn took it away, as when a reader turns back a page: its
+     * corner travels a turn's arc backward, from the far left (the sheet all folded away) to its place, in [millis],
+     * and [onFrame] sees the fold on every frame. [owner] must be the sheet in front from the frame this is called,
+     * so it never shows unfolded first. It lies flat at the end, still the owner until [lie].
+     */
+    suspend fun returnNow(
+        owner: Any,
+        easing: (Float) -> Float,
+        millis: Long,
+        onFrame: (PageFold) -> Unit = {},
+    ) {
+        val path = TurnPath(home, width, height)
+        this.owner = owner
+        turning = true
+        arrow = 0f
+        free = path.at(1f)
+        animate(millis.toFloat()) { t ->
+            val at = path.at(1f - easing(t))
+            free = at
+            onFrame(PageFold(width, height, at))
+        }
+    }
+
     /** The page lies flat: no fold, no arrow, nothing running. */
     fun lie() {
         job?.cancel()

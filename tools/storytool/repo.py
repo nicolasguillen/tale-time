@@ -13,6 +13,10 @@ CATALOG = CONTENT / "catalog.json"
 APP = CONTENT / "app"
 APP_ASSETS = APP / "assets.json"
 APP_STYLE = APP / "style.json"  # the app's own look (the icon), not any story's
+# The lines the narrator says at the end of every story, recorded once per language: scripts and directions here, the
+# delivered clips in content/app/audio/<lang>/ (audio_dir(APP, lang)). The app plays them by these ids, in this order.
+APP_NARRATION = APP / "narration.json"
+APP_CLIPS = ("the-end", "more-endings", "all-endings")
 REQUESTED_ASSETS = ROOT / "REQUESTED_ASSETS.md"
 REQUESTED_AUDIO = ROOT / "REQUESTED_AUDIO.md"  # the index; each story's are in audio/<lang>/, one per language
 
@@ -51,7 +55,8 @@ def characters_dir(folder: Path) -> Path:
 
 
 def audio_dir(folder: Path, lang: str) -> Path:
-    """A story's narration in one language: the delivered clips and that language's REQUESTED_AUDIO.md."""
+    """A story's narration in one language (or the app's, with content/app/): the delivered clips and that language's
+    REQUESTED_AUDIO.md."""
     return folder / "audio" / lang
 
 

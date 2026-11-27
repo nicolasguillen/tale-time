@@ -1,6 +1,6 @@
 # Step 4: Editor pass
 
-version: 2
+version: 3
 
 Read the story as a picture-book editor, fix what needs fixing in the story's text (`story/<lang>.json` in its first language), and write `content/stories/<id>/review.md` for the user. Then hand over to the user's read-through, **the one gate that can never be skipped**.
 
@@ -24,7 +24,7 @@ Take a fresh look: read the text from the file, path by path, and don't rely on 
 
 **5. Shape** (`craft/structures.md`). The problem appears by page 2, and there's one main problem. Every path has the whole arc, with the low point on a trunk page. The hero solves the problem, with help, and isn't rescued from nowhere. The resolution isn't rushed. For a growth arc, the hero changes on every path. For an impact arc, every ending shows the impact.
 
-**6. Endings.** Each ending feels like an ending (not a cut-off), is kind, and comes back to safety. A silly ending is funny, not a failure.
+**6. Endings.** Each ending feels like an ending (not a cut-off), is kind, and comes back to safety. A silly ending is funny, not a failure. Its page's last sentence ends the story by itself, since the app shows and says no ending title: read it, then "The End.", and check it lands. **Every fork page makes sense heard again straight after an ending** (a "?" badge takes the book back to it): read it right after each ending on its paths; it must say who's there and what's at stake without the page before.
 
 **7. Safety** (plan.md §5.5):
 - Peril suits the age band: barely any for 3–5, mild for 4–7, mild for 7–10.

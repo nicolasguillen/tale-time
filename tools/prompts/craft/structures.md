@@ -34,7 +34,7 @@ A 32-page picture book, scaled to one play-through (counting the ending as a pag
 | Turning point and climax, after the last merge | the last pages but one | pages 8–9 |
 | Ending: resolution, new normal, last picture | the last page | page 10 |
 
-**Don't rush the resolution.** Solve the problem by the page before the ending, or early on the ending page, so the ending still has room for the new normal and a warm last line. If an ending needs three beats, give it a page before it.
+**Don't rush the resolution.** Solve the problem by the page before the ending, or early on the ending page, so the ending still has room for the new normal and a warm last line. In the app that last line is the last thing the story says ("The End." follows it, and no title): it must sound like an ending on its own. If an ending needs three beats, give it a page before it.
 
 For 3–5, the low point is a wobble, not a fall: "Uh-oh!"
 

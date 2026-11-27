@@ -23,6 +23,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -33,6 +35,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -40,7 +43,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
@@ -81,13 +86,19 @@ import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -107,6 +118,7 @@ import com.nicolasguillen.taletime.designsystem.TaleColors
 import com.nicolasguillen.taletime.designsystem.TaleIcons
 import com.nicolasguillen.taletime.designsystem.squish
 import com.nicolasguillen.taletime.i18n.LocalStrings
+import com.nicolasguillen.taletime.i18n.Strings
 import com.nicolasguillen.taletime.platform.AgentFlags
 import com.nicolasguillen.taletime.platform.reduceMotion
 import com.nicolasguillen.taletime.story.TimedWord
@@ -167,8 +179,56 @@ private val CREASE_TABLET = 150.dp to 122.dp
 private val CORNER_PHONE = 132.dp
 private val CORNER_TABLET = 160.dp
 
-/** After a fork's or an ending's text is read, a pause before its cards or "The End" rise on the same page. */
+/** After a fork's text is read, a pause before its cards rise on the same page. */
 private const val OPEN_PAUSE_MILLIS = 900L
+
+/** After an ending's text is read, a longer one before "The End" rises: the last line lands first. */
+private const val END_PAUSE_MILLIS = 1_600L
+
+/** As "The End" rises, sparkles drift down over the top of the page. */
+private const val THE_END_SPARKLES = 40
+
+/** Sparkles burst from an ending's badge as it turns from "?" into its picture, or as a "?" is tapped. */
+private const val BADGE_BURST = 26
+
+/**
+ * A "?" tapped: the book starts flipping back this long after. Blank leaves come back over the ending, one for each
+ * page read since the fork (three at most, slower each time), then the fork page itself, more slowly.
+ */
+private const val REWIND_FROM_MILLIS = 450L
+private val REWIND_LEAF_MILLIS = listOf(330L, 380L, 430L)
+private const val REWIND_PAGE_MILLIS = 640L
+
+/** The endings' badges: the gap between two, the smallest one, and how much bigger the one just read is. */
+private val BADGE_GAP = 8.dp
+private val SMALLEST_BADGE = 36.dp
+private const val BIG_BADGE = 1.3f
+
+/** An ending's closing shorter than this (beside the picture, on a phone in landscape) sits closer together. */
+private val COMPACT_END_HEIGHT = 480.dp
+
+/**
+ * The arrow on the card that shows the way: its size, how far into the card's edge its box reaches (the arrow's tip
+ * stops just short of it), and how far it nudges toward the card, there and back every [WAY_NUDGE_MILLIS].
+ */
+private val WAY_ARROW = 64.dp
+private val WAY_ARROW_IN = 7.dp
+private val WAY_NUDGE = 6.dp
+private const val WAY_NUDGE_MILLIS = 650
+
+/** Above side-by-side cards, this much more room than the gap under the question, for the arrow. */
+private val WAY_ROOM = 12.dp
+
+/** A part of an ending's closing fades and rises in this long. */
+private const val APPEAR_MILLIS = 500
+
+/** Once the badges are in, the new ending's badge turns from "?" into its picture this long after. */
+private const val BADGE_TURN_MILLIS = 450L
+
+/** A "?" badge wiggles through these angles, a step every [WIGGLE_STEP_MILLIS], then rests [WIGGLE_REST_MILLIS]. */
+private val WIGGLE = listOf(-12f, 10f, -7f, 4f, 0f)
+private const val WIGGLE_STEP_MILLIS = 110
+private const val WIGGLE_REST_MILLIS = 2_600L
 
 /** The picked card lights up this long, its glow drawn as this many rings; the rest steps back this long. */
 private const val GLOW_MILLIS = 550
@@ -214,7 +274,8 @@ fun ReaderRoute(
     storyId: String,
     restart: Boolean,
     onHome: () -> Unit,
-    viewModel: ReaderViewModel = koinViewModel(key = "$storyId/$restart") { parametersOf(storyId, restart) },
+    at: String? = null,
+    viewModel: ReaderViewModel = koinViewModel(key = "$storyId/$restart/$at") { parametersOf(storyId, restart, at) },
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     // The narration pauses while the app is in the background, and stops when the reader is left.
@@ -261,7 +322,7 @@ fun ReaderScreen(
             return@Box
         }
         val book = remember { Book() }
-        book.arrive(state)
+        book.arrive(state, reduceMotion)
         val send by rememberUpdatedState(onEvent)
         val scope = rememberCoroutineScope()
         val turn = remember { PageTurn(scope) }
@@ -269,6 +330,7 @@ fun ReaderScreen(
         val where = remember { Where() }
         val magic = book.magic
         val fade = book.fade
+        val rewind = book.rewind
 
         // A page's words and narration start once it's in front and lying flat, never beneath a turning page.
         val clock = rememberReadingClock(page, narrationMillis, running = !state.landing && magic == null)
@@ -287,13 +349,43 @@ fun ReaderScreen(
         val opens = !page.plain && state.phase == Phase.TEXT && read && magic == null && !state.landing
         LaunchedEffect(page.nodeId, opens) {
             if (opens) {
-                delay(OPEN_PAUSE_MILLIS)
+                delay(if (page.endingKind != null) END_PAUSE_MILLIS else OPEN_PAUSE_MILLIS)
                 send(ReaderEvent.Next)
             }
         }
-        // Back during a choice's riffle (the screen was made again, the device turned): the new page lands at once.
-        LaunchedEffect(state.landing, magic) {
-            if (state.landing && magic == null) send(ReaderEvent.Landed)
+        // "The End" rises with sparkles drifting down over the page.
+        val theEnd = state.phase == Phase.END && !state.landing
+        LaunchedEffect(page.nodeId, theEnd) {
+            if (theEnd && !reduceMotion) sparkles.drift(Rect(0f, 0f, turn.width, turn.height * LANDING_AREA), THE_END_SPARKLES)
+        }
+        // Back during a choice's riffle or a rewind (the screen was made again, the device turned), or a rewind with
+        // reduced motion: the new page lands at once.
+        LaunchedEffect(state.landing, magic, rewind) {
+            if (state.landing && magic == null && rewind == null) send(ReaderEvent.Landed)
+        }
+        // Back from an ending to a fork read on the way: blank leaves come back over the ending from the left, one for
+        // each page read in between, then the fork page itself, which is read again.
+        LaunchedEffect(rewind) {
+            val back = rewind ?: return@LaunchedEffect
+            turn.lie()
+            delay(REWIND_FROM_MILLIS)
+            val leaves = REWIND_LEAF_MILLIS.takeLast(back.leaves)
+            for (i in 0..back.leaves) {
+                val last = i == back.leaves
+                // The sheet joins the stack in the same frame its fold starts, all folded away.
+                back.back = i + 1
+                turn.returnNow(
+                    if (last) back.to else Sheet.Leaf(i + 1),
+                    if (last) Ease::outCubic else Ease::inOutSine,
+                    if (last) REWIND_PAGE_MILLIS else leaves[i],
+                ) { fold ->
+                    // Gold dust flies off the crease, the way the flap goes: back to the right.
+                    fold.crease()?.let { (a, b) -> sparkles.dust(a, b, fold.n, DUST_PER_FRAME) }
+                }
+                turn.lie()
+            }
+            book.rewind = null
+            send(ReaderEvent.Landed)
         }
         LaunchedEffect(fade) {
             if (fade == null) return@LaunchedEffect
@@ -352,22 +444,43 @@ fun ReaderScreen(
             }
         }
 
+        /** A "?" badge tapped: sparkles burst from it, and the book flips back to the fork that can lead there. */
+        fun find(endingId: String) {
+            if (book.rewind != null || book.magic != null || state.phase != Phase.END || state.landing) return
+            if (!reduceMotion) where.badges[endingId]?.translate(-where.origin)?.let { sparkles.burst(it.center, BADGE_BURST) }
+            send(ReaderEvent.FindEnding(endingId))
+        }
+
+        /** An ending's badge has turned from "?" into its picture: sparkles burst from it. */
+        fun sparkle(badge: Rect) {
+            if (!reduceMotion) sparkles.burst(badge.translate(-where.origin).center, BADGE_BURST)
+        }
+
         if (autoTurn) {
             var picks by remember { mutableIntStateOf(0) }
-            LaunchedEffect(page.nodeId, cornerUp, state.phase, magic, state.landing) {
+            LaunchedEffect(page.nodeId, cornerUp, state.phase, magic, state.landing, state.closing) {
                 delay(AUTO_TURN_MILLIS)
                 when {
-                    cornerUp && !turn.turning -> turnPage(flick = false)
-                    state.phase == Phase.CHOICE && magic == null && !state.landing -> pick(picks++ % 2)
-                    state.phase == Phase.END -> send(ReaderEvent.TryAnotherPath)
+                    cornerUp && !turn.turning -> {
+                        turnPage(flick = false)
+                    }
+
+                    state.phase == Phase.CHOICE && magic == null && !state.landing -> {
+                        pick(page.choices.indexOfFirst { it.toward }.takeIf { it >= 0 } ?: (picks++ % 2))
+                    }
+
+                    state.phase == Phase.END && state.closing == Closing.DONE && !state.landing -> {
+                        val left = state.endings.firstOrNull { !it.found }
+                        if (left != null) find(left.id) else send(ReaderEvent.TryAnotherPath)
+                    }
                 }
             }
             // How smooth it was: frames missed while a page turns or the book flips, and the rest of the time.
-            val turning by rememberUpdatedState(turn.turning || magic != null)
+            val turning by rememberUpdatedState(turn.turning || magic != null || rewind != null)
             LaunchedEffect(Unit) { countFrames { turning } }
         }
 
-        val sheets = sheets(state, magic, fade)
+        val sheets = sheets(state, magic, fade, rewind)
         BoxWithConstraints(Modifier.fillMaxSize().onGloballyPositioned { where.origin = it.positionInRoot() }) {
             val tablet = minOf(maxWidth, maxHeight) >= 600.dp
             val density = LocalDensity.current
@@ -400,12 +513,15 @@ fun ReaderScreen(
                                     Shown.HELD -> AllRead
                                 },
                             layout = layout,
-                            // Not beneath the folded corner, nor under the leaves while the book flips by itself.
-                            picture = sheet.role == Shown.HELD || (sheet.role == Shown.LIVE && magic == null),
+                            // Not beneath the folded corner, nor while the book flips by itself.
+                            picture = sheet.role == Shown.HELD || (sheet.role == Shown.LIVE && magic == null && rewind == null),
                             onEvent = onEvent,
                             onHome = onHome,
                             chosen = if (sheet.role == Shown.HELD) magic?.chosenOn(sheet) ?: fade?.chosenOn(sheet) else null,
                             onPick = ::pick,
+                            onFind = ::find,
+                            onSparkle = ::sparkle,
+                            reduceMotion = reduceMotion,
                             where = where,
                         )
                     }
@@ -423,7 +539,7 @@ fun ReaderScreen(
                 )
             }
             // While a page turns, nothing takes a touch but the home button.
-            if (turn.turning || magic != null) {
+            if (turn.turning || magic != null || rewind != null) {
                 Box(Modifier.fillMaxSize().pointerInput(Unit) { awaitPointerEventScope { while (true) awaitPointerEvent() } })
             }
             HomeButton(onClick = onHome, quiet = true, modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing).padding(14.dp))
@@ -504,15 +620,24 @@ private val ReaderUiState.key: String get() = page?.nodeId.orEmpty()
 
 /**
  * The sheets on screen, bottom to top: the next page beneath the page now; during a choice's magic the new page at
- * the bottom, the leaves still to turn, and the fork on top; during a cross-fade the page fading out under the one
- * fading in. A key shows once, the topmost.
+ * the bottom, the leaves still to turn, and the fork on top; during a rewind the ending held at the bottom, the leaves
+ * come back so far, and the fork once it comes back too; during a cross-fade the page fading out under the one fading
+ * in. A key shows once, the topmost.
  */
 private fun sheets(
     state: ReaderUiState,
     magic: Magic?,
     fade: Fade?,
+    rewind: Rewind?,
 ): List<Sheet> {
     val live = Sheet.Story(state, Shown.LIVE)
+    if (rewind != null) {
+        return buildList {
+            add(Sheet.Story(rewind.from, Shown.HELD))
+            for (n in 1..minOf(rewind.back, rewind.leaves)) add(Sheet.Leaf(n))
+            if (rewind.back > rewind.leaves) add(live)
+        }
+    }
     val all =
         buildList {
             if (magic == null) {
@@ -556,6 +681,22 @@ private class Magic(
     fun chosenOn(sheet: Sheet.Story): Int? = index.takeIf { sheet.key == fork.key }
 }
 
+/**
+ * The book flips back from an ending to a fork read on the way there (a "?" badge, or "Try another path"): the ending
+ * as it was, [from], is held while blank leaves come back over it from the left, one for each of the [pages] read in
+ * between (up to [LEAVES]), then the fork page itself, [to] (its key). No page the reader hasn't read ever shows.
+ */
+private class Rewind(
+    val from: ReaderUiState,
+    val to: Any,
+    pages: Int,
+) {
+    val leaves = pages.coerceIn(0, LEAVES)
+
+    /** How many sheets have started coming back: the leaves, then the fork page. */
+    var back by mutableIntStateOf(0)
+}
+
 /** A page change that isn't a turn: the page [from] fades out under the one fading in (docs/page-turn.md §5). */
 private class Fade(
     val from: ReaderUiState,
@@ -574,6 +715,7 @@ private class Fade(
 private class Book {
     var magic by mutableStateOf<Magic?>(null)
     var fade by mutableStateOf<Fade?>(null)
+    var rewind by mutableStateOf<Rewind?>(null)
 
     /** The page a corner turn is bringing in front: it comes without a cross-fade. */
     var turningTo: String? = null
@@ -581,10 +723,14 @@ private class Book {
     private var shown: ReaderUiState? = null
 
     /**
-     * Sees every state the screen shows, before anything reads [fade]: a page that came any other way than a turn
-     * or a choice (opening a story is no change) cross-fades in over the one before.
+     * Sees every state the screen shows, before anything reads [fade] or [rewind]: a rewind flips back (unless the
+     * device asks for [reduceMotion]), and a page that came any other way than a turn or a choice (opening a story is
+     * no change) cross-fades in over the one before.
      */
-    fun arrive(state: ReaderUiState) {
+    fun arrive(
+        state: ReaderUiState,
+        reduceMotion: Boolean,
+    ) {
         val before = shown
         shown = state
         val now = state.page?.nodeId ?: return
@@ -592,14 +738,17 @@ private class Book {
         if (now == was) return
         val expected = now == turningTo || (state.landing && magic != null)
         turningTo = null
-        if (!expected) fade = Fade(before)
+        if (expected) return
+        val pages = state.rewinding
+        if (state.landing && pages != null && !reduceMotion) rewind = Rewind(before, state.key, pages) else fade = Fade(before)
     }
 }
 
-/** Where the cards are on screen, so sparkles can burst from them. */
+/** Where the cards and the endings' badges are on screen, so sparkles can burst from them. */
 private class Where {
     var origin = Offset.Zero
     val cards = arrayOfNulls<Rect>(2)
+    val badges = mutableMapOf<String, Rect>()
 }
 
 /** A clock that doesn't run. */
@@ -697,6 +846,9 @@ private fun PageContent(
     onHome: () -> Unit,
     chosen: Int?,
     onPick: (Int) -> Unit,
+    onFind: (String) -> Unit,
+    onSparkle: (Rect) -> Unit,
+    reduceMotion: Boolean,
     where: Where,
 ) {
     val shown = ui.page ?: return
@@ -718,6 +870,9 @@ private fun PageContent(
                     layout.tablet,
                     chosen,
                     onPick,
+                    onFind,
+                    onSparkle,
+                    reduceMotion,
                     where,
                     Modifier
                         .weight(1f)
@@ -738,6 +893,9 @@ private fun PageContent(
                     layout.tablet,
                     chosen,
                     onPick,
+                    onFind,
+                    onSparkle,
+                    reduceMotion,
                     where,
                     Modifier
                         .weight(1f)
@@ -758,6 +916,9 @@ private fun Panel(
     tablet: Boolean,
     chosen: Int?,
     onPick: (Int) -> Unit,
+    onFind: (String) -> Unit,
+    onSparkle: (Rect) -> Unit,
+    reduceMotion: Boolean,
     where: Where,
     modifier: Modifier,
 ) {
@@ -771,8 +932,8 @@ private fun Panel(
     ) { phase ->
         when (phase) {
             Phase.TEXT -> TextPanel(page, clock, state.textScale, tablet)
-            Phase.CHOICE -> ChoicePanel(page, state.textScale, tablet, state.readingChoice, chosen, onPick, where)
-            Phase.END -> EndPanel(state, onEvent, onHome)
+            Phase.CHOICE -> ChoicePanel(page, state.textScale, tablet, state.readingChoice, chosen, onPick, reduceMotion, where)
+            Phase.END -> EndPanel(state, onEvent, onHome, onFind, onSparkle, reduceMotion, tablet, where)
         }
     }
 }
@@ -813,6 +974,7 @@ private fun ChoicePanel(
     readingChoice: Int?,
     chosen: Int?,
     onPick: (Int) -> Unit,
+    reduceMotion: Boolean,
     where: Where,
 ) {
     val base = if (tablet) 26f else 22f
@@ -833,6 +995,8 @@ private fun ChoicePanel(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.stepBack(back),
                 )
+                // Room for the arrow above the card that shows the way.
+                if (!stacked && page.choices.any { it.toward }) Spacer(Modifier.height(WAY_ROOM))
                 // The cards share the room left under the question, each as big as it allows.
                 val cards: @Composable (Modifier) -> Unit = { weight ->
                     page.choices.forEachIndexed { i, choice ->
@@ -842,6 +1006,8 @@ private fun ChoicePanel(
                             biggest,
                             read = readingChoice == i,
                             picked = chosen == i,
+                            way = if (stacked) WayFrom.SIDE else WayFrom.ABOVE,
+                            reduceMotion = reduceMotion,
                             modifier = weight.stepBack(if (chosen != null && chosen != i) back else 0f),
                             onPlaced = { where.cards[i] = it },
                         ) { onPick(i) }
@@ -870,6 +1036,7 @@ private fun Modifier.stepBack(back: Float): Modifier =
 /**
  * A choice card: one tap picks it and the story goes that way. It lifts a little while its label is [read] aloud.
  * Once [picked], it lights up with a gold glow (docs/page-turn.md §4). [onPlaced] gets its picture's bounds on screen.
+ * When it shows the way to the ending a "?" asked for ([Choice.toward]), a gold arrow points at it from [way].
  */
 @Composable
 private fun ChoiceCard(
@@ -878,6 +1045,8 @@ private fun ChoiceCard(
     biggest: Dp,
     read: Boolean,
     picked: Boolean,
+    way: WayFrom,
+    reduceMotion: Boolean,
     modifier: Modifier,
     onPlaced: (Rect) -> Unit,
     onTap: () -> Unit,
@@ -905,27 +1074,92 @@ private fun ChoiceCard(
             Modifier
                 .weight(1f, fill = false)
                 .sizeIn(maxWidth = biggest, maxHeight = biggest)
-                .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                .onGloballyPositioned { onPlaced(it.boundsInRoot()) }
-                .drawBehind {
-                    val g = glow.value
-                    if (g <= 0f) return@drawBehind
-                    val radius = corner.toPx()
-                    // A soft gold glow, 40 dp at 80% settling to 30 dp at 65%: the card's shape ever bigger and fainter
-                    // behind it (filled, which draws on the GPU everywhere; wide strokes don't on every device)…
-                    val reach = rise(g, 0f, 40.dp.toPx(), 30.dp.toPx())
-                    val strength = rise(g, 0f, 0.8f, 0.65f)
-                    val each = 1f - (1f - strength / 2f).pow(1f / GLOW_RINGS)
-                    for (i in GLOW_RINGS downTo 1) behind(reach * i / GLOW_RINGS, radius, TaleColors.LanternGold, each)
-                    // …and a gold ring around the card, 6 dp at 60% settling to 4 dp at 50%.
-                    behind(rise(g, 0f, 6.dp.toPx(), 4.dp.toPx()), radius, TaleColors.LanternGold, rise(g, 0f, 0.6f, 0.5f))
-                }.shadow(4.dp, shape)
-                .clip(shape)
-                .border(4.dp, TaleColors.LanternGold, shape),
+                .aspectRatio(1f, matchHeightConstraintsFirst = true),
         ) {
-            StoryImage(choice.image, ImageKind.CARD, contentDescription = null, modifier = Modifier.fillMaxSize())
+            CardPicture(choice, corner, shape, glow, onPlaced)
+            if (choice.toward) {
+                val at =
+                    when (way) {
+                        WayFrom.ABOVE -> Modifier.align(Alignment.TopCenter).offset(y = -(WAY_ARROW - WAY_ARROW_IN))
+                        WayFrom.SIDE -> Modifier.align(Alignment.CenterStart).offset(x = -(WAY_ARROW - WAY_ARROW_IN))
+                    }
+                WayArrow(way, reduceMotion, at)
+            }
         }
         Text(choice.label, style = Tale.type.label, textAlign = TextAlign.Center)
+    }
+}
+
+/** A card's picture, with its gold border, and its glow once picked ([glow] from 0 to 1). */
+@Composable
+private fun CardPicture(
+    choice: Choice,
+    corner: Dp,
+    shape: RoundedCornerShape,
+    glow: Animatable<Float, *>,
+    onPlaced: (Rect) -> Unit,
+) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .onGloballyPositioned { onPlaced(it.boundsInRoot()) }
+            .drawBehind {
+                val g = glow.value
+                if (g <= 0f) return@drawBehind
+                val radius = corner.toPx()
+                // A soft gold glow, 40 dp at 80% settling to 30 dp at 65%: the card's shape ever bigger and fainter
+                // behind it (filled, which draws on the GPU everywhere; wide strokes don't on every device)…
+                val reach = rise(g, 0f, 40.dp.toPx(), 30.dp.toPx())
+                val strength = rise(g, 0f, 0.8f, 0.65f)
+                val each = 1f - (1f - strength / 2f).pow(1f / GLOW_RINGS)
+                for (i in GLOW_RINGS downTo 1) behind(reach * i / GLOW_RINGS, radius, TaleColors.LanternGold, each)
+                // …and a gold ring around the card, 6 dp at 60% settling to 4 dp at 50%.
+                behind(rise(g, 0f, 6.dp.toPx(), 4.dp.toPx()), radius, TaleColors.LanternGold, rise(g, 0f, 0.6f, 0.5f))
+            }.shadow(4.dp, shape)
+            .clip(shape)
+            .border(4.dp, TaleColors.LanternGold, shape),
+    ) {
+        StoryImage(choice.image, ImageKind.CARD, contentDescription = null, modifier = Modifier.fillMaxSize())
+    }
+}
+
+/** Where the arrow on the card that shows the way is: above it, pointing down at it, or beside it, pointing at it. */
+private enum class WayFrom { ABOVE, SIDE }
+
+/**
+ * A gold arrow pointing at the card that shows the way to the ending a "?" badge asked for, nudging toward it, unless
+ * the device asks for less motion. A soft dark shadow under it keeps it clear on the paper and on any picture.
+ */
+@Composable
+private fun WayArrow(
+    from: WayFrom,
+    reduceMotion: Boolean,
+    modifier: Modifier,
+) {
+    val label = LocalStrings.current.wayToEnding
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    // TaleIcons.Next points right: turned down from above, or toward the card from the side it's on.
+    val degrees =
+        when (from) {
+            WayFrom.ABOVE -> 90f
+            WayFrom.SIDE -> if (rtl) 180f else 0f
+        }
+    val nudge by rememberInfiniteTransition(label = "way")
+        .animateFloat(0f, 1f, infiniteRepeatable(tween(WAY_NUDGE_MILLIS), RepeatMode.Reverse), label = "nudge")
+    Box(
+        modifier
+            .size(WAY_ARROW)
+            .graphicsLayer {
+                val toward = if (reduceMotion) 0f else Ease.inOutSine(nudge) * WAY_NUDGE.toPx()
+                when (from) {
+                    WayFrom.ABOVE -> translationY = toward
+                    WayFrom.SIDE -> translationX = if (rtl) -toward else toward
+                }
+            }.clearAndSetSemantics { contentDescription = label },
+    ) {
+        val turned = Modifier.fillMaxSize().graphicsLayer { rotationZ = degrees }
+        Icon(TaleIcons.Next, null, tint = TaleColors.FoldShadow.copy(alpha = 0.4f), modifier = Modifier.offset(y = 2.dp).then(turned))
+        Icon(TaleIcons.Next, null, tint = TaleColors.LanternGold, modifier = turned)
     }
 }
 
@@ -1120,41 +1354,270 @@ private fun Modifier.fadeTopWhenScrolled(
             }
         }
 
+/**
+ * An ending's closing, as far as it's come ([Closing]): "The End", the ending's title, every ending's badge (a "?" for
+ * the ones not found yet, which wiggle once the narrator says to tap one, and take the book back toward them), then
+ * the buttons. A part not come yet keeps its room, so nothing jumps, but can't be seen or touched.
+ */
 @Composable
 private fun EndPanel(
     state: ReaderUiState,
     onEvent: (ReaderEvent) -> Unit,
     onHome: () -> Unit,
+    onFind: (String) -> Unit,
+    onSparkle: (Rect) -> Unit,
+    reduceMotion: Boolean,
+    tablet: Boolean,
+    where: Where,
 ) {
     val page = state.page ?: return
     val strings = LocalStrings.current
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterVertically),
-    ) {
-        Text(strings.theEnd, style = Tale.type.title)
-        Box {
-            EndingBadge(page.image, found = true, size = 112.dp)
-            if (state.newEnding) {
-                Text(
-                    strings.newEnding,
-                    style = Tale.type.label,
-                    modifier =
-                        Modifier
-                            .align(Alignment.TopEnd)
-                            .clip(RoundedCornerShape(50))
-                            .background(TaleColors.LanternGold)
-                            .padding(horizontal = 10.dp, vertical = 4.dp),
-                )
-            }
+    val closing = state.closing
+    // Beside the picture on a phone in landscape there's little height: everything sits closer, the badges are smaller.
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val compact = maxHeight < COMPACT_END_HEIGHT
+        EndColumn(compact) {
+            EndContent(state, page, strings, closing, compact, onEvent, onHome, onFind, onSparkle, reduceMotion, tablet, where)
         }
-        Text(page.endingTitle.orEmpty(), style = Tale.type.heading, textAlign = TextAlign.Center)
+    }
+}
+
+@Composable
+private fun EndColumn(
+    compact: Boolean,
+    content: @Composable () -> Unit,
+) {
+    Column(
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = if (compact) 10.dp else 20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 14.dp, Alignment.CenterVertically),
+    ) { content() }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun EndContent(
+    state: ReaderUiState,
+    page: ReaderPage,
+    strings: Strings,
+    closing: Closing,
+    compact: Boolean,
+    onEvent: (ReaderEvent) -> Unit,
+    onHome: () -> Unit,
+    onFind: (String) -> Unit,
+    onSparkle: (Rect) -> Unit,
+    reduceMotion: Boolean,
+    tablet: Boolean,
+    where: Where,
+) {
+    Text(strings.theEnd, style = Tale.type.title)
+    Column(
+        Modifier.appear(closing >= Closing.BADGES, reduceMotion),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        EndingBadges(state, closing >= Closing.BADGES, closing >= Closing.OUTRO, reduceMotion, tablet, onFind, onSparkle, where)
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Icon(TaleIcons.Star, contentDescription = null, tint = TaleColors.LanternGold, modifier = Modifier.size(26.dp))
             Text(strings.endingsFound(state.endingsFound, state.endingsTotal), style = Tale.type.label)
         }
+    }
+    // Side by side when they fit.
+    FlowRow(
+        Modifier.appear(closing >= Closing.DONE, reduceMotion),
+        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
         PillButton(strings.tryAnotherPath, onClick = { onEvent(ReaderEvent.TryAnotherPath) }, icon = TaleIcons.Rewind)
         PillButton(strings.backToShelf, onClick = onHome, icon = TaleIcons.Home, primary = false)
     }
+}
+
+/**
+ * Fades and rises in once [shown]. Until then it keeps its room but can't be seen, touched or heard by a screen
+ * reader.
+ */
+@Composable
+private fun Modifier.appear(
+    shown: Boolean,
+    reduceMotion: Boolean,
+): Modifier {
+    val t by animateFloatAsState(if (shown) 1f else 0f, tween(if (shown) APPEAR_MILLIS else 0), label = "appear")
+    val hidden =
+        if (shown) {
+            Modifier
+        } else {
+            Modifier.clearAndSetSemantics {}.pointerInput(Unit) {
+                awaitPointerEventScope {
+                    while (true) awaitPointerEvent(PointerEventPass.Initial).changes.forEach { it.consume() }
+                }
+            }
+        }
+    return graphicsLayer {
+        alpha = t
+        translationY = if (reduceMotion) 0f else (1f - t) * 14.dp.toPx()
+    }.then(hidden)
+}
+
+/**
+ * Every ending's badge, in reading order: this one bigger, the ones found with their pictures, the others a "?". Once
+ * [shown], this one turns from "?" into its picture if it's new, with a burst of sparkles. Once the narrator says to
+ * tap a question mark ([wiggle]), the "?" ones wiggle now and then; a tap takes the book back toward that ending.
+ */
+@Composable
+private fun EndingBadges(
+    state: ReaderUiState,
+    shown: Boolean,
+    wiggle: Boolean,
+    reduceMotion: Boolean,
+    tablet: Boolean,
+    onFind: (String) -> Unit,
+    onSparkle: (Rect) -> Unit,
+    where: Where,
+) = BoxWithConstraints(Modifier.fillMaxWidth()) {
+    // As big as one row allows, up to a size, this one a third bigger: only when even the smallest don't fit, two rows.
+    val count = state.endings.size.coerceAtLeast(1)
+    val room = (maxWidth - BADGE_GAP * (count - 1)) / (count - 1 + BIG_BADGE)
+    val small = room.coerceIn(SMALLEST_BADGE, if (tablet) 64.dp else 52.dp)
+    val big = small * BIG_BADGE
+    val current = state.page?.nodeId
+    var mystery = 0
+    FlowRow(
+        Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(BADGE_GAP, Alignment.CenterHorizontally),
+        verticalArrangement = Arrangement.spacedBy(BADGE_GAP),
+    ) {
+        for (spot in state.endings) {
+            Box(Modifier.height(big), contentAlignment = Alignment.Center) {
+                when {
+                    spot.id == current -> {
+                        ThisEnding(spot, state.newEnding, shown, big, onSparkle)
+                    }
+
+                    spot.found -> {
+                        EndingBadge(
+                            spot.image,
+                            found = true,
+                            size = small,
+                            modifier =
+                                Modifier.clearAndSetSemantics {
+                                    contentDescription =
+                                        spot.title
+                                },
+                        )
+                    }
+
+                    else -> {
+                        MysteryBadge(spot, mystery++, wiggle && !reduceMotion, small, onFind, where)
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * The badge of the ending just read, with a soft gold glow. A [new] one shows a "?" until it's [shown], then turns
+ * into its picture with a pop, the "New!" tag and a burst of sparkles ([onSparkle] gets where it is).
+ */
+@Composable
+private fun ThisEnding(
+    spot: EndingSpot,
+    new: Boolean,
+    shown: Boolean,
+    size: Dp,
+    onSparkle: (Rect) -> Unit,
+) {
+    var turned by rememberSaveable(spot.id) { mutableStateOf(!new) }
+    var bounds by remember { mutableStateOf<Rect?>(null) }
+    val pop = remember { Animatable(1f) }
+    LaunchedEffect(shown) {
+        if (!shown || turned) return@LaunchedEffect
+        delay(BADGE_TURN_MILLIS)
+        turned = true
+        bounds?.let(onSparkle)
+        pop.animateTo(1.22f, tween(160))
+        pop.animateTo(1f, tween(280))
+    }
+    val newEnding = LocalStrings.current.newEnding
+    Box(
+        Modifier
+            .graphicsLayer {
+                scaleX = pop.value
+                scaleY = pop.value
+            }.drawBehind {
+                // A soft gold glow: the badge's circle, bigger and fainter, filled a few times.
+                for (i in 4 downTo 1) {
+                    drawCircle(TaleColors.LanternGold, radius = size.toPx() / 2f + i * 3.dp.toPx(), alpha = 0.09f)
+                }
+            }.size(size)
+            .onGloballyPositioned { bounds = it.boundsInRoot() }
+            .clearAndSetSemantics { contentDescription = if (new) "${spot.title}, $newEnding" else spot.title },
+    ) {
+        EndingBadge(spot.image, found = turned, size = size)
+        if (new && turned) {
+            // A ribbon across the badge's foot. It doesn't widen the badge's place in the row.
+            Text(
+                newEnding,
+                style = Tale.type.label.copy(fontSize = 13.sp),
+                maxLines = 1,
+                modifier =
+                    Modifier
+                        .align(Alignment.BottomCenter)
+                        .wrapContentSize(unbounded = true)
+                        .offset(y = 8.dp)
+                        .clip(RoundedCornerShape(50))
+                        .background(TaleColors.LanternGold)
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
+            )
+        }
+    }
+}
+
+/**
+ * The badge of an ending not found yet: a "?" that takes the book back toward it. While [wiggle], it wiggles now and
+ * then, each one a little after the one before ([order]).
+ */
+@Composable
+private fun MysteryBadge(
+    spot: EndingSpot,
+    order: Int,
+    wiggle: Boolean,
+    size: Dp,
+    onFind: (String) -> Unit,
+    where: Where,
+) {
+    val label = LocalStrings.current.findEnding
+    val interaction = remember { MutableInteractionSource() }
+    val tilt = remember { Animatable(0f) }
+    LaunchedEffect(wiggle) {
+        if (!wiggle) {
+            tilt.snapTo(0f)
+            return@LaunchedEffect
+        }
+        delay(order * WIGGLE_STEP_MILLIS * 2L)
+        while (true) {
+            for (angle in WIGGLE) tilt.animateTo(angle, tween(WIGGLE_STEP_MILLIS))
+            delay(WIGGLE_REST_MILLIS)
+        }
+    }
+    EndingBadge(
+        imageUri = null,
+        found = false,
+        size = size,
+        modifier =
+            Modifier
+                .onGloballyPositioned { where.badges[spot.id] = it.boundsInRoot() }
+                .graphicsLayer { rotationZ = tilt.value }
+                .squish(interaction)
+                .clickable(interactionSource = interaction, indication = null, role = Role.Button) { onFind(spot.id) }
+                .clearAndSetSemantics {
+                    contentDescription = label
+                    role = Role.Button
+                    onClick {
+                        onFind(spot.id)
+                        true
+                    }
+                }.testTag("ending-${spot.id}"),
+    )
 }

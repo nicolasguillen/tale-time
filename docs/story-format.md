@@ -1,6 +1,6 @@
 # Story format
 
-The contract between the content pipeline (`tools/`) and the app. The single definition is [`schema/story.schema.json`](../schema/story.schema.json). This page explains it. The pipeline's own files have schemas too (`schema/bible.schema.json`, `outline.schema.json`, `shots.schema.json`, `translation.schema.json`, `voice.schema.json`); the prompts in `tools/prompts/` explain them. Rules that JSON Schema can't express are checked by `story check` (see below).
+The contract between the content pipeline (`tools/`) and the app. The single definition is [`schema/story.schema.json`](../schema/story.schema.json). This page explains it. The pipeline's own files have schemas too (`schema/bible.schema.json`, `outline.schema.json`, `shots.schema.json`, `translation.schema.json`, `voice.schema.json`, `app-narration.schema.json`); the prompts in `tools/prompts/` explain them. Rules that JSON Schema can't express are checked by `story check` (see below).
 
 ## Folders
 
@@ -12,6 +12,9 @@ content/
   style/voice.json                   the narrators, one per language, each written in its language (rendered into that
                                      language's REQUESTED_AUDIO.md files)
   app/assets.json, app/style.json    the app icon request and the app's own look; the delivered icon files go next to them
+  app/narration.json                 the lines the narrator says at the end of every story, per language (below)
+  app/audio/<lang>/REQUESTED_AUDIO.md  generated: those lines still needed in that language, written in it
+  app/audio/<lang>/<clip>.wav|flac|m4a  delivered: those lines (none is generated)
   placeholders/                      static placeholders: page.svg (4:3), card.svg (1:1), cover.svg (3:4), sheet.svg (3:2)
   stories/<story-id>/
     bible.json                       step 1: premise, value, shape and arc, cast (with looks), places, world rules, "never" list, palette
@@ -87,9 +90,16 @@ The same clip ids in every language. Each language is requested in its own file,
 | `<node>` | the page text |
 | `<fork>-q` | the fork's question |
 | `<fork>-a`, `<fork>-b` | the option labels |
-| `<ending>-end` | the ending's title, on the ending screen |
 
-The app reads aloud every text whose clip is delivered: a page's text as its words appear, a fork's question and then its two labels as the cards come out (the card being read lifts a little), an ending's title under "The End", and the title on the cover. A text without its clip shows without narration, at the narrator's pace. So a language can be narrated a few clips at a time on the `draft` channel.
+The app reads aloud every text whose clip is delivered: a page's text as its words appear, a fork's question and then its two labels as the cards come out (the card being read lifts a little), and the title on the cover. An ending's title (`ending.title`) has no clip: the ending screen doesn't show or say it, and closes instead with "The End" and a closing line, the same for every story (below). The title stays in the story for screen readers and the read-through. An `<ending>-end` clip delivered before that is left alone and ignored: it isn't checked, requested or packaged. A text without its clip shows without narration, at the narrator's pace. So a language can be narrated a few clips at a time on the `draft` channel.
+
+**The end of every story.** A few lines are the same for every story, so they're recorded once per language, not per story, by the same narrator. Their scripts and directions, written in each language, are in `content/app/narration.json` ([schema](../schema/app-narration.schema.json)): one entry per language, one for every narrator in `voice.json`, each with exactly these three clips, `{ "script", "direction" }`. They're requested in `content/app/audio/<lang>/REQUESTED_AUDIO.md`, written in that language, delivered next to it as `<clip>.wav` (or `.flac` / `.m4a`), and published with the catalog (below). The app plays them by these ids:
+
+| Clip | Played |
+|---|---|
+| `the-end` | as "The End" rises on the ending screen, after the story's last page |
+| `more-endings` | after "The End" and the ending badges, while the story still has endings the child hasn't found: tap a "?" badge to find another, and there are more stories to discover |
+| `all-endings` | instead of `more-endings`, once every ending of the story is found |
 
 **Word timings.** A narrated page's words appear as the narrator says them. `story package` measures when that is from each page's delivered clip and its text (`tools/storytool/timings.py`), with ffmpeg and no model: it finds the pauses in the clip, matches them in order to the places in the text where a narrator stops (sentence ends first, then commas, colons, dashes and quotes, rarely mid-phrase) so each stretch of speech lasts about as long as its syllables take at the clip's own pace, and spreads the words of each stretch by their syllables. That lands on the voice at every pause and is a close guess in between, which is what the reveal needs. Nothing is written into `audio/<lang>/`: the timings are made at packaging, cached by the clip's and the text's contents, and shipped next to the clips (below). A clip recorded for other words than the text's (the text changed after recording) falls back to the narrator's pace.
 
@@ -131,12 +141,12 @@ The bible's `title` holds every language too. A reader downloads a story once, i
 
 | Field | |
 |---|---|
-| `id` | A story folder in `content/stories/`, with its text (`story/<lang>.json`). Order = shelf order. |
+| `id` | A story folder in `content/stories/`, with its text (`story/<lang>.json`). Order = shelf order. `app` is reserved (the published lines at the end of every story are in `app/`). |
 | `access` | `free`, or `paid`: a one-time purchase, unlocked behind the parental gate. |
 | `product` | Paid only: the store product id, the same on the App Store and Google Play. Lowercase letters, digits, `_` and `.` (Google Play allows no `-`). |
 | `approved` | The languages approved for the production channel (release builds), e.g. `["es"]`: the story is published there in these and no other, the first language included only if it's listed. A translation listed must also be approved by a native speaker (`"status": "approved"` in `translations/<lang>.json`). Without it the story isn't published to production. The app reads a story in the app's language when it's there, else in the first one published. The draft channel has every language. |
 
-`story check` checks that every entry is a written story, ids and products are unique, each approved language is one the story is written in (and a translation a native speaker approved), and warns if the shelf doesn't open with a free story. No story ships inside the app: `story package` turns this file into the published catalog (below), and the app's build keeps only a copy of the titles (`files/shelf.json`) for a first launch offline.
+`story check` checks that every entry is a written story, ids and products are unique (and no id is `app`), each approved language is one the story is written in (and a translation a native speaker approved), and warns if the shelf doesn't open with a free story. No story ships inside the app: `story package` turns this file into the published catalog (below), and the app's build keeps only a copy of the titles (`files/shelf.json`) for a first launch offline.
 
 ## Published stories
 
@@ -144,12 +154,15 @@ What the app downloads, built by `uv run story package [draft] [production]` int
 
 ```
 stories/<channel>/catalog.json                 the shelf (schema/published-catalog.schema.json), fetched at every launch
+stories/<channel>/app/<lang>-<clip>-<hash>.m4a  the lines at the end of every story, listed in the catalog's `narration`
 stories/<channel>/<id>/manifest-<hash>.json    every file of the story (schema/manifest.schema.json)
 stories/<channel>/<id>/<name>-<hash>.<ext>     the files: pictures (.webp), each language's text (story-<lang>.json),
                                                clips (<lang>-<clip>.m4a) and word timings (timings-<lang>.json)
 ```
 
 Every file is named after its contents (the first 10 hex characters of its SHA-256), so a changed picture, clip or text gets a new name, the manifest that lists it changes, and so does the manifest's name in the catalog. The app compares that name with the one it has: a new one means the story changed, and it downloads only the files it doesn't have yet. Nothing on the host is overwritten, so every file but the catalog can be cached forever. Production never deletes a file either; `story publish draft` deletes the draft files no story uses any more.
+
+**Catalog:** `format` (1), `narration`, and `stories`, one catalog entry per story. `narration` holds the lines at the end of every story: language → clip id → `{ file, bytes, sha256 }`, e.g. `{"es": {"the-end": {"file": "es-the-end-0123456789.m4a", …}, "more-endings": {…}, "all-endings": {…}}}`. A language is there once it has a clip (on production, all three); the key is left out while no language has one. Their files are in `app/`, next to the stories' folders, so no story can be called `app`.
 
 **Catalog entry:** `id`, `access`, `product`, `ageBand`, `endings` (how many, shown on its cover before it's downloaded), `title` (every published language, the first first), `languages` (per language: `bytes`, the story in that language alone, and `narration`), `cover` and `manifest` (each `{ file, bytes, sha256 }`).
 
@@ -161,8 +174,8 @@ Every file is named after its contents (the first 10 hex characters of its SHA-2
 
 | Channel | What's in it | Who reads it |
 |---|---|---|
-| `draft` | Every story on the shelf as it is: every language (drafts too), the pictures and clips delivered so far. A missing picture shows the placeholder; a page without its clip reads without narration. | Debug builds, from `stories/draft/`, after `uv run story publish draft` (only when the user asks). |
-| `production` | Only stories that pass `story check --strict` (every picture delivered), in their first language and each translation whose sheet is `approved`. A language's narration ships once all its clips are delivered; until then that language reads without narration. | Release builds, from `stories/production/`, after `uv run story publish production` (only when the user asks). |
+| `draft` | Every story on the shelf as it is: every language (drafts too), the pictures and clips delivered so far. A missing picture shows the placeholder; a page without its clip reads without narration. The lines at the end of every story delivered so far, in every language. | Debug builds, from `stories/draft/`, after `uv run story publish draft` (only when the user asks). |
+| `production` | Only stories that pass `story check --strict` (every picture delivered), in their first language and each translation whose sheet is `approved`. A language's narration ships once all its clips are delivered; until then that language reads without narration. The lines at the end of every story ship per language once all three are delivered. | Release builds, from `stories/production/`, after `uv run story publish production` (only when the user asks). |
 
 ## Budgets per age band
 
@@ -182,7 +195,7 @@ From `tools/`: `uv run story check [<id> …] [--strict] [-v]`
 
 It checks every pipeline file present in the story folder, so it works from step 1 on and is the repair loop of each writing step. It reports errors, which fail the check, warnings, and requests: assets not delivered yet, which block only with `--strict`, the publishing mode.
 
-- `catalog.json`, `app/assets.json` and `style/voice.json` match their schemas (above), when `check` runs without story ids.
+- `catalog.json`, `app/assets.json`, `app/narration.json` and `style/voice.json` match their schemas (above), when `check` runs without story ids. Every narrator has its lines in `app/narration.json` and every language there has a narrator; those lines not delivered yet are requests, and warnings in `--strict` mode.
 - `bible.json` matches its schema, ids are unique, and there's one hero.
 - `outline.json` matches its schema and passes the graph and structure-budget rules below.
 - Every `story/<lang>.json` matches the schema and says its own `language`. Exactly one, the first language, has no `translatedFrom`, and every other is translated from it.

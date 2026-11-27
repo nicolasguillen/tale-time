@@ -122,13 +122,28 @@ No folded corner on a fork or an ending: what comes next is on the same page.
 - **Fork.** Once its text is read, after a 900 ms pause, the question and the cards rise on the same page (today's
   slide-in), and the narrator reads the question and the labels as today. The screen sends `ReaderEvent.Next` by
   itself to open them.
-- **Ending.** The same: once its text is read, after 900 ms, "The End" rises on the same page.
-- **Other page changes** keep today's cross-fade: opening the reader, "Try another path", switching the story's
+- **Ending.** Once its text is read, after a longer pause (1.6 s, so the last line lands), the closing rises on the
+  same page, one part after the other as the narrator says it (`Closing`, 2026-11-27): "The End" with 40 sparkles
+  drifting down over the page; every ending's badge in one row (as big as the row allows, this one a third bigger
+  with a soft gold glow; a new one turns from "?" into its picture with a pop, a burst of sparkles and a "New!"
+  ribbon); the closing line, while the "?" badges wiggle now and then; and last the buttons. The ending's name isn't
+  shown or said. Without a clip, each part waits a moment (`THE_END_MILLIS`, `BADGES_MILLIS`, `OUTRO_MILLIS`).
+- **Back to a fork** (a "?" badge, or "Try another path"): the ending is held as it was while blank leaves come back
+  over it from the left, the way a turn took them (`PageTurn.returnNow`: a turn's arc run backward), one for each page
+  read since the fork, up to three (330, 380, 430 ms), then the fork page itself (640 ms, ease-out-cubic), with gold
+  dust off the crease going right. Only the leaves and pages read on this path ever show. The fork page is then read
+  again (`landing` until `Landed`, as after a choice), then its cards rise. After a "?", the card that leads toward
+  that ending has a gold arrow pointing at it (`TaleIcons.Next` at 64 dp with a soft dark shadow, nudging 6 dp toward
+  the card every 650 ms): above it, pointing down, when the cards are side by side; beside it when they're stacked. At
+  every fork until an ending is reached. With reduced motion it's a
+  cross-fade.
+- **Other page changes** keep today's cross-fade: opening the reader, switching the story's
   language.
 
 ## 6. No back arrow
 
-The back arrow goes, on pages and at forks. A child can't go back a page: forward, and "Try another path" at an
+The back arrow goes, on pages and at forks. A child can't go back a page: forward, and back to a fork (a "?" badge
+or "Try another path", §5) at an
 ending.
 
 - Remove `ReaderEvent.Previous`, `ReaderUiState.canGoBack`, `PageArrows` and `Strings.previousPage` (both languages).

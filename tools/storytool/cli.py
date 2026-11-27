@@ -7,17 +7,21 @@ import argparse
 import sys
 
 from . import assets, audio, graph, icons, originals, package, publish
-from .check import (ERROR, REQUEST, STAGES, WARNING, Issue, check_app_assets, check_catalog, check_folder,
-                    check_style, check_voice)
-from .repo import (APP_ASSETS, APP_STYLE, CATALOG, ROOT, STORIES, VOICE, characters_dir, find_image, has_story,
-                   load_json, load_story, story_dir, story_file, story_ids, style_dir, translation_file)
+from .check import (ERROR, REQUEST, STAGES, WARNING, Issue, check_app_assets, check_app_narration, check_catalog,
+                    check_folder, check_style, check_voice)
+from .repo import (APP, APP_ASSETS, APP_NARRATION, APP_STYLE, CATALOG, ROOT, STORIES, VOICE, characters_dir, find_image,
+                   has_story, load_json, load_story, story_dir, story_file, story_ids, style_dir, translation_file)
 
 
-def _repo_issues():
-    """The catalog (the shelf, free and paid), the narrators and the app's own images."""
+def _repo_issues(strict: bool = False):
+    """The catalog (the shelf, free and paid), the narrators, the app's own images and the lines at the end of every
+    story."""
     found = []
+    narrators = {}
     if VOICE.is_file():
-        found += [("style/voice.json", i) for i in check_voice(load_json(VOICE))]
+        voice = load_json(VOICE)
+        found += [("style/voice.json", i) for i in check_voice(voice)]
+        narrators = voice.get("narrators") or {}
     else:
         found.append(("style/voice.json", Issue(ERROR, "voice-missing", "content/style/voice.json is missing: the "
                                                                         "narrators")))
@@ -36,6 +40,12 @@ def _repo_issues():
         else:
             found.append(("app/style.json", Issue(ERROR, "app-style", "content/app/style.json is missing: the app icon "
                                                                       "has its own style")))
+    if APP_NARRATION.is_file():
+        found += [("app/narration.json", i) for i in check_app_narration(load_json(APP_NARRATION), narrators, APP,
+                                                                         strict=strict)]
+    else:
+        found.append(("app/narration.json", Issue(ERROR, "app-narration", "content/app/narration.json is missing: the "
+                                                                          "lines at the end of every story")))
     missing, unpushed = originals.quick_check()
     if missing:
         found.append(("originals.json", Issue(WARNING, "originals-missing", f"{len(missing)} delivered originals aren't "
@@ -50,11 +60,17 @@ def _repo_issues():
 def cmd_check(args) -> int:
     failed = False
     if not args.ids:
-        repo = _repo_issues()
-        errors = [i for _, i in repo if i.level == ERROR]
-        print(f"catalog, narrators and app images: {len(errors)} errors, {len(repo) - len(errors)} warnings")
-        for name, issue in repo:
+        repo = _repo_issues(strict=args.strict)
+        errors = [(n, i) for n, i in repo if i.level == ERROR]
+        warnings = [(n, i) for n, i in repo if i.level == WARNING]
+        requests = [(n, i) for n, i in repo if i.level == REQUEST]
+        print(f"catalog, narrators, app images and app narration: {len(errors)} errors, {len(warnings)} warnings, "
+              f"{len(requests)} assets requested")
+        for name, issue in errors + warnings + (requests if args.verbose else []):
             print(f"  {name}: {issue}")
+        if requests and not args.verbose:
+            print("  (the lines at the end of every story not delivered yet are requested in "
+                  "content/app/audio/<lang>/REQUESTED_AUDIO.md; -v lists them here)")
         failed |= bool(errors)
     for sid in args.ids or story_ids():
         folder = story_dir(sid)

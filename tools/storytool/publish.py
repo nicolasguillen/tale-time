@@ -10,7 +10,8 @@ write through the API). This uploads with the owner's own gcloud login, which th
 1. every story file not on the host yet (they're named after their contents, so an existing name is the same file),
    marked cacheable forever;
 2. the manifests, the same way;
-3. the catalog last, marked never cached, so the app never sees a manifest or a file before it's there.
+3. the lines at the end of every story (app/), the same way;
+4. the catalog last, marked never cached, so the app never sees a manifest or a file before it's there.
 
 Production never deletes anything: an app that's halfway through an update still finds the files of the version it
 started with. Draft then deletes the files on the host that no story on it uses any more, so old drafts don't pile up
@@ -19,7 +20,7 @@ in the bucket; a debug build caught halfway through an update tries again at its
 import shutil
 import subprocess
 
-from .package import CATALOG_FILE, Result, describe, host_folder, package
+from .package import APP_FOLDER, CATALOG_FILE, Result, describe, host_folder, package
 
 BUCKET = "tale-time-b537d.firebasestorage.app"
 FOREVER = "public, max-age=31536000, immutable"
@@ -46,6 +47,15 @@ def _gcloud(*args: str, dry_run: bool) -> None:
     subprocess.run(command, check=True)
 
 
+def _upload_forever(files: list, target: str, dry_run: bool) -> None:
+    """Files named after their contents, by type, never replacing one already there."""
+    for ext, kind in TYPES.items():
+        batch = [str(p) for p in files if p.suffix == ext]
+        if batch:
+            _gcloud("cp", "--no-clobber", f"--cache-control={FOREVER}", f"--content-type={kind}", *batch, target,
+                    dry_run=dry_run)
+
+
 def upload(result: Result, dry_run: bool = False) -> None:
     for story in result.stories:
         folder = result.root / story.id
@@ -53,11 +63,11 @@ def upload(result: Result, dry_run: bool = False) -> None:
         files = sorted(p for p in folder.iterdir() if p.is_file() and not p.name.startswith("manifest-"))
         manifests = sorted(folder.glob("manifest-*.json"))
         for group in (files, manifests):
-            for ext, kind in TYPES.items():
-                batch = [str(p) for p in group if p.suffix == ext]
-                if batch:
-                    _gcloud("cp", "--no-clobber", f"--cache-control={FOREVER}", f"--content-type={kind}", *batch,
-                            target, dry_run=dry_run)
+            _upload_forever(group, target, dry_run)
+    app = result.root / APP_FOLDER
+    if app.is_dir():
+        _upload_forever(sorted(p for p in app.iterdir() if p.is_file()), f"{_target(result.channel)}{APP_FOLDER}/",
+                        dry_run)
     _gcloud("cp", f"--cache-control={FRESH}", "--content-type=application/json", str(result.catalog),
             f"{_target(result.channel)}{CATALOG_FILE}", dry_run=dry_run)
 

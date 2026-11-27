@@ -6,16 +6,16 @@ Cada clip de narración que necesita *Noelia y la ardillita* en español latinoa
 
 Este archivo se genera solo. Para cambiar un pedido, edita el `story/es.json` de este cuento (las palabras), `translations/es.json` (nombres, estribillos, personalidades y ánimo de cada página en español latinoamericano), o `content/style/voice.json` (la voz), y luego ejecuta `cd tools && uv run story assets`. Vuelve a ejecutarlo después de entregar archivos y los ⬜ pasan a ✅. Las ilustraciones, las mismas en todos los idiomas, se piden en [REQUESTED_ASSETS.md](../../REQUESTED_ASSETS.md); todos los cuentos e idiomas están en el [índice](../../../../../REQUESTED_AUDIO.md).
 
-| Título | Páginas | Preguntas | Opciones | Títulos de final | Total |
-|---|---|---|---|---|---|
-| 1/1 | 20/20 | 5/5 | 10/10 | 4/4 | **40/40** |
+| Título | Páginas | Preguntas | Opciones | Total |
+|---|---|---|---|---|
+| 1/1 | 20/20 | 5/5 | 10/10 | **36/36** |
 
 Noelia lo hace todo rápido. En un paseo por el Bosque de los Pinos con su abuelo, lento y sonriente, encuentra a Pipa, una ardillita bebé que bajó de su árbol persiguiendo una bellota y ahora solo sabe que su casa está "¡arriba, arriba, arriba!". Noelia corre zumbando de árbol en árbol para encontrarla, pero cada vez que se apura, el bosque se queda callado, hasta que se sienta quieta el tiempo suficiente para oír a la mamá de Pipa llamándola.
 
 - **Carpeta:** `content/stories/noelia-and-the-baby-squirrel/audio/es/`
 - **Ritmo:** unas 140 palabras por minuto (de 4 a 7 años).
 - **Tono:** juguetón, acogedor.
-- **Guion:** 40 clips, 1571 palabras, 9385 caracteres, unos 12 min en total.
+- **Guion:** 36 clips, 1558 palabras, 9293 caracteres, unos 12 min en total.
 
 ## Voz: Voz cálida de cuentacuentos (propuesta, aún sin aprobar)
 
@@ -44,7 +44,7 @@ Una sola voz para todos los cuentos en español de la app: una persona adulta, c
 - **Nombra** cada archivo con el id de su clip, en esta carpeta: `<id del clip>.wav` (o `.flac` / `.m4a`).
 - **Una sola voz** para todo el cuento, en una sola sesión si se puede, para que todos los clips suenen igual.
 - **No hacen falta los tiempos de cada palabra.** El proceso alinea cada clip con su texto para iluminar las palabras (plan.md §5.2, paso 8).
-- **Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 48 kbps, y se empareja el volumen. Nada más cambia: ni cortes, ni efectos.
+- **Al empaquetar**, los archivos entregados se convierten a AAC mono `.m4a`, a unos 64 kbps, y se empareja el volumen. Nada más cambia: ni cortes, ni efectos.
 - **Licencias**: guarda la autorización o la licencia de cada voz junto a los archivos (la autorización escrita de la persona grabada, o los términos de una herramienta de voz que permitan distribuirla en una app comercial), y anota el origen en el `provenance.json` del cuento.
 
 | | Cada clip |
@@ -363,71 +363,35 @@ En orden de lectura. La pregunta de una página con opciones y sus dos opciones 
 ### ✅ `e1-up-up-up`: Página (un final)
 
 - **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: feliz, tierno, de despedida.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: feliz, tierno, de despedida.
 - **Duración:** 73 palabras, unos 32 s.
 - **Guion:**
 
 > "Hola, Mamá Ardilla", susurró Noelia. "Encontramos a Pipa". Mamá Ardilla hizo un chiqui-chiqui suavecito y bajó hasta la mitad del tronco. "¡Mi casa está arriba!", chilló Pipa. Y arriba, arriba, arriba subió, hasta el nido. Mamá envolvió a Pipa en su cola grande y esponjosa. Entonces Pipa movió su colita, solo para Noelia. "Adiós, Pipa", susurró Noelia. Volvió a casa con el abuelo, de la mano, despacito. ¿Y mañana? Mañana volvería. De puntitas.
 
-### ✅ `e1-up-up-up-end`: Título del final
-
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e1-up-up-up-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es feliz: alegre y luminoso.
-- **Duración:** 3 palabras, unos 2 s.
-- **Guion:**
-
-> ¡Arriba, arriba, arriba!
-
 ### ✅ `e2-chitter-chatter`: Página (un final)
 
 - **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: chistoso, alegre.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: chistoso, alegre.
 - **Duración:** 67 palabras, unos 30 s.
 - **Guion:**
 
 > "¿Chiqui-chiqui?", dijo Noelia. Mamá Ardilla ladeó la cabeza. "¡Chiqui-chiqui!", le contestó. Del nido salieron el hermanito y la hermanita de Pipa. "¡Chiqui-chiqui-chiqui!" Pipa subió, arriba, arriba, arriba, para estar con ellos. Al ratito todos hacían chiqui-chiqui, hasta el abuelo, con su bigote blanco temblando. Todo el camino a casa, Noelia y el abuelo hicieron chiqui-chiqui. Y en la cena, cuando Noelia pidió más sopa, le salió... "¡Chiqui-chiqui!"
 
-### ✅ `e2-chitter-chatter-end`: Título del final
-
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e2-chitter-chatter-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es chistoso: con una risa en la voz.
-- **Duración:** 1 palabra, unos 1 s.
-- **Guion:**
-
-> Chiqui-chiqui-chá
-
 ### ✅ `e3-whole-wood`: Página (un final)
 
 - **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: asombro, paz, el mejor día.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: asombro, paz, el mejor día.
 - **Duración:** 80 palabras, unos 35 s.
 - **Guion:**
 
 > Noelia se quedó quieta como una piedra. Mamá y Pipa subieron por el pino, arriba, arriba, arriba. Poquito a poquito, todo el bosque se acercó. Los hermanitos de Pipa se asomaron de su nido de hojas, allá en lo alto. Los pájaros se acercaron a saltitos. "Mira, Abuelo", susurró Noelia. "¡Mira nada más!" Desde entonces, cada vez que ella y el abuelo volvían de puntitas al bosque, Pipa bajaba corriendo a saludar. Noelia lo hacía todo rápido. Bueno... casi todo.
 
-### ✅ `e3-whole-wood-end`: Título del final
-
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e3-whole-wood-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es el mejor: con orgullo y un brillo especial.
-- **Duración:** 5 palabras, unos 3 s.
-- **Guion:**
-
-> Todo el bosque dice hola
-
 ### ✅ `e4-window`: Página (un final)
 
 - **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e4-window.wav`
-- **Indicación:** El texto de la página, tal como está escrito. Ánimo: acogedor, tranquilo, contento.
+- **Indicación:** La última página de un camino, y las últimas palabras del cuento: justo después la app pone "Fin.", y no viene ningún título. Léela como la última página de un libro a la hora de dormir: con calma, más despacio en la última oración, y termina en un tono bajo, cálido y final, nunca subiendo ni como pregunta. Ánimo: acogedor, tranquilo, contento.
 - **Duración:** 79 palabras, unos 35 s.
 - **Guion:**
 
 > "Adiós, Pipa", susurró Noelia. "¡Mi casa está arriba!", chilló Pipa, y arriba, arriba, arriba se fue con Mamá. Noelia y el abuelo volvieron por el bosque dorado, despacito. Esa noche, Noelia se arrodilló en una silla junto a la ventana del abuelo. El abuelo trajo dos tazas de leche tibia. Ella se quedó muy quieta. Y lejos y suave, desde el Bosque de los Pinos, llegó un sonido. Chiqui-chiqui. Noelia sonrió hasta la punta de sus zapatos de rayos.
-
-### ✅ `e4-window-end`: Título del final
-
-- **Archivo:** `content/stories/noelia-and-the-baby-squirrel/audio/es/e4-window-end.wav`
-- **Indicación:** El título del final en la pantalla de "Fin", como un pequeño premio: despacio y con calidez. Este final es tranquilo: suave y con sueño.
-- **Duración:** 4 palabras, unos 3 s.
-- **Guion:**
-
-> Chiqui-chiqui en la ventana

@@ -1,8 +1,10 @@
 package com.nicolasguillen.taletime.data
 
+import com.nicolasguillen.taletime.domain.Catalog
 import com.nicolasguillen.taletime.domain.CatalogEntry
 import com.nicolasguillen.taletime.domain.CatalogParser
 import com.nicolasguillen.taletime.domain.Download
+import com.nicolasguillen.taletime.domain.HostedFile
 import com.nicolasguillen.taletime.domain.Installed
 import com.nicolasguillen.taletime.domain.Library
 import com.nicolasguillen.taletime.domain.StoryBundle
@@ -134,6 +136,7 @@ internal data class Timings(
  * catalog.json            the last catalog fetched (the copy that ships inside the app stands in until then)
  * installed.json          story id → its manifest, the languages downloaded and the one it's read in
  * stories/<id>/<file>     its files, named after their contents: cover, manifests, texts, pictures, clips
+ * app/<file>              the clips every story shares (the end of a story), named after their contents
  * ```
  *
  * A file only counts once its size and SHA-256 match its manifest, and it's written next to its final name and then
@@ -163,6 +166,10 @@ class HostedStoryLibrary(
     private val catalogFile = directory / "catalog.json"
     private val installedFile = directory / "installed.json"
     private val storiesDir = directory / "stories"
+    private val sharedDir = directory / "app"
+
+    /** The clips every story shares, as the last catalog read lists them. */
+    private var sharedClips: Map<String, Map<String, HostedFile>> = emptyMap()
 
     private val mutableState = MutableStateFlow(Library())
     override val state: StateFlow<Library> = mutableState.asStateFlow()
@@ -192,6 +199,7 @@ class HostedStoryLibrary(
             }
             if (fetchedAt?.let { it.elapsedNow() < refreshEvery } == true) return
             val stories = fetchCatalog() ?: return
+            fetchSharedClips()
             for (entry in stories) {
                 val cover = entry.cover ?: continue
                 runCatching {
@@ -293,15 +301,17 @@ class HostedStoryLibrary(
     private suspend fun readSaved() {
         val saved =
             withContext(io) {
-                val stories =
-                    readText(catalogFile)?.let { runCatching { CatalogParser.parse(it) }.getOrNull() }
-                        ?: runCatching { CatalogParser.parse(readBundledShelf().decodeToString()) }.getOrDefault(emptyList())
+                val catalog =
+                    readText(catalogFile)?.let { runCatching { CatalogParser.parseCatalog(it) }.getOrNull() }
+                        ?: runCatching { CatalogParser.parseCatalog(readBundledShelf().decodeToString()) }.getOrDefault(Catalog())
+                val stories = catalog.stories
+                sharedClips = catalog.narration
                 val installed =
                     readText(installedFile)
                         ?.let { runCatching { json.decodeFromString<Map<String, Installed>>(it) }.getOrNull() }
                         .orEmpty()
                         .filter { (id, story) -> fileSystem.exists(storiesDir / id / story.manifest) }
-                Library(ready = true, stories = stories, covers = covers(stories), installed = installed)
+                Library(ready = true, stories = stories, covers = covers(stories), installed = installed, narration = sharedOnDevice())
             }
         mutableState.update { saved.copy(downloads = it.downloads) }
     }
@@ -316,12 +326,35 @@ class HostedStoryLibrary(
             } catch (_: Exception) {
                 return null
             }
-        val stories = runCatching { CatalogParser.parse(bytes.decodeToString()) }.getOrNull() ?: return null
+        val catalog = runCatching { CatalogParser.parseCatalog(bytes.decodeToString()) }.getOrNull() ?: return null
         withContext(io) { write(catalogFile, bytes) }
         fetchedAt = clock.markNow()
-        mutableState.update { it.copy(stories = stories) }
-        return stories
+        sharedClips = catalog.narration
+        mutableState.update { it.copy(stories = catalog.stories) }
+        return catalog.stories
     }
+
+    /**
+     * The clips every story shares, in every language, from the catalog just fetched: a few small files. One that
+     * can't be fetched is tried again at the next launch; until then the end of a story reads without it.
+     */
+    private suspend fun fetchSharedClips() {
+        for (file in sharedClips.values.flatMap { it.values }) {
+            runCatching { fetch("$SHARED_FOLDER/${file.file}", sharedDir / file.file, file.bytes, file.sha256) }
+                .onFailure { if (it is CancellationException) throw it }
+        }
+        val narration = withContext(io) { sharedOnDevice() }
+        mutableState.update { it.copy(narration = narration) }
+    }
+
+    /** The shared clips the catalog lists that are on the device: language → clip id → path. */
+    private fun sharedOnDevice(): Map<String, Map<String, String>> =
+        sharedClips
+            .mapValues { (_, clips) ->
+                clips
+                    .filterValues { fileSystem.metadataOrNull(sharedDir / it.file)?.size == it.bytes }
+                    .mapValues { (_, file) -> (sharedDir / file.file).toString() }
+            }.filterValues { it.isNotEmpty() }
 
     private fun covers(stories: List<CatalogEntry>): Map<String, String> =
         stories
@@ -401,17 +434,28 @@ class HostedStoryLibrary(
         name: String,
         bytes: Long,
         sha256: String,
+    ) = fetch("$storyId/$name", storiesDir / storyId / name, bytes, sha256)
+
+    /**
+     * Downloads the file at [path] in the channel's folder to [to], unless it's on the device already, and checks its
+     * size and SHA-256.
+     */
+    private suspend fun fetch(
+        path: String,
+        to: Path,
+        bytes: Long,
+        sha256: String,
     ) {
-        if (withContext(io) { has(storyId, name, bytes) }) return
+        if (withContext(io) { fileSystem.metadataOrNull(to)?.size == bytes }) return
         // A dropped connection or a garbled file is tried again a couple of times before the whole download gives up.
         var attempt = 1
         while (true) {
             try {
-                val data = get("$storyId/$name")
+                val data = get(path)
                 if (data.size.toLong() != bytes || data.toByteString().sha256().hex() != sha256.lowercase()) {
-                    throw IllegalStateException("$storyId/$name doesn't match its checksum")
+                    throw IllegalStateException("$path doesn't match its checksum")
                 }
-                withContext(io) { write(storiesDir / storyId / name, data) }
+                withContext(io) { write(to, data) }
                 return
             } catch (e: CancellationException) {
                 throw e
@@ -465,8 +509,17 @@ class HostedStoryLibrary(
         bundleLock.withLock { bundles.remove(storyId) }
     }
 
-    /** Deletes what no downloaded story and no cover on the shelf uses: old versions, half downloads, old stories. */
+    /**
+     * Deletes what no downloaded story, no cover on the shelf and no shared clip uses: old versions, half downloads,
+     * old stories, old clips.
+     */
     private fun cleanUp() {
+        val shared = sharedClips.values.flatMap { clips -> clips.values.map { it.file } }.toSet()
+        fileSystem
+            .listOrNull(sharedDir)
+            .orEmpty()
+            .filter { it.name !in shared }
+            .forEach { fileSystem.delete(it) }
         val shelf = state.value.stories.associateBy { it.id }
         val installed = state.value.installed
         for (folder in fileSystem.listOrNull(storiesDir).orEmpty()) {
@@ -558,6 +611,9 @@ class HostedStoryLibrary(
     private fun FileSystem.listRecursivelyOrEmpty(dir: Path): List<Path> = if (exists(dir)) listRecursively(dir).toList() else emptyList()
 
     private companion object {
+        /** The folder of the clips every story shares, in a channel's folder on the host and on the device. */
+        const val SHARED_FOLDER = "app"
+
         /** Files downloaded at the same time. */
         const val PARALLEL_DOWNLOADS = 4
 

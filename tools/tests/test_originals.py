@@ -32,13 +32,17 @@ class FakeBucket:
 
 @pytest.fixture
 def content(tmp_path):
-    """A content/ folder with a picture, a clip and the app icon delivered, next to files that aren't originals."""
+    """A content/ folder with a picture, a clip, the app icon and an app clip delivered, next to files that aren't
+    originals."""
     root = tmp_path / "content"
     for path, data in {
         "stories/tiny/images/p1.png": b"picture p1",
         "stories/tiny/characters/fox.jpg": b"sheet fox",
         "stories/tiny/audio/es/p1.wav": b"clip p1",
         "app/app-icon.png": b"icon",
+        "app/audio/es/the-end.wav": b"clip the end",
+        "app/narration.json": b"{}",
+        "app/audio/es/REQUESTED_AUDIO.md": b"# requests",
         "stories/tiny/story/en.json": b"{}",
         "stories/tiny/audio/es/REQUESTED_AUDIO.md": b"# requests",
         "placeholders/page.svg": b"<svg/>",
@@ -62,8 +66,8 @@ def lock(content):
 
 def test_only_delivered_pictures_and_clips_are_originals(content):
     assert sorted(originals.files_here(content)) == [
-        "app/app-icon.png", "stories/tiny/audio/es/p1.wav", "stories/tiny/characters/fox.jpg",
-        "stories/tiny/images/p1.png"]
+        "app/app-icon.png", "app/audio/es/the-end.wav", "stories/tiny/audio/es/p1.wav",
+        "stories/tiny/characters/fox.jpg", "stories/tiny/images/p1.png"]
 
 
 def test_an_original_is_kept_under_its_path_named_after_its_contents():
@@ -111,6 +115,7 @@ def test_pull_brings_back_what_is_missing_and_keeps_what_changed_here(content, b
     assert originals.pull(content, lock(content), bucket) == 0
     assert (content / "stories/tiny/audio/es/p1.wav").read_bytes() == b"clip p1"
     assert (content / "app/app-icon.png").read_bytes() == b"icon"
+    assert (content / "app/audio/es/the-end.wav").read_bytes() == b"clip the end"
     assert (content / "stories/tiny/images/p1.png").read_bytes() == b"not pushed yet"
 
 

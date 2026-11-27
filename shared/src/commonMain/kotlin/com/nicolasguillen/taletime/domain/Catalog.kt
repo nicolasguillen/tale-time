@@ -4,7 +4,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-/** A file in a story's folder on the content host, named after its contents, with its size and SHA-256. */
+/**
+ * A file in a story's folder on the content host (or the `app/` folder, for the clips every story shares), named after
+ * its contents, with its size and SHA-256.
+ */
 @Serializable
 data class HostedFile(
     val file: String,
@@ -72,20 +75,41 @@ enum class Access {
     PAID,
 }
 
+/**
+ * The published catalog: the shelf, and the clips every story shares.
+ *
+ * @property narration language → clip id → its file in the channel's `app/` folder: what the narrator says at the end
+ *   of every story ([SharedClip]), recorded once per language. A language has only the clips delivered so far.
+ */
 @Serializable
-private class CatalogFile(
-    val stories: List<CatalogEntry>,
+data class Catalog(
+    val stories: List<CatalogEntry> = emptyList(),
+    val narration: Map<String, Map<String, HostedFile>> = emptyMap(),
 )
+
+/** The clips every story shares (content/app/narration.json), by their ids. */
+object SharedClip {
+    /** "The End.", before the ending's own title. */
+    const val THE_END = "the-end"
+
+    /** The story has endings still to find: tap a question mark; and there are more stories to discover. */
+    const val MORE_ENDINGS = "more-endings"
+
+    /** Every ending of the story is found: there are more stories to discover. */
+    const val ALL_ENDINGS = "all-endings"
+}
 
 object CatalogParser {
     private val json = Json { ignoreUnknownKeys = true }
 
     /** Unknown fields are skipped, so an older app can read a newer catalog. */
-    fun parse(text: String): List<CatalogEntry> =
-        json
-            .decodeFromString<CatalogFile>(text)
-            .stories
-            .filter { it.access == Access.FREE || it.product != null }
+    fun parse(text: String): List<CatalogEntry> = parseCatalog(text).stories
+
+    /** The whole catalog: the shelf (without a paid story that has no product) and the shared clips. */
+    fun parseCatalog(text: String): Catalog =
+        json.decodeFromString<Catalog>(text).let { catalog ->
+            catalog.copy(stories = catalog.stories.filter { it.access == Access.FREE || it.product != null })
+        }
 }
 
 /** Whether a child can open this book now: free, or its product has been bought on this account. */

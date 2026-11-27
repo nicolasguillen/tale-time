@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "App narration",
+  "description": "content/app/narration.json: the lines the narrator says at the end of every story, the same for every story, so they're recorded once per language, not per story. One entry per language, written in that language, said by that language's narrator (content/style/voice.json); every narrator has one. Rendered into content/app/audio/<lang>/REQUESTED_AUDIO.md; the delivered clips go next to it and are published in the catalog's `narration` (schema/published-catalog.schema.json). The app plays them by these clip ids. See docs/story-format.md, \"Narration clips\".",
+  "type": "object",
+  "minProperties": 1,
+  "propertyNames": { "pattern": "^[a-z]{2,3}$" },
+  "additionalProperties": { "$ref": "#/$defs/language" },
+  "$defs": {
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["the-end", "more-endings", "all-endings"],
+      "properties": {
+        "the-end": { "$ref": "#/$defs/clip", "description": "Said as \"The End\" rises on the ending screen, right after a story's last page. An ending's own title has no clip." },
+        "more-endings": { "$ref": "#/$defs/clip", "description": "Said after \"The End\", once the ending badges are out, while the story still has endings the child hasn't found: tap a question mark (the \"?\" ending badges) to find another, and there are more stories to discover." },
+        "all-endings": { "$ref": "#/$defs/clip", "description": "Said instead of more-endings once every ending of the story is found." }
+      }
+    },
+    "clip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "direction"],
+      "properties": {
+        "script": { "type": "string", "minLength": 1, "description": "Exactly what the narrator says, in this language." },
+        "direction": { "type": "string", "minLength": 1, "description": "How to say it, in this language, for its narrator." }
+      }
+    }
+  }
+}

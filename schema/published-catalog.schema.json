@@ -1,12 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Published catalog",
-  "description": "stories/<channel>/catalog.json on the content host (draft or production): the shelf the app downloads at every launch, written by `story package` from content/catalog.json and the stories. The app ignores fields it doesn't know. See docs/story-format.md, \"Published stories\".",
+  "description": "stories/<channel>/catalog.json on the content host (draft or production): the shelf the app downloads at every launch, written by `story package` from content/catalog.json, the stories and content/app/narration.json. The app ignores fields it doesn't know. See docs/story-format.md, \"Published stories\".",
   "type": "object",
   "additionalProperties": false,
   "required": ["format", "stories"],
   "properties": {
     "format": { "const": 1 },
+    "narration": {
+      "type": "object",
+      "description": "The lines the narrator says at the end of every story (content/app/narration.json), recorded once per language: language -> clip id -> its file in app/. The app plays the-end as \"The End\" rises on the ending screen, then more-endings while the story has endings left to find, or all-endings once every one is found. A language is listed once it has a clip (on production, all three); the key is missing when no language has one.",
+      "propertyNames": { "$ref": "#/$defs/lang" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "the-end": { "$ref": "#/$defs/file" },
+          "more-endings": { "$ref": "#/$defs/file" },
+          "all-endings": { "$ref": "#/$defs/file" }
+        }
+      },
+      "minProperties": 1
+    },
     "stories": { "type": "array", "items": { "$ref": "#/$defs/story" } }
   },
   "$defs": {
@@ -17,7 +33,7 @@
       "additionalProperties": false,
       "required": ["file", "bytes", "sha256"],
       "properties": {
-        "file": { "type": "string", "pattern": "^[a-z0-9-]+-[0-9a-f]{10}\\.(json|webp|m4a)$", "description": "A file in stories/<id>/, named after its contents." },
+        "file": { "type": "string", "pattern": "^[a-z0-9-]+-[0-9a-f]{10}\\.(json|webp|m4a)$", "description": "A file named after its contents, in the story's folder (stories/<channel>/<id>/) or, for the catalog's narration, in app/ (stories/<channel>/app/)." },
         "bytes": { "type": "integer", "minimum": 1 },
         "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
       }

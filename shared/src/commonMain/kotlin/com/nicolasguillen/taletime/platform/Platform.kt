@@ -19,18 +19,23 @@ class BuildInfo(
  * Switches for an agent testing a debug build, given when it launches the app; a release build, or an app opened from
  * its icon, never has any. Bound in [platformModule]. On iOS they're launch arguments (`-skipReading`, `-openStory
  * <id>`), on Android intent extras (`--ez skipReading true`, `--es openStory <id>`). For trying and measuring the page
- * turn without a UI test, whose accessibility queries cost the app frames (docs/page-turn.md §11).
+ * turn without a UI test, whose accessibility queries cost the app frames (docs/page-turn.md §11), and for trying an
+ * ending without reading the whole story.
  *
  * @property skipReading every page shows all its words at once and nothing is read aloud, so a plain page's corner
  *   folds up about a second after the page is shown, and a fork's cards rise right away.
  * @property openStory the app opens this downloaded story's reader from its first page, over the shelf and its cover.
+ * @property openEnding with [openStory], the reader opens on this page instead (an ending's id, or any page's), along
+ *   the first path that leads there: the ending's text, then its closing, at once.
  * @property autoTurn the reader turns its pages by itself: a plain page from its corner (the tap turn) a moment after
- *   the corner is up, a fork by picking a card (each one in turn), an ending by "Try another path". It never stops.
+ *   the corner is up, a fork by picking a card (the one that shows the way, else each one in turn), an ending by
+ *   tapping its first "?" badge, or "Try another path" once every ending is found. It never stops.
  */
 class AgentFlags(
     val skipReading: Boolean = false,
     val openStory: String? = null,
     val autoTurn: Boolean = false,
+    val openEnding: String? = null,
 )
 
 /**

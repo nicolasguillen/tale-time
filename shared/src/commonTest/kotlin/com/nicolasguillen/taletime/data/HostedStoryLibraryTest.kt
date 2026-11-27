@@ -131,6 +131,26 @@ class HostedStoryLibraryTest {
         return manifestName
     }
 
+    /**
+     * Publishes the clips every story shares like `story package` does (in stories/app/, listed in the catalog's
+     * `narration`), on an empty shelf: language → clip id → its sound.
+     */
+    private fun publishShared(clips: Map<String, Map<String, String>>) {
+        val narration =
+            clips.entries.joinToString(",") { (lang, byId) ->
+                val entries =
+                    byId.entries.joinToString(",") { (id, text) ->
+                        val data = text.encodeToByteArray()
+                        val sha = data.toByteString().sha256().hex()
+                        val name = "$lang-$id-${sha.take(10)}.m4a"
+                        host["stories/app/$name"] = data
+                        """"$id":{"file":"$name","bytes":${data.size},"sha256":"$sha"}"""
+                    }
+                """"$lang":{$entries}"""
+            }
+        host["stories/catalog.json"] = """{ "format": 1, "narration": {$narration}, "stories": [] }""".encodeToByteArray()
+    }
+
     private suspend fun HostedStoryLibrary.downloaded(storyId: String): Installed =
         state.first { storyId in it.installed && storyId !in it.downloads }.installed.getValue(storyId)
 
@@ -380,5 +400,56 @@ class HostedStoryLibraryTest {
                 storyFiles(),
             )
             assertTrue("tiny" in library.state.value.covers)
+        }
+
+    @Test
+    fun theClipsEveryStorySharesComeWithTheCatalog() =
+        runTest {
+            publishShared(mapOf("es" to mapOf("the-end" to "fin", "more-endings" to "más finales"), "en" to mapOf("the-end" to "the end")))
+            val library = library()
+            library.refresh()
+            val narration = library.state.value.narration
+            assertEquals(setOf("the-end", "more-endings"), narration.getValue("es").keys)
+            assertContentEquals(
+                "fin".encodeToByteArray(),
+                disk.read(narration.getValue("es").getValue("the-end").toPath()) { readByteArray() },
+            )
+            assertEquals(setOf("the-end"), narration.getValue("en").keys)
+
+            // The next launch, offline: they're still there.
+            online = false
+            val later = library()
+            later.refresh()
+            assertEquals(narration, later.state.value.narration)
+
+            // A clip made again: the new one comes, the old one goes at the launch after.
+            online = true
+            val old = narration.getValue("es").getValue("the-end").toPath()
+            publishShared(mapOf("es" to mapOf("the-end" to "fin, otra vez")))
+            val next = library()
+            next.refresh()
+            val now = next.state.value.narration
+            assertEquals(mapOf("es" to setOf("the-end")), now.mapValues { it.value.keys })
+            assertContentEquals(
+                "fin, otra vez".encodeToByteArray(),
+                disk.read(now.getValue("es").getValue("the-end").toPath()) { readByteArray() },
+            )
+            assertTrue(disk.exists(old), "the old clip stays until the next launch")
+            library().refresh()
+            assertFalse(disk.exists(old), "then it's deleted")
+        }
+
+    @Test
+    fun aSharedClipThatCantBeFetchedIsLeftOut() =
+        runTest {
+            publishShared(mapOf("es" to mapOf("the-end" to "fin", "all-endings" to "todos")))
+            host.remove(host.keys.first { it.contains("all-endings") })
+            val library = library()
+            library.refresh()
+            assertEquals(
+                setOf("the-end"),
+                library.state.value.narration["es"]
+                    ?.keys,
+            )
         }
 }

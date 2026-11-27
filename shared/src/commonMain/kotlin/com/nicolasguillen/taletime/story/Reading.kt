@@ -38,7 +38,7 @@ class Reading private constructor(
 
     /**
      * Rewinds to the last fork before the current page, with its question open again ("Try another path" on an
-     * ending). Before the first fork it goes back to the first page.
+     * ending). Before the first fork it goes back to the first page. Like [toward], only to a page this path has read.
      */
     fun back(): Reading {
         if (!canGoBack) return this
@@ -47,11 +47,52 @@ class Reading private constructor(
         return Reading(story, path.take(keep) + Step(path[keep].node))
     }
 
+    /**
+     * Rewinds toward [endingId], an ending this path didn't reach: to the latest fork on the path whose other option
+     * can still lead there, with its question open again. There's always one, since every ending can be reached from
+     * the start, so the rewind only ever goes back to a page this path has read. Null when [endingId] isn't an ending
+     * of the story or is the one this path reached.
+     */
+    fun toward(endingId: String): Reading? {
+        if (story.nodes[endingId] !is Ending || current.id == endingId) return null
+        for (i in path.indices.reversed()) {
+            val fork = story.node(path[i].node) as? Fork ?: continue
+            val taken = path[i].choice ?: continue
+            val other = fork.options[1 - taken].target
+            if (StoryGraph.leadsTo(story, other, endingId)) return Reading(story, path.take(i) + Step(fork.id))
+        }
+        return null
+    }
+
     /** The forks answered so far, in order: the choices that make this path. */
     val choices: List<Step> get() = path.filter { it.choice != null }
 
     companion object {
         fun start(story: Story): Reading = Reading(story, listOf(Step(story.start)))
+
+        /**
+         * The first play-through that reaches [nodeId] (option A before B at every fork), stopped there: for an agent
+         * that wants to try the end of a story without reading all of it (platform/AgentFlags). Null if no node has
+         * that id.
+         */
+        fun to(
+            story: Story,
+            nodeId: String,
+        ): Reading? {
+            if (nodeId !in story.nodes) return null
+
+            fun walk(reading: Reading): Reading? {
+                val node = reading.current
+                if (node.id == nodeId) return reading
+                if (!StoryGraph.leadsTo(story, node.id, nodeId)) return null
+                return when (node) {
+                    is Page -> walk(reading.next())
+                    is Fork -> node.options.indices.firstNotNullOfOrNull { walk(reading.choose(it)) }
+                    is Ending -> null
+                }
+            }
+            return walk(start(story))
+        }
 
         /**
          * Picks up a saved path, or returns null if it doesn't fit the story anymore (a new version changed the

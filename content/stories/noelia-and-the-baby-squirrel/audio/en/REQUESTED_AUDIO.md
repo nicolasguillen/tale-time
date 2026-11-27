@@ -6,16 +6,16 @@ Every narration clip *Noelia and the Baby Squirrel* needs in English, with its e
 
 This file is generated. To change a request, edit this story's `story/en.json` (the words), `bible.json` (names and personalities) or `shots.json` (each page's mood), or `content/style/voice.json` (the narrator), then run `cd tools && uv run story assets`. Run it again after delivering files, and the ⬜ entries turn ✅. The pictures, the same in every language, are requested in [REQUESTED_ASSETS.md](../../REQUESTED_ASSETS.md); every story and language is listed in the [index](../../../../../REQUESTED_AUDIO.md).
 
-| Title | Pages | Questions | Choice labels | Ending titles | Total |
-|---|---|---|---|---|---|
-| 1/1 | 16/20 | 5/5 | 8/10 | 0/4 | **30/40** |
+| Title | Pages | Questions | Choice labels | Total |
+|---|---|---|---|---|
+| 1/1 | 16/20 | 5/5 | 8/10 | **30/36** |
 
 Noelia does everything fast. On a walk in Pinecone Wood with her slow, smiling Abuelo, she finds Pipa, a baby squirrel who climbed down to chase an acorn and now only knows that home is "up, up, up!" Noelia zooms from tree to tree to find it, but every time she rushes, the wood goes quiet, until she sits still long enough to hear Pipa's mama calling.
 
 - **Folder:** `content/stories/noelia-and-the-baby-squirrel/audio/en/`
 - **Pace:** about 140 words per minute (ages 4–7).
 - **Tone:** playful, cozy.
-- **Script:** 40 clips, 1,477 words, 8,416 characters, about 11 min in all.
+- **Script:** 36 clips, 1,464 words, 8,344 characters, about 11 min in all.
 
 ## Narrator: Warm storyteller (proposed, not yet approved)
 
@@ -42,7 +42,7 @@ One narrator for every English story in the app: a warm, unhurried grown-up read
 - **Name** each file after its clip id, in this folder: `<clip id>.wav` (or `.flac` / `.m4a`).
 - **One narrator** for a whole story, in one session if possible, so every clip sounds the same.
 - **Word timings aren't needed.** The pipeline will align each clip with its text to light up the words (plan.md §5.2, step 8).
-- **Packaging** turns the delivered files into mono AAC `.m4a` at about 48 kbps and evens out the loudness. Nothing else changes: no edits, no effects.
+- **Packaging** turns the delivered files into mono AAC `.m4a` at about 64 kbps and evens out the loudness. Nothing else changes: no edits, no effects.
 - **Licenses**: keep the release or license for every voice next to the files (a recorded person's written release, or a voice tool's terms that allow commercial distribution in an app), and note the source in the story's `provenance.json`.
 
 | | Every clip |
@@ -361,71 +361,35 @@ In reading order. A fork's question and its two choice labels follow its page.
 ### ⬜ `e1-up-up-up`: Page (an ending)
 
 - **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e1-up-up-up.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: happy, tender, goodbye.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: happy, tender, goodbye.
 - **Length:** 73 words, about 32 s.
 - **Script:**
 
 > "Hello, Mama Squirrel," whispered Noelia. "We found Pipa." Mama Squirrel chittered softly and came halfway down the trunk. "Home is up!" squeaked Pipa. Up, up, up she went, all the way to the drey. Mama wrapped Pipa in her big, fluffy tail. Then Pipa waved her little tail, just for Noelia. "Bye, Pipa," Noelia whispered. She walked home with Abuelo, hand in hand, slowly. And tomorrow? Tomorrow she would come back. On tiptoe.
 
-### ⬜ `e1-up-up-up-end`: Ending title
-
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e1-up-up-up-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is happy: bright and cheerful.
-- **Length:** 3 words, about 2 s.
-- **Script:**
-
-> Up, Up, Up!
-
 ### ⬜ `e2-chitter-chatter`: Page (an ending)
 
 - **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e2-chitter-chatter.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: silly, joyful.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: silly, joyful.
 - **Length:** 61 words, about 27 s.
 - **Script:**
 
 > "Chitter-chitter?" said Noelia. Mama Squirrel tilted her head. "Chitter-chitter!" she said back. Out of the drey popped Pipa's brother and sister. "Chitter-chitter-chitter!" Pipa scampered up, up, up to join them. Soon everyone was chittering, even Abuelo, his white mustache wiggling. All the way home, Noelia and Abuelo chittered. And at supper, when Noelia asked for more soup, it came out... "Chitter-chitter!"
 
-### ⬜ `e2-chitter-chatter-end`: Ending title
-
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e2-chitter-chatter-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is silly: with a laugh in the voice.
-- **Length:** 1 word, about 1 s.
-- **Script:**
-
-> Chitter-Chatter
-
 ### ⬜ `e3-whole-wood`: Page (an ending)
 
 - **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e3-whole-wood.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: wonder, peace, the best day.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: wonder, peace, the best day.
 - **Length:** 78 words, about 34 s.
 - **Script:**
 
 > Noelia kept as still as a stone. Mama and Pipa scampered up, up, up the tallest pine. Little by little, the whole wood came close. Pipa's brother and sister peeked out of their drey, a round, leafy nest high in the pine. The wood birds hopped closer. "Mira, Abuelo," Noelia whispered. "Look at that!" After that, whenever she and Abuelo tiptoed into Pinecone Wood, Pipa came scampering down to say hello. Noelia did everything fast. Well... almost everything.
 
-### ⬜ `e3-whole-wood-end`: Ending title
-
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e3-whole-wood-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is the best one: proud and glowing.
-- **Length:** 5 words, about 3 s.
-- **Script:**
-
-> The Whole Wood Says Hello
-
 ### ⬜ `e4-window`: Page (an ending)
 
 - **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e4-window.wav` (or `.flac` / `.m4a`)
-- **Direction:** The page text, exactly as written. Mood: cozy, calm, content.
+- **Direction:** The last page of a path, and the last words of the story: the app plays "The End." right after it, and no title follows. Read it like the last page of a bedtime book: settle into it, slow down for its last sentence, and land it on a low, warm, final note, never a lift or a question. Mood: cozy, calm, content.
 - **Length:** 69 words, about 30 s.
 - **Script:**
 
 > "Goodbye, Pipa," Noelia whispered. "Home is up!" squeaked Pipa, and up, up, up she went with Mama. Noelia and Abuelo walked back through the golden wood, slowly. That evening, Noelia knelt on a chair at Abuelo's window. Abuelo brought two cups of warm milk. She kept very still. And far and soft, from Pinecone Wood, came a sound. Chitter-chitter. Noelia smiled, all the way down to her lightning-bolt sneakers.
-
-### ⬜ `e4-window-end`: Ending title
-
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/e4-window-end.wav` (or `.flac` / `.m4a`)
-- **Direction:** The ending's title on the "The End" screen, like a little prize: slowly and warmly. This ending is cozy: soft and sleepy.
-- **Length:** 4 words, about 3 s.
-- **Script:**
-
-> Chitter at the Window

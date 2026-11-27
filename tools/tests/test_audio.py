@@ -24,7 +24,7 @@ def test_clip_scripts_are_the_exact_texts():
     assert by_id["f1"].script == "Pip saw two doors."
     assert by_id["f1-q"].script == "The red door or the blue door?"
     assert (by_id["f1-a"].script, by_id["f1-b"].script) == ("Red door", "Blue door")
-    assert by_id["e2-end"].script == "Flowers"
+    assert "e2-end" not in by_id  # an ending's title isn't read: the ending screen closes with the shared lines
     assert {c.kind for c in by_id.values()} == set(audio.KINDS)
     assert {c.id: c.script for c in audio.clips(TINY["es"])}["f1-q"] == "¿La puerta roja o la puerta azul?"
 
@@ -101,6 +101,15 @@ def test_delivered_wav_counts_for_the_check(tmp_path):
     assert not [i for i in issues if i.code == "audio-missing"]
 
 
+def test_an_ending_title_clip_delivered_earlier_is_left_alone(tmp_path):
+    folder = tmp_path / "audio" / "es"
+    folder.mkdir(parents=True)
+    for clip in [*audio_clips(TINY["en"]), "e1-end", "e2-end"]:
+        (folder / f"{clip}.wav").write_bytes(b"")
+    issues = check_story({"es": TINY["es"]}, folder=tmp_path, strict=True)
+    assert not [str(i) for i in issues if "-end" in i.message or i.code.startswith("audio")]
+
+
 def test_each_story_has_one_file_per_language_inside_its_audio_folder():
     files = audio.outputs()
     assert REQUESTED_AUDIO in files
@@ -146,3 +155,76 @@ def test_old_and_unused_requests_files_are_removed(tmp_path, monkeypatch):
 
 def test_requested_audio_is_up_to_date():
     assert audio.write(check_only=True), "REQUESTED_AUDIO.md is stale: run `uv run story assets`"
+
+
+# The end of every story: the same lines for every story, requested once per language ----------------------------
+
+APP = audio.AppNarration(ROOT / "content" / "app" / "narration.json")
+
+
+def app_copy(tmp_path):
+    """The app's narration.json in a folder of its own, with no clips delivered."""
+    folder = tmp_path / "app"
+    folder.mkdir()
+    shutil.copy(ROOT / "content" / "app" / "narration.json", folder / "narration.json")
+    return audio.AppNarration(folder / "narration.json")
+
+
+def test_the_end_of_every_story_is_requested_once_per_language_in_that_language():
+    assert APP.requested(VOICE) == ["en", "es"]
+    en, es = audio.render_app(APP, "en", VOICE), audio.render_app(APP, "es", VOICE)
+    for lang, text in (("en", en), ("es", es)):
+        for clip in repo.APP_CLIPS:
+            line = APP.languages[lang][clip]
+            assert f"`{clip}`" in text and audio._quote(line["script"]) in text and line["direction"] in text
+            assert f"`content/app/audio/{lang}/{clip}.wav`" in text
+    assert "# Requested audio: the end of every story (English)" in en and "Warm storyteller" in en
+    assert "# Narración solicitada: el final de cada cuento (español latinoamericano)" in es
+    assert "Voz cálida de cuentacuentos" in es and "texto a voz" in es  # its narrator; nothing is generated
+    for word in ("Direction", "Script", "When", "The End", "Every ending found"):
+        assert word not in es  # nothing left in English
+    assert "(../../../../REQUESTED_AUDIO.md)" in en  # back to the index
+
+
+def test_a_delivered_app_clip_turns_green_in_its_language_only(tmp_path):
+    app = app_copy(tmp_path)
+    app.audio_dir("es").mkdir(parents=True)
+    (app.audio_dir("es") / "the-end.wav").write_bytes(b"")
+    es = audio.render_app(app, "es", VOICE)
+    assert "### ✅ `the-end`" in es and "### ⬜ `more-endings`" in es
+    assert "| 1/1 | 0/1 | 0/1 | **1/3** |" in es
+    assert "### ⬜ `the-end`" in audio.render_app(app, "en", VOICE)
+    index = audio.render(VOICE, stories=[], app=app)
+    assert "## The end of every story" in index
+    assert "| 1/1 | 0/1 | 0/1 | **1/3** |" in index and "| 0/1 | 0/1 | 0/1 | **0/3** |" in index
+
+
+def test_the_index_links_each_language_of_the_end_of_every_story():
+    index = audio.render()
+    assert "[English (`en`)](content/app/audio/en/REQUESTED_AUDIO.md)" in index
+    assert "[Latin American Spanish (`es`)](content/app/audio/es/REQUESTED_AUDIO.md)" in index
+    assert "Total |" in index and "`more-endings`" in index
+
+
+def test_app_lines_without_a_narrator_wait(tmp_path):
+    app = app_copy(tmp_path)
+    app.languages["fr"] = app.languages["en"]
+    assert app.requested(VOICE) == ["en", "es"]
+    assert "Not requested yet, waiting for a narrator or all three lines (`uv run story check`): `fr`." in \
+        audio.render(VOICE, stories=[], app=app)
+
+
+def test_the_app_requests_files_are_written_and_old_ones_removed(tmp_path, monkeypatch):
+    app = app_copy(tmp_path)
+    old = app.audio_dir("de") / "REQUESTED_AUDIO.md"
+    old.parent.mkdir(parents=True)
+    old.write_text(audio.GENERATED + " old -->\n")
+    mine = app.audio_dir("fr") / "REQUESTED_AUDIO.md"
+    mine.parent.mkdir(parents=True)
+    mine.write_text("Notes I wrote myself.\n")
+    monkeypatch.setattr(audio, "APP_NARRATION", app.folder / "narration.json")
+    files = audio.outputs()
+    assert files[app.audio_dir("en") / "REQUESTED_AUDIO.md"].startswith(audio.APP_HEADER)
+    assert files[app.audio_dir("es") / "REQUESTED_AUDIO.md"].startswith(audio.APP_HEADER)
+    assert files[old] is None  # generated, for a language that has no lines any more
+    assert mine not in files  # never touches a file it didn't write

@@ -48,13 +48,17 @@ actual val platformModule =
         single { if (isDebugBinary()) agentFlags(NSProcessInfo.processInfo.arguments.map { it.toString() }) else AgentFlags() }
     }
 
-/** An agent's switches in the app's launch arguments: `-skipReading -autoTurn -openStory <id>`. */
+/** An agent's switches in the app's launch arguments: `-skipReading -autoTurn -openStory <id> -openEnding <id>`. */
 private fun agentFlags(arguments: List<String>) =
     AgentFlags(
         skipReading = "-skipReading" in arguments,
-        openStory = arguments.getOrNull(arguments.indexOf("-openStory") + 1)?.takeIf { "-openStory" in arguments },
+        openStory = arguments.valueOf("-openStory"),
         autoTurn = "-autoTurn" in arguments,
+        openEnding = arguments.valueOf("-openEnding"),
     )
+
+/** The argument after [name], if [name] is there. */
+private fun List<String>.valueOf(name: String): String? = indexOf(name).takeIf { it >= 0 }?.let { getOrNull(it + 1) }
 
 /** Xcode's Debug configuration links the debug framework (`embedAndSignAppleFrameworkForXcode` follows it). */
 @OptIn(ExperimentalNativeApi::class)

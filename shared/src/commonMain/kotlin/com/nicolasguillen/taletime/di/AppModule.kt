@@ -56,13 +56,14 @@ val featureModule =
         }
         viewModel { params ->
             ReaderViewModel(
-                storyId = params.get(),
-                restart = params.get(),
+                storyId = params[0],
+                restart = params[1],
                 library = get(),
                 progress = get(),
                 settings = get(),
                 player = get(),
                 skipReading = get<AgentFlags>().skipReading,
+                at = params.values.getOrNull(2) as String?,
             )
         }
         viewModelOf(::ParentsViewModel)

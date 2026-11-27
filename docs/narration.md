@@ -2,6 +2,8 @@
 
 Nothing in the repo, the pipeline or the app synthesizes speech. Narration clips are made **outside the repo, only when the user asks**, with the tool the user chose for that language. They're delivered into `content/stories/<id>/audio/<lang>/` like any recorded clip. Each story's `REQUESTED_AUDIO.md` in that language holds the scripts, the direction and the spec.
 
+**The end of every story** (`the-end`, `more-endings`, `all-endings`, from `content/app/narration.json`) is made the same way, once per language and not per story: the same tool, voice and recipe as that language's stories, the scripts and directions in `content/app/audio/<lang>/REQUESTED_AUDIO.md`, and the clips delivered next to it.
+
 | Language | Tool | Model | Voice | Account |
 |---|---|---|---|---|
 | English (`en`) | Gemini API | `gemini-3.8-flash-tts` | **Sulafat** (prebuilt voice, the user's pick) | The user's free-tier API key, in the macOS Keychain |
@@ -19,6 +21,7 @@ Rules for both:
 - The free tier allows **10 clips a day**. The daily count resets at midnight Pacific time.
 - **Wait at least a minute** between clips.
 - A 40-clip story takes four days. Make each day's 10 in reading order, starting with the first clip still ⬜ in the story's `audio/en/REQUESTED_AUDIO.md`.
+- The three lines at the end of every story (`content/app/audio/en/`) count against the same 10 a day.
 - A request rejected for the limit (HTTP 429) is not a bad take. Stop and carry on the next day.
 
 ### Keep it free
@@ -64,7 +67,7 @@ One clip per request: `POST https://generativelanguage.googleapis.com/v1beta/int
 
 ## Checks before delivery (both)
 
-- **Pace:** words per minute close to the story's pace (`voice.json`: 140 for ages 4–7). Slower is better than faster.
+- **Pace:** words per minute close to the story's pace (`voice.json`: 140 for ages 4–7; the end of every story, the slowest: 115). Slower is better than faster.
 - **Endings:** no clip is cut off, and none has a long gap or added words.
 - **Noise:** the noise floor is about −60 dBFS or lower.
 - **Listening:** the user listens for wrong or skipped words and how the names come out. Claude can't hear the clips.
@@ -74,8 +77,8 @@ One clip per request: `POST https://generativelanguage.googleapis.com/v1beta/int
 1. Pad the silence to about 0.3 s before the first word and 0.5 s after the last. Don't trim or edit anything else.
 2. Set the gain to about −16 LUFS integrated, with a fast peak limiter, so the true peak is at most −1 dBTP.
 3. Write a mono 24-bit WAV, at 48 kHz from Gemini (upsampled from 24 kHz) or 44.1 kHz from ElevenLabs.
-4. Save it as `content/stories/<id>/audio/<lang>/<clip id>.wav`.
-5. Add a `narration` step to the story's `provenance.json` with its `language`, `via`, `model`, `voice`, `date`, `clips` and notes.
+4. Save it as `content/stories/<id>/audio/<lang>/<clip id>.wav`, or `content/app/audio/<lang>/<clip id>.wav` for the end of every story.
+5. Add a `narration` step to the story's `provenance.json` with its `language`, `via`, `model`, `voice`, `date`, `clips` and notes. The end of every story has none.
 6. Run `cd tools && uv run story assets` (the ⬜ entries turn ✅).
 7. Run `uv run story originals push` (a private backup, no ask needed).
 8. Only if the user asks, run `uv run story publish draft` so debug builds get the clips.

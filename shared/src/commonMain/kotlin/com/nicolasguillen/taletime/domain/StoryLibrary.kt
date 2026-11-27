@@ -70,6 +70,8 @@ sealed interface Download {
  * @property covers story id → its cover's path on the device, once downloaded.
  * @property installed story id → what's downloaded.
  * @property downloads story id → the download running or failed.
+ * @property narration language → clip id ([SharedClip]) → its path on the device: the clips every story shares, the
+ *   ones on the device. They come with the catalog, at every launch online.
  */
 data class Library(
     val ready: Boolean = false,
@@ -77,6 +79,7 @@ data class Library(
     val covers: Map<String, String> = emptyMap(),
     val installed: Map<String, Installed> = emptyMap(),
     val downloads: Map<String, Download> = emptyMap(),
+    val narration: Map<String, Map<String, String>> = emptyMap(),
 )
 
 /**
@@ -87,9 +90,9 @@ interface StoryLibrary {
     val state: StateFlow<Library>
 
     /**
-     * Fetches the catalog and brings every downloaded story up to date: when a story's manifest changed, or it's
-     * published in a language the device doesn't have, downloads the files it doesn't have yet. Offline, it does
-     * nothing and the stories on the device stay as they are.
+     * Fetches the catalog and the clips every story shares, and brings every downloaded story up to date: when a
+     * story's manifest changed, or it's published in a language the device doesn't have, downloads the files it
+     * doesn't have yet. Offline, it does nothing and the stories on the device stay as they are.
      */
     suspend fun refresh()
 
