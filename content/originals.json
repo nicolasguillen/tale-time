@@ -421,6 +421,46 @@
       "bytes": 4208082,
       "sha256": "fce8ca3e5e1d3100a7b43c5a77884d5ff6248aaef93f308cab3e3179e9e51e04"
     },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-a.wav": {
+      "bytes": 345588,
+      "sha256": "e488b6f33b5e8efc418e0629474113a4735fda89e907145e57033f009ddbde23"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-b.wav": {
+      "bytes": 452418,
+      "sha256": "7f3528a7640682e4cd962c98201fcdfa34a4835fcac2a17b1bbd3089ca286aca"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-q.wav": {
+      "bytes": 947190,
+      "sha256": "d0836727a92599d481051d91f9a0029bdde2752d33b4f669dca8d6c2e872dfa6"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter.wav": {
+      "bytes": 5092362,
+      "sha256": "62c3f117675fbd77c8361facc6e4f19908021bfd1a322a5f94a9286eba361acd"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-a.wav": {
+      "bytes": 345702,
+      "sha256": "19293e4ef748901adfd31b38addd303967b6b8aa605143824f709549cd2d8ffe"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-b.wav": {
+      "bytes": 246588,
+      "sha256": "9169d2a940473f41566d3ebdeaaf3d3fe51e2ad20e131f22490bff2369ae69be"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-q.wav": {
+      "bytes": 1080762,
+      "sha256": "7e3aec6ba23df94874f83e9fbf80d582a232c775d56d7f748cfe38c996f0af57"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe.wav": {
+      "bytes": 4984848,
+      "sha256": "8cd85a4a58957f28c391060ecf7012a19f8b66b9221fa58de61d95a4d1348874"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p11b-still-q.wav": {
+      "bytes": 865314,
+      "sha256": "341818f7f16a4fff9c1cf4577862e81e49f16925158006297084628c4ddf6aab"
+    },
+    "stories/noelia-and-the-baby-squirrel/audio/en/p11b-still.wav": {
+      "bytes": 5475330,
+      "sha256": "33e0ef7738271cd5ff9f9514043f4652c6d5b319f02f355ced57b7fc1dec4701"
+    },
     "stories/noelia-and-the-baby-squirrel/audio/en/title.wav": {
       "bytes": 380262,
       "sha256": "a83d3ec70f1c2188e4b8cb7def76c7fff02f221072bd689572ac3ad45fefeca1"

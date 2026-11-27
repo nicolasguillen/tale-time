@@ -253,6 +253,27 @@
         "p09-clearing"
       ],
       "notes": "The user asked to keep going with the English narration: the next 10 clips in reading order, at most 10 a day and 1 a minute (requests sent 65-75 s apart). Same recipe as the first batch: Gemini API (Interactions endpoint, v1beta), voice Sulafat, the user's own free-tier key from the macOS Keychain, each script sent exactly as in REQUESTED_AUDIO.md (story/en.json), with no style and no tags. One take per clip. Checked before delivery: speech rate 118-152 wpm on pages except p05b-nibs, which is quick at about 171 wpm (redo it with a slower style if the user wants); the question p06-path-q about 162 wpm; no cut-off endings; no gaps longer than 1.0 s (the two in p08b-not-us are the hushed pauses the page asks for); noise floor about -59 dBFS or lower in the pauses. Delivered as WAV mono 24-bit 48 kHz from the model's 24 kHz 16-bit WAV (upsampled, so no content above 12 kHz): silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter run at 192 kHz (true peak <= -1.5 dBTP). Recorded on a proposed narrator. Free-tier content may be used by Google to improve its products; Gemini API terms for commercial use of the output still to be filed with the clips."
+    },
+    {
+      "step": "narration",
+      "language": "en",
+      "via": "gemini-api",
+      "model": "gemini-3.8-flash-tts",
+      "voice": "Sulafat (Gemini prebuilt voice)",
+      "date": "2026-11-27",
+      "clips": [
+        "p10-chitter",
+        "p10-chitter-q",
+        "p10-chitter-a",
+        "p10-chitter-b",
+        "p11a-tiptoe",
+        "p11a-tiptoe-q",
+        "p11a-tiptoe-a",
+        "p11a-tiptoe-b",
+        "p11b-still",
+        "p11b-still-q"
+      ],
+      "notes": "The user asked for the next 10 English clips in reading order, at most 10 a day and 1 a minute (requests sent 65-77 s apart, after the daily reset at midnight Pacific). Same recipe as the earlier batches: Gemini API (Interactions endpoint, v1beta), voice Sulafat, the user's own free-tier key from the macOS Keychain, each script sent exactly as in REQUESTED_AUDIO.md (story/en.json), with no style and no tags. One take per clip, none redone. Checked before delivery: speech rate 119-133 wpm on the pages; the questions 125-173 wpm (p10-chitter-q about 166, p11b-still-q about 173, quick like p06-path-q; redo them with a slower style if the user wants); no cut-off endings; no gaps longer than 1.0 s; noise floor about -59 dBFS or lower in the pauses. Delivered as WAV mono 24-bit 48 kHz from the model's 24 kHz 16-bit WAV (upsampled, so no content above 12 kHz): silence padded to about 0.3 s before and 0.5 s after, gain to about -16 LUFS with a fast peak limiter run at 192 kHz (true peak <= -1.5 dBTP; the short label p11a-tiptoe-a ends up at -17.2 LUFS, held back by the limiter). Recorded on a proposed narrator. Free-tier content may be used by Google to improve its products; Gemini API terms for commercial use of the output still to be filed with the clips."
     }
   ]
 }

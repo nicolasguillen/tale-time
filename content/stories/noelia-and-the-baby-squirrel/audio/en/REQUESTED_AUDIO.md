@@ -8,7 +8,7 @@ This file is generated. To change a request, edit this story's `story/en.json` (
 
 | Title | Pages | Questions | Choice labels | Ending titles | Total |
 |---|---|---|---|---|---|
-| 1/1 | 13/20 | 2/5 | 4/10 | 0/4 | **20/40** |
+| 1/1 | 16/20 | 5/5 | 8/10 | 0/4 | **30/40** |
 
 Noelia does everything fast. On a walk in Pinecone Wood with her slow, smiling Abuelo, she finds Pipa, a baby squirrel who climbed down to chase an acorn and now only knows that home is "up, up, up!" Noelia zooms from tree to tree to find it, but every time she rushes, the wood goes quiet, until she sits still long enough to hear Pipa's mama calling.
 
@@ -250,90 +250,90 @@ In reading order. A fork's question and its two choice labels follow its page.
 
 > That didn't work either. In a sunny clearing, Noelia flopped down in the grass. She had zoomed and zoomed and zoomed. "I can't find it," she sighed. Pipa curled up beside her, tired. Abuelo came along at last. He sat on a big flat stump and gave Noelia an orange slice. Nobody said anything. For the first time all day, Noelia was still. And in the hush, she heard...
 
-### ⬜ `p10-chitter`: Page (before a choice)
+### ✅ `p10-chitter`: Page (before a choice)
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter.wav`
 - **Direction:** The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop. Mood: hushed, alert.
 - **Length:** 69 words, about 30 s.
 - **Script:**
 
 > ...chitter-chitter. Soft and far, from somewhere up high. Chitter-chitter. Pipa's ears shot up. "Mama!" she squeaked. Noelia jumped up. "Ready, set, ZO..." Then she stopped. Zooming feet were loud, and the chitter was so soft. Slowly, she sat back down. "Shh," she whispered, a finger on her lips. She could tiptoe toward the sound, slow as a snail. Or she could stay as still as a stone, and listen.
 
-### ⬜ `p10-chitter-q`: Question
+### ✅ `p10-chitter-q`: Question
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-q.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-q.wav`
 - **Direction:** A real, open question to the child, warm and curious. Don't lean toward either choice. The two choices: "Tiptoe to the sound" or "Still as a stone".
 - **Length:** 16 words, about 8 s.
 - **Script:**
 
 > Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?
 
-### ⬜ `p10-chitter-a`: Choice label
+### ✅ `p10-chitter-a`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-a.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-a.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice A for *Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?* The other label: "Still as a stone".
 - **Length:** 4 words, about 3 s.
 - **Script:**
 
 > Tiptoe to the sound
 
-### ⬜ `p10-chitter-b`: Choice label
+### ✅ `p10-chitter-b`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-b.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p10-chitter-b.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice B for *Should Noelia tiptoe slowly toward the sound, or stay as still as a stone and listen?* The other label: "Tiptoe to the sound".
 - **Length:** 4 words, about 3 s.
 - **Script:**
 
 > Still as a stone
 
-### ⬜ `p11a-tiptoe`: Page (before a choice)
+### ✅ `p11a-tiptoe`: Page (before a choice)
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe.wav`
 - **Direction:** The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop. Mood: hushed wonder.
 - **Length:** 75 words, about 33 s.
 - **Script:**
 
 > "Ready, set... tiptoe," whispered Noelia. Slow feet, soft feet, all the way to the tallest pine. Around its roots lay nibbled pinecone bits. Squirrel crumbs! Noelia looked up, up, up. High on the trunk was a round ball of twigs and leaves, a squirrel nest called a drey. Peeking over its edge was a face with two tall ear tufts. "Mama!" whispered Pipa. Noelia wanted to say hello. With a whisper? Or the squirrel way?
 
-### ⬜ `p11a-tiptoe-q`: Question
+### ✅ `p11a-tiptoe-q`: Question
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-q.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-q.wav`
 - **Direction:** A real, open question to the child, warm and curious. Don't lean toward either choice. The two choices: "Whisper hello" or "Chitter hello".
 - **Length:** 14 words, about 7 s.
 - **Script:**
 
 > Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?
 
-### ⬜ `p11a-tiptoe-a`: Choice label
+### ✅ `p11a-tiptoe-a`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-a.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-a.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice A for *Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?* The other label: "Chitter hello".
 - **Length:** 2 words, about 2 s.
 - **Script:**
 
 > Whisper hello
 
-### ⬜ `p11a-tiptoe-b`: Choice label
+### ✅ `p11a-tiptoe-b`: Choice label
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-b.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11a-tiptoe-b.wav`
 - **Direction:** A choice card's label, like reading a button aloud: short and bright. Read the two labels of a fork the same way. Choice B for *Should Noelia whisper hello to Mama Squirrel, or say hello the squirrel way: chitter-chitter?* The other label: "Whisper hello".
 - **Length:** 2 words, about 2 s.
 - **Script:**
 
 > Chitter hello
 
-### ⬜ `p11b-still`: Page (before a choice)
+### ✅ `p11b-still`: Page (before a choice)
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11b-still.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11b-still.wav`
 - **Direction:** The page text, exactly as written. The question that follows it is its own clip, so end this one as a statement and stop. Mood: hushed, joyful.
 - **Length:** 74 words, about 33 s.
 - **Script:**
 
 > Noelia sat as still as a stone. So did Pipa. So did Abuelo, and he was very good at it. Chitter-chitter. Closer now. Down the tallest pine came a squirrel. Stop. Go. Stop. Go. Then hop by hop across the grass. It was Mama Squirrel! Pipa bounded to her. Nose to nose. Tails wrapped together. Noelia's heart felt as big as the sky. She could keep still and watch. Or she could whisper goodbye.
 
-### ⬜ `p11b-still-q`: Question
+### ✅ `p11b-still-q`: Question
 
-- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11b-still-q.wav` (or `.flac` / `.m4a`)
+- **File:** `content/stories/noelia-and-the-baby-squirrel/audio/en/p11b-still-q.wav`
 - **Direction:** A real, open question to the child, warm and curious. Don't lean toward either choice. The two choices: "Keep watching" or "Whisper goodbye".
 - **Length:** 15 words, about 7 s.
 - **Script:**
