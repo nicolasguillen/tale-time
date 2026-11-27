@@ -95,7 +95,7 @@ object SharedClip {
     /** The story has endings still to find: tap a question mark; and there are more stories to discover. */
     const val MORE_ENDINGS = "more-endings"
 
-    /** Every ending of the story is found: there are more stories to discover. */
+    /** Every ending of the story is found: well done, and the narrator hopes they loved them. */
     const val ALL_ENDINGS = "all-endings"
 }
 

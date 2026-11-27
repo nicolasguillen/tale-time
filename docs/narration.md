@@ -61,8 +61,10 @@ One clip per request: `POST https://generativelanguage.googleapis.com/v1beta/int
 
 - Use the ElevenLabs connector's `creative_generate_speech` with `eleven_v4` and voice `zl7szWVBXnpgrJmAalgz`.
 - Always set `generations_count: 1`. The connector's default is two takes, which doubles the credits.
-- **Tags:** start each script with a `[warmly]` tag, and add `[curious]` on questions.
-- **Names:** follow the `pronounce` hints in `translations/es.json`. For example, Tuck is written `/tuk/` (IPA). Names that Spanish already reads as their hint (Toc, Nibs) stay as written.
+- **Send words only.** The text sent is the clip's script exactly as written, with its tags in front, and nothing else. The voice reads every symbol aloud: the slashes of `/tuk/` (IPA) came out as "barra" in *El zorro y el farolito*. So never send slashes, IPA, phonetic spellings, quotes or parentheses around a name, notes, clip ids or markdown.
+- **Tags:** start each script with a `[warmly]` tag, and add `[curious]` on questions. The end of every story's `the-end` ("¡Fin!") starts with `[cheerfully]` instead: it's joyful.
+- **Names:** a name the voice would read wrong is respelled in plain Spanish letters, following its `pronounce` hint in `translations/es.json`: Tuck is sent as `Tuk`. Names that Spanish already reads as their hint (Toc, Nibs) stay as written.
+- **Check before sending:** compare the text with the script. Only the tags and the plain-letter respellings above may differ. A `/`, `\`, `*`, `_`, `#`, `<`, `>`, `{`, `}` or `|` that isn't in the script means stop and fix it.
 - Credits: 1 per character per take.
 
 ## Checks before delivery (both)

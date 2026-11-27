@@ -60,8 +60,8 @@ enum class Closing {
     BADGES,
 
     /**
-     * The narrator says what's next: there are endings left to find (tap a question mark; the "?" badges wiggle), or
-     * every one is found; and there are more stories to discover.
+     * The narrator says what's next: there are endings left to find (tap a question mark; the "?" badges wiggle), and
+     * more stories to discover; or every one is found, and the narrator hopes they loved them.
      */
     OUTRO,
 

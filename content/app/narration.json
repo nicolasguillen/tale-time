@@ -2,29 +2,29 @@
   "en": {
     "the-end": {
       "script": "The End.",
-      "direction": "Closing the book: slowly and warmly, like the last words of a bedtime story, with a little pause after."
+      "direction": "Joyful, like celebrating the end of a good story: bright and warm, with a smile in the voice, never loud or drawn out, and a little pause after."
     },
     "more-endings": {
       "script": "This story has more endings to find. Tap a question mark to look for one! And there are more stories to discover on the shelf.",
       "direction": "An inviting, playful nudge to go and look, never a sales pitch: curious and bright on the question mark, a small pause before \"And\", then warm about the shelf."
     },
     "all-endings": {
-      "script": "You found every ending in this story! Now there are more stories to discover on the shelf.",
-      "direction": "Proud and warm, a real well done for finding them all, then a gentle, happy invitation to the shelf."
+      "script": "You found every ending in this story! I hope you loved them.",
+      "direction": "Proud and warm, a real well done for finding them all, then tender and sincere, like someone who has just shared their favorite stories."
     }
   },
   "es": {
     "the-end": {
-      "script": "Fin.",
-      "direction": "Cerrando el libro: despacio y con calidez, como las últimas palabras de un cuento antes de dormir, con una pequeña pausa al final."
+      "script": "¡Fin!",
+      "direction": "Con alegría, como quien celebra el final de un buen cuento: luminosa y cálida, con una sonrisa en la voz, sin gritar ni alargarla, y una pequeña pausa al final."
     },
     "more-endings": {
       "script": "Este cuento tiene más finales por descubrir. ¡Toca un signo de pregunta para buscar otro! Y hay más cuentos esperándote.",
       "direction": "Una invitación juguetona a seguir buscando, nunca un anuncio: curiosa y luminosa en el signo de pregunta, una pequeña pausa antes de la \"Y\", y luego cálida al hablar de los otros cuentos."
     },
     "all-endings": {
-      "script": "¡Encontraste todos los finales de este cuento! Y hay más cuentos esperándote.",
-      "direction": "Con orgullo y calidez, un verdadero \"¡muy bien!\" por encontrarlos todos, y luego una invitación suave y alegre a los otros cuentos."
+      "script": "¡Encontraste todos los finales de este cuento! Espero que te hayan gustado mucho.",
+      "direction": "Con orgullo y calidez, un verdadero \"¡muy bien!\" por encontrarlos todos, y luego cariñosa y sincera, como quien acaba de compartir sus cuentos favoritos."
     }
   }
 }

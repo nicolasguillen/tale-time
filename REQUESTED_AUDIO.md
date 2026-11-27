@@ -24,7 +24,7 @@ The lines the narrator says at the end of every story. They're the same for ever
 | Language | `the-end` | `more-endings` | `all-endings` | Total |
 |---|---|---|---|---|
 | [English (`en`)](content/app/audio/en/REQUESTED_AUDIO.md) | 0/1 | 0/1 | 0/1 | **0/3** |
-| [Latin American Spanish (`es`)](content/app/audio/es/REQUESTED_AUDIO.md) | 0/1 | 0/1 | 0/1 | **0/3** |
+| [Latin American Spanish (`es`)](content/app/audio/es/REQUESTED_AUDIO.md) | 1/1 | 1/1 | 1/1 | **3/3** |
 
 ## Narrators
 

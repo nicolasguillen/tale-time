@@ -13,6 +13,18 @@
       "bytes": 1570877,
       "sha256": "376d335857d1a5d9cc51ef0e56e825514e43ebacb2ec7917a9e388b673691bf4"
     },
+    "app/audio/es/all-endings.wav": {
+      "bytes": 795226,
+      "sha256": "d3b9bf6a8a5a82d3002d475f4032ab47b5149b8e2a7b08342ac3f95cad2e9ea7"
+    },
+    "app/audio/es/more-endings.wav": {
+      "bytes": 1099516,
+      "sha256": "23fa808f6f85a934f6b70012eb1954f091368265941a9493bdc094670e19440a"
+    },
+    "app/audio/es/the-end.wav": {
+      "bytes": 198552,
+      "sha256": "d9d10aceb36c043adac75a7aa4e6ff4137fa193d5521f892f827129627d89a03"
+    },
     "stories/fox-and-the-lantern/audio/es/e1-big-splash-end.wav": {
       "bytes": 309286,
       "sha256": "8cb94f5b31444bd7acd9fe60d5768a70345bf26bf27c07a12e1a8237a9e495a6"

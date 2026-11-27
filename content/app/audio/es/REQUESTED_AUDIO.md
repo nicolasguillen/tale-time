@@ -8,11 +8,11 @@ Este archivo se genera solo. Para cambiar un pedido, edita `content/app/narratio
 
 | "Fin" | Más finales por descubrir | Todos los finales encontrados | Total |
 |---|---|---|---|
-| 0/1 | 0/1 | 0/1 | **0/3** |
+| 1/1 | 1/1 | 1/1 | **3/3** |
 
 - **Carpeta:** `content/app/audio/es/`
 - **Ritmo:** unas 115 palabras por minuto, el ritmo más lento (de 3 a 5 años): estas frases cierran todos los cuentos, para todas las edades.
-- **Guion:** 3 clips, 33 palabras, 201 caracteres, unos 20 s en total.
+- **Guion:** 3 clips, 34 palabras, 206 caracteres, unos 20 s en total.
 
 ## Voz: Voz cálida de cuentacuentos (propuesta, aún sin aprobar)
 
@@ -57,19 +57,19 @@ Una sola voz para todos los cuentos en español de la app: una persona adulta, c
 
 En el orden en que la app los reproduce al final de un cuento: primero `the-end`, luego `more-endings` o `all-endings`, nunca los dos.
 
-### ⬜ `the-end`: "Fin"
+### ✅ `the-end`: "Fin"
 
-- **Archivo:** `content/app/audio/es/the-end.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/app/audio/es/the-end.wav`
 - **Cuándo:** Cuando aparece "Fin" en la pantalla del final, justo después de la última página de un cuento.
-- **Indicación:** Cerrando el libro: despacio y con calidez, como las últimas palabras de un cuento antes de dormir, con una pequeña pausa al final.
+- **Indicación:** Con alegría, como quien celebra el final de un buen cuento: luminosa y cálida, con una sonrisa en la voz, sin gritar ni alargarla, y una pequeña pausa al final.
 - **Duración:** 1 palabra, unos 1 s.
 - **Guion:**
 
-> Fin.
+> ¡Fin!
 
-### ⬜ `more-endings`: Más finales por descubrir
+### ✅ `more-endings`: Más finales por descubrir
 
-- **Archivo:** `content/app/audio/es/more-endings.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/app/audio/es/more-endings.wav`
 - **Cuándo:** Después de "Fin", cuando ya salieron las insignias de los finales, mientras al cuento le queden finales que el niño o la niña aún no encontró: las insignias con "?" son esos finales.
 - **Indicación:** Una invitación juguetona a seguir buscando, nunca un anuncio: curiosa y luminosa en el signo de pregunta, una pequeña pausa antes de la "Y", y luego cálida al hablar de los otros cuentos.
 - **Duración:** 20 palabras, unos 11 s.
@@ -77,12 +77,12 @@ En el orden en que la app los reproduce al final de un cuento: primero `the-end`
 
 > Este cuento tiene más finales por descubrir. ¡Toca un signo de pregunta para buscar otro! Y hay más cuentos esperándote.
 
-### ⬜ `all-endings`: Todos los finales encontrados
+### ✅ `all-endings`: Todos los finales encontrados
 
-- **Archivo:** `content/app/audio/es/all-endings.wav` (o `.flac` / `.m4a`)
+- **Archivo:** `content/app/audio/es/all-endings.wav`
 - **Cuándo:** Después de "Fin", en lugar de `more-endings`, cuando el niño o la niña ya encontró todos los finales del cuento.
-- **Indicación:** Con orgullo y calidez, un verdadero "¡muy bien!" por encontrarlos todos, y luego una invitación suave y alegre a los otros cuentos.
-- **Duración:** 12 palabras, unos 7 s.
+- **Indicación:** Con orgullo y calidez, un verdadero "¡muy bien!" por encontrarlos todos, y luego cariñosa y sincera, como quien acaba de compartir sus cuentos favoritos.
+- **Duración:** 13 palabras, unos 8 s.
 - **Guion:**
 
-> ¡Encontraste todos los finales de este cuento! Y hay más cuentos esperándote.
+> ¡Encontraste todos los finales de este cuento! Espero que te hayan gustado mucho.

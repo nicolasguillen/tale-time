@@ -12,7 +12,7 @@ This file is generated. To change a request, edit `content/app/narration.json` (
 
 - **Folder:** `content/app/audio/en/`
 - **Pace:** about 115 words per minute, the slowest pace (ages 3–5): these lines close every story, for every age.
-- **Script:** 3 clips, 44 words, 224 characters, about 25 s in all.
+- **Script:** 3 clips, 39 words, 194 characters, about 23 s in all.
 
 ## Narrator: Warm storyteller (proposed, not yet approved)
 
@@ -59,7 +59,7 @@ In the order the app plays them at the end of a story: `the-end` first, then `mo
 
 - **File:** `content/app/audio/en/the-end.wav` (or `.flac` / `.m4a`)
 - **When:** As "The End" rises on the ending screen, right after a story's last page.
-- **Direction:** Closing the book: slowly and warmly, like the last words of a bedtime story, with a little pause after.
+- **Direction:** Joyful, like celebrating the end of a good story: bright and warm, with a smile in the voice, never loud or drawn out, and a little pause after.
 - **Length:** 2 words, about 2 s.
 - **Script:**
 
@@ -79,8 +79,8 @@ In the order the app plays them at the end of a story: `the-end` first, then `mo
 
 - **File:** `content/app/audio/en/all-endings.wav` (or `.flac` / `.m4a`)
 - **When:** After "The End", instead of `more-endings`, once the child has found every ending of the story.
-- **Direction:** Proud and warm, a real well done for finding them all, then a gentle, happy invitation to the shelf.
-- **Length:** 17 words, about 10 s.
+- **Direction:** Proud and warm, a real well done for finding them all, then tender and sincere, like someone who has just shared their favorite stories.
+- **Length:** 12 words, about 7 s.
 - **Script:**
 
-> You found every ending in this story! Now there are more stories to discover on the shelf.
+> You found every ending in this story! I hope you loved them.
