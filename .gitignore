@@ -42,3 +42,8 @@ captures/
 # Firebase CLI
 .firebase/
 *-debug.log
+
+# fastlane
+fastlane/report.xml
+fastlane/README.md
+fastlane/test_output/

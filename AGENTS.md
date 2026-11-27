@@ -53,7 +53,9 @@ androidApp/        Android host (MainActivity calls App()). Keep it thin.
 iosApp/            iOS host (SwiftUI wraps MainViewController()). project.yml is the source of truth (XcodeGen).
 backend/           storage.rules (Firebase Storage, project tale-time-b537d)
 content/.build/    (ignored) what `story package` builds: stories/draft/ and stories/production/, laid out like the bucket, and cache/
-docs/              story-format.md, narration.md (how the clips are made: English with Gemini, Spanish with ElevenLabs)
+docs/              story-format.md, narration.md (how the clips are made: English with Gemini, Spanish with ElevenLabs),
+                   releases.md (store releases with fastlane)
+fastlane/          Appfile, Fastfile: the App Store and Google Play release lanes (docs/releases.md)
 REQUESTED_ASSETS.md    generated: the index of image requests (status, method, app icon), linking each story's own file
 REQUESTED_AUDIO.md     generated: the index of narration requests (status per story and language, the narrators), linking each
                        story's audio/<lang>/REQUESTED_AUDIO.md and content/app/audio/<lang>/REQUESTED_AUDIO.md
@@ -144,6 +146,20 @@ xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug 
 - **Packaging only converts:** pictures to WebP (cover 900×1200, pages 1600×1200, cards 768×768 at most), clips to mono AAC 64 kbps at −16 LUFS. The same source always gives the same file (the AAC is rewrapped without afconvert's timestamp), so an unchanged file never downloads twice. Bump `Encoder.version` in `tools/storytool/package.py` when the conversion changes.
 - **Word timings** are measured at packaging from each page's delivered clip (`tools/storytool/timings.py`: pauses in the clip matched to the text's sentence and clause breaks, words spread by syllables; ffmpeg only, no model) and shipped as `timings-<lang>.json`. Bump `VERSION` there when the measuring changes.
 - **To try a story on a device:** `cd tools && uv run story publish draft` (with the user's OK), then run a debug build, on any device, anywhere. A change to the content shows up in the app only after the next `story publish draft`. The iOS UI walkthrough needs the draft channel published.
+
+## Store releases
+
+[docs/releases.md](docs/releases.md) has the setup and the details. From the repo root:
+
+```
+fastlane ios build | beta | distribute groups:Friends | submit_review [build:N] [auto_release:true]
+fastlane android build [version_code:N] | beta [status:draft] | promote [from:internal] [to:production] [rollout:0.2]
+```
+
+- Version name: `MARKETING_VERSION` in `iosApp/project.yml`, for both stores. Build numbers are picked by fastlane (latest on the store + 1); never edit `CURRENT_PROJECT_VERSION` or hardcode a versionCode.
+- iOS signs in with the personal App Store Connect key; Android signs with the upload key `~/.googleplay/taletime-upload.properties` and talks to Play as `~/.googleplay/taletime-play-publisher.json`. Never commit or print either.
+- Release builds read the production channel, so `build` stops if its catalog isn't online.
+- Every lane but `build` changes what a store holds: run them only when the user asks for a release.
 
 ## Firebase
 

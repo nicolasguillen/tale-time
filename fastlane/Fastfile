@@ -1,0 +1,226 @@
+# Release lanes for the App Store and Google Play. Run from the repo root (docs/releases.md):
+#
+#   fastlane ios build                    # archive + export a signed App Store .ipa, no upload
+#   fastlane ios beta                     # build, then upload to TestFlight (doesn't wait for Apple's processing)
+#   fastlane ios distribute groups:Friends [build:N] [changelog:"What to test"]   # send a processed build to external testers
+#   fastlane ios submit_review [build:N] [auto_release:true]   # attach a TestFlight build and submit it for App Review
+#
+#   fastlane android build [version_code:N]   # signed release .aab, no upload
+#   fastlane android beta [status:draft]      # build, then upload to the internal testing track
+#   fastlane android promote [from:internal] [to:alpha] [status:draft] [rollout:0.2]   # e.g. to:production
+#
+# iOS signs in with the personal App Store Connect API key (override with ASC_KEY_ID / ASC_ISSUER_ID / ASC_KEY_PATH);
+# Xcode manages the certificates and profiles through it. The build number is the latest TestFlight build + 1, passed
+# to xcodebuild, so project.yml's CURRENT_PROJECT_VERSION is never edited. Bump MARKETING_VERSION in iosApp/project.yml
+# for a new version: Android's versionName is read from there too, so both stores match.
+#
+# Android signs with the upload key in ~/.googleplay/taletime-upload.properties (TALETIME_UPLOAD_KEY_PROPERTIES) and
+# talks to Play as the service account in ~/.googleplay/taletime-play-publisher.json (PLAY_JSON_KEY). versionCode is
+# the highest on Google Play + 1.
+#
+# Every lane but `build` changes what a store holds: run them only when the user asks for a release.
+
+default_platform(:ios)
+
+ROOT = File.expand_path("..", __dir__)
+
+# Release builds download the production channel (ContentSource.Production): a store build with nothing published
+# there shows an empty shelf. Checked before every build, over plain HTTPS, like the app does.
+PRODUCTION_CATALOG = "https://firebasestorage.googleapis.com/v0/b/tale-time-b537d.firebasestorage.app/o/" \
+                     "stories%2Fproduction%2Fcatalog.json?alt=media"
+
+def check_production_catalog
+  require "net/http"
+  response = Net::HTTP.get_response(URI(PRODUCTION_CATALOG))
+  return if response.is_a?(Net::HTTPSuccess)
+  UI.user_error!("No production catalog online (HTTP #{response.code}): release builds would show an empty shelf. " \
+                 "Publish it first (cd tools && uv run story publish production), or pass skip_catalog_check:true")
+end
+
+def marketing_version
+  File.read(File.join(ROOT, "iosApp/project.yml"))[/MARKETING_VERSION:\s*"?([\d.]+)"?/, 1]
+end
+
+def flag?(value)
+  value == true || value.to_s == "true"
+end
+
+ASC_KEY_ID = ENV.fetch("ASC_KEY_ID", "C78CP77HT2")
+ASC_ISSUER_ID = ENV.fetch("ASC_ISSUER_ID", "c2560142-83ea-4d32-a46e-cef307c3cf74")
+ASC_KEY_PATH = File.expand_path(ENV.fetch("ASC_KEY_PATH", "~/.appstoreconnect/AuthKey_#{ASC_KEY_ID}.p8"))
+IOS_PROJECT = File.join(ROOT, "iosApp/iosApp.xcodeproj")
+IOS_OUTPUT = File.join(ROOT, "iosApp/build/fastlane")
+IOS_IPA = File.join(IOS_OUTPUT, "TaleTime.ipa")
+
+platform :ios do
+  private_lane :asc_key do
+    UI.user_error!("App Store Connect key not found at #{ASC_KEY_PATH}") unless File.exist?(ASC_KEY_PATH)
+    app_store_connect_api_key(key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH)
+  end
+
+  desc "Archive and export a signed App Store .ipa (no upload)"
+  lane :build do |options|
+    check_production_catalog unless flag?(options[:skip_catalog_check])
+    api_key = asc_key
+    build_number = latest_testflight_build_number(api_key: api_key, initial_build_number: 0) + 1
+    UI.message("Building #{marketing_version} (#{build_number})")
+
+    # project.yml is the source of truth for the Xcode project.
+    sh("cd #{ROOT}/iosApp && xcodegen generate")
+
+    # Lets Xcode create or refresh the distribution certificate and profile with the API key. gym adds the same
+    # flags to the export step itself (from app_store_connect_api_key), so they're only passed to the archive.
+    auth = "-allowProvisioningUpdates -authenticationKeyPath #{ASC_KEY_PATH} " \
+           "-authenticationKeyID #{ASC_KEY_ID} -authenticationKeyIssuerID #{ASC_ISSUER_ID}"
+
+    build_app(
+      project: IOS_PROJECT,
+      scheme: "iosApp",
+      configuration: "Release",
+      export_method: "app-store",
+      output_directory: IOS_OUTPUT,
+      output_name: File.basename(IOS_IPA),
+      archive_path: File.join(IOS_OUTPUT, "TaleTime.xcarchive"),
+      derived_data_path: File.join(ROOT, "iosApp/build/DerivedData-Release"),
+      xcargs: "#{auth} CURRENT_PROJECT_VERSION=#{build_number}",
+      export_options: { signingStyle: "automatic", teamID: "T9TJS97YP6", uploadSymbols: true },
+      skip_profile_detection: true,
+      clean: true,
+    )
+  end
+
+  desc "Build and upload to TestFlight, without waiting for Apple's processing"
+  lane :beta do |options|
+    # Waiting for processing ties up the lane for 5–20 min. Internal testers get the build once it's processed;
+    # `distribute` sends it to external groups and `submit_review` sends it to App Review after that.
+    build(skip_catalog_check: options[:skip_catalog_check])
+    upload_to_testflight(api_key: asc_key, ipa: IOS_IPA, skip_waiting_for_build_processing: true)
+  end
+
+  desc "Send a processed build to external TestFlight groups. groups:Friends [build:N] [changelog:\"What to test\"]"
+  lane :distribute do |options|
+    UI.user_error!("Pass groups:<name>[,<name>]") unless options[:groups]
+    api_key = asc_key
+    upload_to_testflight(
+      api_key: api_key,
+      distribute_only: true,
+      app_platform: "ios",
+      app_version: marketing_version,
+      build_number: (options[:build] || latest_testflight_build_number(api_key: api_key)).to_s,
+      groups: options[:groups].split(","),
+      distribute_external: true,
+      notify_external_testers: true,
+      changelog: options[:changelog] || "Bug fixes and improvements.",
+    )
+  end
+
+  # The store listing, screenshots, age rating, Kids category and privacy answers are set in App Store Connect.
+  # auto_release:true puts the version on sale as soon as it's approved; otherwise release it from App Store Connect.
+  desc "Attach a TestFlight build (latest, or build:N) to the version in project.yml and submit it for App Review"
+  lane :submit_review do |options|
+    api_key = asc_key
+    version = marketing_version
+    upload_to_app_store(
+      api_key: api_key,
+      app_version: version,
+      build_number: (options[:build] || latest_testflight_build_number(api_key: api_key, version: version)).to_s,
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_screenshots: true,
+      submit_for_review: true,
+      automatic_release: flag?(options[:auto_release]),
+      submission_information: {
+        add_id_info_uses_idfa: false,
+        content_rights_contains_third_party_content: false,
+        export_compliance_uses_encryption: false,
+      },
+      # Paid stories need StoreKit first (domain/Purchases): no in-app purchases go with a submission yet.
+      precheck_include_in_app_purchases: false,
+      run_precheck_before_submit: false,
+      force: true, # skip the HTML preview
+    )
+  end
+end
+
+PLAY_PACKAGE = "com.nicolasguillen.taletime"
+PLAY_JSON_KEY = File.expand_path(ENV.fetch("PLAY_JSON_KEY", "~/.googleplay/taletime-play-publisher.json"))
+PLAY_UPLOAD_KEY = File.expand_path(
+  ENV.fetch("TALETIME_UPLOAD_KEY_PROPERTIES", "~/.googleplay/taletime-upload.properties"),
+)
+PLAY_AAB = File.join(ROOT, "androidApp/build/outputs/bundle/release/androidApp-release.aab")
+# Play's track names: alpha is closed testing, beta is open testing.
+PLAY_TRACKS = %w[internal alpha beta production]
+
+platform :android do
+  desc "Build the signed release .aab (versionCode = highest on Google Play + 1, or version_code:N)"
+  lane :build do |options|
+    UI.user_error!("Upload key not found at #{PLAY_UPLOAD_KEY} (docs/releases.md)") unless File.exist?(PLAY_UPLOAD_KEY)
+    check_production_catalog unless flag?(options[:skip_catalog_check])
+    code = (options[:version_code] || next_play_version_code).to_i
+    gradle(
+      task: ":androidApp:bundleRelease",
+      project_dir: ROOT,
+      gradle_path: File.join(ROOT, "gradlew"),
+      properties: { "taletime.versionCode" => code, "taletime.versionName" => marketing_version },
+    )
+    UI.success("Built #{PLAY_AAB} (#{marketing_version}, versionCode #{code})")
+    code
+  end
+
+  # A never-published app only takes draft releases, so pass status:draft until the first release goes out.
+  desc "Build, then upload to the internal testing track (status:draft while the app is still a draft)"
+  lane :beta do |options|
+    build(version_code: options[:version_code], skip_catalog_check: options[:skip_catalog_check])
+    upload_to_play_store(
+      **play_auth,
+      track: "internal",
+      aab: PLAY_AAB,
+      release_status: options[:status] || "completed",
+      metadata_path: File.join(ROOT, "fastlane/android/metadata"),
+      skip_upload_apk: true,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+
+  # Production: `promote to:production` (with rollout:0.2 for a staged rollout, raised later in the Console).
+  desc "Promote the latest release on a track to another (from:internal to:alpha by default)"
+  lane :promote do |options|
+    from = options[:from] || "internal"
+    to = options[:to] || "alpha"
+    UI.user_error!("Unknown track #{to}: one of #{PLAY_TRACKS.join(', ')}") unless PLAY_TRACKS.include?(to)
+    code = google_play_track_version_codes(**play_auth, track: from).max
+    UI.user_error!("No release on the #{from} track") unless code
+    status = options[:status] || (options[:rollout] ? "inProgress" : "completed")
+    upload_to_play_store(
+      **play_auth,
+      track: from,
+      track_promote_to: to,
+      track_promote_release_status: status,
+      rollout: options[:rollout]&.to_s,
+      version_code: code,
+      skip_upload_aab: true,
+      skip_upload_apk: true,
+      skip_upload_metadata: true,
+      skip_upload_changelogs: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+
+  def play_auth
+    UI.user_error!("Play service account key not found at #{PLAY_JSON_KEY} (docs/releases.md)") unless File.exist?(PLAY_JSON_KEY)
+    { json_key: PLAY_JSON_KEY, package_name: PLAY_PACKAGE }
+  end
+
+  def next_play_version_code
+    codes = PLAY_TRACKS.flat_map do |track|
+      google_play_track_version_codes(**play_auth, track: track)
+    rescue StandardError => e
+      UI.important("Couldn't read the #{track} track: #{e.message}")
+      []
+    end
+    (codes.max || 0) + 1
+  end
+end
