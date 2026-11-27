@@ -133,11 +133,20 @@ private const val MAX_FRAME_STEP_MILLIS = 100L
  */
 private const val NARROWEST_PICTURE = 4f / 3f * 0.8f
 
+/**
+ * Beside the text, the picture may be cropped a little further, to 70% of its width, so it fills the screen's height
+ * on every tablet in landscape (74% on a 13-inch iPad), edge to edge, instead of leaving paper above and below it.
+ */
+private const val NARROWEST_BESIDE = 4f / 3f * 0.7f
+
 /** How far the picture's inner edge melts into the paper, so the picture and the text read as one page. */
 private val MELT = 36.dp
 
-/** The fewest lines the text window shows, however little room the picture leaves. */
+/** The fewest lines the text window shows, however little room the picture leaves… */
 private const val FEWEST_LINES = 3
+
+/** …and the most, however much room there is: a page never looks like a wall of words, and longer ones slide up. */
+private const val MOST_LINES = 10
 
 /** The least room the text and the folded corner keep under the picture on a tall screen. */
 private val TEXT_ROOM_TALL = 240.dp
@@ -694,9 +703,9 @@ private fun PageContent(
     // The picture runs to the screen's edges, under the system bars, and melts into the paper where the text is.
     Box(Modifier.fillMaxSize().background(TaleColors.Paper)) {
         if (layout.wide) {
-            // The picture fills the height on the left, the text sits beside it.
+            // The picture fills the height on the left, edge to edge, the text sits beside it.
             val pictureWidth = minOf(layout.width - if (layout.tablet) 360.dp else 300.dp, layout.height * ImageKind.PAGE.aspect)
-            val pictureHeight = minOf(layout.height, pictureWidth / NARROWEST_PICTURE)
+            val pictureHeight = minOf(layout.height, pictureWidth / NARROWEST_BESIDE)
             Row(Modifier.fillMaxSize()) {
                 Box(Modifier.width(pictureWidth).fillMaxHeight(), contentAlignment = Alignment.Center) {
                     Picture(shown, picture, meltsDown = false, Modifier.fillMaxWidth().height(pictureHeight))
@@ -775,13 +784,14 @@ private fun TextPanel(
     textScale: Float,
     tablet: Boolean,
 ) {
-    val read by remember(page.nodeId) { derivedStateOf { clock.value >= page.readMillis } }
+    // Keyed on the clock too, as in RevealingText.
+    val read by remember(page, clock) { derivedStateOf { clock.value >= page.readMillis } }
     val size = (if (tablet) 27f else 23f) * textScale
     Column(Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 12.dp)) {
         BoxWithConstraints(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-            // The window is as many whole lines tall as the room allows, so most pages show whole.
+            // The window is as many whole lines tall as the room allows, up to ten, so most pages show whole.
             val line = with(LocalDensity.current) { (size * 1.5f).sp.toDp() }
-            val lines = maxOf(FEWEST_LINES, (maxHeight / line).toInt())
+            val lines = (maxHeight / line).toInt().coerceIn(FEWEST_LINES, MOST_LINES)
             RevealingText(page, clock, Tale.type.story.copy(fontSize = size.sp), windowHeight = line * lines, scrollable = read)
         }
         // Room for the folded corner: no word ever sits under it.
@@ -1034,11 +1044,13 @@ private fun RevealingText(
     var layout by remember(page.nodeId) { mutableStateOf<TextLayoutResult?>(null) }
     val scroll = rememberScrollState()
     val words = page.words
-    // The end of the last word that has started to appear.
-    val shownEnd by remember(page.nodeId) {
+    // The end of the last word that has started to appear. Keyed on the clock, not only the page: the page beneath
+    // becomes the page in front without being composed again, and its clock goes from NotYet to the live one. Kept on
+    // NotYet, the window would never follow the words down.
+    val shownEnd by remember(page, clock) {
         derivedStateOf { words.lastOrNull { it.atMillis <= clock.value }?.end ?: 0 }
     }
-    val target by remember(page.nodeId) {
+    val target by remember(page, clock) {
         derivedStateOf {
             val text = layout ?: return@derivedStateOf 0
             if (shownEnd == 0) return@derivedStateOf 0
