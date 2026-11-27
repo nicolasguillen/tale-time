@@ -9,7 +9,6 @@ import com.nicolasguillen.taletime.domain.Language
 import com.nicolasguillen.taletime.domain.Settings
 import com.nicolasguillen.taletime.domain.SettingsRepository
 import com.nicolasguillen.taletime.domain.TextSize
-import com.nicolasguillen.taletime.platform.deviceLanguage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -27,13 +26,8 @@ fun createPreferencesDataStore(
     scope: CoroutineScope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
 ): DataStore<Preferences> = PreferenceDataStoreFactory.createWithPath(scope = scope, produceFile = { path.toPath() })
 
-/**
- * @param deviceLanguage the device's language code, read each time the settings are: the language until a grown-up
- *   picks one, so a device switched to Spanish gets Tale Time in Spanish too.
- */
 class DataStoreSettingsRepository(
     private val store: DataStore<Preferences>,
-    private val deviceLanguage: () -> String = ::deviceLanguage,
 ) : SettingsRepository {
     override val settings: Flow<Settings> = store.data.map { it.toSettings() }.distinctUntilChanged()
 
@@ -42,7 +36,7 @@ class DataStoreSettingsRepository(
             val current = prefs.toSettings()
             val next = transform(current)
             prefs[Keys.textSize] = next.textSize.name
-            // Only a real choice is kept: the device's language stays a default, not a pick.
+            // Only a real choice is kept: the default stays a default, not a pick.
             if (next.language != current.language) prefs[Keys.language] = next.language.code
         }
     }
@@ -51,7 +45,7 @@ class DataStoreSettingsRepository(
         val defaults = Settings()
         return Settings(
             textSize = TextSize.entries.firstOrNull { it.name == this[Keys.textSize] } ?: defaults.textSize,
-            language = Language.of(this[Keys.language]) ?: Language.of(deviceLanguage()) ?: defaults.language,
+            language = Language.of(this[Keys.language]) ?: defaults.language,
         )
     }
 

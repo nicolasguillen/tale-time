@@ -114,7 +114,7 @@ Each language after the first has a **translation sheet**, `translations/<lang>.
 | `glossary` | Places and recurring words, so every page says them the same way. |
 | `moods` | Every page and ending's mood from `shots.json`, in this language. |
 
-The bible's `title` holds every language too. A reader downloads a story in one language, picked on its cover (the app's own language is offered first), and can add another later; the story is read in the one picked last.
+The bible's `title` holds every language too. A reader downloads a story once, in every language it's published in; it's read in the app's language first, and the cog on its cover switches to another of its languages, offline.
 
 ## `catalog.json`
 
@@ -123,7 +123,7 @@ The bible's `title` holds every language too. A reader downloads a story in one 
 ```json
 {
   "stories": [
-    { "id": "fox-and-the-lantern", "access": "free" },
+    { "id": "fox-and-the-lantern", "access": "free", "approved": ["en", "es"] },
     { "id": "the-shy-dragon", "access": "paid", "product": "story.shy_dragon" }
   ]
 }
@@ -134,8 +134,9 @@ The bible's `title` holds every language too. A reader downloads a story in one 
 | `id` | A story folder in `content/stories/`, with its text (`story/<lang>.json`). Order = shelf order. |
 | `access` | `free`, or `paid`: a one-time purchase, unlocked behind the parental gate. |
 | `product` | Paid only: the store product id, the same on the App Store and Google Play. Lowercase letters, digits, `_` and `.` (Google Play allows no `-`). |
+| `approved` | The languages approved for the production channel (release builds), e.g. `["es"]`: the story is published there in these and no other, the first language included only if it's listed. A translation listed must also be approved by a native speaker (`"status": "approved"` in `translations/<lang>.json`). Without it the story isn't published to production. The app reads a story in the app's language when it's there, else in the first one published. The draft channel has every language. |
 
-`story check` checks that every entry is a written story, ids and products are unique, and warns if the shelf doesn't open with a free story. No story ships inside the app: `story package` turns this file into the published catalog (below), and the app's build keeps only a copy of the titles (`files/shelf.json`) for a first launch offline.
+`story check` checks that every entry is a written story, ids and products are unique, each approved language is one the story is written in (and a translation a native speaker approved), and warns if the shelf doesn't open with a free story. No story ships inside the app: `story package` turns this file into the published catalog (below), and the app's build keeps only a copy of the titles (`files/shelf.json`) for a first launch offline.
 
 ## Published stories
 
@@ -150,9 +151,9 @@ stories/<channel>/<id>/<name>-<hash>.<ext>     the files: pictures (.webp), each
 
 Every file is named after its contents (the first 10 hex characters of its SHA-256), so a changed picture, clip or text gets a new name, the manifest that lists it changes, and so does the manifest's name in the catalog. The app compares that name with the one it has: a new one means the story changed, and it downloads only the files it doesn't have yet. Nothing on the host is overwritten, so every file but the catalog can be cached forever. Production never deletes a file either; `story publish draft` deletes the draft files no story uses any more.
 
-**Catalog entry:** `id`, `access`, `product`, `ageBand`, `title` (every published language, the first first), `languages` (per language: `bytes`, the download in that language alone, and `narration`), `cover` and `manifest` (each `{ file, bytes, sha256 }`).
+**Catalog entry:** `id`, `access`, `product`, `ageBand`, `endings` (how many, shown on its cover before it's downloaded), `title` (every published language, the first first), `languages` (per language: `bytes`, the story in that language alone, and `narration`), `cover` and `manifest` (each `{ file, bytes, sha256 }`).
 
-**Manifest:** `images` (image id → file, the same in every language), `languages` (per language: `story`, its text, `audio`, clip id → file, and `timings`, once a page's clip is there), and `files` (every file named: `bytes` and `sha256`). The app downloads the pictures and, for each language a reader picked, its text, clips and timings, and checks every file's size and SHA-256.
+**Manifest:** `images` (image id → file, the same in every language), `languages` (per language: `story`, its text, `audio`, clip id → file, and `timings`, once a page's clip is there), and `files` (every file named: `bytes` and `sha256`). The app downloads every file it lists (the pictures, and every language's text, clips and timings), so a story can switch language offline, and checks every file's size and SHA-256.
 
 **Timings** (`timings-<lang>-<hash>.json`): `{"format": 1, "clips": {"<page id>": [[start, end], …]}}`, the start and end of each word of the page's text in its clip, in milliseconds. A word is a run of non-space characters (spaces, tabs and line breaks), in order, exactly as the app splits the text, so the n-th pair is the n-th word on screen.
 

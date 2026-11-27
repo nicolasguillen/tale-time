@@ -367,8 +367,11 @@ def catalog_codes(catalog):
 
 
 def test_real_catalog_and_app_images_pass():
-    stories = {p.name: {} for p in (ROOT / "content" / "stories").iterdir() if has_story(p)}
-    assert check_catalog(load_json(ROOT / "content" / "catalog.json"), stories) == []
+    folders = [p for p in (ROOT / "content" / "stories").iterdir() if has_story(p)]
+    stories = {p.name: load_story(p) for p in folders}
+    translations = {p.name: {lang: load_json(p / "translations" / f"{lang}.json")["status"]
+                             for lang in list(stories[p.name])[1:]} for p in folders}
+    assert check_catalog(load_json(ROOT / "content" / "catalog.json"), stories, translations) == []
     assert check_app_assets(load_json(ROOT / "content" / "app" / "assets.json")) == []
 
 
@@ -398,6 +401,19 @@ def test_catalog_entries_must_be_written_unique_stories():
         {"id": "nowhere", "access": "free"},
     ]})
     assert found == {"catalog-duplicate", "catalog-unwritten", "catalog-product", "catalog-unknown"}
+
+
+def test_a_story_is_approved_in_languages_it_is_written_in_and_a_native_speaker_approved():
+    stories = {"fox-and-the-lantern": {"en": {}, "es": {}}}
+    entry = {"id": "fox-and-the-lantern", "access": "free", "approved": ["es"]}
+    reviewed = {"fox-and-the-lantern": {"es": "approved"}}
+    assert check_catalog({"stories": [entry]}, stories, reviewed) == []
+    assert check_catalog({"stories": [{**entry, "approved": ["en"]}]}, stories) == []
+    assert {i.code for i in check_catalog({"stories": [entry]}, stories, {"fox-and-the-lantern": {"es": "draft"}})} \
+        == {"catalog-approved"}
+    assert {i.code for i in check_catalog({"stories": [{**entry, "approved": ["fr"]}]}, stories, reviewed)} \
+        == {"catalog-approved"}
+    assert {i.code for i in check_catalog({"stories": [{**entry, "approved": []}]}, stories)} == {"schema"}
 
 
 def test_the_shelf_should_open_with_a_free_story():

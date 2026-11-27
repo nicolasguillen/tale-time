@@ -4,6 +4,11 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,6 +18,8 @@ import com.nicolasguillen.taletime.feature.cover.CoverRoute
 import com.nicolasguillen.taletime.feature.parents.ParentsRoute
 import com.nicolasguillen.taletime.feature.reader.ReaderRoute
 import com.nicolasguillen.taletime.feature.shelf.ShelfRoute
+import com.nicolasguillen.taletime.platform.AgentFlags
+import org.koin.compose.koinInject
 
 /** Shelf → cover → reader, and the parents area behind the gate (plan.md §3.1). */
 @Composable
@@ -21,6 +28,17 @@ fun TaleNavHost(modifier: Modifier = Modifier) {
 
     fun backToShelf() {
         nav.popBackStack(ShelfRoute, inclusive = false)
+    }
+    // An agent asked for a story at launch (platform/AgentFlags): its reader, from the first page, once.
+    val agent = koinInject<AgentFlags>()
+    var opened by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        val story = agent.openStory
+        if (story != null && !opened) {
+            opened = true
+            nav.navigate(CoverRoute(story))
+            nav.navigate(ReaderRoute(story, restart = true))
+        }
     }
     NavHost(
         navController = nav,

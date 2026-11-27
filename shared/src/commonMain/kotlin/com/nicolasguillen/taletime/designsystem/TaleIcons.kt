@@ -18,7 +18,7 @@ import kotlin.math.sin
  * UI chrome only: story pictures are never drawn in code.
  */
 object TaleIcons {
-    /** Turn the page: a chunky arrow, the same as [Previous] the other way. */
+    /** Next: a chunky arrow (the reader draws it on the folded corner, pointing the way to pull). */
     val Next: ImageVector by lazy {
         stroke("next", width = 3f) {
             moveTo(5f, 12f)
@@ -26,17 +26,6 @@ object TaleIcons {
             moveTo(12.5f, 6f)
             lineTo(18.5f, 12f)
             lineTo(12.5f, 18f)
-        }
-    }
-
-    /** One page back. */
-    val Previous: ImageVector by lazy {
-        stroke("previous", width = 3f) {
-            moveTo(19f, 12f)
-            lineTo(5.5f, 12f)
-            moveTo(11.5f, 6f)
-            lineTo(5.5f, 12f)
-            lineTo(11.5f, 18f)
         }
     }
 
@@ -112,16 +101,31 @@ object TaleIcons {
         }
     }
 
-    /** Not downloaded yet, or download it: an arrow down onto a line. */
-    val Download: ImageVector by lazy {
-        stroke("download") {
-            moveTo(12f, 4f)
-            lineTo(12f, 15f)
-            moveTo(7f, 10.5f)
-            lineTo(12f, 15.5f)
-            lineTo(17f, 10.5f)
-            moveTo(5f, 19.5f)
-            lineTo(19f, 19.5f)
+    /** A book's settings (the language it's read in): a cog with eight teeth around a hole. */
+    val Cog: ImageVector by lazy {
+        stroke("cog", width = 2.2f) {
+            fun at(
+                degrees: Double,
+                r: Float,
+            ): Pair<Float, Float> {
+                val a = degrees * PI / 180
+                return 12f + r * cos(a).toFloat() to 12f + r * sin(a).toFloat()
+            }
+            val (inner, outer) = 6.8f to 9.6f
+            for (tooth in 0 until 8) {
+                val mid = tooth * 45.0
+                val (x0, y0) = at(mid - 15, inner)
+                if (tooth == 0) moveTo(x0, y0) else lineTo(x0, y0)
+                at(mid - 8, outer).let { (x, y) -> lineTo(x, y) }
+                at(mid + 8, outer).let { (x, y) -> lineTo(x, y) }
+                at(mid + 15, inner).let { (x, y) -> lineTo(x, y) }
+                // Round along the rim to the next tooth.
+                at(mid + 30, inner).let { (x, y) -> arcTo(inner, inner, 0f, isMoreThanHalf = false, isPositiveArc = true, x, y) }
+            }
+            close()
+            moveTo(15f, 12f)
+            arcToRelative(3f, 3f, 0f, isMoreThanHalf = true, isPositiveArc = true, -6f, 0f)
+            arcToRelative(3f, 3f, 0f, isMoreThanHalf = true, isPositiveArc = true, 6f, 0f)
         }
     }
 

@@ -1,7 +1,8 @@
 import XCTest
 
-/// Walks the whole app the way a child and a grown-up would: shelf, cover, a play-through to an ending (turning the
-/// device on the way), "Try another path", the parental gate and the parents area. It fails if the app crashes.
+/// Walks the whole app the way a child and a grown-up would: shelf, cover (its download and its language cog), a
+/// play-through to an ending (turning the device on the way), "Try another path", the parental gate and the parents
+/// area, in Spanish, the app's language until a grown-up picks one (domain/Language). It fails if the app crashes.
 final class WalkthroughTests: XCTestCase {
     private let app = XCUIApplication()
 
@@ -24,46 +25,65 @@ final class WalkthroughTests: XCTestCase {
     /// No story ships inside the app: a debug build downloads them from the draft channel on Firebase Storage, so
     /// publish it first (`cd tools && uv run story publish draft`).
     func testReadToAnEndingAndVisitTheParentsArea() {
-        tap("The Fox and the Lantern", timeout: 20)
-        if !element("Read").waitForExistence(timeout: 3) && !element("Start over").exists {
-            // Not downloaded yet: download it in English (its button says "English · 0.1 MB").
-            let english = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", "English")).firstMatch
-            XCTAssertTrue(english.waitForExistence(timeout: 10), "No language to download in: is the draft channel published?")
-            english.tap()
+        tap("El zorro y el farolito", timeout: 20)
+        if !element("Leer").waitForExistence(timeout: 3) && !element("Empezar de nuevo").exists {
+            // Not downloaded yet: one download brings every language.
+            XCTAssertTrue(element("Descargar").waitForExistence(timeout: 10), "Nothing to download: is the draft channel published?")
+            element("Descargar").tap()
         }
-        if element("Start over").waitForExistence(timeout: 60) { tap("Start over") } else { tap("Read", timeout: 60) }
+        _ = element("Leer").waitForExistence(timeout: 60) || element("Empezar de nuevo").waitForExistence(timeout: 1)
+        // The cog lists every language it's published in.
+        tap("Idioma del cuento")
+        let english = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "English")).firstMatch
+        XCTAssertTrue(english.waitForExistence(timeout: 5), "No English in the cog's list")
+        tap("Cerrar")
+        if element("Empezar de nuevo").exists { tap("Empezar de nuevo") } else { tap("Leer") }
 
         var turned = false
         for step in 0..<40 {
-            if element("The End").exists { break }
+            if element("Fin").exists { break }
             if step == 4, !turned {
                 XCUIDevice.shared.orientation = .landscapeLeft
                 turned = true
             }
-            if element("Next").waitForExistence(timeout: 2) {
-                element("Next").tap()
+            // A page's corner folds up ("Siguiente") once it's read; a fork's cards and "Fin" rise by themselves.
+            let next = element("Siguiente")
+            let card = app.descendants(matching: .any).matching(identifier: "choice-0").firstMatch
+            var waited = 0
+            while !next.exists && !card.exists && !element("Fin").exists && waited < 90 {
+                sleep(1)
+                waited += 1
+            }
+            if element("Fin").exists { break }
+            if next.exists {
+                // A tap on the folded corner turns the page.
+                next.tap()
             } else {
-                // A fork: the cards are out. One tap on the first card picks it.
-                let card = app.coordinate(withNormalizedOffset: CGVector(dx: turned ? 0.68 : 0.27, dy: turned ? 0.55 : 0.72))
+                // A fork: one tap on the first card picks it, and the book flips by itself to its page.
                 card.tap()
+                waited = 0
+                while card.exists && waited < 10 {
+                    sleep(1)
+                    waited += 1
+                }
             }
         }
-        XCTAssertTrue(element("The End").waitForExistence(timeout: 5), "Never reached an ending")
-        tap("Try another path")
-        XCTAssertTrue(element("Next").exists || !element("The End").exists)
+        XCTAssertTrue(element("Fin").waitForExistence(timeout: 5), "Never reached an ending")
+        tap("Probar otro camino")
+        XCTAssertTrue(element("Siguiente").exists || !element("Fin").exists)
         XCUIDevice.shared.orientation = .portrait
-        tap("Back to the shelf")
+        tap("Volver a los cuentos")
 
-        tap("For grown-ups")
-        let question = app.staticTexts.matching(NSPredicate(format: "label CONTAINS ' times '")).firstMatch
+        tap("Para adultos")
+        let question = app.staticTexts.matching(NSPredicate(format: "label CONTAINS ' por '")).firstMatch
         XCTAssertTrue(question.waitForExistence(timeout: 5))
-        let words = ["three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9]
-        let parts = question.label.components(separatedBy: " times ")
+        let words = ["tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9]
+        let parts = question.label.components(separatedBy: " por ")
         let answer = String(words[parts[0]]! * words[parts[1]]!)
         for digit in answer { tap(String(digit)) }
-        tap("Reset all progress", timeout: 10)
-        tap("Yes, forget")
-        tap("Back to the shelf")
-        XCTAssertTrue(element("0/5").waitForExistence(timeout: 5))
+        tap("Borrar todo el progreso", timeout: 10)
+        tap("Sí, olvidar")
+        tap("Volver a los cuentos")
+        XCTAssertTrue(element("Mis libros").waitForExistence(timeout: 5))
     }
 }

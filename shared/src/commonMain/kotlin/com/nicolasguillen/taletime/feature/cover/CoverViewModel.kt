@@ -9,13 +9,18 @@ import com.nicolasguillen.taletime.domain.StoryLibrary
 import com.nicolasguillen.taletime.domain.shelf
 import com.nicolasguillen.taletime.feature.StateViewModel
 import com.nicolasguillen.taletime.feature.reader.NARRATION_BREATH_MILLIS
+import com.nicolasguillen.taletime.feature.shelf.Price
 import com.nicolasguillen.taletime.feature.shelf.downloadedBundles
+import com.nicolasguillen.taletime.feature.shelf.price
 import com.nicolasguillen.taletime.platform.NarrationPlayer
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 /**
@@ -33,15 +38,23 @@ data class UnlockUiState(
     val message: String? = null,
 )
 
+/** @property prices product id → the price the store shows, for this book once the store knows it. */
 data class CoverUiState(
     val loading: Boolean = true,
     val missing: Boolean = false,
     val book: Book? = null,
     val unlock: UnlockUiState? = null,
-)
+    val prices: Map<String, String> = emptyMap(),
+) {
+    /** What the book costs, shown until it's downloaded: free, its price, or null once bought or while not priced. */
+    val price: Price? get() = book?.price(prices)
+}
 
 sealed interface CoverEvent {
-    /** Download the story in this language, or read it in this language if it's downloaded already. */
+    /**
+     * Download the story, in every language it's published in, to read it in [language] first; once it's downloaded
+     * (the cog), read it in [language] from now on.
+     */
     data class Download(
         val language: String,
     ) : CoverEvent
@@ -58,9 +71,13 @@ sealed interface CoverEvent {
 
     data object CloseUnlock : CoverEvent
 
+    /** The book opens (Read, Continue or Start over): the title stops, so the first page can be read aloud. */
+    data object OpenBook : CoverEvent
+
     /**
-     * The cover went out of sight (the app went to the background, or the book opened): the title stops, and a title
-     * due meanwhile (a download finishing) waits until the cover is back.
+     * The cover went out of sight (the app went to the background, the screen turned, or the book opened): the title
+     * pauses where it is and goes on once the cover is back, and a title due meanwhile (a download finishing) waits
+     * until then.
      */
     data object Hidden : CoverEvent
 
@@ -69,8 +86,8 @@ sealed interface CoverEvent {
 }
 
 /**
- * A book's cover: read or continue it once it's downloaded; before that, the languages it can be downloaded in, and how
- * far a download is. A paid book asks for a grown-up first. Once it's downloaded, the narrator reads its title, if
+ * A book's cover: read or continue it once it's downloaded, in any of its languages; before that, what it costs, one
+ * download for all of its languages, and how far that download is. A paid book asks for a grown-up first. Once it's downloaded, the narrator reads its title, if
  * that clip is delivered (plan.md §3.1): when the cover opens, and again when the book switches to another language.
  */
 class CoverViewModel(
@@ -98,6 +115,18 @@ class CoverViewModel(
                     readTitle(book)
                 }
             }
+        }
+        // A paid book shows its price from the store until it's bought.
+        viewModelScope.launch {
+            library.state
+                .filter { it.ready }
+                .map { lib -> lib.stories.firstOrNull { it.id == storyId }?.product }
+                .distinctUntilChanged()
+                .filterNotNull()
+                .collect { product ->
+                    val prices = purchases.products(listOf(product)).associate { it.id to it.price }
+                    setState { copy(prices = prices) }
+                }
         }
     }
 
@@ -176,8 +205,12 @@ class CoverViewModel(
                 setState { copy(unlock = null) }
             }
 
-            CoverEvent.Hidden -> {
+            CoverEvent.OpenBook -> {
                 title?.cancel()
+            }
+
+            // Not a stop: turning the screen hides the cover for a moment, and the title goes on after it.
+            CoverEvent.Hidden -> {
                 player.pause()
             }
 

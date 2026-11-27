@@ -17,7 +17,6 @@ import com.nicolasguillen.taletime.domain.SettingsRepository
 import com.nicolasguillen.taletime.domain.StoryLibrary
 import com.nicolasguillen.taletime.i18n.ProvideLanguage
 import com.nicolasguillen.taletime.navigation.TaleNavHost
-import com.nicolasguillen.taletime.platform.deviceLanguage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -38,10 +37,10 @@ fun App() {
             .build()
     }
     KoinApplication(configuration = koinConfig) {
-        // The language from the parents area; the device's own until the settings are read, so nothing flickers.
+        // The language from the parents area; the default until the settings are read.
         val settings = koinInject<SettingsRepository>()
         val language by remember(settings) { settings.settings.map { it.language } }
-            .collectAsState(initial = Language.of(deviceLanguage()) ?: Language.DEFAULT)
+            .collectAsState(initial = Language.DEFAULT)
         // Every time the app opens, when it's online: the shelf from the host, and downloaded stories brought up to date.
         val library = koinInject<StoryLibrary>()
         val appScope = koinInject<CoroutineScope>()

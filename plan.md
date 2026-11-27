@@ -16,7 +16,7 @@
 > **Updated 2026-11-24:**
 > - **Two languages: English and Latin American Spanish (`es`).** Stories are written in English first and translated at the `/new-story` skill's step 6 (`tools/prompts/translate.md`), with a translation sheet per language (`translations/<lang>.json`: names, refrains, moods). Both stories have a Spanish draft waiting for a native read-through (their `review.md`). This answers open question 2.
 > - **Narration is requested once per language, inside the folder its clips go into:** `content/stories/<id>/audio/<lang>/REQUESTED_AUDIO.md`, written in that language for that language's narrator. `content/style/voice.json` has one narrator per language. The root `REQUESTED_AUDIO.md` is the index.
-> - **The app speaks both** (its own words in `i18n/`, the stories' texts), picked in the parents area, the device's language until then (§3.1).
+> - **The app speaks both** (its own words in `i18n/`, the stories' texts), picked in the parents area, Spanish until then (for now, whatever the device speaks; 2026-11-27) (§3.1).
 >
 > **Updated 2026-11-23 (later):**
 > - **The app is called Tale Time.** Package and app id `com.nicolasguillen.taletime`, Firebase project `tale-time-b537d`.
@@ -95,13 +95,13 @@ Parents area (behind a parental gate): language (English or Latin American Spani
 
 ### 3.2 A page
 
-1. The illustration fills the top of the screen (phone, portrait) or most of it (tablet, landscape), with a slow pan and zoom so it feels alive. It always takes more room than the text: it's shown as large as its middle 80% allows (where the main action is), and the text sits in a window a few lines tall.
+1. The illustration fills the top of the screen in portrait and the left of it in landscape, edge to edge and under the system bars, with a slow zoom that stays inside the picture so it feels alive. Its edge toward the text melts into the paper, so the picture and the words read as one page (2026-11-26). It's shown as large as its middle 80% allows (where the main action is), and the text takes the room left, in a window as many lines tall as fit.
 2. The narration starts and the paragraph appears **word by word as it's read**, below or beside the picture, which helps early readers follow along. Without narration, the words come at the narrator's pace for the age band (`voice.json`), with a breath after each sentence. When the words reach the bottom of the window, the text slides up and the oldest line fades away. Tapping a word replays it (later).
-3. On a **plain page**, a big "next" arrow pulses once the last word is there. In auto mode the page turns by itself.
+3. On a **plain page**, nothing pulls the eye from the words while it's read; once the last word is there (and the narrator has said it), the page's **bottom-right corner folds up**, showing the next page beneath it, with a white arrow on the fold. A tap on the corner, or a drag, lifts the whole page like paper and uncovers the next one (2026-11-26, [docs/page-turn.md](docs/page-turn.md)). In auto mode the page turns by itself.
 4. On a **fork**, the narrator asks the question ("Should Mia follow the fox… or cross the stepping stones?") and the two **choice cards** slide in. Each card is an illustration plus a short label. **One tap on a card picks it** (decided 2026-11-23: a second tap to confirm wasn't child friendly).
-5. A page-turn animation and sound, then the next page.
+5. Picking a card is the magic moment: the card glows and sparkles, and the book flips through a few glowing pages by itself to the new page. A fork's cards and an ending's "The End" rise on the same page once its text is read; there's no corner to turn there. A page-turn sound (later) would be a clip the user delivers.
 
-**Back and next arrows** sit at the bottom corners like a book's: back goes one page back, and back across a fork opens its cards again. A sunny **home** button in the top corner goes back to the shelf. No punishment, no timers.
+**No going back a page:** forward, and "Try another path" at an ending. A small, see-through **home** button in the top corner goes back to the shelf, even during a turn. No punishment, no timers.
 
 ### 3.3 Replay
 
@@ -390,11 +390,11 @@ story/          pure Kotlin (stdlib + kotlinx.serialization): the model, StoryEn
 domain/         Catalog, StoryLibrary, ProgressRepository, SettingsRepository (interfaces)
 data/           HostedStoryLibrary (catalog, downloads, cache), Room, DataStore
 platform/       NarrationPlayer, file paths
-designsystem/   colors, type (with the early-reader font), page-turn transition, choice card
+designsystem/   colors, type (with the early-reader font), buttons, choice card
 feature/
   shelf/        the bookshelf
   cover/        the cover, endings found, story map
-  reader/       pages, narration + highlight, forks, back
+  reader/       pages, narration + highlight, the page turn, forks
   ending/       the ending screen and badge
   parents/      parental gate + parents area
 ```
@@ -402,16 +402,16 @@ feature/
 ### 7.3 Content in the app
 
 - **No story ships inside the app** (decided 2026-11-24). Only a copy of the shelf's titles does, for a first launch offline.
-- The catalog is fetched at every launch online and kept for offline use. A story downloads when a reader picks a language on its cover (the app's own first): its text, its pictures and that language's narration, file by file with checksums, a few at a time, with progress on its cover. Another language can be added later; the story is read in the one picked last. The parents area can delete downloads.
+- The catalog is fetched at every launch online and kept for offline use. A story's cover in the Store shows its ages, its number of endings, its languages' flags and its price, with one button: **Download** (free, or bought) or **Buy forever** (paid, behind the parental gate) (2026-11-25). One download brings the whole story: its pictures, and every language's text and narration, file by file with checksums, a few at a time, with progress on its cover. It's read in the app's language first; the cog on its cover switches to another of its languages, offline. A story downloaded in one language by an older version gets the others at the next launch online. The parents area can delete downloads.
 - Files are named after their contents, so a new version of a story changes its manifest's name in the catalog; the app downloads only the files it doesn't have, switches once all are there, and deletes the old ones at the next launch. Progress carries over because node ids are stable (§4.4). See docs/story-format.md, "Published stories".
 - Size: ~45 WebP images ≈ 10 MB, plus ~5 MB of narration per language, so **about 15 MB per story**.
 - Hosting: Firebase Storage in the project `tale-time-b537d`, bucket `tale-time-b537d.firebasestorage.app` (us-east1). Rules (`backend/storage.rules`, deployed 2026-11-23): single files under `stories/` are public-read, nobody can list the bucket or write through the API. Two folders: `stories/production/` for release builds and `stories/draft/` for debug builds (2026-11-25). No Firebase SDK in the app: downloads are plain HTTPS. At 15 MB per download the egress cost stays small. Cloudflare R2 (no egress fees) is the fallback if it ever doesn't.
 
 ### 7.4 Narration and highlight
 
-Built (2026-11-24). A text without its clip plays without narration: the words appear at the narrator's pace for the age band (`Pacing` in `story/`), and the "next" arrow pulses once the last one is there. A narrated page uses the same reveal, with each word's time from the language's timings and the reading clock read from the player's position every frame, so the words wait whenever the narration does; the arrow pulses once the narrator has said the last word. Without timings for its words (a clip made for an older text), a narrated page reveals at the narrator's pace after the clip's 0.3 s lead.
+Built (2026-11-24). A text without its clip plays without narration: the words appear at the narrator's pace for the age band (`Pacing` in `story/`), and the page's corner folds up once the last one is there. A narrated page uses the same reveal, with each word's time from the language's timings and the reading clock read from the player's position every frame, so the words wait whenever the narration does; the corner folds up once the narrator has said the last word. Without timings for its words (a clip made for an older text), a narrated page reveals at the narrator's pace after the clip's 0.3 s lead.
 
-The whole text is laid out once and the words not said yet are erased while drawing, so there's no text layout work per frame. Narration pauses when the app goes to the background and stops when the page is left; going back across a fork opens its cards without reading the text again. At a fork, the question is read and then each label, and the card being read lifts a little. In auto mode (later) the page turns about 1.5 s after the clip ends.
+The whole text is laid out once and the words not said yet are erased while drawing, so there's no text layout work per frame. Narration pauses when the app goes to the background and stops when the page is left. A page's words and narration start only once it's in front and lying flat: after a turn, or once the book has flipped to the page a card picked. At a fork, the question is read and then each label, and the card being read lifts a little. In auto mode (later) the page turns about 1.5 s after the clip ends.
 
 ### 7.5 Free and paid stories
 
@@ -508,7 +508,7 @@ The risk is the **content**, not the app: can the pipeline make stories that are
 ### Phase 3: App MVP (offline)
 - [x] Project scaffold from Nim's setup (Gradle, XcodeGen, ktlint, Koin, navigation, Room 3, DataStore, Coil 3 with SVG), plus AGENTS.md and CLAUDE.md
 - [x] `story` engine and its tests (JVM and iOS simulator), on the pipeline's own fixtures and every real story
-- [x] Reader: pages, forks with choice cards (one tap picks), back a page and next arrows, endings with "The End", badge and "Try another path"
+- [x] Reader: pages, forks with choice cards (one tap picks), next arrow, endings with "The End", badge and "Try another path"
 - [x] Reader: the text appears word by word at the narrator's pace in a window a few lines tall, under a picture that takes most of the screen
 - [x] Reader: narration, the words appearing as they're said; fork questions and labels, ending titles and the cover's title read aloud; pauses in the background
 - [x] ~~Bundled content~~ replaced by downloads (2026-11-24); placeholders until pictures arrive
@@ -516,7 +516,7 @@ The risk is the **content**, not the app: can the pipeline make stories that are
 - [x] Progress in Room (path, pages visited, endings found), the endings collection on the cover
 - [x] Free and paid stories in the catalog; locked covers; parental gate; unlock sheet (store not connected yet)
 - [x] Parents area: text size, reset progress, about (AI disclosure, nothing collected)
-- [x] Language: English or Latin American Spanish, picked in the parents area (the device's until then), for the app's own words and the stories; a story not in it yet shows in its first language
+- [x] Language: English or Latin American Spanish, picked in the parents area (Spanish until then, for now), for the app's own words and the stories; a story not in it yet shows in its first language
 - [x] App icon: delivered 2026-11-25 into `content/app/`; `story icons` puts it into both apps (Android adaptive launcher icon, iOS AppIcon)
 - [ ] Try it on a phone and a tablet. First playtest with kids
 
@@ -529,7 +529,8 @@ The risk is the **content**, not the app: can the pipeline make stories that are
 - [ ] Story map
 
 ### Phase 5: Polish and kid-proofing
-- [ ] Page-turn animations, sounds, optional music ducked under the narration
+- [x] Page-turn animations: the folded corner, the turn, a choice's sparkles and riffle (2026-11-26, docs/page-turn.md)
+- [ ] Page-turn sounds, optional music ducked under the narration
 - [ ] Parents area, the rest: narration on/off, auto-advance, downloads, purchases
 - [ ] Tablet layouts in both orientations, accessibility pass, reduced motion
 - [ ] "I read myself" mode with tap-a-word

@@ -515,9 +515,11 @@ def check_languages(folder: Path, story: dict[str, dict], bible: dict | None, sh
 
 # Catalog and app images (repository-wide) ---------------------------------------------------------------------------
 
-def check_catalog(catalog: dict, stories: dict[str, dict | None]) -> list[Issue]:
+def check_catalog(catalog: dict, stories: dict[str, dict | None],
+                  translations: dict[str, dict[str, str]] | None = None) -> list[Issue]:
     """content/catalog.json. `stories` maps every story folder id to its text in every language, as load_story()
-    gives it (None if it has none yet)."""
+    gives it (None if it has none yet); `translations`, each story's translations to their status (draft or
+    approved)."""
     issues = validate(catalog, "catalog.schema.json")
     if issues:
         return issues
@@ -533,6 +535,17 @@ def check_catalog(catalog: dict, stories: dict[str, dict | None]) -> list[Issue]
         elif stories[sid] is None:
             issues.append(Issue(ERROR, "catalog-unwritten", f"'{sid}' has no text yet (story/<lang>.json), so it "
                                                             "can't be on the shelf"))
+        written = list(stories.get(sid) or {})
+        for lang in entry.get("approved", []):
+            if stories.get(sid) is None:
+                break
+            if lang not in written:
+                issues.append(Issue(ERROR, "catalog-approved", f"'{sid}' is approved in '{lang}', a language it isn't "
+                                                               "written in"))
+            elif lang != written[0] and (translations or {}).get(sid, {}).get(lang) != "approved":
+                issues.append(Issue(ERROR, "catalog-approved", f"'{sid}' is approved in '{lang}', but a native "
+                                                               f"speaker hasn't approved that translation yet (its "
+                                                               f"status in translations/{lang}.json)"))
         if entry.get("product"):
             if entry["product"] in products:
                 issues.append(Issue(ERROR, "catalog-product", f"'{sid}' and '{products[entry['product']]}' share the "

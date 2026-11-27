@@ -34,4 +34,16 @@ object TaleColors {
     val SpineShade = Color(0x803A2C24)
     val SpineSheen = Color(0x1AFFFFFF)
     val SpineGroove = Color(0x993A2C24)
+
+    /**
+     * A turning page (docs/page-turn.md): the back of the paper on its flap (a little lighter than [Paper]), the
+     * shadows the flap casts, and the warm light along its fold.
+     */
+    val PageBack = Color(0xFFF9F3E7)
+    val FoldShadow = Color(0xFF281C14)
+    val FoldLight = Color(0xFFFFFCF5)
+
+    /** The sparkles of a choice: amber, its glow, and warm white, with [LanternGold]. */
+    val Amber = Color(0xFFECA030)
+    val Sparkle = Color(0xFFFFFAEB)
 }

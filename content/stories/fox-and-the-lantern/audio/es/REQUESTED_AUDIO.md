@@ -4,8 +4,6 @@
 
 Cada clip de narración que necesita *El zorro y el farolito* en español latinoamericano, con su guion exacto y su indicación de voz. **En este proyecto no se genera audio: ni texto a voz ni modelos de voz, ni en el repositorio ni en el proceso.** Cada clip se graba o se produce fuera del repositorio y se deja en esta carpeta, con el nombre exacto que aparece aquí.
 
-**El texto en español latinoamericano es un borrador:** falta que una persona nativa lea todos los caminos (el `review.md` del cuento). Grábalo cuando la traducción esté aprobada (`"status": "approved"` en `translations/es.json`), para no tener que hacer ningún clip dos veces.
-
 Este archivo se genera solo. Para cambiar un pedido, edita el `story/es.json` de este cuento (las palabras), `translations/es.json` (nombres, estribillos, personalidades y ánimo de cada página en español latinoamericano), o `content/style/voice.json` (la voz), y luego ejecuta `cd tools && uv run story assets`. Vuelve a ejecutarlo después de entregar archivos y los ⬜ pasan a ✅. Las ilustraciones, las mismas en todos los idiomas, se piden en [REQUESTED_ASSETS.md](../../REQUESTED_ASSETS.md); todos los cuentos e idiomas están en el [índice](../../../../../REQUESTED_AUDIO.md).
 
 | Título | Páginas | Preguntas | Opciones | Títulos de final | Total |

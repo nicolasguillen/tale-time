@@ -14,9 +14,9 @@ plugins {
 /**
  * Builds the app's resources folder: the static resources in `src/commonMain/appResources/` (fonts, licenses), the
  * static placeholders from `content/placeholders/`, and `files/shelf.json`, the shelf the app shows until it has been
- * online once: every story in `content/catalog.json`, in order, with its access and its title in its first language and
- * each approved translation. No story ships inside the app: a reader downloads each one in the language they pick
- * (data/HostedStoryLibrary.kt), and the catalog fetched at launch replaces this copy (plan.md §7.3).
+ * online once: every story in `content/catalog.json`, in order, with its access, its age band, how many endings it has
+ * and its title in its first language and each approved translation. No story ships inside the app: a reader downloads
+ * each one (data/HostedStoryLibrary.kt), and the catalog fetched at launch replaces this copy (plan.md §7.3).
  */
 abstract class BundleContent : DefaultTask() {
     @get:InputDirectory
@@ -59,9 +59,13 @@ abstract class BundleContent : DefaultTask() {
                     }
                 // The first language first, as in the published catalog.
                 val ordered = approved.sortedBy { if (it["translatedFrom"] == null) 0 else 1 }
+
+                @Suppress("UNCHECKED_CAST")
+                val nodes = (ordered.firstOrNull()?.get("nodes") as Map<String, Map<String, Any?>>?).orEmpty()
                 entry.filterKeys { it in listOf("id", "access", "product") } +
                     mapOf(
                         "ageBand" to ordered.firstOrNull()?.get("ageBand"),
+                        "endings" to nodes.values.count { it["ending"] != null },
                         "title" to ordered.associate { it["language"] to it["title"] },
                     )
             }

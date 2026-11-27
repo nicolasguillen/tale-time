@@ -1,6 +1,7 @@
 package com.nicolasguillen.taletime.platform
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.os.Build
 import androidx.datastore.core.DataStore
@@ -17,7 +18,6 @@ import io.ktor.client.plugins.HttpTimeout
 import okio.Path.Companion.toOkioPath
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import java.util.Locale
 
 actual val platformModule =
     module {
@@ -49,10 +49,26 @@ actual val platformModule =
                 version = appVersion(context),
             )
         }
+        // An agent's switches come with the intent that launched the app (MainActivity), only in a debug build.
+        single { if (get<BuildInfo>().debug) launchedWith else AgentFlags() }
     }
 
-/** The device's language, from Android's system settings. */
-actual fun deviceLanguage(): String = Locale.getDefault().toLanguageTag()
+/** The switches in the intent that launched the app: see [takeAgentFlags]. */
+private var launchedWith = AgentFlags()
+
+/**
+ * Takes an agent's switches ([AgentFlags]) from the intent that launched the app, before anything reads them. Launch
+ * with `-S`, so the app starts afresh with them: `adb shell am start -S -n com.nicolasguillen.taletime/.MainActivity
+ * --ez skipReading true --ez autoTurn true --es openStory fox-and-the-lantern`.
+ */
+fun takeAgentFlags(intent: Intent) {
+    launchedWith =
+        AgentFlags(
+            skipReading = intent.getBooleanExtra("skipReading", false),
+            openStory = intent.getStringExtra("openStory"),
+            autoTurn = intent.getBooleanExtra("autoTurn", false),
+        )
+}
 
 /** "1.0 (6)": versionName and versionCode. */
 private fun appVersion(context: Context): String {

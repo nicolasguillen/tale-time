@@ -25,12 +25,13 @@
     "story": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "access", "ageBand", "title", "languages", "manifest"],
+      "required": ["id", "access", "ageBand", "endings", "title", "languages", "manifest"],
       "properties": {
         "id": { "$ref": "#/$defs/slug" },
         "access": { "enum": ["free", "paid"] },
         "product": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_.]{0,99}$" },
         "ageBand": { "enum": ["3-5", "4-7", "7-10"] },
+        "endings": { "type": "integer", "minimum": 1, "description": "How many endings the story has, shown on its cover before it's downloaded." },
         "title": {
           "type": "object",
           "description": "The title in every language the story is published in.",
@@ -40,7 +41,7 @@
         },
         "languages": {
           "type": "object",
-          "description": "Every language a reader can download, the story's first language first.",
+          "description": "Every language the story is published in, the story's first language first. A download brings them all.",
           "propertyNames": { "$ref": "#/$defs/lang" },
           "additionalProperties": {
             "type": "object",

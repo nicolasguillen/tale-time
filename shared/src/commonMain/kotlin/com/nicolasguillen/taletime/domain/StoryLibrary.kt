@@ -35,7 +35,7 @@ class StoryBundle(
  * A story on the device.
  *
  * @property manifest the manifest its files match (a file name in its folder).
- * @property languages the languages downloaded: each one's text and narration.
+ * @property languages the languages downloaded, each one's text and narration: every one it's published in.
  * @property reading the language it's read in, the one picked last.
  */
 @Serializable
@@ -45,7 +45,7 @@ data class Installed(
     val reading: String,
 )
 
-/** A download a reader started, while it runs or after it failed. */
+/** A download a reader started, while it runs or after it failed. [language] is the one it's to be read in. */
 sealed interface Download {
     val language: String
 
@@ -55,7 +55,7 @@ sealed interface Download {
         val fraction: Float = 0f,
     ) : Download
 
-    /** It stopped: offline, or the host didn't answer. Picking a language again retries. */
+    /** It stopped: offline, or the host didn't answer. Downloading again retries. */
     data class Failed(
         override val language: String,
     ) : Download
@@ -80,21 +80,22 @@ data class Library(
 )
 
 /**
- * Where the stories come from: the content host. The shelf lists every story; a story is downloaded when a reader
- * picks a language for it, kept on the device to read offline, and brought up to date by [refresh].
+ * Where the stories come from: the content host. The shelf lists every story; a story is downloaded whole, in every
+ * language it's published in, kept on the device to read offline (in any of them), and brought up to date by [refresh].
  */
 interface StoryLibrary {
     val state: StateFlow<Library>
 
     /**
-     * Fetches the catalog and brings every downloaded story up to date: when a story's manifest changed, downloads the
-     * files it doesn't have yet. Offline, it does nothing and the stories on the device stay as they are.
+     * Fetches the catalog and brings every downloaded story up to date: when a story's manifest changed, or it's
+     * published in a language the device doesn't have, downloads the files it doesn't have yet. Offline, it does
+     * nothing and the stories on the device stay as they are.
      */
     suspend fun refresh()
 
     /**
-     * Downloads [storyId] in [language] in the background ([state] shows how far it is) and reads it in that language
-     * from then on. A language already downloaded is only switched to.
+     * Downloads [storyId] in the background, in every language it's published in ([state] shows how far it is), and
+     * reads it in [language] from then on. A story on the device in [language] already only switches to it.
      */
     fun download(
         storyId: String,

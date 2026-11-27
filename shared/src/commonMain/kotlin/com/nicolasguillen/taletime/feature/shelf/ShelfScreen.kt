@@ -306,7 +306,6 @@ private fun BookOnShelf(
         modifier
             .squish(interaction)
             .clickable(interactionSource = interaction, indication = null, role = Role.Button, onClick = onClick),
-        downloadArrow = false,
     )
 }
 
@@ -337,19 +336,18 @@ val BOOK_ASPECT = ImageKind.COVER.aspect * (1 + SPINE)
 /**
  * A book: a hardcover with its spine on the left, beside the cover so the cover's picture stays whole, and its title
  * drawn over the calm bottom quarter of the cover (covers have no text in them). A badge in its corner shows a lock
- * while the book is paid and not bought, a ring that fills while it downloads, and, with [downloadArrow], an arrow until
- * it's downloaded. The title grows with the cover, so it reads as the book's title on the big cover too.
+ * while the book is paid and not bought, and a ring that fills while it downloads. The title grows with the cover, so it
+ * reads as the book's title on the big cover too.
  */
 @Composable
 fun BookCover(
     book: Book,
     modifier: Modifier = Modifier,
-    downloadArrow: Boolean = true,
 ) {
     val shape = RoundedCornerShape(topStart = 4.dp, bottomStart = 4.dp, topEnd = 10.dp, bottomEnd = 10.dp)
     Row(modifier.aspectRatio(BOOK_ASPECT).shadow(6.dp, shape).clip(shape)) {
         Spine(Modifier.weight(SPINE).fillMaxHeight())
-        Cover(book, downloadArrow, Modifier.weight(1f).fillMaxHeight())
+        Cover(book, Modifier.weight(1f).fillMaxHeight())
     }
 }
 
@@ -392,7 +390,6 @@ private fun Spine(modifier: Modifier) {
 @Composable
 private fun Cover(
     book: Book,
-    downloadArrow: Boolean,
     modifier: Modifier,
 ) {
     val strings = LocalStrings.current
@@ -442,17 +439,6 @@ private fun Cover(
                         trackColor = TaleColors.Line,
                         strokeWidth = 5.dp,
                         modifier = Modifier.fillMaxSize().padding(6.dp),
-                    )
-                }
-            }
-
-            downloadArrow && !book.downloaded -> {
-                Badge(corner, TaleColors.NightBlue) {
-                    Icon(
-                        TaleIcons.Download,
-                        contentDescription = strings.notDownloaded,
-                        tint = TaleColors.Cream,
-                        modifier = Modifier.size(badge * 0.55f),
                     )
                 }
             }

@@ -59,30 +59,21 @@ class LocalStorageTest {
     @Test
     fun settingsAreKept() =
         runTest {
-            val settings =
-                DataStoreSettingsRepository(createPreferencesDataStore(settingsPath, backgroundScope), deviceLanguage = { "en-US" })
+            val settings = DataStoreSettingsRepository(createPreferencesDataStore(settingsPath, backgroundScope))
             assertEquals(Settings(), settings.settings.first())
             settings.update { it.copy(textSize = TextSize.LARGE) }
             assertEquals(TextSize.LARGE, settings.settings.first().textSize)
-            settings.update { it.copy(language = Language.SPANISH) }
-            assertEquals(Language.SPANISH, settings.settings.first().language)
+            settings.update { it.copy(language = Language.ENGLISH) }
+            assertEquals(Language.ENGLISH, settings.settings.first().language)
         }
 
     @Test
-    fun theDevicesLanguageIsTheDefaultUntilAGrownUpPicksOne() =
+    fun spanishIsTheLanguageUntilAGrownUpPicksOne() =
         runTest {
-            var device = "es-MX"
-            val settings =
-                DataStoreSettingsRepository(createPreferencesDataStore(settingsPath, backgroundScope), deviceLanguage = { device })
+            val settings = DataStoreSettingsRepository(createPreferencesDataStore(settingsPath, backgroundScope))
             assertEquals(Language.SPANISH, settings.settings.first().language)
-            settings.update { it.copy(textSize = TextSize.SMALL) }
-            device = "fr-FR"
-            // Changing the text size didn't turn the device's language into a pick; French isn't spoken, so English.
-            settings.update { it.copy(textSize = TextSize.LARGE) }
-            assertEquals(Language.ENGLISH, settings.settings.first().language)
-            settings.update { it.copy(language = Language.SPANISH) }
-            device = "en-GB"
+            settings.update { it.copy(language = Language.ENGLISH) }
             settings.update { it.copy(textSize = TextSize.MEDIUM) }
-            assertEquals(Language.SPANISH, settings.settings.first().language, "a grown-up's pick stays")
+            assertEquals(Language.ENGLISH, settings.settings.first().language, "a grown-up's pick stays")
         }
 }

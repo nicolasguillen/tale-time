@@ -10,6 +10,7 @@
 		22EA1CB33A17DCC6FC82406D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F543015C899423D4B01CEB2E /* Assets.xcassets */; };
 		307C2654CD5972A25FB7FD87 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668CECA83ACC03A83C85A623 /* iOSApp.swift */; };
 		56B0305B5D3847FC6B326502 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8509E5A49E4A5CAAEB3ADB /* ContentView.swift */; };
+		69A523BB928F28A36A0C2741 /* PageTurnPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4E091B3E5099EC3C08E50 /* PageTurnPerformanceTests.swift */; };
 		9E0F2FDF32013921354F1431 /* WalkthroughTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED572D1C8BC53BDD21645D /* WalkthroughTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		323906AFB18147ABEDEBDB38 /* iosAppUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = iosAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		668CECA83ACC03A83C85A623 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		86038AE1032E284E79B32AD6 /* iosApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8C4E091B3E5099EC3C08E50 /* PageTurnPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurnPerformanceTests.swift; sourceTree = "<group>"; };
 		C117AD187833E2513BD2F553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE8509E5A49E4A5CAAEB3ADB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F543015C899423D4B01CEB2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		FC16215C5E8EEAF655CB992F /* iosAppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A8C4E091B3E5099EC3C08E50 /* PageTurnPerformanceTests.swift */,
 				21ED572D1C8BC53BDD21645D /* WalkthroughTests.swift */,
 			);
 			path = iosAppUITests;
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A523BB928F28A36A0C2741 /* PageTurnPerformanceTests.swift in Sources */,
 				9E0F2FDF32013921354F1431 /* WalkthroughTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

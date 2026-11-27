@@ -1,3 +1,4 @@
+import json
 import shutil
 
 from storytool import audio, repo
@@ -37,8 +38,17 @@ def test_every_clip_and_every_text_is_requested():
     assert "text-to-speech" in text  # says plainly that nothing is generated
 
 
-def test_each_language_is_requested_in_that_language():
-    text = audio.render_story(audio.Story(FOX), "es")
+def fox_with_spanish(tmp_path, status):
+    """A copy of the fox story (no pictures, no clips) whose Spanish translation is `status`."""
+    folder = tmp_path / "fox"
+    shutil.copytree(FOX, folder, ignore=shutil.ignore_patterns("images", "audio"))
+    sheet = folder / "translations" / "es.json"
+    sheet.write_text(json.dumps({**load_json(sheet), "status": status}, ensure_ascii=False))
+    return folder
+
+
+def test_each_language_is_requested_in_that_language(tmp_path):
+    text = audio.render_story(audio.Story(fox_with_spanish(tmp_path, "draft")), "es")
     for clip in audio.clips(load_json(FOX / "story" / "es.json")):
         assert clip.script.splitlines()[0] in text
     assert "# Narración solicitada: El zorro y el farolito (español latinoamericano)" in text
@@ -51,6 +61,8 @@ def test_each_language_is_requested_in_that_language():
     assert "**El texto en español latinoamericano es un borrador:**" in text  # draft until a native read-through
     for word in ("Direction", "Script", "Mood", "Who's in it", "The page text"):
         assert word not in text  # nothing left in English
+    approved = audio.render_story(audio.Story(fox_with_spanish(tmp_path / "approved", "approved")), "es")
+    assert "es un borrador" not in approved
 
 
 def test_every_language_has_the_same_wording():
@@ -65,8 +77,7 @@ def test_spanish_numbers_group_from_five_digits():
 
 
 def test_a_delivered_clip_turns_green(tmp_path):
-    folder = tmp_path / "fox"
-    shutil.copytree(FOX, folder, ignore=shutil.ignore_patterns("images", "audio"))
+    folder = fox_with_spanish(tmp_path, "draft")
     (folder / "audio" / "en").mkdir(parents=True)
     (folder / "audio" / "en" / "title.wav").write_bytes(b"")
     story = audio.Story(folder)

@@ -9,6 +9,7 @@ import com.nicolasguillen.taletime.fakes.FakeProgress
 import com.nicolasguillen.taletime.fakes.FakePurchases
 import com.nicolasguillen.taletime.fakes.clipPath
 import com.nicolasguillen.taletime.fakes.tinyLibrary
+import com.nicolasguillen.taletime.feature.shelf.Price
 import com.nicolasguillen.taletime.story.Step
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -121,37 +122,52 @@ class CoverViewModelTest {
     }
 
     @Test
-    fun aBookNotDownloadedYetDownloadsInTheLanguagePicked() {
+    fun aBookNotDownloadedYetDownloadsEveryLanguageAndReadsTheOnePicked() {
         val library = tinyLibrary(downloaded = emptyList())
         val vm = CoverViewModel("tiny", library, UnavailablePurchases(), progress, FakeNarrationPlayer())
-        assertFalse(
-            vm.state.value.book!!
-                .downloaded,
-        )
+        val before = vm.state.value.book!!
+        assertFalse(before.downloaded)
+        assertEquals(2, before.endingCount, "the catalog says how many endings, before it's downloaded")
+        assertEquals(listOf("en", "es"), before.languages)
         vm.onEvent(CoverEvent.Download("es"))
         assertEquals(listOf("tiny" to "es"), library.downloaded)
         val book = vm.state.value.book!!
         assertTrue(book.downloaded)
+        assertEquals(listOf("en", "es"), book.bundle!!.story.languages, "one download for every language")
         assertEquals("es", book.bundle?.reading)
         assertEquals("Chiquito", book.title("en"), "read in the language picked, whatever the app speaks")
     }
 
     @Test
-    fun pickingAnotherLanguageOfADownloadedBookReadsItInThatOne() {
-        val library = tinyLibrary(downloaded = listOf("en"))
+    fun theCogReadsADownloadedBookInAnotherOfItsLanguages() {
+        val library = tinyLibrary(downloaded = listOf("en", "es"))
         val vm = CoverViewModel("tiny", library, UnavailablePurchases(), progress, FakeNarrationPlayer())
         vm.onEvent(CoverEvent.Download("es"))
-        assertEquals(
-            listOf("en", "es"),
-            vm.state.value.book!!
-                .bundle!!
-                .story.languages,
-        )
         assertEquals(
             "es",
             vm.state.value.book!!
                 .bundle!!
                 .reading,
+        )
+    }
+
+    @Test
+    fun theCoverShowsWhatTheBookCostsUntilItIsBought() {
+        assertEquals(
+            Price.Free,
+            CoverViewModel("tiny", tinyLibrary(downloaded = emptyList()), UnavailablePurchases(), progress, FakeNarrationPlayer())
+                .state.value.price,
+        )
+        val purchases = FakePurchases(prices = mapOf("story.tiny" to "CHF 3.00"))
+        val paid = tinyLibrary(access = "paid", downloaded = emptyList())
+        val vm = CoverViewModel("tiny", paid, purchases, progress, FakeNarrationPlayer())
+        assertEquals(Price.Paid("CHF 3.00"), vm.state.value.price)
+        vm.onEvent(CoverEvent.OpenUnlock)
+        vm.onEvent(CoverEvent.Buy)
+        assertNull(vm.state.value.price, "bought: nothing to pay")
+        assertNull(
+            CoverViewModel("tiny", paid, UnavailablePurchases(), progress, FakeNarrationPlayer()).state.value.price,
+            "no price without the store",
         )
     }
 
@@ -207,13 +223,35 @@ class CoverViewModelTest {
     }
 
     @Test
-    fun theTitleStopsWhenTheCoverIsLeft() {
+    fun theTitleStopsWhenTheBookOpens() {
         val player = FakeNarrationPlayer()
         val vm = CoverViewModel("tiny", tinyLibrary(clips = mapOf("en" to listOf("title"))), UnavailablePurchases(), progress, player)
         main.scheduler.advanceUntilIdle()
         assertEquals(clipPath("en", "title"), player.playing)
+        vm.onEvent(CoverEvent.OpenBook)
         vm.onEvent(CoverEvent.Hidden)
         assertNull(player.playing)
+        // Back from the book: the title isn't read again.
+        vm.onEvent(CoverEvent.Shown)
+        main.scheduler.advanceUntilIdle()
+        assertNull(player.playing)
+        assertEquals(1, player.played.size)
+    }
+
+    @Test
+    fun theTitleGoesOnAfterTheScreenTurns() {
+        val player = FakeNarrationPlayer()
+        val vm = CoverViewModel("tiny", tinyLibrary(clips = mapOf("en" to listOf("title"))), UnavailablePurchases(), progress, player)
+        main.scheduler.advanceUntilIdle()
+        // Turning the screen hides the cover for a moment: the title pauses where it is, then goes on.
+        vm.onEvent(CoverEvent.Hidden)
+        assertTrue(player.paused)
+        assertEquals(clipPath("en", "title"), player.playing)
+        vm.onEvent(CoverEvent.Shown)
+        main.scheduler.advanceUntilIdle()
+        assertFalse(player.paused)
+        assertEquals(clipPath("en", "title"), player.playing)
+        assertEquals(1, player.played.size, "the title goes on, it doesn't start over")
     }
 
     @Test

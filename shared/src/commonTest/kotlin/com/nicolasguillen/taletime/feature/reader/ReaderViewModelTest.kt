@@ -41,15 +41,15 @@ class ReaderViewModelTest {
     fun setUp() = Dispatchers.setMain(main)
 
     /**
-     * The tiny story read aloud in English: its first page with its timings, the fork's question and labels, and the
-     * silly ending's title. The fork's own text has no clip yet.
+     * The tiny story read aloud in English: its first page with its timings, the fork's question and labels, the page
+     * behind the blue door and the silly ending's title. The fork's own text has no clip yet.
      */
     private fun narrated(timings: Boolean = true) =
         ReaderViewModel(
             "tiny",
             true,
             tinyLibrary(
-                clips = mapOf("en" to listOf("title", "p1", "f1-q", "f1-a", "f1-b", "e1-end")),
+                clips = mapOf("en" to listOf("title", "p1", "f1-q", "f1-a", "f1-b", "p2", "e1-end")),
                 timings =
                     if (timings) {
                         mapOf("en" to mapOf("p1" to listOf(WordTime(310, 640), WordTime(650, 890), WordTime(900, 1_300))))
@@ -79,7 +79,6 @@ class ReaderViewModelTest {
         assertEquals("Pip woke up.", vm.page.text)
         assertEquals("/library/stories/tiny/p1-0123456789.webp", vm.page.image)
         assertEquals("Tiny", vm.state.value.title)
-        assertFalse(vm.state.value.canGoBack)
         vm.onEvent(ReaderEvent.Next)
         assertEquals("f1", vm.page.nodeId)
         assertNull(vm.page.image, "not delivered: the placeholder shows")
@@ -114,26 +113,94 @@ class ReaderViewModelTest {
     }
 
     @Test
-    fun backGoesOnePageBackLikeABook() {
+    fun skippingTheReadingShowsEveryWordAtOnceAndReadsNothingAloud() {
+        val vm =
+            ReaderViewModel(
+                "tiny",
+                true,
+                tinyLibrary(clips = mapOf("en" to listOf("title", "p1", "f1-q", "f1-a", "f1-b", "p2", "e1-end"))),
+                progress,
+                settings,
+                player,
+                skipReading = true,
+            )
+        breathe()
+        assertEquals(List(3) { SKIPPED_WORD_MILLIS }, vm.page.words.map { it.atMillis })
+        assertFalse(vm.page.narrated)
+        assertNull(vm.page.spokenUntilMillis)
+        assertNull(vm.narrationMillis("p1"), "the page keeps its own clock")
+        val upcoming = vm.state.value.upcoming!!
+        assertTrue(upcoming.words.all { it.atMillis == SKIPPED_WORD_MILLIS })
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.Next)
+        breathe()
+        assertEquals(Phase.CHOICE, vm.state.value.phase)
+        assertNull(vm.state.value.readingChoice)
+        assertEquals(emptyList(), player.played)
+    }
+
+    @Test
+    fun theNextPageIsLaidOutBeneathAPlainPageOnly() {
+        val vm = reader()
+        val upcoming = vm.state.value.upcoming!!
+        assertEquals("f1", upcoming.nodeId)
+        assertEquals("Pip saw two doors.", upcoming.text)
+        assertEquals(listOf("Pip", "saw", "two", "doors."), upcoming.words.map { upcoming.text.substring(it.start, it.end) })
+        assertTrue(vm.page.plain)
+
+        vm.onEvent(ReaderEvent.Next)
+        assertEquals(upcoming, vm.page, "the page beneath is the page now, as it was laid out")
+        assertFalse(vm.page.plain)
+        assertNull(vm.state.value.upcoming, "a fork's cards rise on the same page")
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.TapChoice(1))
+        assertEquals(
+            "e2",
+            vm.state.value.upcoming!!
+                .nodeId,
+        )
+        vm.onEvent(ReaderEvent.Landed)
+        vm.onEvent(ReaderEvent.Next)
+        assertEquals("e2", vm.page.nodeId)
+        assertFalse(vm.page.plain)
+        assertNull(vm.state.value.upcoming, "nothing beneath an ending")
+    }
+
+    @Test
+    fun aChoiceIsSavedAtOnceButNothingIsReadUntilTheNewPageHasLanded() {
+        val vm = narrated()
+        vm.onEvent(ReaderEvent.Next)
+        vm.onEvent(ReaderEvent.Next)
+        breathe()
+        assertEquals(clipPath("en", "f1-q"), player.playing)
+        assertFalse(vm.state.value.landing)
+
+        vm.onEvent(ReaderEvent.TapChoice(1))
+        assertEquals("p2", vm.page.nodeId)
+        assertTrue(vm.state.value.landing)
+        assertEquals(listOf(Step("p1"), Step("f1", 1), Step("p2")), progress.state.value["tiny"]?.path, "saved at once")
+        breathe()
+        assertNull(player.playing, "the question stops, and the new page waits")
+        assertEquals(0L, vm.narrationMillis("p2"), "its words wait too")
+        assertFalse(clipPath("en", "p2") in player.played)
+
+        vm.onEvent(ReaderEvent.Landed)
+        assertFalse(vm.state.value.landing)
+        breathe()
+        assertEquals(clipPath("en", "p2"), player.playing)
+        vm.onEvent(ReaderEvent.Landed) // a second one changes nothing
+        assertEquals(clipPath("en", "p2"), player.playing)
+    }
+
+    @Test
+    fun aPageWithoutItsClipWaitsWhileItLandsThenKeepsItsOwnClock() {
         val vm = reader()
         vm.onEvent(ReaderEvent.Next)
         vm.onEvent(ReaderEvent.Next)
-        assertTrue(vm.state.value.canGoBack)
-        vm.onEvent(ReaderEvent.TapChoice(1))
-        assertEquals("p2", vm.page.nodeId)
-
-        vm.onEvent(ReaderEvent.Previous)
-        assertEquals("f1", vm.page.nodeId)
-        assertEquals(Phase.CHOICE, vm.state.value.phase, "back across a fork: its cards are out again")
-        vm.onEvent(ReaderEvent.Previous)
-        assertEquals("f1", vm.page.nodeId)
-        assertEquals(Phase.TEXT, vm.state.value.phase)
-        vm.onEvent(ReaderEvent.Previous)
-        assertEquals("p1", vm.page.nodeId)
-        assertFalse(vm.state.value.canGoBack)
-        vm.onEvent(ReaderEvent.Previous)
-        assertEquals("p1", vm.page.nodeId)
-        assertEquals(listOf(Step("p1")), progress.state.value["tiny"]?.path)
+        vm.onEvent(ReaderEvent.TapChoice(0))
+        assertEquals(0L, vm.narrationMillis("e1"))
+        vm.onEvent(ReaderEvent.Landed)
+        assertNull(vm.narrationMillis("e1"))
     }
 
     @Test
@@ -286,11 +353,6 @@ class ReaderViewModelTest {
         player.finish()
         assertNull(player.playing)
         assertNull(vm.state.value.readingChoice)
-
-        // Back to the fork's text: it's all there, and it isn't read again.
-        vm.onEvent(ReaderEvent.Previous)
-        breathe()
-        assertEquals(Phase.TEXT, vm.state.value.phase)
         // The first page's clip never started: the page was turned during its breath.
         assertEquals(listOf("f1-q", "f1-a", "f1-b").map { clipPath("en", it) }, player.played)
     }
@@ -302,6 +364,7 @@ class ReaderViewModelTest {
         vm.onEvent(ReaderEvent.Next)
         vm.onEvent(ReaderEvent.TapChoice(0))
         assertEquals("e1", vm.page.nodeId)
+        vm.onEvent(ReaderEvent.Landed)
         vm.onEvent(ReaderEvent.Next)
         assertEquals(Phase.END, vm.state.value.phase)
         breathe()

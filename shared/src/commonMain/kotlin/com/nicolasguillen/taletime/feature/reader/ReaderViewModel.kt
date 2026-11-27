@@ -21,14 +21,20 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
+/**
+ * When a page's words come when an agent skipped the reading (platform/AgentFlags): long before its clock starts, so
+ * every word is there from the start and none fades in.
+ */
+internal const val SKIPPED_WORD_MILLIS = -60_000L
+
 /** A breath before a page's narration starts, while the page fades in (its clip starts with 0.3 s of silence, too). */
 const val NARRATION_BREATH_MILLIS = 400L
 
 /**
  * What's on screen for the current page.
- * - [TEXT]: the picture and the page text, word by word, with the "next" arrow.
- * - [CHOICE]: a fork's question and its two cards (they slide in after its text).
- * - [END]: "The End", the ending's badge and where to go next.
+ * - [TEXT]: the picture and the page text, word by word. Once a plain page is read, its corner folds up to turn it.
+ * - [CHOICE]: a fork's question and its two cards (they rise on the same page once its text is read).
+ * - [END]: "The End", the ending's badge and where to go next (they rise once the ending's text is read).
  */
 enum class Phase { TEXT, CHOICE, END }
 
@@ -53,7 +59,13 @@ data class ReaderPage(
     val choices: List<Choice> = emptyList(),
     val endingTitle: String? = null,
     val endingKind: EndingKind? = null,
-)
+) {
+    /**
+     * A plain page: it turns from its folded corner. On a fork or an ending what comes next rises on the same page
+     * (docs/page-turn.md §5).
+     */
+    val plain: Boolean get() = question == null && endingKind == null
+}
 
 data class ReaderUiState(
     val loading: Boolean = true,
@@ -61,8 +73,16 @@ data class ReaderUiState(
     val title: String = "",
     val page: ReaderPage? = null,
     val phase: Phase = Phase.TEXT,
-    /** There's a page (or a fork's text) to go back to with the "back" arrow. */
-    val canGoBack: Boolean = false,
+    /**
+     * What the next page shows, laid out beneath the folded corner so turning uncovers it: what [ReaderEvent.Next]
+     * would show from a plain page. Null on a fork or an ending.
+     */
+    val upcoming: ReaderPage? = null,
+    /**
+     * A card was just picked and the book is flipping by itself to the new [page], which waits (no words, nothing read
+     * aloud) until the screen says it has landed ([ReaderEvent.Landed]).
+     */
+    val landing: Boolean = false,
     val endingsFound: Int = 0,
     val endingsTotal: Int = 0,
     /** This ending wasn't found before this play-through. */
@@ -73,16 +93,19 @@ data class ReaderUiState(
 )
 
 sealed interface ReaderEvent {
-    /** The "next" arrow: turns a page, opens a fork's cards, or shows an ending's "The End". */
+    /**
+     * A plain page has turned (the screen sends it once the turn is over), or a fork's text or an ending's text is read
+     * and its cards or "The End" rise.
+     */
     data object Next : ReaderEvent
 
-    /** One tap on a card picks it. */
+    /** One tap on a card picks it: the path is saved at once, and the new page waits until it has [Landed]. */
     data class TapChoice(
         val index: Int,
     ) : ReaderEvent
 
-    /** The "back" arrow: one page back, like a book. From a fork's cards, back to its text. */
-    data object Previous : ReaderEvent
+    /** The book has flipped to the page a card picked: its words and its narration can start. */
+    data object Landed : ReaderEvent
 
     /** "Try another path" on the ending screen: back to the last fork, with its cards out. */
     data object TryAnotherPath : ReaderEvent
@@ -99,7 +122,7 @@ private enum class Voice { WAITING, READING, DONE }
 
 /**
  * Reads one story: the path so far lives in a [Reading], and every move is saved so the child can come back to the
- * same page.
+ * same page. There's no going back a page: forward, and "Try another path" at an ending.
  *
  * Everything with a delivered clip is read aloud (plan.md §3.2): a page's text, as its words appear; a fork's
  * question, then its two labels, as its cards come out; an ending's title under "The End". The page's words come as
@@ -111,6 +134,8 @@ private enum class Voice { WAITING, READING, DONE }
  * id, the same in every language, so picking another language keeps the place.
  *
  * @param restart start from the first page even if there's a saved path ("Read" / "Start over" on the cover).
+ * @param skipReading an agent testing the page turn asked for it (platform/AgentFlags): every page has all its words
+ *   at once and nothing is read aloud.
  */
 class ReaderViewModel(
     private val storyId: String,
@@ -119,6 +144,7 @@ class ReaderViewModel(
     private val progress: ProgressRepository,
     private val settings: SettingsRepository,
     private val player: NarrationPlayer,
+    private val skipReading: Boolean = false,
 ) : StateViewModel<ReaderUiState, ReaderEvent>(ReaderUiState()) {
     private var bundle: StoryBundle? = null
     private var reading: Reading? = null
@@ -157,6 +183,8 @@ class ReaderViewModel(
      * aloud (no clip, or its clip couldn't play), or it's no longer the page on screen.
      */
     fun narrationMillis(nodeId: String): Long? {
+        // The page a card picked waits while the book flips to it.
+        if (currentState.landing && nodeId == currentState.page?.nodeId) return 0
         if (nodeId != voiceNode) return null
         return when (voice) {
             Voice.WAITING -> 0
@@ -182,7 +210,7 @@ class ReaderViewModel(
 
                     is Fork -> {
                         if (currentState.phase == Phase.TEXT) {
-                            setState { copy(phase = Phase.CHOICE, canGoBack = true) }
+                            setState { copy(phase = Phase.CHOICE) }
                             narrate(node, Phase.CHOICE)
                         }
                     }
@@ -198,21 +226,13 @@ class ReaderViewModel(
 
             is ReaderEvent.TapChoice -> {
                 if (reading.current !is Fork || currentState.phase != Phase.CHOICE) return
-                show(reading.choose(event.index), Phase.TEXT)
+                show(reading.choose(event.index), Phase.TEXT, landing = true)
             }
 
-            ReaderEvent.Previous -> {
-                when {
-                    // Back to the text, all there already: it isn't read again.
-                    currentState.phase != Phase.TEXT -> {
-                        setState { copy(phase = Phase.TEXT, canGoBack = reading.canGoBack) }
-                        hush()
-                    }
-
-                    reading.canGoBack -> {
-                        reading.previous().let { show(it, if (it.current is Fork) Phase.CHOICE else Phase.TEXT) }
-                    }
-                }
+            ReaderEvent.Landed -> {
+                if (!currentState.landing) return
+                setState { copy(landing = false) }
+                narrate(reading.current, currentState.phase)
             }
 
             ReaderEvent.TryAnotherPath -> {
@@ -230,9 +250,11 @@ class ReaderViewModel(
         player.release()
     }
 
+    /** Shows [next]'s page. While it's [landing], it waits: nothing is read aloud until [ReaderEvent.Landed]. */
     private fun show(
         next: Reading,
         phase: Phase,
+        landing: Boolean = false,
     ) {
         val bundle = bundle ?: return
         reading = next
@@ -247,14 +269,15 @@ class ReaderViewModel(
                 title = story.title[bundle.reading],
                 page = page(bundle, node),
                 phase = phase,
-                canGoBack = next.canGoBack || phase == Phase.CHOICE,
+                upcoming = (node as? Page)?.let { page(bundle, story.node(it.next)) },
+                landing = landing,
                 // Endings a new version removed don't count.
                 endingsFound = (found intersect endingIds).size,
                 endingsTotal = story.endings.size,
                 newEnding = firstTime,
             )
         }
-        narrate(node, phase)
+        if (landing) hush() else narrate(node, phase)
         viewModelScope.launch {
             progress.save(storyId, next.path)
             if (node is Ending) progress.markEndingFound(storyId, node.id)
@@ -270,6 +293,7 @@ class ReaderViewModel(
         phase: Phase,
     ) {
         hush()
+        if (skipReading) return
         val bundle = bundle ?: return
         val parts =
             when (phase) {
@@ -328,9 +352,14 @@ class ReaderViewModel(
         val lang = bundle.reading
         val text = node.text[lang]
         val pace = Pacing.wordsPerMinute(story.ageBand)
-        val narrated = bundle.clip(node.id) != null
+        val narrated = bundle.clip(node.id) != null && !skipReading
         val times = bundle.timings(node.id)
-        val words = if (narrated) Pacing.narrated(text, times, pace) else Pacing.paced(text, pace)
+        val words =
+            when {
+                skipReading -> Pacing.paced(text, pace).map { it.copy(atMillis = SKIPPED_WORD_MILLIS) }
+                narrated -> Pacing.narrated(text, times, pace)
+                else -> Pacing.paced(text, pace)
+            }
         return ReaderPage(
             nodeId = node.id,
             text = text,

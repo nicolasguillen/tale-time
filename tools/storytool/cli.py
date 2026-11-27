@@ -23,7 +23,10 @@ def _repo_issues():
                                                                         "narrators")))
     if CATALOG.is_file():
         stories = {p.name: load_story(p) for p in STORIES.iterdir() if p.is_dir()}
-        found += [("catalog.json", i) for i in check_catalog(load_json(CATALOG), stories)]
+        translations = {p.name: {lang: load_json(translation_file(p, lang)).get("status")
+                                 for lang in list(stories[p.name] or {})[1:] if translation_file(p, lang).is_file()}
+                        for p in STORIES.iterdir() if p.is_dir()}
+        found += [("catalog.json", i) for i in check_catalog(load_json(CATALOG), stories, translations)]
     else:
         found.append(("catalog.json", Issue(ERROR, "catalog-missing", "content/catalog.json is missing")))
     if APP_ASSETS.is_file():

@@ -62,7 +62,8 @@ enum class ImageKind(
 
 /**
  * A story picture. [uri] null means not delivered yet: the static placeholder for [kind] (content/placeholders/)
- * shows instead, and also if the file can't be read.
+ * shows instead, and also if the file can't be read. [onLoaded] is called once there's something to show (the
+ * picture or its placeholder).
  */
 @Composable
 fun StoryImage(
@@ -71,6 +72,7 @@ fun StoryImage(
     contentDescription: String?,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
+    onLoaded: () -> Unit = {},
 ) {
     var failed by remember(uri) { mutableStateOf(false) }
     val model = if (uri == null || failed) Res.getUri(kind.placeholder) else uri
@@ -79,6 +81,7 @@ fun StoryImage(
         contentDescription = contentDescription,
         modifier = modifier.background(TaleColors.PictureMat),
         contentScale = contentScale,
+        onSuccess = { onLoaded() },
         onError = { if (uri != null) failed = true },
     )
 }
@@ -105,6 +108,7 @@ fun RoundButton(
     container: Color = TaleColors.NightBlue,
     content: Color = TaleColors.Cream,
     pulse: Boolean = false,
+    shadow: Dp = 4.dp,
 ) {
     val scale =
         if (pulse) {
@@ -125,7 +129,7 @@ fun RoundButton(
             .scale(scale)
             .squish(interaction)
             .size(size)
-            .shadow(4.dp, CircleShape)
+            .shadow(shadow, CircleShape)
             .clip(CircleShape)
             .background(container)
             .clickable(interactionSource = interaction, indication = LocalIndication.current, role = Role.Button, onClick = onClick)
@@ -136,24 +140,33 @@ fun RoundButton(
     }
 }
 
-/** Back to the shelf: the same sunny house button in the top corner of every screen. */
+/**
+ * Back to the shelf: the same sunny house button in the top corner of every screen. A [quiet] one is small and
+ * see-through, for the reader, where it sits on the picture (docs/page-turn.md §7).
+ */
 @Composable
 fun HomeButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    quiet: Boolean = false,
 ) {
     RoundButton(
         TaleIcons.Home,
         contentDescription = LocalStrings.current.backToShelf,
         onClick = onClick,
         modifier = modifier,
-        size = 60.dp,
-        container = TaleColors.LanternGold,
-        content = TaleColors.Ink,
+        // 44 dp: the smallest comfortable touch target on both platforms.
+        size = if (quiet) 44.dp else 60.dp,
+        container = if (quiet) TaleColors.Cream.copy(alpha = 0.78f) else TaleColors.LanternGold,
+        content = if (quiet) TaleColors.InkSoft else TaleColors.Ink,
+        shadow = if (quiet) 1.dp else 4.dp,
     )
 }
 
-/** A labeled button, mostly for grown-ups (the cover, the parents area, the ending screen). */
+/**
+ * A labeled button, mostly for grown-ups (the cover, the parents area, the ending screen). A [large] one is a screen's
+ * main action, at its bottom.
+ */
 @Composable
 fun PillButton(
     text: String,
@@ -162,13 +175,14 @@ fun PillButton(
     icon: ImageVector? = null,
     primary: Boolean = true,
     enabled: Boolean = true,
+    large: Boolean = false,
 ) {
     val shape = RoundedCornerShape(50)
     val container = if (primary) TaleColors.NightBlue else TaleColors.Cream
     val content = if (primary) TaleColors.Cream else TaleColors.Ink
     Row(
         modifier
-            .heightIn(min = 56.dp)
+            .heightIn(min = if (large) 68.dp else 56.dp)
             .shadow(if (primary && enabled) 3.dp else 0.dp, shape)
             .clip(shape)
             .background(if (enabled) container else TaleColors.Line)
@@ -178,8 +192,13 @@ fun PillButton(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
     ) {
-        if (icon != null) Icon(icon, contentDescription = null, tint = content, modifier = Modifier.size(24.dp))
-        Text(text, style = Tale.type.label, color = content, textAlign = TextAlign.Center)
+        if (icon != null) Icon(icon, contentDescription = null, tint = content, modifier = Modifier.size(if (large) 28.dp else 24.dp))
+        Text(
+            text,
+            style = if (large) Tale.type.label.copy(fontSize = 22.sp) else Tale.type.label,
+            color = content,
+            textAlign = TextAlign.Center,
+        )
     }
 }
 

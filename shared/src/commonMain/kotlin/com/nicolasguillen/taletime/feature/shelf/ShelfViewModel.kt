@@ -57,24 +57,30 @@ data class ShelfUiState(
                 null -> emptyList()
             }
 
-    /** What [book] costs: [Price.Free], its price from the store, or null for a book that's bought or not priced yet. */
-    fun price(book: Book): Price? =
-        when {
-            book.entry.access == Access.FREE -> {
-                Price.Free
-            }
-
-            book.open -> {
-                null
-            }
-
-            else -> {
-                book.entry.product
-                    ?.let { prices[it] }
-                    ?.let { Price.Paid(it) }
-            }
-        }
+    /** What [book] costs (see [Book.price]). */
+    fun price(book: Book): Price? = book.price(prices)
 }
+
+/**
+ * What this book costs: [Price.Free], its price from the store ([prices], product id → price), or null for a book
+ * that's bought or not priced yet.
+ */
+fun Book.price(prices: Map<String, String>): Price? =
+    when {
+        entry.access == Access.FREE -> {
+            Price.Free
+        }
+
+        open -> {
+            null
+        }
+
+        else -> {
+            entry.product
+                ?.let { prices[it] }
+                ?.let { Price.Paid(it) }
+        }
+    }
 
 sealed interface Price {
     data object Free : Price

@@ -40,14 +40,15 @@ fun tinyEntry(access: String = "free"): CatalogEntry =
         access = if (access == "paid") Access.PAID else Access.FREE,
         product = if (access == "paid") "story.tiny" else null,
         ageBand = "3-5",
+        endings = 2,
         title = mapOf("en" to "Tiny", "es" to "Chiquito"),
         languages = mapOf("en" to LanguageOffer(1_200_000), "es" to LanguageOffer(2_400_000, narration = true)),
         manifest = HostedFile("manifest-0123456789.json", 100, "0".repeat(64)),
     )
 
 /**
- * A [StoryLibrary] in memory: [download] finishes at once (or fails, with [failDownloads]), and [load] reads the
- * story in the languages "downloaded".
+ * A [StoryLibrary] in memory: [download] brings every language of the story at once (or fails, with [failDownloads]),
+ * and [load] reads the story in the languages "downloaded".
  *
  * @param stories story id → its files (language → the text of its `story/<lang>.json`).
  * @param images story id → (image id → path) of its delivered images.
@@ -63,6 +64,7 @@ class FakeStoryLibrary(
     private val timings: Map<String, Map<String, Map<String, List<WordTime>>>> = emptyMap(),
 ) : StoryLibrary {
     override val state = MutableStateFlow(Library(ready = true, stories = entries, installed = installed))
+    private val published = entries.associate { it.id to it.languages.keys.toList() }
     var refreshed = 0
     var failDownloads = false
     val downloaded = mutableListOf<Pair<String, String>>()
@@ -82,7 +84,7 @@ class FakeStoryLibrary(
         }
         state.update {
             val before = it.installed[storyId]?.languages.orEmpty()
-            val now = Installed("manifest-0123456789.json", (before + language).distinct(), language)
+            val now = Installed("manifest-0123456789.json", (published[storyId].orEmpty() + before + language).distinct(), language)
             it.copy(installed = it.installed + (storyId to now), downloads = it.downloads - storyId)
         }
     }

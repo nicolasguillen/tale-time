@@ -34,7 +34,7 @@ class LanguageTest {
         assertEquals(EnglishStrings, stringsFor(Language.ENGLISH))
         assertEquals(SpanishStrings, stringsFor(Language.SPANISH))
         assertNotEquals(EnglishStrings.read, SpanishStrings.read)
-        assertEquals("De 4 a 7 años", SpanishStrings.ages("4-7"))
-        assertEquals("Ages 4–7", EnglishStrings.ages("4-7"))
+        assertEquals("de 4 a 7 años", SpanishStrings.ageRange("4-7"))
+        assertEquals("4–7", EnglishStrings.ageRange("4-7"))
     }
 }

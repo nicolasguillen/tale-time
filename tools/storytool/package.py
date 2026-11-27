@@ -1,12 +1,12 @@
 """`story package`: builds what the app downloads (docs/story-format.md, "Published stories"; plan.md §7.3).
 
-The app shows every story on the shelf, and downloads one when a reader opens it, in the language they pick: its
-text, its pictures and that language's narration. It keeps the story on the device to read offline, and at every
-launch it checks whether the story changed. Everything it downloads is built here from content/, one folder per
+The app shows every story on the shelf, and downloads one whole when a reader opens it: its pictures, and every
+language's text and narration, so it can switch language offline. It keeps the story on the device to read offline,
+and at every launch it checks whether the story changed. Everything it downloads is built here from content/, one folder per
 channel, laid out like the content host (stories/<channel>/ in the bucket):
 
-    catalog.json                the shelf: each story's title in every language, its cover, its languages (with their
-                                download size and whether they're narrated) and its current manifest
+    catalog.json                the shelf: each story's title in every language, how many endings it has, its cover, its
+                                languages (with their download size and whether they're narrated) and its current manifest
     <id>/manifest-<hash>.json   every file of the story: its pictures, and per language its text, its clips and when
                                 each word of a narrated page is said (its timings)
     <id>/<name>-<hash>.<ext>    the files themselves, named after their contents
@@ -20,9 +20,10 @@ Two channels, each in content/.build/stories/<channel>/ and uploaded by `story p
 stories/<channel>/ on the host:
 - draft: content/ as it is, for debug builds: draft translations, and whatever pictures and clips are delivered so far.
   A missing picture shows the app's placeholder, and a page without its clip reads without narration.
-- production: for release builds. Only the stories that pass `story check --strict` (every picture delivered), in
-  their first language and each translation a native speaker approved. A language's narration ships once every one of
-  its clips is delivered; until then that language reads without narration.
+- production: for release builds. Only the stories that pass `story check --strict` (every picture delivered), in the
+  languages the catalog approves for production (`approved`, the first language only if it's listed) and no other; a
+  translation also needs a native speaker's approval. A language's narration ships once every one of its clips is
+  delivered; until then that language reads without narration.
 
 Packaging only converts: pictures to WebP, scaled down to at most the sizes below, and clips to mono AAC with their
 loudness evened out. It never makes or changes a picture or a sound. It also listens to each page's clip for when its
@@ -176,7 +177,7 @@ class Packager:
         entries = []
         for entry in shelf["stories"]:
             folder = self.content / "stories" / entry["id"]
-            why = self._unpublishable(folder)
+            why = self._unpublishable(entry, folder)
             if why:
                 result.skipped[entry["id"]] = why
                 continue
@@ -186,12 +187,15 @@ class Packager:
         _write(result.catalog, _json({"format": FORMAT, "stories": entries}))
         return result
 
-    def _unpublishable(self, folder: Path) -> list[str]:
+    def _unpublishable(self, entry: dict, folder: Path) -> list[str]:
         """Why a story can't go out on this channel, or nothing."""
         if load_story(folder) is None:
             return ["it has no text yet (story/<lang>.json)"]
         if self.channel == "draft":
             return []
+        if not self.languages(folder, entry.get("approved", ())):
+            return ["no language approved for production: list them in content/catalog.json (`approved`), each "
+                    "translation approved by a native speaker"]
         errors = [str(i) for i in self.check(folder, strict=True) if i.level == ERROR and i.code != "image-missing"]
         first = next(iter(load_story(folder).values()))
         wanted = list(dict.fromkeys(image_ids(first)))
@@ -200,24 +204,25 @@ class Packager:
             errors.insert(0, f"{len(missing)} of {len(wanted)} pictures not delivered yet")
         return errors
 
-    def languages(self, folder: Path) -> list[str]:
+    def languages(self, folder: Path, approved=()) -> list[str]:
         """The story's languages on this channel, its first language first: every one on draft, and on production
-        the first and each translation approved by a native speaker."""
+        the ones the catalog [approved], each translation among them approved by a native speaker too."""
         story = load_story(folder)
         langs = list(story)
         if self.channel == "draft":
             return langs
-        approved = []
-        for lang in langs[1:]:
+
+        def reviewed(lang: str) -> bool:
             sheet = translation_file(folder, lang)
-            if sheet.is_file() and load_json(sheet).get("status") == "approved":
-                approved.append(lang)
-        return [langs[0], *approved]
+            return lang == langs[0] or (sheet.is_file() and load_json(sheet).get("status") == "approved")
+
+        return [lang for lang in langs if lang in approved and reviewed(lang)]
 
     def _story(self, entry: dict, folder: Path) -> tuple[dict, Packaged]:
         sid = entry["id"]
         story = load_story(folder)
-        langs = self.languages(folder)
+        langs = self.languages(folder, entry.get("approved", ()))
+        # The pictures and the cover are the same in every language: the first one published says which.
         first = story[langs[0]]
         out = self.root / sid
         out.mkdir(parents=True, exist_ok=True)
@@ -270,6 +275,7 @@ class Packager:
             "access": entry["access"],
             **({"product": entry["product"]} if entry.get("product") else {}),
             "ageBand": first["ageBand"],
+            "endings": sum(1 for node in first["nodes"].values() if "ending" in node),
             "title": {lang: story[lang]["title"] for lang in langs},
             "languages": offered,
             **({"cover": {"file": images[first["cover"]], **files[images[first["cover"]]]}}

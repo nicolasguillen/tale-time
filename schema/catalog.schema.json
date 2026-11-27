@@ -21,6 +21,13 @@
           "type": "string",
           "pattern": "^[a-z0-9][a-z0-9_.]{0,99}$",
           "description": "Store product id of the one-time purchase that unlocks a paid story, the same id on the App Store and Google Play (lowercase letters, digits, '_' and '.'; Google Play allows no '-')."
+        },
+        "approved": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$" },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "The languages approved for the production channel (release builds), the story's first language included only if it's listed. The story is published there in these and no other, once every picture is delivered. A translation listed must be approved by a native speaker too (its status in translations/<lang>.json). Without this list the story isn't published to production. The draft channel has every language."
         }
       },
       "if": { "properties": { "access": { "const": "paid" } } },

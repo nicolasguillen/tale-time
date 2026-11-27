@@ -14,6 +14,7 @@ import com.nicolasguillen.taletime.feature.cover.CoverViewModel
 import com.nicolasguillen.taletime.feature.parents.ParentsViewModel
 import com.nicolasguillen.taletime.feature.reader.ReaderViewModel
 import com.nicolasguillen.taletime.feature.shelf.ShelfViewModel
+import com.nicolasguillen.taletime.platform.AgentFlags
 import com.nicolasguillen.taletime.platform.BuildInfo
 import com.nicolasguillen.taletime.platform.LibraryDirectory
 import com.nicolasguillen.taletime.platform.platformModule
@@ -61,6 +62,7 @@ val featureModule =
                 progress = get(),
                 settings = get(),
                 player = get(),
+                skipReading = get<AgentFlags>().skipReading,
             )
         }
         viewModelOf(::ParentsViewModel)

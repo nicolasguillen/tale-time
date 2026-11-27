@@ -47,16 +47,6 @@ class ReadingTest {
     }
 
     @Test
-    fun previousPagesBackOneStepAndReopensAForkItCrosses() {
-        val atP2 = Reading.start(tiny).next().choose(1)
-        val atFork = atP2.previous()
-        assertEquals(listOf(Step("p1"), Step("f1")), atFork.path)
-        assertEquals(listOf(Step("p1")), atFork.previous().path)
-        assertEquals(Reading.start(tiny).path, Reading.start(tiny).previous().path)
-        assertEquals("e1", atFork.choose(0).current.id)
-    }
-
-    @Test
     fun tryAnotherPathFromAnEnding() {
         val ending = Reading.start(tiny).next().choose(0)
         assertTrue(ending.atEnding)

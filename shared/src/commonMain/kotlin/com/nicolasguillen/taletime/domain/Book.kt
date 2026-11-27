@@ -26,6 +26,12 @@ data class Book(
     val downloading: Boolean get() = download is Download.Running
     val endings: List<Ending> get() = bundle?.story?.endings.orEmpty()
 
+    /** The languages it can be read in, its first language first: the ones it's published in, and any other on the device. */
+    val languages: List<String> get() = (entry.published + bundle?.story?.languages.orEmpty()).distinct()
+
+    /** How many endings it has: the story's own count once it's downloaded, the catalog's before. Null when unknown. */
+    val endingCount: Int? get() = bundle?.story?.endings?.size ?: entry.endings.takeIf { it > 0 }
+
     /** The title in the language the book is read in once downloaded; before that, in [appLanguage] if it has it. */
     fun title(appLanguage: String): String {
         val bundle = bundle ?: return entry.title(appLanguage)

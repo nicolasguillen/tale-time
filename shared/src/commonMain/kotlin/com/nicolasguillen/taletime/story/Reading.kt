@@ -20,7 +20,7 @@ class Reading private constructor(
 
     val atEnding: Boolean get() = current is Ending
 
-    /** There's somewhere to go back to: an earlier fork, or the first page. */
+    /** There's somewhere for "Try another path" to go back to: an earlier fork, or the first page. */
     val canGoBack: Boolean get() = path.size > 1
 
     /** Turns a plain page. */
@@ -34,16 +34,6 @@ class Reading private constructor(
         val fork = current as? Fork ?: error("'${current.id}' isn't a fork")
         val option = fork.options.getOrNull(index) ?: error("'${fork.id}' has no option $index")
         return Reading(story, path.dropLast(1) + Step(fork.id, index) + Step(option.target))
-    }
-
-    /**
-     * One page back, the way a book pages back. Going back across a fork opens its question again, so the child can
-     * pick the other way.
-     */
-    fun previous(): Reading {
-        if (!canGoBack) return this
-        val before = path.dropLast(1)
-        return Reading(story, before.dropLast(1) + Step(before.last().node))
     }
 
     /**

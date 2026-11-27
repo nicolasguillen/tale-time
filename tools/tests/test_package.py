@@ -45,8 +45,13 @@ def content(tmp_path):
     shutil.copytree(TINY / "story", story / "story")
     (story / "translations").mkdir()
     (story / "translations" / "es.json").write_text(json.dumps({"status": "draft"}))
-    (root / "catalog.json").write_text(json.dumps({"stories": [{"id": "tiny", "access": "free"}]}))
+    (root / "catalog.json").write_text(json.dumps({"stories": [{"id": "tiny", "access": "free", "approved": ["en"]}]}))
     return root
+
+
+def approve(content, langs):
+    """Lists `langs` as the tiny story's languages approved for production."""
+    (content / "catalog.json").write_text(json.dumps({"stories": [{"id": "tiny", "access": "free", "approved": langs}]}))
 
 
 def deliver_images(content, ids=None):
@@ -81,6 +86,7 @@ def test_draft_has_every_language_and_whatever_is_delivered(content, tmp_path):
     entry = catalog["stories"][0]
     assert list(entry["languages"]) == ["en", "es"]  # the first language first, drafts too
     assert entry["title"] == {"en": "Tiny", "es": "Chiquito"}
+    assert entry["endings"] == 2
     assert entry["languages"]["es"]["narration"] and not entry["languages"]["en"]["narration"]
     manifest = manifests["tiny"]
     assert not list(MANIFEST_SCHEMA.iter_errors(manifest))
@@ -190,12 +196,43 @@ def test_a_rebuild_holds_the_new_version_only(content, tmp_path):
     assert on_disk == set(manifests["tiny"]["files"]) | {after["stories"][0]["manifest"]["file"]}
 
 
-def test_production_has_the_first_language_and_approved_translations_only(content, tmp_path):
+def test_production_has_the_languages_the_catalog_approves_only(content, tmp_path):
     deliver_images(content)
+    approve(content, ["en", "es"])
     _, catalog, _ = build(content, tmp_path, "production")
-    assert list(catalog["stories"][0]["languages"]) == ["en"]
+    assert list(catalog["stories"][0]["languages"]) == ["en"], "a translation still in draft stays out"
     (content / "stories" / "tiny" / "translations" / "es.json").write_text(json.dumps({"status": "approved"}))
     _, catalog, _ = build(content, tmp_path, "production")
+    assert list(catalog["stories"][0]["languages"]) == ["en", "es"]
+    approve(content, ["en"])
+    _, catalog, _ = build(content, tmp_path, "production")
+    assert list(catalog["stories"][0]["languages"]) == ["en"], "an approved translation the catalog doesn't list"
+
+
+def test_a_story_with_no_language_approved_isnt_published(content, tmp_path):
+    deliver_images(content)
+    (content / "catalog.json").write_text(json.dumps({"stories": [{"id": "tiny", "access": "free"}]}))
+    result, catalog, _ = build(content, tmp_path, "production")
+    assert catalog["stories"] == []
+    assert "no language approved for production" in result.skipped["tiny"][0]
+    _, catalog, _ = build(content, tmp_path, "draft")
+    assert list(catalog["stories"][0]["languages"]) == ["en", "es"]
+
+
+def test_production_can_leave_out_the_first_language(content, tmp_path):
+    deliver_images(content)
+    deliver_clips(content, "es")
+    approve(content, ["es"])
+    (content / "stories" / "tiny" / "translations" / "es.json").write_text(json.dumps({"status": "approved"}))
+    _, catalog, manifests = build(content, tmp_path, "production")
+    entry = catalog["stories"][0]
+    assert list(entry["languages"]) == ["es"] and list(entry["title"]) == ["es"]
+    assert list(manifests["tiny"]["languages"]) == ["es"]
+    assert entry["languages"]["es"]["narration"] is True
+    assert set(manifests["tiny"]["images"]) == set(image_ids(EN))
+    assert not list(CATALOG_SCHEMA.iter_errors(catalog))
+    assert not list(MANIFEST_SCHEMA.iter_errors(manifests["tiny"]))
+    _, catalog, _ = build(content, tmp_path, "draft")
     assert list(catalog["stories"][0]["languages"]) == ["en", "es"]
 
 

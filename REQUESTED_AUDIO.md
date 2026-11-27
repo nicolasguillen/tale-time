@@ -13,9 +13,9 @@ This file is generated. To change a request, edit the narrators in `content/styl
 | Story | Language | Text | Title | Pages | Questions | Choice labels | Ending titles | Total |
 |---|---|---|---|---|---|---|---|---|
 | [The Fox and the Lantern](content/stories/fox-and-the-lantern/audio/en/REQUESTED_AUDIO.md) | en | first | 0/1 | 0/20 | 0/6 | 0/12 | 0/5 | **0/44** |
-| [El zorro y el farolito](content/stories/fox-and-the-lantern/audio/es/REQUESTED_AUDIO.md) | es | draft translation | 1/1 | 20/20 | 6/6 | 12/12 | 5/5 | **44/44** |
+| [El zorro y el farolito](content/stories/fox-and-the-lantern/audio/es/REQUESTED_AUDIO.md) | es | translation | 1/1 | 20/20 | 6/6 | 12/12 | 5/5 | **44/44** |
 | [Noelia and the Baby Squirrel](content/stories/noelia-and-the-baby-squirrel/audio/en/REQUESTED_AUDIO.md) | en | first | 1/1 | 16/20 | 5/5 | 8/10 | 0/4 | **30/40** |
-| [Noelia y la ardillita](content/stories/noelia-and-the-baby-squirrel/audio/es/REQUESTED_AUDIO.md) | es | draft translation | 1/1 | 20/20 | 5/5 | 10/10 | 4/4 | **40/40** |
+| [Noelia y la ardillita](content/stories/noelia-and-the-baby-squirrel/audio/es/REQUESTED_AUDIO.md) | es | translation | 1/1 | 20/20 | 5/5 | 10/10 | 4/4 | **40/40** |
 
 ## Narrators
 

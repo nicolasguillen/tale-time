@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Story manifest",
-  "description": "stories/<channel>/<id>/manifest-<hash>.json on the content host: every file of one version of a story, written by `story package`. The app downloads the pictures and, for each language a reader picked, that language's text and clips, and checks each file's size and SHA-256. See docs/story-format.md, \"Published stories\".",
+  "description": "stories/<channel>/<id>/manifest-<hash>.json on the content host: every file of one version of a story, written by `story package`. The app downloads every file it lists (the pictures, and every language's text, clips and timings), and checks each file's size and SHA-256. See docs/story-format.md, \"Published stories\".",
   "type": "object",
   "additionalProperties": false,
   "required": ["format", "id", "images", "languages", "files"],

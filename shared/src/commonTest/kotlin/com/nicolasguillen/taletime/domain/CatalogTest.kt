@@ -25,7 +25,7 @@ class CatalogTest {
             CatalogParser
                 .parse(
                     """{ "format": 1, "stories": [ {
-                        "id": "fox", "access": "free", "ageBand": "4-7",
+                        "id": "fox", "access": "free", "ageBand": "4-7", "endings": 5,
                         "title": { "en": "The Fox", "es": "El zorro" },
                         "languages": { "en": { "bytes": 1200000, "narration": true }, "es": { "bytes": 900000, "narration": false } },
                         "cover": { "file": "cover-0123456789.webp", "bytes": 81234, "sha256": "${"a".repeat(64)}" },
@@ -40,6 +40,20 @@ class CatalogTest {
         assertEquals("es", entry.firstChoice("es"))
         assertEquals("en", entry.firstChoice("fr"))
         assertEquals("cover-0123456789.webp", entry.cover?.file)
+        assertEquals(5, entry.endings)
+        assertEquals(listOf("en", "es"), entry.published)
+    }
+
+    @Test
+    fun theShelfInsideTheAppKnowsItsLanguagesFromItsTitles() {
+        val entry =
+            CatalogParser
+                .parse(
+                    """{ "stories": [ { "id": "fox", "access": "free", "endings": 4, "title": { "en": "The Fox", "es": "El zorro" } } ] }""",
+                ).single()
+        assertEquals(listOf("en", "es"), entry.published)
+        assertEquals(4, entry.endings)
+        assertEquals(0, CatalogParser.parse("""{ "stories": [ { "id": "a", "access": "free" } ] }""").single().endings, "unknown")
     }
 
     @Test

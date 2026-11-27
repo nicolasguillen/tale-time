@@ -164,17 +164,17 @@ class HostedStoryLibraryTest {
         }
 
     @Test
-    fun downloadsOneLanguageOnlyAndReadsItOfflineLater() =
+    fun downloadsEveryLanguageAndReadsItOfflineLater() =
         runTest {
             val manifest = publish()
             val library = library()
             library.refresh()
             library.download("tiny", "es")
-            assertEquals(Installed(manifest, listOf("es"), "es"), library.downloaded("tiny"))
-            assertFalse(requests.any { it.contains("story-en") || it.startsWith("stories/tiny/en-") }, "no English")
+            assertEquals(Installed(manifest, listOf("en", "es"), "es"), library.downloaded("tiny"))
+            assertTrue(requests.any { it.contains("story-en") }, "English too, to switch to it offline")
 
             val bundle = library.load("tiny")
-            assertEquals(listOf("es"), bundle.story.languages)
+            assertEquals(listOf("en", "es"), bundle.story.languages)
             assertEquals("es", bundle.reading)
             assertContentEquals("page one".encodeToByteArray(), disk.read(bundle.image("p1")!!.toPath()) { readByteArray() })
             assertEquals(setOf("title", "p1"), bundle.audio.getValue("es").keys)
@@ -242,7 +242,7 @@ class HostedStoryLibraryTest {
             val library = library()
             library.refresh()
             library.download("tiny", "en")
-            assertEquals(listOf("en"), library.downloaded("tiny").languages)
+            assertEquals(listOf("en", "es"), library.downloaded("tiny").languages)
             assertTrue(dropOnce.isEmpty())
         }
 
@@ -257,26 +257,54 @@ class HostedStoryLibraryTest {
             library.state.first { it.downloads["tiny"] is Download.Failed }
             online = true
             library.download("tiny", "en")
-            assertEquals(listOf("en"), library.downloaded("tiny").languages)
+            assertEquals(listOf("en", "es"), library.downloaded("tiny").languages)
         }
 
     @Test
-    fun aSecondLanguageKeepsTheFirstAndPickingADownloadedOneOnlySwitches() =
+    fun switchingLanguageOnlySwitches() =
         runTest {
             publish()
             val library = library()
             library.refresh()
             library.download("tiny", "en")
             library.downloaded("tiny")
-            library.download("tiny", "es")
-            library.state.first { it.installed["tiny"]?.languages == listOf("en", "es") && "tiny" !in it.downloads }
-            assertEquals("es", library.load("tiny").reading)
-            assertEquals(listOf("en", "es"), library.load("tiny").story.languages)
 
             requests.clear()
-            library.download("tiny", "en")
-            library.state.first { it.installed["tiny"]?.reading == "en" && "tiny" !in it.downloads }
+            library.download("tiny", "es")
+            assertNull(library.state.value.downloads["tiny"], "no download to show")
+            library.state.first { it.installed["tiny"]?.reading == "es" }
+            assertEquals("es", library.load("tiny").reading)
             assertEquals(emptyList(), requests, "nothing to download")
+
+            online = false
+            library.download("tiny", "en")
+            library.state.first { it.installed["tiny"]?.reading == "en" }
+            assertNull(library.state.value.downloads["tiny"], "offline too")
+        }
+
+    @Test
+    fun aStoryDownloadedInOneLanguageGetsTheOthersAtTheNextLaunch() =
+        runTest {
+            val manifest = publish()
+            val first = library()
+            first.refresh()
+            first.download("tiny", "es")
+            first.downloaded("tiny")
+            // As an older version of the app left it: Spanish only.
+            disk.delete(dir / "stories" / "tiny" / storyFiles().first { it.startsWith("story-en-") })
+            disk.write(dir / "installed.json") {
+                writeUtf8("""{"tiny":{"manifest":"$manifest","languages":["es"],"reading":"es"}}""")
+            }
+
+            requests.clear()
+            val next = library()
+            next.refresh()
+            assertEquals(Installed(manifest, listOf("en", "es"), "es"), next.downloaded("tiny"))
+            assertEquals(
+                listOf("story-en"),
+                requests.filter { it.startsWith("stories/tiny/") }.map { it.substringAfterLast('/').substringBeforeLast('-') },
+                "only what's missing",
+            )
         }
 
     @Test

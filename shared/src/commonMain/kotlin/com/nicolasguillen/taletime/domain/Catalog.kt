@@ -13,9 +13,9 @@ data class HostedFile(
 )
 
 /**
- * A language a reader can download a story in.
+ * A language a story is published in.
  *
- * @property bytes the download in this language alone: the pictures, the text and the narration.
+ * @property bytes the story in this language alone: the pictures, the text and the narration.
  * @property narration the pages are read aloud in this language.
  */
 @Serializable
@@ -30,9 +30,11 @@ data class LanguageOffer(
  *
  * @property product the store's one-time purchase that unlocks a [Access.PAID] story, the same id on the App Store
  *   and Google Play. Null for free stories.
+ * @property endings how many endings the story has, or 0 when the catalog doesn't say (an older one).
  * @property title the title in every language the story is published in, its first language first.
- * @property languages the languages a reader can download it in, its first language first. Empty in the shelf that
- *   ships inside the app (`files/shelf.json`), which knows only the titles until the app has been online once.
+ * @property languages the languages it's published in, its first language first: a download brings them all. Empty in
+ *   the shelf that ships inside the app (`files/shelf.json`), which knows only the titles until the app has been online
+ *   once.
  * @property cover the cover picture, shown before the story is downloaded. Null while it isn't delivered.
  * @property manifest the story's current manifest: every file of this version. A new name means the story changed.
  */
@@ -42,6 +44,7 @@ data class CatalogEntry(
     val access: Access,
     val product: String? = null,
     val ageBand: String = "",
+    val endings: Int = 0,
     val title: Map<String, String> = emptyMap(),
     val languages: Map<String, LanguageOffer> = emptyMap(),
     val cover: HostedFile? = null,
@@ -50,8 +53,11 @@ data class CatalogEntry(
     /** The title in [language], else in the story's first language. */
     fun title(language: String): String = title[language] ?: title.values.firstOrNull() ?: id
 
-    /** The language to offer first: [preferred] when the story is published in it, else its first language. */
+    /** The language to read it in first: [preferred] when the story is published in it, else its first language. */
     fun firstChoice(preferred: String): String? = preferred.takeIf { it in languages } ?: languages.keys.firstOrNull()
+
+    /** The languages it's published in, its first language first, from the titles until the catalog lists them. */
+    val published: List<String> get() = languages.keys.ifEmpty { title.keys }.toList()
 
     /** It can be downloaded: the catalog it comes from was fetched from the host. */
     val downloadable: Boolean get() = manifest != null && languages.isNotEmpty()

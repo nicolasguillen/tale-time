@@ -17,7 +17,7 @@ import org.koin.dsl.module
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSFileManager
-import platform.Foundation.NSLocale
+import platform.Foundation.NSProcessInfo
 import platform.Foundation.NSURL
 import platform.Foundation.NSURLIsExcludedFromBackupKey
 import platform.Foundation.NSUserDomainMask
@@ -43,10 +43,18 @@ actual val platformModule =
         // A new one for each screen that reads aloud: it releases its own.
         factory<NarrationPlayer> { IosNarrationPlayer() }
         single { BuildInfo(debug = isDebugBinary(), version = appVersion()) }
+        // An agent's switches come as launch arguments (XCUIApplication.launchArguments, `devicectl … --`), only in a
+        // debug build.
+        single { if (isDebugBinary()) agentFlags(NSProcessInfo.processInfo.arguments.map { it.toString() }) else AgentFlags() }
     }
 
-/** The first of the languages the user prefers, in iOS Settings ("es-MX", "en-US"). */
-actual fun deviceLanguage(): String = NSLocale.preferredLanguages.firstOrNull() as? String ?: "en"
+/** An agent's switches in the app's launch arguments: `-skipReading -autoTurn -openStory <id>`. */
+private fun agentFlags(arguments: List<String>) =
+    AgentFlags(
+        skipReading = "-skipReading" in arguments,
+        openStory = arguments.getOrNull(arguments.indexOf("-openStory") + 1)?.takeIf { "-openStory" in arguments },
+        autoTurn = "-autoTurn" in arguments,
+    )
 
 /** Xcode's Debug configuration links the debug framework (`embedAndSignAppleFrameworkForXcode` follows it). */
 @OptIn(ExperimentalNativeApi::class)

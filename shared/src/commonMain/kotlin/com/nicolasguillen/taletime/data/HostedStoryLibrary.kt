@@ -105,7 +105,7 @@ internal data class Manifest(
         val sha256: String,
     )
 
-    /** The files a reader needs to read it in [languages]: the pictures, and each language's text, clips and timings. */
+    /** The files to read it in [languages]: the pictures, and each language's text, clips and timings. */
     fun filesFor(languages: Collection<String>): List<String> =
         (
             images.values +
@@ -139,7 +139,8 @@ internal data class Timings(
  * A file only counts once its size and SHA-256 match its manifest, and it's written next to its final name and then
  * renamed, so a half-written file is never taken for a whole one. A story switches to a new version only once every
  * file of that version is on the device; the files of the old one are deleted at the next launch, so a story being
- * read is never pulled from under the reader. One download, update or delete runs at a time.
+ * read is never pulled from under the reader. A story is downloaded whole, in every language it's published in, so it
+ * can switch language offline. One download, update or delete runs at a time.
  *
  * @param readBundledShelf the shelf that ships inside the app (`files/shelf.json`): only titles, until the first
  *   launch online.
@@ -213,9 +214,12 @@ class HostedStoryLibrary(
                         forget(id)
                     }
 
-                    entry.manifest != null && entry.manifest.file != installed.manifest -> {
+                    // A new version, or a language it doesn't have yet (a new translation, or a story downloaded in
+                    // one language only by an older version of the app).
+                    entry.manifest != null &&
+                        (entry.manifest.file != installed.manifest || !installed.languages.containsAll(entry.languages.keys)) -> {
                         try {
-                            install(entry, installed.languages, installed.reading) {}
+                            install(entry, installed.reading) {}
                         } catch (e: CancellationException) {
                             throw e
                         } catch (_: Exception) {
@@ -232,6 +236,14 @@ class HostedStoryLibrary(
         language: String,
     ) {
         if (state.value.downloads[storyId] is Download.Running) return
+        // A language on the device already is only switched to: nothing to show.
+        if (state.value.installed[storyId]
+                ?.languages
+                ?.contains(language) == true
+        ) {
+            scope.launch { jobs.withLock { switch(storyId, language) } }
+            return
+        }
         setDownload(storyId, Download.Running(language))
         scope.launch {
             val done =
@@ -324,33 +336,39 @@ class HostedStoryLibrary(
         language: String,
     ) {
         if (!state.value.ready) readSaved()
-        val installed = state.value.installed[storyId]
-        if (installed != null && language in installed.languages) {
-            saveInstalled(storyId, installed.copy(reading = language))
-            return
-        }
+        if (switch(storyId, language)) return
         // The catalog inside the app can't download anything, and a story must come from this run's catalog.
         if (fetchedAt == null) fetchCatalog() ?: throw IllegalStateException("Offline")
         val entry = state.value.stories.firstOrNull { it.id == storyId } ?: throw IllegalStateException("'$storyId' isn't on the shelf")
-        install(entry, installed?.languages.orEmpty() + language, language) { fraction ->
+        install(entry, language) { fraction ->
             setDownload(storyId, Download.Running(language, fraction))
         }
     }
 
+    /** Reads [storyId] in [language] from now on, if it's on the device in that language. */
+    private suspend fun switch(
+        storyId: String,
+        language: String,
+    ): Boolean {
+        val installed = state.value.installed[storyId]?.takeIf { language in it.languages } ?: return false
+        if (installed.reading != language) saveInstalled(storyId, installed.copy(reading = language))
+        return true
+    }
+
     /**
-     * Brings [entry] to its current manifest in [languages] (the ones it doesn't publish any more are dropped): fetches
-     * the files the device doesn't have, a few at a time, then switches to it.
+     * Brings [entry] to its current manifest, in every language it's published in: fetches the files the device
+     * doesn't have, a few at a time, then switches to it, read in [reading] (or its first language, if it's not
+     * published in that one any more).
      */
     private suspend fun install(
         entry: CatalogEntry,
-        languages: List<String>,
         reading: String,
         progress: (Float) -> Unit,
     ) {
         val ref = entry.manifest ?: throw IllegalStateException("'${entry.id}' can't be downloaded yet")
         ensure(entry.id, ref.file, ref.bytes, ref.sha256)
         val manifest = withContext(io) { readManifest(entry.id, ref.file) }
-        val langs = languages.distinct().filter { it in manifest.languages }.ifEmpty { listOf(manifest.languages.keys.first()) }
+        val langs = manifest.languages.keys.toList()
         val missing =
             withContext(io) {
                 manifest.filesFor(langs).filter { name ->
